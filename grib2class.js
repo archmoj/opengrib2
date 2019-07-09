@@ -236,7 +236,7 @@ module.exports = function /* class */ GRIB2CLASS() {
   var /* byte[] */ fileBytes = [];
   var /* int */ nPointer;
 
-  function /* void */ printMore(/* int */ startN, /* int */ displayMORE) {
+  this. /* void */ printMore = function(/* int */ startN, /* int */ displayMORE) {
     for (var i = 0; i < displayMORE; i++) {
       cout(fileBytes[startN + i]);
     }
@@ -251,9 +251,9 @@ module.exports = function /* class */ GRIB2CLASS() {
       print("[" + fileBytes[startN + i] + "]");
     }
     println();
-  }
+  };
 
-  function /* int[] */ getGrib2Section(/* int */ SectionNumber) {
+  this. /* int[] */ getGrib2Section = function(/* int */ SectionNumber) {
     println("-----------------------------");
 
     print("Section:\t");
@@ -322,9 +322,9 @@ module.exports = function /* class */ GRIB2CLASS() {
     nPointer += lengthOfSection;
 
     return SectionNumbers;
-  }
+  };
 
-  function /* void */ readGrib2Members(/* int */ numberOfMembers) {
+  this. /* void */ readGrib2Members = function(/* int */ numberOfMembers) {
     var /* const int */ GridDEF_NumberOfDataPoints = 7;
     var /* const int */ GridDEF_NumberOfPointsAlongTheXaxis = 31;
     var /* const int */ GridDEF_NumberOfPointsAlongTheYaxis = 35;
@@ -423,7 +423,7 @@ module.exports = function /* class */ GRIB2CLASS() {
     nPointer = -1;
 
     for (var memberID = 0; memberID < numberOfMembers; memberID += 1) {
-      var /* int[] */ SectionNumbers = getGrib2Section(0); // Section 0: Indicator Section
+      var /* int[] */ SectionNumbers = this.getGrib2Section(0); // Section 0: Indicator Section
 
       if (SectionNumbers.length > 1) {
         print("Discipline of processed data:\t");
@@ -444,7 +444,7 @@ module.exports = function /* class */ GRIB2CLASS() {
         println(this.LengthOfMessage);
       }
 
-      SectionNumbers = getGrib2Section(1); // Section 1: Identification Section
+      SectionNumbers = this.getGrib2Section(1); // Section 1: Identification Section
 
       if (SectionNumbers.length > 1) {
         print("Identification of originating/generating centre: ");
@@ -766,11 +766,11 @@ module.exports = function /* class */ GRIB2CLASS() {
         }
       }
 
-      SectionNumbers = getGrib2Section(2); // Section 2: Local Use Section (optional)
+      SectionNumbers = this.getGrib2Section(2); // Section 2: Local Use Section (optional)
       if (SectionNumbers.length > 1) {
       }
 
-      SectionNumbers = getGrib2Section(3); // Section 3: Grid Definition Section
+      SectionNumbers = this.getGrib2Section(3); // Section 3: Grid Definition Section
 
       if (SectionNumbers.length > 1) {
         print("Grid Definition Template Number:\t");
@@ -1005,7 +1005,7 @@ module.exports = function /* class */ GRIB2CLASS() {
         }
       }
 
-      SectionNumbers = getGrib2Section(4); // Section 4: Product Definition Section
+      SectionNumbers = this.getGrib2Section(4); // Section 4: Product Definition Section
 
       if (SectionNumbers.length > 1) {
         print("Number of coordinate values after Template:\t");
@@ -2463,7 +2463,7 @@ module.exports = function /* class */ GRIB2CLASS() {
         }
       }
 
-      SectionNumbers = getGrib2Section(5); // Section 5: Data Representation Section
+      SectionNumbers = this.getGrib2Section(5); // Section 5: Data Representation Section
 
       if (SectionNumbers.length > 1) {
         print("Number of data points:\t");
@@ -2612,7 +2612,7 @@ module.exports = function /* class */ GRIB2CLASS() {
       }
       //////////////////////////////////////////////////
 
-      SectionNumbers = getGrib2Section(6); // Section 6: Bit-Map Section
+      SectionNumbers = this.getGrib2Section(6); // Section 6: Bit-Map Section
 
       if (SectionNumbers.length > 1) {
         print("Bit map indicator:\t");
@@ -2644,7 +2644,7 @@ module.exports = function /* class */ GRIB2CLASS() {
 
         Bitmap_beginPointer = nPointer + 6;
 
-        SectionNumbers = getGrib2Section(7); // Section 7: Data Section
+        SectionNumbers = this.getGrib2Section(7); // Section 7: Data Section
 
         if (SectionNumbers.length > 100) { // ???????? to handle the case of no bitmap
 
@@ -2844,7 +2844,7 @@ module.exports = function /* class */ GRIB2CLASS() {
           println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 93 : Start of data
           n += 2;
 
-          //printMore(n, 100); // <<<<<<<<<<<<<<<<<<<<
+          //this.printMore(n, 100); // <<<<<<<<<<<<<<<<<<<<
 
           /*
 
@@ -2874,7 +2874,7 @@ module.exports = function /* class */ GRIB2CLASS() {
 
           //printing the end of grib
 
-          printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
+          this.printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
           n += 2;
 
           var /* byte[] */ imageBytes = new Int8Array(1 + Bitmap_endPointer - Bitmap_beginPointer);
@@ -2910,7 +2910,7 @@ module.exports = function /* class */ GRIB2CLASS() {
 
         Bitmap_beginPointer = nPointer + 6;
 
-        //s = getGrib2Section(7); // Section 7: Data Section
+        //s = this.getGrib2Section(7); // Section 7: Data Section
 
         //if (SectionNumbers.length > 1)
         { // ???????? to handle the case of no bitmap
@@ -3239,7 +3239,7 @@ module.exports = function /* class */ GRIB2CLASS() {
 
       }
 
-      SectionNumbers = getGrib2Section(8); // Section 8: 7777
+      SectionNumbers = this.getGrib2Section(8); // Section 8: 7777
 
 
       try {
@@ -3297,5 +3297,5 @@ module.exports = function /* class */ GRIB2CLASS() {
         println("error:", error);
       }
     }
-  }
+  };
 };
