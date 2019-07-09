@@ -2,8 +2,8 @@
 
 'use strict';
 
-/* import */ function /* Buffer */ RandomAccessFile(b, c) {};
-/* import */ function /* Buffer */ Grib2JpegDecoder(args) {};
+/* import */ function /* Buffer */ RandomAccessFile(b, c) { };
+/* import */ function /* Buffer */ Grib2JpegDecoder(args) { };
 
 var /* boolean */ log = false;
 
@@ -20,10 +20,10 @@ function print(/* char */ c) {
 
 function /* void */ cout(/* int */ c) {
   if (!log) return;
-  if (c > 31) print(char(c));
+  if (c > 31) print(c);
   else {
-    //print("[" + asciiTable[c] + "]");
-    print("_");
+    print("[" + asciiTable[c] + "]");
+    //print("_");
   }
 }
 
@@ -72,7 +72,7 @@ function /* int */ S_NUMx4(/* int */ m4, /* int */ m3, /* int */m2, /* int */ m1
 
 function /* long */ U_NUMx8(/* int */ m8, /* int */ m7, /* int */ m6, /* int */ m5, /* int */ m4, /* int */ m3, /* int */ m2, /* int */ m1) {
 
-  return ((long)(m8 << 56) + (m7 << 48) + (m6 << 40) + (m5 << 32) + (m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
+  return (m8 << 56) + (m7 << 48) + (m6 << 40) + (m5 << 32) + (m4 << 24) + (m3 << 16) + (m2 << 8) + m1;
 }
 
 function /* int */ U_NUMxI(/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
@@ -125,13 +125,14 @@ function /* int */ getNthBit(/* Byte */ valByte, /* int */ posBit) {
 
 function /* String */ IntToBinary32(/* int */ n) {
   var i;
-  var s1 = Integer.toBinaryString(n);
+  var s1 = binary(n);
+  var len = s1.length;
 
   var s2 = "";
-  for (i = 0; i < 32 - s1.length(); i++) {
+  for (i = 0; i < 32 - len; i++) {
     s2 += "0";
   }
-  for (i = 0; i < s1.length(); i++) {
+  for (i = 0; i < len; i++) {
     s2 += s1.substring(i, i + 1);
   }
 
@@ -139,15 +140,15 @@ function /* String */ IntToBinary32(/* int */ n) {
 }
 
 function /* float */ IEEE32(/* String */ s) {
-  var /* float */ v_sign = Math.pow(-1, Integer.parseInt(s.substring(0, 1), 2));
+  var /* float */ v_sign = Math.pow(-1, parseInt(s.substring(0, 1), 2));
   //println("v_sign", v_sign);
 
-  var /* float */ v_exponent = Integer.parseInt(s.substring(1, 9), 2) - 127;
+  var /* float */ v_exponent = parseInt(s.substring(1, 9), 2) - 127;
   //println("v_exponent", v_exponent);
 
   var /* float */ v_fraction = 0;
   for (var i = 0; i < 23; i++) {
-    var q = Integer.parseInt(s.substring(9 + i, 10 + i), 2);
+    var q = parseInt(s.substring(9 + i, 10 + i), 2);
     v_fraction += q * Math.pow(2, -(i + 1));
   }
   v_fraction += 1;
@@ -156,104 +157,116 @@ function /* float */ IEEE32(/* String */ s) {
   return v_sign * v_fraction * Math.pow(2, v_exponent);
 }
 
+function binary(uint) {
+  return uint.toString(2);
+}
 
-module.exports = function /* class */ GRIB2CLASS() {
+function hex(str) {
+  return parseInt(str, 16);
+}
 
-  /* String */ this.ParameterNameAndUnit = null;
-  /* String[] */ this.DataTitles = [];
-  /* float[][] */ this.DataValues = null;
-  /* boolean */ this.DataAllocated = false;
+module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
+  var TempFolder = opts.TempFolder;
+  var OutputFolder = opts.OutputFolder;
+  var Grib2Folder = TempFolder + "grib2/";
+  var Jpeg2000Folder = TempFolder + "jp2/";
 
-  /* int */ this.DisciplineOfProcessedData = 0;
-  /* long */ this.LengthOfMessage = 0;
-  /* int */ this.IdentificationOfCentre = 0;
-  /* int */ this.IdentificationOfSubCentre = 0;
-  /* int */ this.MasterTablesVersionNumber = 0;
-  /* int */ this.LocalTablesVersionNumber = 0;
-  /* int */ this.SignificanceOfReferenceTime = 0;
-  /* int */ this.Year = null;
-  /* int */ this.Month = null;
-  /* int */ this.Day = null;
-  /* int */ this.Hour = null;
-  /* int */ this.Minute = null;
-  /* int */ this.Second = null;
-  /* int */ this.ProductionStatusOfData = 0;
-  /* int */ this.TypeOfData = 0;
 
-  /* int */ this.TypeOfProjection = 0;
+  this. /* String */ ParameterNameAndUnit = null;
+  this. /* String[] */ DataTitles = [];
+  this. /* float[][] */ DataValues = null;
+  this. /* boolean */ DataAllocated = false;
 
-  /* int */ this.Np = 0;
-  /* int */ this.Nx = 0;
-  /* int */ this.Ny = 0;
+  this. /* int */ DisciplineOfProcessedData = 0;
+  this. /* long */ LengthOfMessage = 0;
+  this. /* int */ IdentificationOfCentre = 0;
+  this. /* int */ IdentificationOfSubCentre = 0;
+  this. /* int */ MasterTablesVersionNumber = 0;
+  this. /* int */ LocalTablesVersionNumber = 0;
+  this. /* int */ SignificanceOfReferenceTime = 0;
+  this. /* int */ Year = null;
+  this. /* int */ Month = null;
+  this. /* int */ Day = null;
+  this. /* int */ Hour = null;
+  this. /* int */ Minute = null;
+  this. /* int */ Second = null;
+  this. /* int */ ProductionStatusOfData = 0;
+  this. /* int */ TypeOfData = 0;
 
-  /* int */ this.ResolutionAndComponentFlags = 0;
+  this. /* int */ TypeOfProjection = 0;
 
-  /* float */ this.La1 = -90;
-  /* float */ this.Lo1 = -180;
-  /* float */ this.La2 = 90;
-  /* float */ this.Lo2 = 180;
+  this. /* int */ Np = 0;
+  this. /* int */ Nx = 0;
+  this. /* int */ Ny = 0;
 
-  /* float */ this.LaD = 0;
-  /* float */ this.LoV = 0;
-  /* float */ this.Dx = 1;
-  /* float */ this.Dy = 1;
+  this. /* int */ ResolutionAndComponentFlags = 0;
 
-  /* float */ this.FirstLatIn = 0;
-  /* float */ this.SecondLatIn = 0;
-  /* float */ this.SouthLat = 0;
-  /* float */ this.SouthLon = 0;
-  /* float */ this.Rotation = 0;
+  this. /* float */ La1 = -90;
+  this. /* float */ Lo1 = -180;
+  this. /* float */ La2 = 90;
+  this. /* float */ Lo2 = 180;
 
-  /* int */ this.PCF = 0;
+  this. /* float */ LaD = 0;
+  this. /* float */ LoV = 0;
+  this. /* float */ Dx = 1;
+  this. /* float */ Dy = 1;
 
-  /* int */ this.ScanX = 0;
-  /* int */ this.ScanY = 0;
+  this. /* float */ FirstLatIn = 0;
+  this. /* float */ SecondLatIn = 0;
+  this. /* float */ SouthLat = 0;
+  this. /* float */ SouthLon = 0;
+  this. /* float */ Rotation = 0;
 
-  /* String */ this.Flag_BitNumbers = "00000000";
-  /* int */ this.ScanningMode = 0;
-  /* String */ this.Mode_BitNumbers = "00000000";
+  this. /* int */ PCF = 0;
 
-  /* int */ this.NumberOfCoordinateValuesAfterTemplate = 0;
-  /* int */ this.ProductDefinitionTemplateNumber = 0;
-  /* int */ this.CategoryOfParametersByProductDiscipline = 0;
-  /* int */ this.ParameterNumberByProductDisciplineAndParameterCategory = 0;
-  /* int */ this.IndicatorOfUnitOfTimeRange = 0;
-  /* int */ this.ForecastTimeInDefinedUnits = 0;
+  this. /* int */ ScanX = 0;
+  this. /* int */ ScanY = 0;
 
-  /* float */ this.ForecastConvertedTime = null;
+  this. /* String */ Flag_BitNumbers = "00000000";
+  this. /* int */ ScanningMode = 0;
+  this. /* String */ Mode_BitNumbers = "00000000";
 
-  /* int */ this.TypeOfFirstFixedSurface = 0;
-  /* int */ this.NumberOfDataPoints = 0;
-  /* int */ this.DataRepresentationTemplateNumber = 0;
+  this. /* int */ NumberOfCoordinateValuesAfterTemplate = 0;
+  this. /* int */ ProductDefinitionTemplateNumber = 0;
+  this. /* int */ CategoryOfParametersByProductDiscipline = 0;
+  this. /* int */ ParameterNumberByProductDisciplineAndParameterCategory = 0;
+  this. /* int */ IndicatorOfUnitOfTimeRange = 0;
+  this. /* int */ ForecastTimeInDefinedUnits = 0;
 
-  /* float */ this.ReferenceValue = null;
-  /* int */ this.BinaryScaleFactor = null;
-  /* int */ this.DecimalScaleFactor = null;
-  /* int */ this.NumberOfBitsUsedForEachPackedValue = null;
+  this. /* float */ ForecastConvertedTime = null;
 
-  /* int[] */ this.NullBitmapFlags = null;
+  this. /* int */ TypeOfFirstFixedSurface = 0;
+  this. /* int */ NumberOfDataPoints = 0;
+  this. /* int */ DataRepresentationTemplateNumber = 0;
 
-  var /* byte[] */ fileBytes = [];
+  this. /* float */ ReferenceValue = null;
+  this. /* int */ BinaryScaleFactor = null;
+  this. /* int */ DecimalScaleFactor = null;
+  this. /* int */ NumberOfBitsUsedForEachPackedValue = null;
+
+  this. /* int[] */ NullBitmapFlags = null;
+
+  this. /* byte[] */ fileBytes = [];
   var /* int */ nPointer;
 
-  this. /* void */ printMore = function(/* int */ startN, /* int */ displayMORE) {
+  this. /* void */ printMore = function (/* int */ startN, /* int */ displayMORE) {
     for (var i = 0; i < displayMORE; i++) {
-      cout(fileBytes[startN + i]);
+      cout(this.fileBytes[startN + i]);
     }
     println();
 
     for (var i = 0; i < displayMORE; i++) {
-      print("(" + hex(fileBytes[startN + i], 2) + ")");
+      print("(" + hex(this.fileBytes[startN + i], 2) + ")");
     }
     println();
 
     for (var i = 0; i < displayMORE; i++) {
-      print("[" + fileBytes[startN + i] + "]");
+      print("[" + this.fileBytes[startN + i] + "]");
     }
     println();
   };
 
-  this. /* int[] */ getGrib2Section = function(/* int */ SectionNumber) {
+  this. /* int[] */ getGrib2Section = function (/* int */ SectionNumber) {
     println("-----------------------------");
 
     print("Section:\t");
@@ -266,7 +279,7 @@ module.exports = function /* class */ GRIB2CLASS() {
     SectionNumbers[0] = 0;
 
     for (var j = 1; j < nFirstBytes; j += 1) {
-      var c = fileBytes[nPointer + j];
+      var c = this.fileBytes[nPointer + j];
       if (c < 0) c += 256;
 
       SectionNumbers[j] = c;
@@ -290,7 +303,7 @@ module.exports = function /* class */ GRIB2CLASS() {
       SectionNumbers[0] = 0;
 
       for (var j = 1; j <= lengthOfSection; j += 1) {
-        var /* int */ c = fileBytes[nPointer + j];
+        var /* int */ c = this.fileBytes[nPointer + j];
         if (c < 0) c += 256;
 
         SectionNumbers[j] = c;
@@ -324,7 +337,7 @@ module.exports = function /* class */ GRIB2CLASS() {
     return SectionNumbers;
   };
 
-  this. /* void */ readGrib2Members = function(/* int */ numberOfMembers) {
+  this. /* void */ readGrib2Members = function (/* int */ numberOfMembers) {
     var /* const int */ GridDEF_NumberOfDataPoints = 7;
     var /* const int */ GridDEF_NumberOfPointsAlongTheXaxis = 31;
     var /* const int */ GridDEF_NumberOfPointsAlongTheYaxis = 35;
@@ -941,21 +954,21 @@ module.exports = function /* class */ GRIB2CLASS() {
         print("Flag bit numbers:\n");
         this.Flag_BitNumbers = binary(this.ResolutionAndComponentFlags, 8);
         {
-          if (this.Flag_BitNumbers.substring(2, 3).equals("0")) {
+          if (this.Flag_BitNumbers.substring(2, 3) === "0") {
             println("\ti direction increments not given");
           }
           else {
             println("\ti direction increments given");
           }
 
-          if (this.Flag_BitNumbers.substring(3, 4).equals("0")) {
+          if (this.Flag_BitNumbers.substring(3, 4) === "0") {
             println("\tj direction increments not given");
           }
           else {
             println("\tj direction increments given");
           }
 
-          if (this.Flag_BitNumbers.substring(4, 5).equals("0")) {
+          if (this.Flag_BitNumbers.substring(4, 5) === "0") {
             println("\tResolved u- and v- components of vector quantities relative to easterly and northerly directions");
           }
           else {
@@ -973,7 +986,7 @@ module.exports = function /* class */ GRIB2CLASS() {
         print("Mode bit numbers:\n");
         this.Mode_BitNumbers = binary(this.ScanningMode, 8);
         {
-          if (this.Mode_BitNumbers.substring(0, 1).equals("0")) {
+          if (this.Mode_BitNumbers.substring(0, 1) === "0") {
             println("\tPoints of first row or column scan in the +i (+x) direction");
           }
           else {
@@ -981,7 +994,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             this.ScanX = 0;
           }
 
-          if (this.Mode_BitNumbers.substring(1, 2).equals("0")) {
+          if (this.Mode_BitNumbers.substring(1, 2) === "0") {
             println("\tPoints of first row or column scan in the -j (-y) direction");
           }
           else {
@@ -989,14 +1002,14 @@ module.exports = function /* class */ GRIB2CLASS() {
             this.ScanY = 0;
           }
 
-          if (this.Mode_BitNumbers.substring(2, 3).equals("0")) {
+          if (this.Mode_BitNumbers.substring(2, 3) === "0") {
             println("\tAdjacent points in i (x) direction are consecutive");
           }
           else {
             println("\tAdjacent points in j (y) direction is consecutive");
           }
 
-          if (this.Mode_BitNumbers.substring(3, 4).equals("0")) {
+          if (this.Mode_BitNumbers.substring(3, 4) === "0") {
             println("\tAll rows scan in the same direction");
           }
           else {
@@ -2314,9 +2327,9 @@ module.exports = function /* class */ GRIB2CLASS() {
           }
         }
         else {
-          ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0);
+          this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0);
         }
-        println(ParameterNameAndUnit);
+        println(this.ParameterNameAndUnit);
 
         var /* float */ DayPortion = 0;
 
@@ -2605,8 +2618,11 @@ module.exports = function /* class */ GRIB2CLASS() {
 
       //////////////////////////////////////////////////
       if (this.DataAllocated == false) {
-        this.DataValues = new float[DATA_numMembers][this.Nx * this.Ny];
-        DataTitles = new String[DATA_numMembers];
+        this.DataTitles = [];
+        this.DataValues = [];
+        for (var i = 0; i < DATA.numMembers; i++) {
+          this.DataValues[i] = new Float32Array(this.Nx * this.Ny);
+        }
 
         this.DataAllocated = true;
       }
@@ -2634,7 +2650,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             var /* String */ b = binary(SectionNumbers[7 + i], 8);
 
             for (var j = 0; j < 8; j++) {
-              this.NullBitmapFlags[i * 8 + j] = int(b.substring(j, j + 1));
+              this.NullBitmapFlags[i * 8 + j] = parseInt(b.substring(j, j + 1));
             }
           }
         }
@@ -2652,17 +2668,17 @@ module.exports = function /* class */ GRIB2CLASS() {
 
           var /* int */ n = Bitmap_beginPointer;
 
-          println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 4F : Marker Start of codestream
+          println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 4F : Marker Start of codestream
           n += 2;
 
-          println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 51 : Marker Image and tile size
+          println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 51 : Marker Image and tile size
           n += 2;
 
-          JPEG2000_Lsiz = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Lsiz = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Lsiz =", JPEG2000_Lsiz);  // Lsiz : Length of marker segment in bytes (not including the marker)
           n += 2;
 
-          JPEG2000_Rsiz = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Rsiz = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Rsiz =", JPEG2000_Rsiz);  // Rsiz : Denotes capabilities that a decoder needs to properly decode the codestream
           n += 2;
           print("\t");
@@ -2673,122 +2689,122 @@ module.exports = function /* class */ GRIB2CLASS() {
             default: println("Reserved"); break;
           }
 
-          JPEG2000_Xsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_Xsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("Xsiz =", JPEG2000_Xsiz);  // Xsiz : Width of the reference grid
           n += 4;
 
-          JPEG2000_Ysiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_Ysiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("Ysiz =", JPEG2000_Ysiz);  // Ysiz : Height of the reference grid
           n += 4;
 
-          JPEG2000_XOsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_XOsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("XOsiz =", JPEG2000_XOsiz);  // XOsiz : Horizontal offset from the origin of the reference grid to the left side of the image area
           n += 4;
 
-          JPEG2000_YOsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_YOsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("YOsiz =", JPEG2000_YOsiz);  // YOsiz : Vertical offset from the origin of the reference grid to the top side of the image area
           n += 4;
 
-          JPEG2000_XTsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_XTsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("XTsiz =", JPEG2000_XTsiz);  // XTsiz : Width of one reference tile with respect to the reference grid
           n += 4;
 
-          JPEG2000_YTsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_YTsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("YTsiz =", JPEG2000_YTsiz);  // YTsiz : Height of one reference tile with respect to the reference grid
           n += 4;
 
-          JPEG2000_XTOsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_XTOsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("XTOsiz =", JPEG2000_XTOsiz);  // XTOsiz : Horizontal offset from the origin of the reference grid to the left side of the first tile
           n += 4;
 
-          JPEG2000_YTOsiz = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_YTOsiz = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("YTOsiz =", JPEG2000_YTOsiz);  // YTOsiz : Vertical offset from the origin of the reference grid to the top side of the first tile
           n += 4;
 
-          JPEG2000_Csiz = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Csiz = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Csiz =", JPEG2000_Csiz);  // Csiz : Number of components in the image
           n += 2;
 
-          JPEG2000_Ssiz = fileBytes[n];
+          JPEG2000_Ssiz = this.fileBytes[n];
           println("Ssiz =", JPEG2000_Ssiz);  // Ssiz : Precision (depth) in bits and sign of the ith component samples
           n += 1;
 
-          JPEG2000_XRsiz = fileBytes[n];
+          JPEG2000_XRsiz = this.fileBytes[n];
           println("XRsiz =", JPEG2000_XRsiz);  // XRsiz : Horizontal separation of a sample of ith component with respect to the reference grid. There is one occurrence of this parameter for each component
           n += 1;
 
-          JPEG2000_YRsiz = fileBytes[n];
+          JPEG2000_YRsiz = this.fileBytes[n];
           println("YRsiz =", JPEG2000_YRsiz);  // YRsiz : Vertical separation of a sample of ith component with respect to the reference grid. There is one occurrence of this parameter for each component.
           n += 1;
 
-          if ((fileBytes[n] == -1) && (fileBytes[n + 1] == 100)) { // the case of optional Comment
+          if ((this.fileBytes[n] == -1) && (this.fileBytes[n + 1] == 100)) { // the case of optional Comment
 
-            println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 64 : Marker Comment
+            println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 64 : Marker Comment
             n += 2;
 
-            JPEG2000_Lcom = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+            JPEG2000_Lcom = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
             println("Lcom =", JPEG2000_Lcom);  // Lcom : Length of marker segment in bytes (not including the marker)
             n += 2;
 
-            JPEG2000_Rcom = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+            JPEG2000_Rcom = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
             println("Rcom =", JPEG2000_Rcom);  // Rcom : Registration value of the marker segment
             n += 2;
 
             print("Comment: ");
             for (var i = 0; i < JPEG2000_Lcom - 4; i++) {
-              cout(fileBytes[n]);
+              cout(this.fileBytes[n]);
               n += 1;
             }
             println();
           }
 
-          println("numXtiles:", (JPEG2000_Xsiz - JPEG2000_XTOsiz) / float(JPEG2000_XTsiz));
-          println("numYtiles:", (JPEG2000_Ysiz - JPEG2000_YTOsiz) / float(JPEG2000_YTsiz));
+          println("numXtiles:", (JPEG2000_Xsiz - JPEG2000_XTOsiz) / JPEG2000_XTsiz);
+          println("numYtiles:", (JPEG2000_Ysiz - JPEG2000_YTOsiz) / JPEG2000_YTsiz);
 
-          println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 52 : Marker Coding style default
+          println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 52 : Marker Coding style default
           n += 2;
 
-          JPEG2000_Lcod = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Lcod = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Lcod =", JPEG2000_Lcod);  // Lcod : Length of marker segment in bytes (not including the marker)
           n += 2;
 
-          JPEG2000_Scod = fileBytes[n];
+          JPEG2000_Scod = this.fileBytes[n];
           println("Scod =", JPEG2000_Scod);  // Scod : Coding style for all components
           n += 1;
 
           // SGcod : Parameters for coding style designated in Scod. The parameters are independent of components.
 
-          JPEG2000_SGcod_ProgressionOrder = fileBytes[n];
+          JPEG2000_SGcod_ProgressionOrder = this.fileBytes[n];
           println("JPEG2000_SGcod_ProgressionOrder =", JPEG2000_SGcod_ProgressionOrder); // Progression order
           n += 1;
 
-          JPEG2000_SGcod_NumberOfLayers = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_SGcod_NumberOfLayers = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("JPEG2000_SGcod_NumberOfLayers =", JPEG2000_SGcod_NumberOfLayers); // Number of layers
           n += 2;
 
-          JPEG2000_SGcod_MultipleComponentTransformation = fileBytes[n];
+          JPEG2000_SGcod_MultipleComponentTransformation = this.fileBytes[n];
           println("JPEG2000_SGcod_MultipleComponentTransformation =", JPEG2000_SGcod_MultipleComponentTransformation); // Multiple component transformation usage
           n += 1;
 
           // SPcod : Parameters for coding style designated in Scod. The parameters relate to all components.
 
-          JPEG2000_SPcod_NumberOfDecompositionLevels = fileBytes[n];
+          JPEG2000_SPcod_NumberOfDecompositionLevels = this.fileBytes[n];
           println("JPEG2000_SPcod_NumberOfDecompositionLevels =", JPEG2000_SPcod_NumberOfDecompositionLevels); // Number of decomposition levels, NL, Zero implies no transformation.
           n += 1;
 
-          JPEG2000_SPcod_CodeBlockWidth = fileBytes[n];
+          JPEG2000_SPcod_CodeBlockWidth = this.fileBytes[n];
           println("JPEG2000_SPcod_CodeBlockWidth =", JPEG2000_SPcod_CodeBlockWidth); // Code-block width
           n += 1;
 
-          JPEG2000_SPcod_CodeBlockHeight = fileBytes[n];
+          JPEG2000_SPcod_CodeBlockHeight = this.fileBytes[n];
           println("JPEG2000_SPcod_CodeBlockHeight =", JPEG2000_SPcod_CodeBlockHeight); // Code-block height
           n += 1;
 
-          JPEG2000_SPcod_CodeBlockStyle = fileBytes[n];
+          JPEG2000_SPcod_CodeBlockStyle = this.fileBytes[n];
           println("JPEG2000_SPcod_CodeBlockStyle =", JPEG2000_SPcod_CodeBlockStyle); // Code-block style
           n += 1;
 
-          JPEG2000_SPcod_Transformation = fileBytes[n];
+          JPEG2000_SPcod_Transformation = this.fileBytes[n];
           println("JPEG2000_SPcod_Transformation =", JPEG2000_SPcod_Transformation); // Wavelet transformation used
           n += 1;
 
@@ -2798,14 +2814,14 @@ module.exports = function /* class */ GRIB2CLASS() {
           //corresponds to the NLLL sub-band. Each successive parameter
           //corresponds to each successive resolution level in order.
 
-          println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 5C : Marker Quantization default
+          println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 5C : Marker Quantization default
           n += 2;
 
-          JPEG2000_Lqcd = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Lqcd = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Lqcd =", JPEG2000_Lqcd);  // Lqcd : Length of marker segment in bytes (not including the marker)
           n += 2;
 
-          JPEG2000_Sqcd = fileBytes[n];
+          JPEG2000_Sqcd = this.fileBytes[n];
           println("Sqcd =", JPEG2000_Sqcd);  // Sqcd : Quantization style for all components
           n += 1;
 
@@ -2813,26 +2829,26 @@ module.exports = function /* class */ GRIB2CLASS() {
           //println("SPgcd =", JPEG2000_SPcod);  // SPgcd : Quantization step size value for the ith sub-band in the defined order
           n += JPEG2000_Lqcd - 3;
 
-          println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 90 : Marker Start of tile-part
+          println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 90 : Marker Start of tile-part
           n += 2;
 
-          JPEG2000_Lsot = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Lsot = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Lsot =", JPEG2000_Lsot);  // Lsot : Length of marker segment in bytes (not including the marker)
           n += 2;
 
-          JPEG2000_Isot = U_NUMx2(fileBytes[n], fileBytes[n + 1]);
+          JPEG2000_Isot = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Isot =", JPEG2000_Isot);  // Isot : Tile index. This number refers to the tiles in raster order starting at the number 0
           n += 2;
 
-          JPEG2000_Psot = U_NUMx4(fileBytes[n], fileBytes[n + 1], fileBytes[n + 2], fileBytes[n + 3]);
+          JPEG2000_Psot = U_NUMx4(this.fileBytes[n], this.fileBytes[n + 1], this.fileBytes[n + 2], this.fileBytes[n + 3]);
           println("Psot =", JPEG2000_Psot);  // Psot : Length, in bytes, from the beginning of the first byte of this SOT marker segment of the tile-part to the end of the data of that tile-part. Figure A.16 shows this alignment. Only the last tile-part in the codestream may contain a 0 for Psot. If the Psot is 0, this tile-part is assumed to contain all data until the EOC marker.
           n += 4;
 
-          JPEG2000_TPsot = fileBytes[n];
+          JPEG2000_TPsot = this.fileBytes[n];
           println("TPsot =", JPEG2000_TPsot);  // TPsot : Tile-part index. There is a specific order required for decoding tile-parts; this index denotes the order from 0. If there is only one tile-part for a tile, then this value is zero. The tile-parts of this tile shall appear in the codestream in this order, although not necessarily consecutively.
           n += 1;
 
-          JPEG2000_TNsot = fileBytes[n];
+          JPEG2000_TNsot = this.fileBytes[n];
           println("TNsot =", JPEG2000_TNsot);  // TNsot : Number of tile-parts of a tile in the codestream. Two values are allowed: the correct number of tileparts for that tile and zero. A zero value indicates that the number of tile-parts of this tile is not specified in this tile-part.
           n += 1;
           print("\t");
@@ -2841,7 +2857,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             default: println("Number of tile-parts of this tile in the codestream"); break;
           }
 
-          println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 93 : Start of data
+          println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 93 : Start of data
           n += 2;
 
           //this.printMore(n, 100); // <<<<<<<<<<<<<<<<<<<<
@@ -2862,11 +2878,11 @@ module.exports = function /* class */ GRIB2CLASS() {
 
           var /* int */ o = 0;
           print("CodeStream: ");
-          while (!((fileBytes[n] == -1) && (fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
-            //cout(fileBytes[n]);
+          while (!((this.fileBytes[n] == -1) && (this.fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
+            //cout(this.fileBytes[n]);
             /*
                   print(o++);
-                  println("(" + hex(fileBytes[n]) + ")");
+                  println("(" + hex(this.fileBytes[n]) + ")");
             */
             n += 1;
           }
@@ -2879,10 +2895,10 @@ module.exports = function /* class */ GRIB2CLASS() {
 
           var /* byte[] */ imageBytes = new Int8Array(1 + Bitmap_endPointer - Bitmap_beginPointer);
           for (var i = 0; i < imageBytes.length; i++) {
-            imageBytes[i] = fileBytes[i + Bitmap_beginPointer];
+            imageBytes[i] = this.fileBytes[i + Bitmap_beginPointer];
           }
-          this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
-          if (DATA_numMembers > 1) {
+          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
+          if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf(memberID, 2);
           }
 
@@ -2894,8 +2910,8 @@ module.exports = function /* class */ GRIB2CLASS() {
           Bitmap_FileLength = 1 + Bitmap_endPointer - Bitmap_beginPointer;
         }
         else {
-          this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
-          if (DATA_numMembers > 1) {
+          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
+          if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf(memberID, 2);
           }
           Bitmap_FileName = "";
@@ -2924,12 +2940,12 @@ module.exports = function /* class */ GRIB2CLASS() {
 
           if (this.DataRepresentationTemplateNumber == 0) { // Grid point data - simple packing
 
-            data = new float32(this.NumberOfDataPoints);
+            data = new Float32Array(this.NumberOfDataPoints);
 
             for (var i = 0; i < this.NumberOfDataPoints; i++) {
               var /* int[] */ m = new Int32Array(this.NumberOfBitsUsedForEachPackedValue);
               for (var j = 0; j < m.length; j++) {
-                m[j] = getNthBit(fileBytes[nPointer], b);
+                m[j] = getNthBit(this.fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
                   b = 0;
@@ -2953,7 +2969,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             {
               var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
               for (var j = 0; j < m.length; j++) {
-                m[j] = getNthBit(fileBytes[nPointer], b);
+                m[j] = getNthBit(this.fileBytes[nPointer], b);
 
                 b += 1;
                 if (b == 8) {
@@ -2969,7 +2985,7 @@ module.exports = function /* class */ GRIB2CLASS() {
 
               var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
               for (var j = 0; j < m.length; j++) {
-                m[j] = getNthBit(fileBytes[nPointer], b);
+                m[j] = getNthBit(this.fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
                   b = 0;
@@ -2983,7 +2999,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             {
               var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
               for (var j = 0; j < m.length; j++) {
-                m[j] = getNthBit(fileBytes[nPointer], b);
+                m[j] = getNthBit(this.fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
                   b = 0;
@@ -3001,7 +3017,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               var /* int[] */ m = new Int32Array(this.NumberOfBitsUsedForEachPackedValue);
               for (var j = 0; j < m.length; j++) {
-                m[j] = getNthBit(fileBytes[nPointer], b);
+                m[j] = getNthBit(this.fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
                   b = 0;
@@ -3024,7 +3040,7 @@ module.exports = function /* class */ GRIB2CLASS() {
             for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               var /* int[] */ m = new Int32Array(ComplexPacking_NumberOfBitsUsedForGroupWidths);
               for (var j = 0; j < m.length; j++) {
-                m[j] = getNthBit(fileBytes[nPointer], b);
+                m[j] = getNthBit(this.fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
                   b = 0;
@@ -3050,7 +3066,7 @@ module.exports = function /* class */ GRIB2CLASS() {
               for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
                 var /* int[] */ m = new Int32Array(ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths);
                 for (var j = 0; j < m.length; j++) {
-                  m[j] = getNthBit(fileBytes[nPointer], b);
+                  m[j] = getNthBit(this.fileBytes[nPointer], b);
                   b += 1;
                   if (b == 8) {
                     b = 0;
@@ -3084,7 +3100,7 @@ module.exports = function /* class */ GRIB2CLASS() {
               println("Error: Size mismatch!");
             }
 
-            data = new float[total];
+            data = new Float32Array[total];
 
             var /* int */ count = 0;
 
@@ -3093,7 +3109,7 @@ module.exports = function /* class */ GRIB2CLASS() {
                 for (var j = 0; j < group_lengths[i]; j++) {
                   var /* int[] */ m = new Int32Array(group_widths[i]);
                   for (var k = 0; k < m.length; k++) {
-                    m[k] = getNthBit(fileBytes[nPointer], b);
+                    m[k] = getNthBit(this.fileBytes[nPointer], b);
                     b += 1;
                     if (b == 8) {
                       b = 0;
@@ -3185,7 +3201,7 @@ module.exports = function /* class */ GRIB2CLASS() {
           nPointer -= 1; // <<<<????
 
           println("nPointer", nPointer);
-          println("fileBytes.length", fileBytes.length);
+          println("this.fileBytes.length", this.fileBytes.length);
 
           println("data.length", data.length);
           println("Nx X Ny", this.Nx, this.Ny, this.Nx * this.Ny);
@@ -3218,8 +3234,8 @@ module.exports = function /* class */ GRIB2CLASS() {
 
           //for(var q = 0; q < 20; q++) println(this.DataValues[memberID][q]);
 
-          this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
-          if (DATA_numMembers > 1) {
+          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
+          if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf(memberID, 2);
           }
           Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2"; // not a jp2 file!
@@ -3228,8 +3244,8 @@ module.exports = function /* class */ GRIB2CLASS() {
         }
         /*
         else {
-          this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
-          if (DATA_numMembers > 1) {
+          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
+          if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf(memberID, 2);
           }
           Bitmap_FileName = "";
