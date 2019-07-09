@@ -16,9 +16,44 @@
   }
 };
 
+function jpx_decode(data) {
+    var t0 = performance.now();
+    var jpxImage = new JpxImage();
+    jpxImage.parse(data);
+    var t1 = performance.now();
+    var image = {
+        length : data.length,
+        sx :  jpxImage.width,
+        sy :  jpxImage.height,
+        nbChannels : jpxImage.componentsCount,
+        perf_timetodecode : t1 - t0,
+        pixelData : jpxImage.tiles[0].items
+    };
+
+    return image;
+}
+
+function jpx_draw(image_jpx) {
+    console.log(image_jpx);
+    var canvas = document.getElementById('canvas')
+    var ctx = canvas.getContext('2d')
+    canvas.width = image_jpx.sx;
+    canvas.height = image_jpx.sy;
+
+    var ctxImageData = ctx.createImageData(image_jpx.sx, image_jpx.sy);
+    for (var i = 0; i < (image_jpx.sx * image_jpx.sy) ; i++) {
+        var val = image_jpx.pixelData[i*image_jpx.nbChannels];
+        ctxImageData.data[i*4+0] = 0; //val;
+        ctxImageData.data[i*4+1] = 0; //val;
+        ctxImageData.data[i*4+2] = 0; //val;
+        ctxImageData.data[i*4+3] = 255 - val / 10;
+    }
+    ctx.putImageData(ctxImageData, 0, 0);
+}
+
 var fs = require('fs');
 function saveBytes(filename, bytes) {
-  fs.writeFileSync(filename, bytes);
+  // fs.writeFileSync(filename, bytes);
 }
 
 function nf0(number) {
@@ -33,13 +68,13 @@ function println(/* String */ a, /* optional String */ b) {
   var s =
     (a === undefined) ? '' :
     (b === undefined) ? a : a + ' ' + b;
-  //console.log(s);
-  process.stdout.write(s + '\n');
+  // console.log(s);
+  // process.stdout.write(s + '\n');
 }
 
 function print(/* char */ c) {
-  //console.log(c); // Change me! For the moment this prints with this new line!
-  process.stdout.write(c);
+  // console.log(c); // Change me! For the moment this prints with this new line!
+  // process.stdout.write(c);
 }
 
 function /* void */ cout(/* int */ c) {
@@ -2938,6 +2973,11 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           }
 
           Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2";
+
+          // TODO: convert JPEG2000 into an array stored in this.data
+          var image = jpx_decode(imageBytes);
+          this.data = image.pixelData;
+          jpx_draw(image);
 
           saveBytes(Bitmap_FileName, imageBytes);
           println("Bitmap section saved at:", Bitmap_FileName);
