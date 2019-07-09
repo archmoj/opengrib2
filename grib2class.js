@@ -2,8 +2,19 @@
 
 'use strict';
 
-/* import */ function /* Buffer */ RandomAccessFile(b, c) { };
-/* import */ function /* Buffer */ Grib2JpegDecoder(args) { };
+// mock imports for jpeg-2000
+
+/* import */ function /* Buffer */ RandomAccessFile(b, c) {
+  this.read = function () {
+    return;
+  }
+};
+/* import */ function /* Buffer */ Grib2JpegDecoder(args) {
+  this.data = [];
+  this.decode = function () {
+    return;
+  }
+};
 
 var fs = require('fs');
 function saveBytes(filename, bytes) {
@@ -19,7 +30,7 @@ var /* boolean */ log = false;
 var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US"];
 
 function println(/* String */ a, /* optional String */ b) {
-  var s = (b !== undefined) ? a + b : a;
+  var s = (b !== undefined) ? a + ' ' + b : a;
   console.log(s);
 }
 
@@ -2884,17 +2895,17 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           For each precinct, p
           Packet P(q,r,c,p) appears.
           */
-/*
-          var o = 0;
-          print("CodeStream: ");
-          while (!((this.fileBytes[n] == -1) && (this.fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
-            //cout(this.fileBytes[n]);
-            //print(o++);
-            //println("(" + hex(this.fileBytes[n]) + ")");
-            n += 1;
-          }
-          println();
-*/
+          /*
+                    var o = 0;
+                    print("CodeStream: ");
+                    while (!((this.fileBytes[n] == -1) && (this.fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
+                      //cout(this.fileBytes[n]);
+                      //print(o++);
+                      //println("(" + hex(this.fileBytes[n]) + ")");
+                      n += 1;
+                    }
+                    println();
+          */
           //printing the end of grib
 
           this.printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
@@ -3107,7 +3118,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               println("Error: Size mismatch!");
             }
 
-            data = new Float32Array[total];
+            data = new Float32Array(total);
 
             var /* int */ count = 0;
 
@@ -3222,7 +3233,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
             var /* int */ i = -1;
             for (var q = 0; q < this.Nx * this.Ny; q++) {
               if (this.NullBitmapFlags[q] == 0) {
-                this.DataValues[memberID][q] = FLOAT_undefined;
+                this.DataValues[memberID][q] = undefined;
               }
               else {
                 i += 1;
@@ -3298,7 +3309,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
             var /* int */ i = -1;
             for (var q = 0; q < this.Nx * this.Ny; q++) {
               if (this.NullBitmapFlags[q] == 0) {
-                this.DataValues[memberID][q] = FLOAT_undefined;
+                this.DataValues[memberID][q] = undefined;
               }
               else {
                 i += 1;
@@ -3320,5 +3331,11 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
         println("error:", error);
       }
     }
+  };
+
+  this. /* void */ parse = function (bytes) {
+    this.fileBytes = bytes;
+
+    this.readGrib2Members(DATA.numMembers);
   };
 };
