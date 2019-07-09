@@ -2928,7 +2928,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           this.printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
           n += 2;
 
-          var /* byte[] */ imageBytes = new Int8Array(1 + Bitmap_endPointer - Bitmap_beginPointer);
+          var /* byte[] */ imageBytes = new Uint8Array(1 + Bitmap_endPointer - Bitmap_beginPointer);
           for (var i = 0; i < imageBytes.length; i++) {
             imageBytes[i] = this.fileBytes[i + Bitmap_beginPointer];
           }
@@ -3309,7 +3309,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
           var /* Grib2JpegDecoder */ g2j = new Grib2JpegDecoder(argv);
 
-          var /* byte[] */ buf = new Int8Array(Bitmap_FileLength);
+          var /* byte[] */ buf = new Uint8Array(Bitmap_FileLength);
 
           raf.read(buf);
           g2j.decode(buf);

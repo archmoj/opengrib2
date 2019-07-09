@@ -38,51 +38,7 @@ module.exports = function () {
         ["RDPA", "RDPA", "CMC", "http://dd.weatheroffice.ec.gc.ca/", "analysis/precip/rdpa/grib2/polar_stereographic/06", "CMC_RDPA", "ps10km", "000.grib2", "5", "1", "6", "1"],
         //[ "RDPA", "RDPA", "CMC", "http://dd.weatheroffice.ec.gc.ca/", "analysis/precip/rdpa/grib2/polar_stereographic/24", "CMC_RDPA", "ps10km", "000.grib2", "5", "1", "6", "1" ],
 
-        ["HRDPA", "HRDPA", "CMC", "http://dd.weatheroffice.ec.gc.ca/", "analysis/precip/hrdpa/grib2/polar_stereographic/06", "CMC_HRDPA", "ps2.5km", "000.grib2", "5", "1", "6", "1"],
-        //[ "HRDPA", "HRDPA", "CMC", "http://dd.weatheroffice.ec.gc.ca/", "analysis/precip/hrdpa/grib2/polar_stereographic/24", "CMC_HRDPA", "ps2.5km", "000.grib2", "5", "1", "6", "1" ],
-
-        //[ "SNOW", "SNOW", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "GRIB", "snow_density_dataset/RDPS", "reg", "", "15", "96", "6", "1" ],
-        //[ "SNOW", "SNOW", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "GRIB", "snow_density_dataset/HRDPS", "hrdps-national_west", "", "15", "96", "6", "1" ],
-        //[ "SNOW", "SNOW", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "GRIB", "snow_density_dataset/HRDPS", "hrdps-national_prairies", "", "15", "96", "6", "1" ],
-        ["SNOW", "SNOW", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "GRIB", "snow_density_dataset/HRDPS", "hrdps-national_east", "", "15", "96", "6", "1"],
-        //[ "SNOW", "SNOW", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "GRIB", "snow_density_dataset/HRDPS", "hrdps-national_maritimes", "", "15", "96", "6", "1" ],
-
-        ["SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres", "000.csv", "1", "1", "24", "0"],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-Assomption", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-DuLoup", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-GreatLakes", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-Maskinonge", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-Mip", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-Nicolet", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-Richelieu", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-RiveSudCanal", "000.csv", "1", "1", "24", "0" ],
-        //[ "SHOP", "SHOP", "CMC", "http://collaboration.cmc.ec.gc.ca/cmc/cmoi/", "SHOP/data/csv", "CMC_shop-analysis", "Montreal-TroisRivieres-SaintFrancois", "000.csv", "1", "1", "24", "0" ],
-
-        ["GEFS", "GEFS", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_gens.pl", "gefs", "1p00", "pgrb2", "100", "1", "6", "384"],
-
-        //[ "GFS", "GFS", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", ".pl", "gfs", "1p00", "pgrb2", "100", "1", "3", "384" ],
-        //[ "GFS", "GFS", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", ".pl", "gfs", "0p50", "pgrb2full", "50", "1", "3", "384" ],
-        ["GFS", "GFS", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", ".pl", "gfs", "0p25", "pgrb2", "25", "1", "1", "384"],
-        //[ "GFS", "GFS", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_1hr.pl", "gfs", "0p25", "pgrb2", "25", "1", "1", "384" ],
-        //[ "GFS", "GFS", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "b.pl", "gfs", "0p25", "pgrb2b", "25", "1", "1", "384" ],
-
-        ["NAM11", "NAM11", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_ak.pl", "nam", "awak3d", "grb2", "11", "1", "3", "60"],
-
-        ["NAM12", "NAM12", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_conusnest.pl", "nam", "conusnest.hiresf", "grib2", "11", "1", "3", "60"],
-        //[ "NAM12", "NAM12", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_hawaiinest.pl", "nam", "hawaiinest.hiresf", "grib2", "11", "1", "3", "60" ],
-        //[ "NAM12", "NAM12", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_priconest.pl", "nam", "priconest.hiresf", "grib2", "11", "1", "3", "60" ],
-
-        ["NAM32", "NAM32", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_na.pl", "nam", "awip32", "grib2", "32", "1", "3", "84"],
-
-        ["RAP", "RAP", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", ".pl", "rap", "awp130pgrbf", "grib2", "13", "1", "1", "18"],
-        //[ "RAP", "RAP", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "32.pl", "rap", "awip32f", "grib2", "32", "1", "1", "18" ],
-
-        ["HRRR", "HRRR", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_2d.pl", "hrrr", "wrfsfcf", "grib2", "3", "1", "1", "15"],
-
-        ["SREF", "SREF", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_132.pl", "sref", "132", "pgrb", "16", "1", "3", "87"],
-        //[ "SREF", "SREF", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", "_na.pl", "sref", "221", "pgrb", "32", "1", "3", "87" ],
-        //[ "SREF", "SREF", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", ".pl", "sref", "212", "pgrb", "32", "1", "1", "87" ],
-
-        ["WAVE", "WAVE", "NOAA", "http://nomads.ncep.noaa.gov/cgi-bin/filter", ".pl", "wave", "nah", "grib.grib2", "25", "1", "6", "18"] // as 127 member ensembles
+        ["HRDPA", "HRDPA", "CMC", "http://dd.weatheroffice.ec.gc.ca/", "analysis/precip/hrdpa/grib2/polar_stereographic/06", "CMC_HRDPA", "ps2.5km", "000.grib2", "5", "1", "6", "1"]
+        //[ "HRDPA", "HRDPA", "CMC", "http://dd.weatheroffice.ec.gc.ca/", "analysis/precip/hrdpa/grib2/polar_stereographic/24", "CMC_HRDPA", "ps2.5km", "000.grib2", "5", "1", "6", "1" ]
     ];
 };

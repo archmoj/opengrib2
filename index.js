@@ -30,7 +30,7 @@ var DATA = {
         allDomains: allDomains,
         ParameterLevel: ParameterLevel,
 
-        Filename: ""
+        Filename: "prototype"
 };
 
 var link = "http://dd.weatheroffice.ec.gc.ca/model_hrdps/west/grib2/00/006/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019070900_P006-00.grib2";
