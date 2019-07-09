@@ -4,7 +4,8 @@
   "description": "native JavaScript utility for opening grib2 data",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "watchify browser.js -o build/bundle.js -v"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/archmoj/opengrib2/issues"
   },
-  "homepage": "https://github.com/archmoj/opengrib2#readme"
+  "homepage": "https://github.com/archmoj/opengrib2#readme",
+  "devDependencies": {
+    "watchify": "^3.11.1"
+  }
 }
