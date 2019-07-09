@@ -1,3 +1,5 @@
 node_modules
 etc.js
-build
+
+build/*
+!build/README.md

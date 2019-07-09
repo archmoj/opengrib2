@@ -29,5 +29,9 @@
   "homepage": "https://github.com/archmoj/opengrib2#readme",
   "devDependencies": {
     "watchify": "^3.11.1"
+  },
+  "dependencies": {
+    "command-line-args": "^5.1.1",
+    "http-proxy": "^1.17.0"
   }
 }
