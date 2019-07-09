@@ -1,9 +1,36 @@
-int U_NUMx2 (int m2, int m1) {
+var /* boolean */ log = false;
+
+var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US"];
+
+function println(/* String */ a, /* optional String */ b) {
+  var s = (b !== undefined) ? a + b : a;
+  console.log(s);
+}
+
+function print(/* char */ c) {
+  console.log(c); // Change me! For the moment this prints with this new line!
+}
+
+function /* void */ cout (/* int */ c) {
+  if (!log) return;
+  if (c > 31) print(char(c));
+  else {
+    //print("[" + asciiTable[c] + "]");
+    print("_");
+  }
+}
+
+function /* void */ sout(/* String */ a) {
+  if (log) println(a);
+}
+
+function /* int */ U_NUMx2 (/* int */ m2, /* int */ m1) {
  return ((m2 << 8) + m1);
 }
 
-int S_NUMx2 (int m2, int m1) {
- long v = 0;
+function /* int */ S_NUMx2 (/* int */ m2, /* int */ m1) {
+
+ var /* long */ v = 0;
 
  if (m2 < 128) {
    v = (m2 << 8) + m1;
@@ -14,15 +41,15 @@ int S_NUMx2 (int m2, int m1) {
    v *= -1;
  }
 
- return (int) v;
+ return /* (int) */ v;
 }
 
-int U_NUMx4 (int m4, int m3, int m2, int m1) {
+function /* int */ U_NUMx4 (/* int */ m4, /* int */  m3, /* int */  m2, /* int */  m1) {
  return ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
 }
 
-int S_NUMx4 (int m4, int m3, int m2, int m1) {
- long v = 0;
+function /* int */ S_NUMx4 (/* int */ m4, /* int */ m3, /* int */m2, /* int */ m1) {
+ var /* long */ v = 0;
 
  if (m4 < 128) {
    v = ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
@@ -33,34 +60,36 @@ int S_NUMx4 (int m4, int m3, int m2, int m1) {
    v *= -1;
  }
 
- return (int) v;
+ return /* (int) */ v;
 }
 
-long U_NUMx8 (int m8, int m7, int m6, int m5, int m4, int m3, int m2, int m1) {
+function /* long */ U_NUMx8 (/* int */ m8, /* int */ m7, /* int */ m6, /* int */ m5, /* int */ m4, /* int */ m3, /* int */ m2, /* int */ m1) {
+
  return ((long) (m8 << 56) + (m7 << 48) + (m6 << 40) + (m5 << 32) + (m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
 }
 
-int U_NUMxI (int[] m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
+function /* int */ U_NUMxI (/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
 
 // println(m);
 
- long v = 0;
+ var /* long */ v = 0;
 
- for (int i = 0; i < m.length; i++) {
-   v += m[i] << (m.length - 1 - i);
+ var len = m.length;
+ for (var i = 0; i < len; i++) {
+   v += m[i] << (len - 1 - i);
  }
 
 // println(v);
 
- return (int) v;
+ return /* (int) */ v;
 }
 
-int S_NUMxI (int[] m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
+function /* int */ S_NUMxI (/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
 
 // println(m);
 
- long v = 0;
- int v_sign = 1;
+ var /* long */ v = 0;
+ var v_sign = 1;
 
  if (m[0] < 1) {
    v += m[0] << (m.length - 1);
@@ -70,7 +99,7 @@ int S_NUMxI (int[] m) { // note: follows reverse rule as this: int m[0], int m[1
    v_sign = -1;
  }
 
- for (int i = 1; i < m.length; i++) {
+ for (var i = 1; i < m.length; i++) {
    v += m[i] << (m.length - 1 - i);
  }
 
@@ -78,184 +107,183 @@ int S_NUMxI (int[] m) { // note: follows reverse rule as this: int m[0], int m[1
 
 // println(v);
 
- return (int) v;
+ return /* (int) */ v;
 }
 
-int getNthBit (Byte valByte, int posBit) {
-  int valInt = valByte >> (8 - (posBit + 1)) & 0x0001;
+function /* int */ getNthBit (/* Byte */ valByte, /* int */ posBit) {
+  var valInt = valByte >> (8 - (posBit + 1)) & 0x0001;
 
-  return valInt;
-
+  return /* (int) */ valInt;
 }
 
-String IntToBinary32 (int n) {
-  String s1 = Integer.toBinaryString(n);
+function /* String */ IntToBinary32 (/* int */ n) {
+  var i;
+  var s1 = Integer.toBinaryString(n);
 
-  String s2 = "";
-  for (int i = 0; i < 32 - s1.length(); i++) {
+  var s2 = "";
+  for (i = 0; i < 32 - s1.length(); i++) {
     s2 += "0";
   }
-  for (int i = 0; i < s1.length(); i++) {
+  for (i = 0; i < s1.length(); i++) {
     s2 += s1.substring(i, i + 1);
   }
 
   return s2;
 }
 
-float IEEE32 (String s) {
-  float v_sign = pow(-1, Integer.parseInt(s.substring(0, 1), 2));
+function /* float */ IEEE32 (/* String */ s) {
+  var /* float */ v_sign = Math.pow(-1, Integer.parseInt(s.substring(0, 1), 2));
   //println("v_sign", v_sign);
 
-  float v_exponent = Integer.parseInt(s.substring(1, 9), 2) - 127;
+  var /* float */ v_exponent = Integer.parseInt(s.substring(1, 9), 2) - 127;
   //println("v_exponent", v_exponent);
 
-  float v_fraction = 0;
-  for (int i = 0; i < 23; i++) {
-    int q = Integer.parseInt(s.substring(9 + i, 10 + i), 2);
-    v_fraction += q * pow(2, -(i + 1));
+  var /* float */ v_fraction = 0;
+  for(var i = 0; i < 23; i++) {
+    var q = Integer.parseInt(s.substring(9 + i, 10 + i), 2);
+    v_fraction += q * Math.pow(2, -(i + 1));
   }
   v_fraction += 1;
   //println("v_fraction", v_fraction);
 
-  return v_sign * v_fraction * pow(2, v_exponent);
-
+  return v_sign * v_fraction * Math.pow(2, v_exponent);
 }
 
-int gridTypeOfProjection = 0;
+var /* int */ gridTypeOfProjection = 0;
 
-int gridNx = 0;
-int gridNy = 0;
+var /* int */ gridNx = 0;
+var /* int */ gridNy = 0;
 
-float gridLa1 = -90;
-float gridLo1 = -180;
-float gridLa2 = 90;
-float gridLo2 = 180;
+var /* float */ gridLa1 = -90;
+var /* float */ gridLo1 = -180;
+var /* float */ gridLa2 = 90;
+var /* float */ gridLo2 = 180;
 
-float gridLaD = 0;
-float gridLoV = 0;
-float gridDx = 1;
-float gridDy = 1;
+var /* float */ gridLaD = 0;
+var /* float */ gridLoV = 0;
+var /* float */ gridDx = 1;
+var /* float */ gridDy = 1;
 
-float gridFirstLatIn = 0;
-float gridSecondLatIn = 0;
-float gridSouthLat = 0;
-float gridSouthLon = 0;
-float gridRotation = 0;
+var /* float */ gridFirstLatIn = 0;
+var /* float */ gridSecondLatIn = 0;
+var /* float */ gridSouthLat = 0;
+var /* float */ gridSouthLon = 0;
+var /* float */ gridRotation = 0;
 
-int gridPCF = 0;
+var /* int */ gridPCF = 0;
 
-int gridScanX = 0;
-int gridScanY = 0;
+var /* int */ gridScanX = 0;
+var /* int */ gridScanY = 0;
 
-class GRIB2CLASS {
-  String ParameterNameAndUnit;
-  String[] DataTitles;
-  float[][] DataValues = new float[0][0];
-  boolean DataAllocated = false;
+function /* class */ GRIB2CLASS () {
+  var /* String */ ParameterNameAndUnit;
+  var /* String[] */ DataTitles = [];
+  var /* float[][] */ DataValues;
+  var /* boolean */ DataAllocated = false;
 
-  int DisciplineOfProcessedData = 0;
-  long LengthOfMessage = 0;
-  int IdentificationOfCentre = 0;
-  int IdentificationOfSubCentre = 0;
-  int MasterTablesVersionNumber = 0;
-  int LocalTablesVersionNumber = 0;
-  int SignificanceOfReferenceTime = 0;
-  int Year;
-  int Month;
-  int Day;
-  int Hour;
-  int Minute;
-  int Second;
-  int ProductionStatusOfData = 0;
-  int TypeOfData = 0;
+  var /* int */ DisciplineOfProcessedData = 0;
+  var /* long */ LengthOfMessage = 0;
+  var /* int */ IdentificationOfCentre = 0;
+  var /* int */ IdentificationOfSubCentre = 0;
+  var /* int */ MasterTablesVersionNumber = 0;
+  var /* int */ LocalTablesVersionNumber = 0;
+  var /* int */ SignificanceOfReferenceTime = 0;
+  var /* int */ Year;
+  var /* int */ Month;
+  var /* int */ Day;
+  var /* int */ Hour;
+  var /* int */ Minute;
+  var /* int */ Second;
+  var /* int */ ProductionStatusOfData = 0;
+  var /* int */ TypeOfData = 0;
 
-  int TypeOfProjection = 0;
+  var /* int */ TypeOfProjection = 0;
 
-  int Np = 0;
-  int Nx = 0;
-  int Ny = 0;
+  var /* int */ Np = 0;
+  var /* int */ Nx = 0;
+  var /* int */ Ny = 0;
 
-  int ResolutionAndComponentFlags = 0;
+  var /* int */ ResolutionAndComponentFlags = 0;
 
-  float La1 = -90;
-  float Lo1 = -180;
-  float La2 = 90;
-  float Lo2 = 180;
+  var /* float */ La1 = -90;
+  var /* float */ Lo1 = -180;
+  var /* float */ La2 = 90;
+  var /* float */ Lo2 = 180;
 
-  float LaD = 0;
-  float LoV = 0;
-  float Dx = 1;
-  float Dy = 1;
+  var /* float */ LaD = 0;
+  var /* float */ LoV = 0;
+  var /* float */ Dx = 1;
+  var /* float */ Dy = 1;
 
-  float FirstLatIn = 0;
-  float SecondLatIn = 0;
-  float SouthLat = 0;
-  float SouthLon = 0;
-  float Rotation = 0;
+  var /* float */ FirstLatIn = 0;
+  var /* float */ SecondLatIn = 0;
+  var /* float */ SouthLat = 0;
+  var /* float */ SouthLon = 0;
+  var /* float */ Rotation = 0;
 
-  int PCF = 0;
+  var /* int */ PCF = 0;
 
-  int ScanX = 0;
-  int ScanY = 0;
+  var /* int */ ScanX = 0;
+  var /* int */ ScanY = 0;
 
-  String Flag_BitNumbers = "00000000";
-  int ScanningMode = 0;
-  String Mode_BitNumbers = "00000000";
+  var /* String */ Flag_BitNumbers = "00000000";
+  var /* int */ ScanningMode = 0;
+  var /* String */ Mode_BitNumbers = "00000000";
 
-  int NumberOfCoordinateValuesAfterTemplate = 0;
-  int ProductDefinitionTemplateNumber = 0;
-  int CategoryOfParametersByProductDiscipline = 0;
-  int ParameterNumberByProductDisciplineAndParameterCategory = 0;
-  int IndicatorOfUnitOfTimeRange = 0;
-  int ForecastTimeInDefinedUnits = 0;
+  var /* int */ NumberOfCoordinateValuesAfterTemplate = 0;
+  var /* int */ ProductDefinitionTemplateNumber = 0;
+  var /* int */ CategoryOfParametersByProductDiscipline = 0;
+  var /* int */ ParameterNumberByProductDisciplineAndParameterCategory = 0;
+  var /* int */ IndicatorOfUnitOfTimeRange = 0;
+  var /* int */ ForecastTimeInDefinedUnits = 0;
 
-  float ForecastConvertedTime;
+  var /* float */ ForecastConvertedTime;
 
-  int TypeOfFirstFixedSurface = 0;
-  int NumberOfDataPoints = 0;
-  int DataRepresentationTemplateNumber = 0;
+  var /* int */ TypeOfFirstFixedSurface = 0;
+  var /* int */ NumberOfDataPoints = 0;
+  var /* int */ DataRepresentationTemplateNumber = 0;
 
-  float ReferenceValue;
-  int BinaryScaleFactor;
-  int DecimalScaleFactor;
-  int NumberOfBitsUsedForEachPackedValue;
+  var /* float */ ReferenceValue;
+  var /* int */ BinaryScaleFactor;
+  var /* int */ DecimalScaleFactor;
+  var /* int */ NumberOfBitsUsedForEachPackedValue;
 
-  int[] NullBitmapFlags;
+  var /* int[] */ NullBitmapFlags;
 
-  byte[] fileBytes;
-  int nPointer;
+  var /* byte[] */ fileBytes = [];
+  var /* int */ nPointer;
 
-  void printMore (int startN, int displayMORE) {
-    for (int i = 0; i < displayMORE; i++) {
+  function /* void */ printMore (/* int */ startN, /* int */ displayMORE) {
+    for(var i = 0; i < displayMORE; i++) {
       cout(fileBytes[startN + i]);
     }
     println();
 
-    for (int i = 0; i < displayMORE; i++) {
+    for(var i = 0; i < displayMORE; i++) {
       print("(" + hex(fileBytes[startN + i], 2) + ")");
     }
     println();
 
-    for (int i = 0; i < displayMORE; i++) {
+    for(var i = 0; i < displayMORE; i++) {
       print("[" + fileBytes[startN + i] + "]");
     }
     println();
   }
 
-  int[] getGrib2Section (int SectionNumber) {
+  function /* int[] */ getGrib2Section (/* int */ SectionNumber) {
     println("-----------------------------");
 
     print("Section:\t");
     println(SectionNumber);
 
-    int nFirstBytes = 6;
+    var /* int */ nFirstBytes = 6;
     if (SectionNumber == 8) nFirstBytes = 4;
 
-    int[] SectionNumbers = new int[nFirstBytes];
+    var /* int[] */ SectionNumbers = new Int32Array(nFirstBytes);
     SectionNumbers[0] = 0;
 
-    for (int j = 1; j < nFirstBytes; j += 1) {
-      int c = fileBytes[nPointer + j];
+    for(var j = 1; j < nFirstBytes; j += 1) {
+      var c = fileBytes[nPointer + j];
       if (c < 0) c += 256;
 
       SectionNumbers[j] = c;
@@ -264,22 +292,22 @@ class GRIB2CLASS {
     }
     println();
 
-    int lengthOfSection = -1;
+    var /* int */ lengthOfSection = -1;
     if (SectionNumber == 0) lengthOfSection = 16;
     else if (SectionNumber == 8) lengthOfSection = 4;
     else lengthOfSection = U_NUMx4(SectionNumbers[1], SectionNumbers[2], SectionNumbers[3], SectionNumbers[4]);
 
-    int new_SectionNumber = -1;
+    var /* int */ new_SectionNumber = -1;
     if (SectionNumber == 0) new_SectionNumber = 0;
     else if (SectionNumber == 8) new_SectionNumber = 8;
     else new_SectionNumber = SectionNumbers[5];
 
     if (new_SectionNumber == SectionNumber) {
-      SectionNumbers = new int[1 + lengthOfSection];
+      SectionNumbers = new Int32Array(1 + lengthOfSection);
       SectionNumbers[0] = 0;
 
-      for (int j = 1; j <= lengthOfSection; j += 1) {
-        int c = fileBytes[nPointer + j];
+      for(var j = 1; j <= lengthOfSection; j += 1) {
+        var /* int */ c = fileBytes[nPointer + j];
         if (c < 0) c += 256;
 
         SectionNumbers[j] = c;
@@ -295,11 +323,11 @@ class GRIB2CLASS {
 
       lengthOfSection = 0;
 
-      SectionNumbers = new int[1];
+      SectionNumbers = new Int32Array(1);
       SectionNumbers[0] = 0;
     }
 
-    for (int j = 1; j < SectionNumbers.length; j += 1) {
+    for(var j = 1; j < SectionNumbers.length; j += 1) {
       //print("(" + SectionNumbers[j] +  ")");
       //print("(" + hex(SectionNumbers[j], 2) +  ")");
     }
@@ -313,106 +341,106 @@ class GRIB2CLASS {
     return SectionNumbers;
   }
 
-  void readGrib2Members (int numberOfMembers) {
-    final int GridDEF_NumberOfDataPoints = 7;
-    final int GridDEF_NumberOfPointsAlongTheXaxis = 31;
-    final int GridDEF_NumberOfPointsAlongTheYaxis = 35;
+  function /* void */ readGrib2Members (/* int */ numberOfMembers) {
+    var /* const int */ GridDEF_NumberOfDataPoints = 7;
+    var /* const int */ GridDEF_NumberOfPointsAlongTheXaxis = 31;
+    var /* const int */ GridDEF_NumberOfPointsAlongTheYaxis = 35;
 
-    final int GridDEF_LatLon_LatitudeOfFirstGridPoint = 47;
-    final int GridDEF_LatLon_LongitudeOfFirstGridPoint = 51;
-    final int GridDEF_LatLon_ResolutionAndComponentFlags = 55;
-    final int GridDEF_LatLon_LatitudeOfLastGridPoint = 56;
-    final int GridDEF_LatLon_LongitudeOfLastGridPoint = 60;
+    var /* const int */ GridDEF_LatLon_LatitudeOfFirstGridPoint = 47;
+    var /* const int */ GridDEF_LatLon_LongitudeOfFirstGridPoint = 51;
+    var /* const int */ GridDEF_LatLon_ResolutionAndComponentFlags = 55;
+    var /* const int */ GridDEF_LatLon_LatitudeOfLastGridPoint = 56;
+    var /* const int */ GridDEF_LatLon_LongitudeOfLastGridPoint = 60;
     // for Rotated latitude/longitude :
-    final int GridDEF_LatLon_SouthPoleLatitude = 73;
-    final int GridDEF_LatLon_SouthPoleLongitude = 77;
-    final int GridDEF_LatLon_RotationOfProjection = 81;
+    var /* const int */ GridDEF_LatLon_SouthPoleLatitude = 73;
+    var /* const int */ GridDEF_LatLon_SouthPoleLongitude = 77;
+    var /* const int */ GridDEF_LatLon_RotationOfProjection = 81;
 
-    final int GridDEF_Polar_LatitudeOfFirstGridPoint = 39;
-    final int GridDEF_Polar_LongitudeOfFirstGridPoint = 43;
-    final int GridDEF_Polar_ResolutionAndComponentFlags = 47;
-    final int GridDEF_Polar_DeclinationOfTheGrid = 48;
-    final int GridDEF_Polar_OrientationOfTheGrid = 52;
-    final int GridDEF_Polar_XDirectionGridLength = 56;
-    final int GridDEF_Polar_YDirectionGridLength = 60;
-    final int GridDEF_Polar_ProjectionCenterFlag = 64;
+    var /* const int */ GridDEF_Polar_LatitudeOfFirstGridPoint = 39;
+    var /* const int */ GridDEF_Polar_LongitudeOfFirstGridPoint = 43;
+    var /* const int */ GridDEF_Polar_ResolutionAndComponentFlags = 47;
+    var /* const int */ GridDEF_Polar_DeclinationOfTheGrid = 48;
+    var /* const int */ GridDEF_Polar_OrientationOfTheGrid = 52;
+    var /* const int */ GridDEF_Polar_XDirectionGridLength = 56;
+    var /* const int */ GridDEF_Polar_YDirectionGridLength = 60;
+    var /* const int */ GridDEF_Polar_ProjectionCenterFlag = 64;
 
-    final int GridDEF_Lambert_LatitudeOfFirstGridPoint = 39;
-    final int GridDEF_Lambert_LongitudeOfFirstGridPoint = 43;
-    final int GridDEF_Lambert_ResolutionAndComponentFlags = 47;
-    final int GridDEF_Lambert_DeclinationOfTheGrid = 48;
-    final int GridDEF_Lambert_OrientationOfTheGrid = 52;
-    final int GridDEF_Lambert_XDirectionGridLength = 56;
-    final int GridDEF_Lambert_YDirectionGridLength = 60;
-    final int GridDEF_Lambert_ProjectionCenterFlag = 64;
-    final int GridDEF_Lambert_1stLatitudeIn = 66;
-    final int GridDEF_Lambert_2ndLatitudeIn = 70;
-    final int GridDEF_Lambert_SouthPoleLatitude = 74;
-    final int GridDEF_Lambert_SouthPoleLongitude = 78;
+    var /* const int */ GridDEF_Lambert_LatitudeOfFirstGridPoint = 39;
+    var /* const int */ GridDEF_Lambert_LongitudeOfFirstGridPoint = 43;
+    var /* const int */ GridDEF_Lambert_ResolutionAndComponentFlags = 47;
+    var /* const int */ GridDEF_Lambert_DeclinationOfTheGrid = 48;
+    var /* const int */ GridDEF_Lambert_OrientationOfTheGrid = 52;
+    var /* const int */ GridDEF_Lambert_XDirectionGridLength = 56;
+    var /* const int */ GridDEF_Lambert_YDirectionGridLength = 60;
+    var /* const int */ GridDEF_Lambert_ProjectionCenterFlag = 64;
+    var /* const int */ GridDEF_Lambert_1stLatitudeIn = 66;
+    var /* const int */ GridDEF_Lambert_2ndLatitudeIn = 70;
+    var /* const int */ GridDEF_Lambert_SouthPoleLatitude = 74;
+    var /* const int */ GridDEF_Lambert_SouthPoleLongitude = 78;
 
-    int GridDEF_ScanningMode = 72;
+    var /* int */ GridDEF_ScanningMode = 72;
 
-    int ComplexPacking_GroupSplittingMethodUsed = 0;
-    int ComplexPacking_MissingValueManagementUsed = 0;
-    float ComplexPacking_PrimaryMissingValueSubstitute = 0;
-    float ComplexPacking_SecondaryMissingValueSubstitute = 0;
-    int ComplexPacking_NumberOfGroupsOfDataValues = 0;
-    int ComplexPacking_ReferenceForGroupWidths = 0;
-    int ComplexPacking_NumberOfBitsUsedForGroupWidths = 0;
-    int ComplexPacking_ReferenceForGroupLengths = 0;
-    int ComplexPacking_LengthIncrementForTheGroupLengths = 0;
-    int ComplexPacking_TrueLengthOfLastGroup = 0;
-    int ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths = 0;
-    int ComplexPacking_OrderOfSpatialDifferencing = 0;
-    int ComplexPacking_NumberOfExtraOctetsRequiredInDataSection = 0;
+    var /* int */ ComplexPacking_GroupSplittingMethodUsed = 0;
+    var /* int */ ComplexPacking_MissingValueManagementUsed = 0;
+    var /* float */ ComplexPacking_PrimaryMissingValueSubstitute = 0.0;
+    var /* float */ ComplexPacking_SecondaryMissingValueSubstitute = 0.0;
+    var /* int */ ComplexPacking_NumberOfGroupsOfDataValues = 0;
+    var /* int */ ComplexPacking_ReferenceForGroupWidths = 0;
+    var /* int */ ComplexPacking_NumberOfBitsUsedForGroupWidths = 0;
+    var /* int */ ComplexPacking_ReferenceForGroupLengths = 0;
+    var /* int */ ComplexPacking_LengthIncrementForTheGroupLengths = 0;
+    var /* int */ ComplexPacking_TrueLengthOfLastGroup = 0;
+    var /* int */ ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths = 0;
+    var /* int */ ComplexPacking_OrderOfSpatialDifferencing = 0;
+    var /* int */ ComplexPacking_NumberOfExtraOctetsRequiredInDataSection = 0;
 
-    int Bitmap_Indicator = 0;
-    int Bitmap_beginPointer = 0;
-    int Bitmap_endPointer = 0;
-    int Bitmap_FileLength = 0;
-    String Bitmap_FileName = "";
+    var /* int */ Bitmap_Indicator = 0;
+    var /* int */ Bitmap_beginPointer = 0;
+    var /* int */ Bitmap_endPointer = 0;
+    var /* int */ Bitmap_FileLength = 0;
+    var Bitmap_FileName = "";
 
-    int JPEG2000_TypeOfOriginalFieldValues = 0;
-    int JPEG2000_TypeOfCompression = 0;
-    int JPEG2000_TargetCompressionRatio = 0;
-    int JPEG2000_Lsiz = 0;
-    int JPEG2000_Rsiz = 0;
-    int JPEG2000_Xsiz = 0;
-    int JPEG2000_Ysiz = 0;
-    int JPEG2000_XOsiz = 0;
-    int JPEG2000_YOsiz = 0;
-    int JPEG2000_XTsiz = 0;
-    int JPEG2000_YTsiz = 0;
-    int JPEG2000_XTOsiz = 0;
-    int JPEG2000_YTOsiz = 0;
-    int JPEG2000_Csiz = 0;
-    int JPEG2000_Ssiz = 0;
-    int JPEG2000_XRsiz = 0;
-    int JPEG2000_YRsiz = 0;
-    int JPEG2000_Lcom = 0;
-    int JPEG2000_Rcom = 0;
-    int JPEG2000_Lcod = 0;
-    int JPEG2000_Scod = 0;
-    int JPEG2000_SGcod_ProgressionOrder = 0;
-    int JPEG2000_SGcod_NumberOfLayers = 0;
-    int JPEG2000_SGcod_MultipleComponentTransformation = 0;
-    int JPEG2000_SPcod_NumberOfDecompositionLevels = 0;
-    int JPEG2000_SPcod_CodeBlockWidth = 0;
-    int JPEG2000_SPcod_CodeBlockHeight = 0;
-    int JPEG2000_SPcod_CodeBlockStyle = 0;
-    int JPEG2000_SPcod_Transformation = 0;
-    int JPEG2000_Lqcd = 0;
-    int JPEG2000_Sqcd = 0;
-    int JPEG2000_Lsot = 0;
-    int JPEG2000_Isot = 0;
-    int JPEG2000_Psot = 0;
-    int JPEG2000_TPsot = 0;
-    int JPEG2000_TNsot = 0;
+    var /* int */ JPEG2000_TypeOfOriginalFieldValues = 0;
+    var /* int */ JPEG2000_TypeOfCompression = 0;
+    var /* int */ JPEG2000_TargetCompressionRatio = 0;
+    var /* int */ JPEG2000_Lsiz = 0;
+    var /* int */ JPEG2000_Rsiz = 0;
+    var /* int */ JPEG2000_Xsiz = 0;
+    var /* int */ JPEG2000_Ysiz = 0;
+    var /* int */ JPEG2000_XOsiz = 0;
+    var /* int */ JPEG2000_YOsiz = 0;
+    var /* int */ JPEG2000_XTsiz = 0;
+    var /* int */ JPEG2000_YTsiz = 0;
+    var /* int */ JPEG2000_XTOsiz = 0;
+    var /* int */ JPEG2000_YTOsiz = 0;
+    var /* int */ JPEG2000_Csiz = 0;
+    var /* int */ JPEG2000_Ssiz = 0;
+    var /* int */ JPEG2000_XRsiz = 0;
+    var /* int */ JPEG2000_YRsiz = 0;
+    var /* int */ JPEG2000_Lcom = 0;
+    var /* int */ JPEG2000_Rcom = 0;
+    var /* int */ JPEG2000_Lcod = 0;
+    var /* int */ JPEG2000_Scod = 0;
+    var /* int */ JPEG2000_SGcod_ProgressionOrder = 0;
+    var /* int */ JPEG2000_SGcod_NumberOfLayers = 0;
+    var /* int */ JPEG2000_SGcod_MultipleComponentTransformation = 0;
+    var /* int */ JPEG2000_SPcod_NumberOfDecompositionLevels = 0;
+    var /* int */ JPEG2000_SPcod_CodeBlockWidth = 0;
+    var /* int */ JPEG2000_SPcod_CodeBlockHeight = 0;
+    var /* int */ JPEG2000_SPcod_CodeBlockStyle = 0;
+    var /* int */ JPEG2000_SPcod_Transformation = 0;
+    var /* int */ JPEG2000_Lqcd = 0;
+    var /* int */ JPEG2000_Sqcd = 0;
+    var /* int */ JPEG2000_Lsot = 0;
+    var /* int */ JPEG2000_Isot = 0;
+    var /* int */ JPEG2000_Psot = 0;
+    var /* int */ JPEG2000_TPsot = 0;
+    var /* int */ JPEG2000_TNsot = 0;
 
     nPointer = -1;
 
-    for (int memberID = 0; memberID < numberOfMembers; memberID += 1) {
-      int[] SectionNumbers = getGrib2Section(0); // Section 0: Indicator Section
+    for(var memberID = 0; memberID < numberOfMembers; memberID += 1) {
+      var /* int[] */ SectionNumbers = getGrib2Section(0); // Section 0: Indicator Section
 
       if (SectionNumbers.length > 1) {
         print("Discipline of processed data:\t");
@@ -2307,7 +2335,7 @@ class GRIB2CLASS {
         }
         println(ParameterNameAndUnit);
 
-        float DayPortion = 0;
+        var /* float */ DayPortion = 0;
 
         print("Indicator of unit of time range:\t");
         this.IndicatorOfUnitOfTimeRange = SectionNumbers[18];
@@ -2615,14 +2643,14 @@ class GRIB2CLASS {
 
         if (Bitmap_Indicator == 0) { // A bit map applies to this product and is specified in this Section.
 
-          this.NullBitmapFlags = new int[(SectionNumbers.length - 7) * 8];
+          this.NullBitmapFlags = new Int32Array((SectionNumbers.length - 7) * 8);
 
           println(">>>>> NullBitmapFlags.length", this.NullBitmapFlags.length);
 
-          for (int i = 0; i < SectionNumbers.length - 7; i++) {
-            String b = binary(SectionNumbers[7 + i], 8);
+          for(var i = 0; i < SectionNumbers.length - 7; i++) {
+            var /* String */ b = binary(SectionNumbers[7 + i], 8);
 
-            for (int j = 0; j < 8; j++) {
+            for(var j = 0; j < 8; j++) {
               this.NullBitmapFlags[i * 8 + j] = int(b.substring(j, j + 1));
             }
           }
@@ -2639,7 +2667,7 @@ class GRIB2CLASS {
 
           Bitmap_endPointer = nPointer;
 
-          int n = Bitmap_beginPointer;
+          var /* int */ n = Bitmap_beginPointer;
 
           println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 4F : Marker Start of codestream
           n += 2;
@@ -2724,7 +2752,7 @@ class GRIB2CLASS {
             n += 2;
 
             print("Comment: ");
-            for (int i = 0; i < JPEG2000_Lcom - 4; i++) {
+            for(var i = 0; i < JPEG2000_Lcom - 4; i++) {
               cout(fileBytes[n]);
               n += 1;
             }
@@ -2798,7 +2826,7 @@ class GRIB2CLASS {
           println("Sqcd =", JPEG2000_Sqcd);  // Sqcd : Quantization style for all components
           n += 1;
 
-          //int JPEG2000_SPgcd = function(...);
+          //var /* int */ JPEG2000_SPgcd = function(...);
           //println("SPgcd =", JPEG2000_SPcod);  // SPgcd : Quantization step size value for the ith sub-band in the defined order
           n += JPEG2000_Lqcd - 3;
 
@@ -2849,7 +2877,7 @@ class GRIB2CLASS {
       Packet P(q,r,c,p) appears.
       */
 
-          int o = 0;
+          var /* int */ o = 0;
           print("CodeStream: ");
           while (!((fileBytes[n] == -1) && (fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
             //cout(fileBytes[n]);
@@ -2866,8 +2894,8 @@ class GRIB2CLASS {
            printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
            n += 2;
 
-          byte[] imageBytes = new byte[1 + Bitmap_endPointer - Bitmap_beginPointer];
-          for (int i = 0; i < imageBytes.length; i++) {
+          var /* byte[] */ imageBytes = new Int8Array(1 + Bitmap_endPointer - Bitmap_beginPointer);
+          for(var i = 0; i < imageBytes.length; i++) {
             imageBytes[i] = fileBytes[i + Bitmap_beginPointer];
           }
           this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
@@ -2907,17 +2935,17 @@ class GRIB2CLASS {
           Bitmap_endPointer = nPointer;
 
           nPointer = Bitmap_beginPointer;
-          int b = 0;
+          var /* int */ b = 0;
 
-          float[] data = new float[0];
+          var /* float[] */ data = [];
 
           if (this.DataRepresentationTemplateNumber == 0) { // Grid point data - simple packing
 
-            data = new float[this.NumberOfDataPoints];
+            data = new float32(this.NumberOfDataPoints);
 
-            for (int i = 0; i < this.NumberOfDataPoints; i++) {
-              int[] m = new int[this.NumberOfBitsUsedForEachPackedValue];
-              for (int j = 0; j < m.length; j++) {
+            for(var i = 0; i < this.NumberOfDataPoints; i++) {
+              var /* int[] */ m = new Int32Array(this.NumberOfBitsUsedForEachPackedValue);
+              for(var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -2935,13 +2963,13 @@ class GRIB2CLASS {
             println();
             println("First value(s) of original (undifferenced) scaled data values, followed by the overall minimum of the differences.");
 
-            int FirstValues1 = 0;
-            int FirstValues2 = 0;
-            int OverallMinimumOfTheDifferences = 0;
+            var /* int */ FirstValues1 = 0;
+            var /* int */ FirstValues2 = 0;
+            var /* int */ OverallMinimumOfTheDifferences = 0;
 
             {
-              int[] m = new int[8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection];
-              for (int j = 0; j < m.length; j++) {
+              var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
+              for(var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
 
                 b += 1;
@@ -2956,8 +2984,8 @@ class GRIB2CLASS {
 
             if (ComplexPacking_OrderOfSpatialDifferencing == 2) { //second order spatial differencing
 
-              int[] m = new int[8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection];
-              for (int j = 0; j < m.length; j++) {
+              var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
+              for(var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -2970,8 +2998,8 @@ class GRIB2CLASS {
             }
 
             {
-              int[] m = new int[8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection];
-              for (int j = 0; j < m.length; j++) {
+              var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
+              for(var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -2985,11 +3013,11 @@ class GRIB2CLASS {
             }
 
             // read the group reference values
-            int[] group_refs = new int[ComplexPacking_NumberOfGroupsOfDataValues];
+            var /* int[] */ group_refs = new Int32Array(ComplexPacking_NumberOfGroupsOfDataValues);
 
-            for (int i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
-              int[] m = new int[this.NumberOfBitsUsedForEachPackedValue];
-              for (int j = 0; j < m.length; j++) {
+            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+              var /* int[] */ m = new Int32Array(this.NumberOfBitsUsedForEachPackedValue);
+              for(var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -3008,11 +3036,11 @@ class GRIB2CLASS {
             }
 
             // read the group widths
-            int[] group_widths = new int[ComplexPacking_NumberOfGroupsOfDataValues];
+            var /* int[] */ group_widths = new Int32Array(ComplexPacking_NumberOfGroupsOfDataValues);
 
-            for (int i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
-              int[] m = new int[ComplexPacking_NumberOfBitsUsedForGroupWidths];
-              for (int j = 0; j < m.length; j++) {
+            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+              var /* int[] */ m = new Int32Array(ComplexPacking_NumberOfBitsUsedForGroupWidths);
+              for(var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -3033,12 +3061,12 @@ class GRIB2CLASS {
             }
 
             // read the group lengths
-            int[] group_lengths = new int[ComplexPacking_NumberOfGroupsOfDataValues];
+            var /* int[] */ group_lengths = new Int32Array(ComplexPacking_NumberOfGroupsOfDataValues);
 
             if (ComplexPacking_GroupSplittingMethodUsed == 1) {
-              for (int i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
-                int[] m = new int[ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths];
-                for (int j = 0; j < m.length; j++) {
+              for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+                var /* int[] */ m = new Int32Array(ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths);
+                for(var j = 0; j < m.length; j++) {
                   m[j] = getNthBit(fileBytes[nPointer], b);
                   b += 1;
                   if (b == 8) {
@@ -3064,8 +3092,8 @@ class GRIB2CLASS {
             }
 
             // check
-            int total = 0;
-            for (int i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+            var /* int */ total = 0;
+            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               total += group_lengths[i];
             }
             if (total != this.NumberOfDataPoints) {
@@ -3075,13 +3103,13 @@ class GRIB2CLASS {
 
             data = new float[total];
 
-            int count = 0;
+            var /* int */ count = 0;
 
-            for (int i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               if (group_widths[i] != 0) {
-                for (int j = 0; j < group_lengths[i]; j++) {
-                  int[] m = new int[group_widths[i]];
-                  for (int k = 0; k < m.length; k++) {
+                for(var j = 0; j < group_lengths[i]; j++) {
+                  var /* int[] */ m = new Int32Array(group_widths[i]);
+                  for(var k = 0; k < m.length; k++) {
                     m[k] = getNthBit(fileBytes[nPointer], b);
                     b += 1;
                     if (b == 8) {
@@ -3096,7 +3124,7 @@ class GRIB2CLASS {
                 }
               }
               else {
-                for (int j = 0; j < group_lengths[i]; j++) {
+                for(var j = 0; j < group_lengths[i]; j++) {
                   data[count] = group_refs[i];
 
                   count += 1;
@@ -3110,7 +3138,7 @@ class GRIB2CLASS {
               // spatial differencing
               if (ComplexPacking_OrderOfSpatialDifferencing == 1) { // case of first order
                 data[0] = FirstValues1;
-                for (int i = 1; i < total; i++) {
+                for(var i = 1; i < total; i++) {
                   data[i] += OverallMinimumOfTheDifferences;
                   data[i] = data[i] + data[i - 1];
                 }
@@ -3118,7 +3146,7 @@ class GRIB2CLASS {
               else if (ComplexPacking_OrderOfSpatialDifferencing == 2) { // case of second order
                 data[0] = FirstValues1;
                 data[1] = FirstValues2;
-                for (int i = 2; i < total; i++) {
+                for(var i = 2; i < total; i++) {
                   data[i] += OverallMinimumOfTheDifferences;
                   data[i] = data[i] + (2 * data[i - 1]) - data[i - 2];
                 }
@@ -3133,32 +3161,32 @@ class GRIB2CLASS {
             // Mode  192 -x, +y, adjacent x, adjacent rows same dir
             // change -x to +x ie east to west -> west to east
           } else if ((this.ScanningMode == 128) || (this.ScanningMode == 192)) {
-            float tmp;
-            int mid = (int) this.Nx / 2;
-            //System.out.println( "this.Nx =" +this.Nx +" mid ="+ mid );
-            for (int index = 0; index < data.length; index += this.Nx) {
-              for (int idx = 0; idx < mid; idx++) {
+            var /* float */ tmp;
+            var /* int */ mid = int(this.Nx / 2);
+            //println( "this.Nx =" +this.Nx +" mid ="+ mid );
+            for(var index = 0; index < data.length; index += this.Nx) {
+              for(var idx = 0; idx < mid; idx++) {
                 tmp = data[index + idx];
                 data[index + idx] = data[index + this.Nx - idx - 1];
                 data[index + this.Nx - idx - 1] = tmp;
-                //System.out.println( "switch " + (index + idx) + " " +
+                //println( "switch " + (index + idx) + " " +
                 //(index + this.Nx -idx -1) );
               }
             }
           }
           else {
             // scanMode == 16, 80, 144, 208 adjacent rows scan opposite dir
-            float tmp;
-            int mid = (int) this.Nx / 2;
-            //System.out.println( "this.Nx =" +this.Nx +" mid ="+ mid );
-            for (int index = 0; index < data.length; index += this.Nx) {
-              int row = (int) index / this.Nx;
+            var /* float */ tmp;
+            var /* int */ mid = int(this.Nx / 2);
+            //println( "this.Nx =" +this.Nx +" mid ="+ mid );
+            for(var index = 0; index < data.length; index += this.Nx) {
+              var /* int */ row = int(index / this.Nx);
               if (row % 2 == 1) {  // odd numbered row, calculate reverse index
-                for (int idx = 0; idx < mid; idx++) {
+                for(var idx = 0; idx < mid; idx++) {
                   tmp = data[index + idx];
                   data[index + idx] = data[index + this.Nx - idx - 1];
                   data[index + this.Nx - idx - 1] = tmp;
-                  //System.out.println( "switch " + (index + idx) + " " +
+                  //println( "switch " + (index + idx) + " " +
                   //(index + this.Nx -idx -1) );
                 }
               }
@@ -3179,14 +3207,14 @@ class GRIB2CLASS {
           println("data.length", data.length);
           println("Nx X Ny", this.Nx, this.Ny, this.Nx * this.Ny);
 
-          float BB = pow(2, this.BinaryScaleFactor);
-          float DD = pow(10, this.DecimalScaleFactor);
-          float RR = this.ReferenceValue;
+          var /* float */ BB = Math.pow(2, this.BinaryScaleFactor);
+          var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
+          var /* float */ RR = this.ReferenceValue;
 
           if (Bitmap_Indicator == 0) { // A bit map applies to this product
 
-            int i = -1;
-            for (int q = 0; q < this.Nx * this.Ny; q++) {
+            var /* int */ i = -1;
+            for(var q = 0; q < this.Nx * this.Ny; q++) {
               if (this.NullBitmapFlags[q] == 0) {
                 this.DataValues[memberID][q] = FLOAT_undefined;
               }
@@ -3198,14 +3226,14 @@ class GRIB2CLASS {
             }
           }
           else {
-            for (int q = 0; q < this.Nx * this.Ny; q++) {
-              int i = q;
+            for(var q = 0; q < this.Nx * this.Ny; q++) {
+              var /* int */ i = q;
 
               this.DataValues[memberID][q] = ((data[i] * BB) + RR) / DD;
             }
           }
 
-          //for (int q = 0; q < 20; q++) println(this.DataValues[memberID][q]);
+          //for(var q = 0; q < 20; q++) println(this.DataValues[memberID][q]);
 
           this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
           if (DATA_numMembers > 1) {
@@ -3236,17 +3264,18 @@ class GRIB2CLASS {
 
           println("Openning:", Bitmap_FileName);
 
-          RandomAccessFile raf = new RandomAccessFile(Bitmap_FileName, "r");
+          var /* RandomAccessFile */ raf = new RandomAccessFile(Bitmap_FileName, "r");
 
-          String[] argv = new String[4];
-          argv[0] = "-rate";
-          argv[1] = nf(this.NumberOfBitsUsedForEachPackedValue, 0); // number of bits per pixel
-          argv[2] = "-verbose";
-          argv[3] = "off";
+          var argv = [
+            "-rate",
+            nf(this.NumberOfBitsUsedForEachPackedValue, 0), // number of bits per pixel
+            "-verbose",
+            "off"
+          ];
 
-          Grib2JpegDecoder g2j = new Grib2JpegDecoder(argv);
+          var /* Grib2JpegDecoder */ g2j = new Grib2JpegDecoder(argv);
 
-          byte[] buf = new byte[Bitmap_FileLength];
+          var /* byte[] */ buf = new Int8Array(Bitmap_FileLength);
 
           raf.read(buf);
           g2j.decode(buf);
@@ -3254,14 +3283,14 @@ class GRIB2CLASS {
           println("g2j.data.length", g2j.data.length);
           println("Nx X Ny", this.Nx, this.Ny, this.Nx * this.Ny);
 
-          float BB = pow(2, this.BinaryScaleFactor);
-          float DD = pow(10, this.DecimalScaleFactor);
-          float RR = this.ReferenceValue;
+          var /* float */ BB = Math.pow(2, this.BinaryScaleFactor);
+          var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
+          var /* float */ RR = this.ReferenceValue;
 
           if (Bitmap_Indicator == 0) { // A bit map applies to this product
 
-            int i = -1;
-            for (int q = 0; q < this.Nx * this.Ny; q++) {
+            var /* int */ i = -1;
+            for(var q = 0; q < this.Nx * this.Ny; q++) {
               if (this.NullBitmapFlags[q] == 0) {
                 this.DataValues[memberID][q] = FLOAT_undefined;
               }
@@ -3273,16 +3302,16 @@ class GRIB2CLASS {
             }
           }
           else {
-            for (int q = 0; q < this.Nx * this.Ny; q++) {
-              int i = q;
+            for(var q = 0; q < this.Nx * this.Ny; q++) {
+              var /* int */ i = q;
 
               this.DataValues[memberID][q] = ((g2j.data[i] * BB) + RR) / DD;
             }
           }
         }
       }
-      catch (IOException e) {
-        println("error:", e);
+      catch (error) {
+        println("error:", error);
       }
     }
   }
