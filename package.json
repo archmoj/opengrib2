@@ -1,0 +1,28 @@
+{
+  "name": "opengrib2",
+  "version": "0.0.0",
+  "description": "native JavaScript utility for opening grib2 data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archmoj/opengrib2.git"
+  },
+  "keywords": [
+    "open",
+    "data",
+    "grib2",
+    "js",
+    "javascript",
+    "node",
+    "meteo"
+  ],
+  "author": "Mojatab Samimi, Étienne Tétreault-Pinard, Antoine Roy-Gobeil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/archmoj/opengrib2/issues"
+  },
+  "homepage": "https://github.com/archmoj/opengrib2#readme"
+}
