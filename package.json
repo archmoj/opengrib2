@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "watchify browser.js -o build/bundle.js -v"
+    "dev": "watchify browser.js -o build/bundle.js -v",
+    "proxy": "node server/proxy.js"
   },
   "repository": {
     "type": "git",
