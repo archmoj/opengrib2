@@ -5,6 +5,15 @@
 /* import */ function /* Buffer */ RandomAccessFile(b, c) { };
 /* import */ function /* Buffer */ Grib2JpegDecoder(args) { };
 
+var fs = require('fs');
+function saveBytes(filename, bytes) {
+  fs.writeFileSync(filename, bytes);
+}
+
+function nf0(number) {
+  return Math.round(number);
+}
+
 var /* boolean */ log = false;
 
 var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US"];
@@ -1144,7 +1153,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 203: this.ParameterNameAndUnit = "Potential Temperature at Top of Viscous Sublayer(K)"; break;
               case 204: this.ParameterNameAndUnit = "Tropical Cyclone Heat Potential(J/m2K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Moisture
@@ -1277,7 +1286,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 241: this.ParameterNameAndUnit = "Total Snow(kg m-2)"; break;
               case 242: this.ParameterNameAndUnit = "Relative Humidity with Respect to Precipitable Water(%)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 2) { // Momentum
@@ -1353,7 +1362,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 224: this.ParameterNameAndUnit = "Ventilation Rate(m2 s-1)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Mass
@@ -1407,7 +1416,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 211: this.ParameterNameAndUnit = "Geopotential Height (nearest grid point)(gpm)"; break;
               case 212: this.ParameterNameAndUnit = "Pressure (nearest grid point)(Pa)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Short wave radiation
@@ -1442,7 +1451,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 204: this.ParameterNameAndUnit = "Downward Total Radiation Flux(W m-2)"; break;
               case 205: this.ParameterNameAndUnit = "Upward Total Radiation Flux(W m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 5) { // Long wave radiation
@@ -1461,7 +1470,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 196: this.ParameterNameAndUnit = "Clear Sky Downward Long Wave Flux(W m-2)"; break;
               case 197: this.ParameterNameAndUnit = "Cloud Forcing Net Long Wave Flux(W m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 6) { // Cloud
@@ -1513,7 +1522,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 200: this.ParameterNameAndUnit = "Convective Cloud Mass Flux(Pa s-1)"; break;
               case 201: this.ParameterNameAndUnit = "Sunshine Duration(s)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 7) { // Thermodynamic stability indices
@@ -1542,7 +1551,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 198: this.ParameterNameAndUnit = "Leaf Area Index()"; break;
               case 199: this.ParameterNameAndUnit = "Hourly Maximum of Updraft Helicity over Layer 2km to 5 km AGL(m2 s-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 13) { // Aerosols
@@ -1554,7 +1563,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 195: this.ParameterNameAndUnit = "Integrated column particulate matter (fine)(log10 (g m-3))"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 14) { // Trace gases
@@ -1575,7 +1584,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 202: this.ParameterNameAndUnit = "PM 2.5 Daily Max from 1-hour Average(g m-3)"; break;
               case 203: this.ParameterNameAndUnit = "PM 2.5 Daily Max from 24-hour Average(g m-3)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 15) { // Radar
@@ -1596,7 +1605,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 13: this.ParameterNameAndUnit = "Reflectivity of Graupel(dB)"; break;
               case 14: this.ParameterNameAndUnit = "Reflectivity of Hail(dB)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 16) { // Forecast Radar Imagery
@@ -1615,7 +1624,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 197: this.ParameterNameAndUnit = "Echo Top (See Note 1)(m)"; break;
               case 198: this.ParameterNameAndUnit = "Hourly Maximum of Simulated Reflectivity at 1 km AGL(dB)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
 
@@ -1624,7 +1633,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 192: this.ParameterNameAndUnit = "Lightning(non-dim)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 18) { // Nuclear/radiology
@@ -1644,7 +1653,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 13: this.ParameterNameAndUnit = "Total Deposition (Wet + Dry)(Bq m-2)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 19) { // Physical atmospheric Properties
@@ -1712,7 +1721,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 233: this.ParameterNameAndUnit = "Icing probability(non-dim)"; break;
               case 234: this.ParameterNameAndUnit = "Icing severity(non-dim)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 20) { // Atmospheric Chemical Constituents
@@ -1754,7 +1763,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 109: this.ParameterNameAndUnit = "Aerosol Lidar Extinction from Satellite(m-1)"; break;
               case 110: this.ParameterNameAndUnit = "Aerosol Lidar Extinction from the Ground(m-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 190) { // CCITT IA5 string
@@ -1762,7 +1771,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 0: this.ParameterNameAndUnit = "Arbitrary Text String(CCITTIA5)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 191) { // Miscellaneous
@@ -1777,7 +1786,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 196: this.ParameterNameAndUnit = "Latitude (nearest neighbor) (-90 to 90)()"; break;
               case 197: this.ParameterNameAndUnit = "East Longitude (nearest neighbor) (0 to 360)()"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 192) { // Covariance
@@ -1797,7 +1806,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 13: this.ParameterNameAndUnit = "Covariance between vertical and vertical components of the wind. Defined as []-[][], where [] indicates the mean over the indicated time span.(Pa2/s2)"; break;
               case 14: this.ParameterNameAndUnit = "Covariance between temperature and temperature. Defined as [TT]-[T][T], where [] indicates the mean over the indicated time span.(K*K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
         }
@@ -1814,7 +1823,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 192: this.ParameterNameAndUnit = "Baseflow-Groundwater Runoff(kg m-2)"; break;
               case 193: this.ParameterNameAndUnit = "Storm Surface Runoff(kg m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Hydrology Probabilities
@@ -1827,7 +1836,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 194: this.ParameterNameAndUnit = "Probability of precipitation exceeding flash flood guidance values(%)"; break;
               case 195: this.ParameterNameAndUnit = "Probability of Wetting Rain, exceeding in 0.10 in a given time period(%)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 2) { // Inland Water and Sediment Properties
@@ -1846,7 +1855,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 11: this.ParameterNameAndUnit = "Attenuation Coefficient of Water with Respect to Solar Attenuation Coefficient of Water with Respect to Solar Radiation(m-1)"; break;
               case 12: this.ParameterNameAndUnit = "Salinity(kg kg-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
         }
@@ -1926,14 +1935,14 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 229: this.ParameterNameAndUnit = "Canopy water evaporation(W m-2)"; break;
               case 230: this.ParameterNameAndUnit = "Transpiration(W m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Agricultural/aquacultural special products
             switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
               case 192: this.ParameterNameAndUnit = "Cold Advisory for Newborn Livestock()"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Soil
@@ -1974,7 +1983,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 202: this.ParameterNameAndUnit = "Effective Radiative Skin Temperature(K)"; break;
               case 203: this.ParameterNameAndUnit = "Field Capacity(Fraction)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Fire Weather
@@ -1984,7 +1993,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 2: this.ParameterNameAndUnit = "Haines Index(Numeric)"; break;
               case 3: this.ParameterNameAndUnit = "Fire Burned Area(%)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
         }
@@ -2002,7 +2011,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 8: this.ParameterNameAndUnit = "Pixel scene type(See Table 4.218)"; break;
               case 9: this.ParameterNameAndUnit = "Fire Detection Indicator(See Table 4.223)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Quantitative
@@ -2033,7 +2042,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 192: this.ParameterNameAndUnit = "Scatterometer Estimated U Wind Component(m s-1)"; break;
               case 193: this.ParameterNameAndUnit = "Scatterometer Estimated V Wind Component(m s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 192) { // Forecast Satellite Imagery
@@ -2053,7 +2062,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 12: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 11(K)"; break;
               case 13: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 12(K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
         }
@@ -2068,7 +2077,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 4: this.ParameterNameAndUnit = "Parallel Temperature(K)"; break;
               case 5: this.ParameterNameAndUnit = "Perpendicular Temperature(K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Momentum
@@ -2078,7 +2087,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 2: this.ParameterNameAndUnit = "2nd Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
               case 3: this.ParameterNameAndUnit = "3rd Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 2) { // Charged Particle Mass and Number
@@ -2095,7 +2104,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 9: this.ParameterNameAndUnit = "Critical Frequency(Hz)"; break;
               case 10: this.ParameterNameAndUnit = "Scintillation(Numeric)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Electric and Magnetic Fields
@@ -2109,7 +2118,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 6: this.ParameterNameAndUnit = "2nd Vector Component of Electric Field(V m-1)"; break;
               case 7: this.ParameterNameAndUnit = "3rd Vector Component of Electric Field(V m-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Energetic Particles
@@ -2122,14 +2131,14 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 5: this.ParameterNameAndUnit = "Heavy Ion Flux (iIntegral)((m2 s sr)-1)"; break;
               case 6: this.ParameterNameAndUnit = "Cosmic Ray Neutron Flux(h-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
 
           else if (this.CategoryOfParametersByProductDiscipline == 5) { // Waves
             switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 6) { // Solar Electromagnetic Emissions
@@ -2142,7 +2151,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 5: this.ParameterNameAndUnit = "F10.7(W m-2 Hz-1)"; break;
               case 6: this.ParameterNameAndUnit = "Solar Radio Emissions(W m-2 Hz-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 7) { // Terrestrial Electromagnetic Emissions
@@ -2152,7 +2161,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 2: this.ParameterNameAndUnit = "Disk Intensity Day(m-2 s-1)"; break;
               case 3: this.ParameterNameAndUnit = "Disk Intensity Night(m-2 s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 8) { // Imagery
@@ -2166,7 +2175,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 6: this.ParameterNameAndUnit = "Heliospheric Radiance(W sr-1 m-2)"; break;
               case 7: this.ParameterNameAndUnit = "Thematic Mask(Numeric)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 9) { // Ion-Neutral Coupling
@@ -2175,7 +2184,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 1: this.ParameterNameAndUnit = "Hall Conductivity(S m-1)"; break;
               case 2: this.ParameterNameAndUnit = "Parallel Conductivity(S m-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
         }
@@ -2229,7 +2238,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 45: this.ParameterNameAndUnit = "Spectral Peakedness Factor(s-1)"; break;
               case 192: this.ParameterNameAndUnit = "Wave Steepness(proportion)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
 
@@ -2244,7 +2253,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 194: this.ParameterNameAndUnit = "Barotropic U velocity(m s-1)"; break;
               case 195: this.ParameterNameAndUnit = "Barotropic V velocity(m s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
 
@@ -2261,7 +2270,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 8: this.ParameterNameAndUnit = "Ice Temperature(K)"; break;
               case 9: this.ParameterNameAndUnit = "Ice Internal Pressure(Pa m)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Surface Properties
@@ -2289,7 +2298,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 249: this.ParameterNameAndUnit = "90% Tropical Cyclone Storm Surge Exceedance(m)"; break;
               case 250: this.ParameterNameAndUnit = "Extra Tropical Storm Surge Combined Surge and Tide(m)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Sub-surface Properties
@@ -2314,7 +2323,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 196: this.ParameterNameAndUnit = "Interface Depths(m)"; break;
               case 197: this.ParameterNameAndUnit = "Ocean Heat Content(J m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 191) { // Miscellaneous
@@ -2322,12 +2331,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
               case 0: this.ParameterNameAndUnit = "Seconds Prior To Initial Reference Time (Defined In Section 1)(s)"; break;
               case 1: this.ParameterNameAndUnit = "Meridional Overturning Stream Function(m3 s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
             }
           }
         }
         else {
-          this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0);
+          this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory, 0);
         }
         println(this.ParameterNameAndUnit);
 
@@ -2875,19 +2884,17 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           For each precinct, p
           Packet P(q,r,c,p) appears.
           */
-
-          var /* int */ o = 0;
+/*
+          var o = 0;
           print("CodeStream: ");
           while (!((this.fileBytes[n] == -1) && (this.fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
             //cout(this.fileBytes[n]);
-            /*
-                  print(o++);
-                  println("(" + hex(this.fileBytes[n]) + ")");
-            */
+            //print(o++);
+            //println("(" + hex(this.fileBytes[n]) + ")");
             n += 1;
           }
           println();
-
+*/
           //printing the end of grib
 
           this.printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
@@ -2899,7 +2906,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           }
           this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
-            this.DataTitles[memberID] += nf(memberID, 2);
+            this.DataTitles[memberID] += nf0(memberID, 2);
           }
 
           Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2";
@@ -2912,7 +2919,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
         else {
           this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
-            this.DataTitles[memberID] += nf(memberID, 2);
+            this.DataTitles[memberID] += nf0(memberID, 2);
           }
           Bitmap_FileName = "";
           Bitmap_FileLength = 0;
@@ -3236,7 +3243,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
           this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
-            this.DataTitles[memberID] += nf(memberID, 2);
+            this.DataTitles[memberID] += nf0(memberID, 2);
           }
           Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2"; // not a jp2 file!
           Bitmap_FileLength = 1 + Bitmap_endPointer - Bitmap_beginPointer;
@@ -3246,7 +3253,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
         else {
           this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
-            this.DataTitles[memberID] += nf(memberID, 2);
+            this.DataTitles[memberID] += nf0(memberID, 2);
           }
           Bitmap_FileName = "";
           Bitmap_FileLength = 0;
@@ -3267,7 +3274,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
           var argv = [
             "-rate",
-            nf(this.NumberOfBitsUsedForEachPackedValue, 0), // number of bits per pixel
+            nf0(this.NumberOfBitsUsedForEachPackedValue, 0), // number of bits per pixel
             "-verbose",
             "off"
           ];
