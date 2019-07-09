@@ -1,3 +1,5 @@
+// FROM: https://gist.githubusercontent.com/beradrian/e3cf8c7ec83cca45c89556404445bde5/raw/caed9db788d3668299ca7d99923f1c59c8df33c6/proxy.js
+
 /** If you want to use the local development environment with the dev backend,
  * this will create a proxy so you won't run into CORS issues.
  * It accepts the following command line parameters:
