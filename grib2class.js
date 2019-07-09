@@ -1,3 +1,7 @@
+// adapt GRIB2CLASS from grib2_solarchvision processing/java to JavaScript
+
+'use strict';
+
 /* import */ function /* Buffer */ RandomAccessFile(b, c) {};
 /* import */ function /* Buffer */ Grib2JpegDecoder(args) {};
 
@@ -218,9 +222,9 @@ module.exports = function /* class */ GRIB2CLASS() {
 
   /* float */ this.ForecastConvertedTime = null;
 
-  /* int */ TypeOfFirstFixedSurface = 0;
-  /* int */ NumberOfDataPoints = 0;
-  /* int */ DataRepresentationTemplateNumber = 0;
+  /* int */ this.TypeOfFirstFixedSurface = 0;
+  /* int */ this.NumberOfDataPoints = 0;
+  /* int */ this.DataRepresentationTemplateNumber = 0;
 
   /* float */ this.ReferenceValue = null;
   /* int */ this.BinaryScaleFactor = null;
