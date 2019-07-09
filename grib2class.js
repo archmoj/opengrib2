@@ -30,12 +30,16 @@ var /* boolean */ log = false;
 var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US"];
 
 function println(/* String */ a, /* optional String */ b) {
-  var s = (b !== undefined) ? a + ' ' + b : a;
-  console.log(s);
+  var s =
+    (a === undefined) ? '' :
+    (b === undefined) ? a : a + ' ' + b;
+  //console.log(s);
+  process.stdout.write(s + '\n');
 }
 
 function print(/* char */ c) {
-  console.log(c); // Change me! For the moment this prints with this new line!
+  //console.log(c); // Change me! For the moment this prints with this new line!
+  process.stdout.write(c);
 }
 
 function /* void */ cout(/* int */ c) {
@@ -143,9 +147,29 @@ function /* int */ getNthBit(/* Byte */ valByte, /* int */ posBit) {
   return /* (int) */ valInt;
 }
 
+
+function hex(byte) {
+  return Buffer.from([byte]).toString('hex').toUpperCase();
+}
+
+function binary(uint, n) {
+  var s = uint.toString(2);
+  var len = s.length;
+  var zeros = '';
+  for(var i = 0; i < n - len; i++) {
+    zeros += '0';
+  }
+
+  return (zeros + s).substring(0, n);
+}
+
+function /* String */ integerToBinaryString(/* int */ n) {
+  return n.toString(2);
+}
+
 function /* String */ IntToBinary32(/* int */ n) {
   var i;
-  var s1 = binary(n);
+  var s1 = integerToBinaryString(n);
   var len = s1.length;
 
   var s2 = "";
@@ -177,13 +201,6 @@ function /* float */ IEEE32(/* String */ s) {
   return v_sign * v_fraction * Math.pow(2, v_exponent);
 }
 
-function binary(uint) {
-  return uint.toString(2);
-}
-
-function hex(str) {
-  return parseInt(str, 16);
-}
 
 module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
   var TempFolder = opts.TempFolder;
@@ -2686,7 +2703,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
           Bitmap_endPointer = nPointer;
 
-          var /* int */ n = Bitmap_beginPointer;
+          var n = Bitmap_beginPointer;
 
           println(hex(this.fileBytes[n], 2), hex(this.fileBytes[n + 1], 2));  // FF 4F : Marker Start of codestream
           n += 2;
