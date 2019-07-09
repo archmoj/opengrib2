@@ -11,7 +11,7 @@ function print(/* char */ c) {
   console.log(c); // Change me! For the moment this prints with this new line!
 }
 
-function /* void */ cout (/* int */ c) {
+function /* void */ cout(/* int */ c) {
   if (!log) return;
   if (c > 31) print(char(c));
   else {
@@ -24,99 +24,99 @@ function /* void */ sout(/* String */ a) {
   if (log) println(a);
 }
 
-function /* int */ U_NUMx2 (/* int */ m2, /* int */ m1) {
- return ((m2 << 8) + m1);
+function /* int */ U_NUMx2(/* int */ m2, /* int */ m1) {
+  return ((m2 << 8) + m1);
 }
 
-function /* int */ S_NUMx2 (/* int */ m2, /* int */ m1) {
+function /* int */ S_NUMx2(/* int */ m2, /* int */ m1) {
 
- var /* long */ v = 0;
+  var /* long */ v = 0;
 
- if (m2 < 128) {
-   v = (m2 << 8) + m1;
- }
- else {
-   m2 -= 128;
-   v = (m2 << 8) + m1;
-   v *= -1;
- }
+  if (m2 < 128) {
+    v = (m2 << 8) + m1;
+  }
+  else {
+    m2 -= 128;
+    v = (m2 << 8) + m1;
+    v *= -1;
+  }
 
- return /* (int) */ v;
+  return /* (int) */ v;
 }
 
-function /* int */ U_NUMx4 (/* int */ m4, /* int */  m3, /* int */  m2, /* int */  m1) {
- return ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
+function /* int */ U_NUMx4(/* int */ m4, /* int */  m3, /* int */  m2, /* int */  m1) {
+  return ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
 }
 
-function /* int */ S_NUMx4 (/* int */ m4, /* int */ m3, /* int */m2, /* int */ m1) {
- var /* long */ v = 0;
+function /* int */ S_NUMx4(/* int */ m4, /* int */ m3, /* int */m2, /* int */ m1) {
+  var /* long */ v = 0;
 
- if (m4 < 128) {
-   v = ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
- }
- else {
-   m4 -= 128;
-   v = ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
-   v *= -1;
- }
+  if (m4 < 128) {
+    v = ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
+  }
+  else {
+    m4 -= 128;
+    v = ((m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
+    v *= -1;
+  }
 
- return /* (int) */ v;
+  return /* (int) */ v;
 }
 
-function /* long */ U_NUMx8 (/* int */ m8, /* int */ m7, /* int */ m6, /* int */ m5, /* int */ m4, /* int */ m3, /* int */ m2, /* int */ m1) {
+function /* long */ U_NUMx8(/* int */ m8, /* int */ m7, /* int */ m6, /* int */ m5, /* int */ m4, /* int */ m3, /* int */ m2, /* int */ m1) {
 
- return ((long) (m8 << 56) + (m7 << 48) + (m6 << 40) + (m5 << 32) + (m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
+  return ((long)(m8 << 56) + (m7 << 48) + (m6 << 40) + (m5 << 32) + (m4 << 24) + (m3 << 16) + (m2 << 8) + m1);
 }
 
-function /* int */ U_NUMxI (/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
+function /* int */ U_NUMxI(/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
 
-// println(m);
+  // println(m);
 
- var /* long */ v = 0;
+  var /* long */ v = 0;
 
- var len = m.length;
- for (var i = 0; i < len; i++) {
-   v += m[i] << (len - 1 - i);
- }
+  var len = m.length;
+  for (var i = 0; i < len; i++) {
+    v += m[i] << (len - 1 - i);
+  }
 
-// println(v);
+  // println(v);
 
- return /* (int) */ v;
+  return /* (int) */ v;
 }
 
-function /* int */ S_NUMxI (/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
+function /* int */ S_NUMxI(/* int[] */ m) { // note: follows reverse rule as this: int m[0], int m[1], int m[2] ...
 
-// println(m);
+  // println(m);
 
- var /* long */ v = 0;
- var v_sign = 1;
+  var /* long */ v = 0;
+  var v_sign = 1;
 
- if (m[0] < 1) {
-   v += m[0] << (m.length - 1);
- }
- else {
-   v += (m[0] - 1) << (m.length - 1);
-   v_sign = -1;
- }
+  if (m[0] < 1) {
+    v += m[0] << (m.length - 1);
+  }
+  else {
+    v += (m[0] - 1) << (m.length - 1);
+    v_sign = -1;
+  }
 
- for (var i = 1; i < m.length; i++) {
-   v += m[i] << (m.length - 1 - i);
- }
+  for (var i = 1; i < m.length; i++) {
+    v += m[i] << (m.length - 1 - i);
+  }
 
- v *= v_sign;
+  v *= v_sign;
 
-// println(v);
+  // println(v);
 
- return /* (int) */ v;
+  return /* (int) */ v;
 }
 
-function /* int */ getNthBit (/* Byte */ valByte, /* int */ posBit) {
+function /* int */ getNthBit(/* Byte */ valByte, /* int */ posBit) {
   var valInt = valByte >> (8 - (posBit + 1)) & 0x0001;
 
   return /* (int) */ valInt;
 }
 
-function /* String */ IntToBinary32 (/* int */ n) {
+function /* String */ IntToBinary32(/* int */ n) {
   var i;
   var s1 = Integer.toBinaryString(n);
 
@@ -131,7 +131,7 @@ function /* String */ IntToBinary32 (/* int */ n) {
   return s2;
 }
 
-function /* float */ IEEE32 (/* String */ s) {
+function /* float */ IEEE32(/* String */ s) {
   var /* float */ v_sign = Math.pow(-1, Integer.parseInt(s.substring(0, 1), 2));
   //println("v_sign", v_sign);
 
@@ -139,7 +139,7 @@ function /* float */ IEEE32 (/* String */ s) {
   //println("v_exponent", v_exponent);
 
   var /* float */ v_fraction = 0;
-  for(var i = 0; i < 23; i++) {
+  for (var i = 0; i < 23; i++) {
     var q = Integer.parseInt(s.substring(9 + i, 10 + i), 2);
     v_fraction += q * Math.pow(2, -(i + 1));
   }
@@ -175,7 +175,7 @@ var /* int */ gridPCF = 0;
 var /* int */ gridScanX = 0;
 var /* int */ gridScanY = 0;
 
-function /* class */ GRIB2CLASS () {
+function /* class */ GRIB2CLASS() {
   var /* String */ ParameterNameAndUnit;
   var /* String[] */ DataTitles = [];
   var /* float[][] */ DataValues;
@@ -253,24 +253,24 @@ function /* class */ GRIB2CLASS () {
   var /* byte[] */ fileBytes = [];
   var /* int */ nPointer;
 
-  function /* void */ printMore (/* int */ startN, /* int */ displayMORE) {
-    for(var i = 0; i < displayMORE; i++) {
+  function /* void */ printMore(/* int */ startN, /* int */ displayMORE) {
+    for (var i = 0; i < displayMORE; i++) {
       cout(fileBytes[startN + i]);
     }
     println();
 
-    for(var i = 0; i < displayMORE; i++) {
+    for (var i = 0; i < displayMORE; i++) {
       print("(" + hex(fileBytes[startN + i], 2) + ")");
     }
     println();
 
-    for(var i = 0; i < displayMORE; i++) {
+    for (var i = 0; i < displayMORE; i++) {
       print("[" + fileBytes[startN + i] + "]");
     }
     println();
   }
 
-  function /* int[] */ getGrib2Section (/* int */ SectionNumber) {
+  function /* int[] */ getGrib2Section(/* int */ SectionNumber) {
     println("-----------------------------");
 
     print("Section:\t");
@@ -282,7 +282,7 @@ function /* class */ GRIB2CLASS () {
     var /* int[] */ SectionNumbers = new Int32Array(nFirstBytes);
     SectionNumbers[0] = 0;
 
-    for(var j = 1; j < nFirstBytes; j += 1) {
+    for (var j = 1; j < nFirstBytes; j += 1) {
       var c = fileBytes[nPointer + j];
       if (c < 0) c += 256;
 
@@ -306,7 +306,7 @@ function /* class */ GRIB2CLASS () {
       SectionNumbers = new Int32Array(1 + lengthOfSection);
       SectionNumbers[0] = 0;
 
-      for(var j = 1; j <= lengthOfSection; j += 1) {
+      for (var j = 1; j <= lengthOfSection; j += 1) {
         var /* int */ c = fileBytes[nPointer + j];
         if (c < 0) c += 256;
 
@@ -327,7 +327,7 @@ function /* class */ GRIB2CLASS () {
       SectionNumbers[0] = 0;
     }
 
-    for(var j = 1; j < SectionNumbers.length; j += 1) {
+    for (var j = 1; j < SectionNumbers.length; j += 1) {
       //print("(" + SectionNumbers[j] +  ")");
       //print("(" + hex(SectionNumbers[j], 2) +  ")");
     }
@@ -341,7 +341,7 @@ function /* class */ GRIB2CLASS () {
     return SectionNumbers;
   }
 
-  function /* void */ readGrib2Members (/* int */ numberOfMembers) {
+  function /* void */ readGrib2Members(/* int */ numberOfMembers) {
     var /* const int */ GridDEF_NumberOfDataPoints = 7;
     var /* const int */ GridDEF_NumberOfPointsAlongTheXaxis = 31;
     var /* const int */ GridDEF_NumberOfPointsAlongTheYaxis = 35;
@@ -439,7 +439,7 @@ function /* class */ GRIB2CLASS () {
 
     nPointer = -1;
 
-    for(var memberID = 0; memberID < numberOfMembers; memberID += 1) {
+    for (var memberID = 0; memberID < numberOfMembers; memberID += 1) {
       var /* int[] */ SectionNumbers = getGrib2Section(0); // Section 0: Indicator Section
 
       if (SectionNumbers.length > 1) {
@@ -453,7 +453,7 @@ function /* class */ GRIB2CLASS () {
           case 4: println("Space Weather Products "); break;
           case 10: println("Oceanographic products"); break;
           case 255: println("Missing"); break;
-          default : println(this.DisciplineOfProcessedData); break;
+          default: println(this.DisciplineOfProcessedData); break;
         }
 
         print("Length of message:\t");
@@ -764,7 +764,7 @@ function /* class */ GRIB2CLASS () {
           case 2: println("Research products"); break;
           case 3: println("Re-analysis products"); break;
           case 255: println("Missing"); break;
-          default:  println(this.ProductionStatusOfData); break;
+          default: println(this.ProductionStatusOfData); break;
         }
 
         print("Type of data:\t");
@@ -807,7 +807,7 @@ function /* class */ GRIB2CLASS () {
           case 40: GridDEF_ScanningMode = 72; println("Gaussian latitude/longitude"); break;
           case 41: GridDEF_ScanningMode = 72; println("Rotated Gaussian latitude/longitude"); break;
           case 42: GridDEF_ScanningMode = 72; println("Stretched Gaussian latitude/longitude"); break;
-          case 43:GridDEF_ScanningMode = 72;  println("Stretched and rotated Gaussian latitude/longitude"); break;
+          case 43: GridDEF_ScanningMode = 72; println("Stretched and rotated Gaussian latitude/longitude"); break;
           case 50: println("Spherical harmonic coefficients"); break;
           case 51: println("Rotated spherical harmonic coefficients"); break;
           case 52: println("Stretched spherical harmonic coefficients"); break;
@@ -824,7 +824,7 @@ function /* class */ GRIB2CLASS () {
           case 32768: GridDEF_ScanningMode = 72; println("Rotated latitude/longitude (arakawa staggered E-grid)"); break;
           case 32769: GridDEF_ScanningMode = 72; println("Rotated latitude/longitude (arakawa non-E staggered grid)"); break;
           case 65535: println("Missing"); break;
-          default : println(this.TypeOfProjection); break;
+          default: println(this.TypeOfProjection); break;
         }
 
         print("Number of data points (Nx * Ny):\t");
@@ -1070,7 +1070,7 @@ function /* class */ GRIB2CLASS () {
           case 1100: println("Hovmoller-type grid with no averaging or other statistical processing (see Template 4.1100)"); break;
           case 1101: println("Hovmoller-type grid with averaging or other statistical processing (see Template 4.1101)"); break;
           case 65535: println("Missing"); break;
-          default : println(this.ProductDefinitionTemplateNumber); break;
+          default: println(this.ProductDefinitionTemplateNumber); break;
         }
 
         print("Category of parameters by product discipline:\t");
@@ -1100,7 +1100,7 @@ function /* class */ GRIB2CLASS () {
             case 190: println("CCITT IA5 string"); break;
             case 191: println("Miscellaneous"); break;
             case 255: println("Missing"); break;
-            default : println(this.CategoryOfParametersByProductDiscipline); break;
+            default: println(this.CategoryOfParametersByProductDiscipline); break;
           }
         }
         else {
@@ -1148,7 +1148,7 @@ function /* class */ GRIB2CLASS () {
               case 203: this.ParameterNameAndUnit = "Potential Temperature at Top of Viscous Sublayer(K)"; break;
               case 204: this.ParameterNameAndUnit = "Tropical Cyclone Heat Potential(J/m2K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Moisture
@@ -1281,7 +1281,7 @@ function /* class */ GRIB2CLASS () {
               case 241: this.ParameterNameAndUnit = "Total Snow(kg m-2)"; break;
               case 242: this.ParameterNameAndUnit = "Relative Humidity with Respect to Precipitable Water(%)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 2) { // Momentum
@@ -1357,7 +1357,7 @@ function /* class */ GRIB2CLASS () {
               case 224: this.ParameterNameAndUnit = "Ventilation Rate(m2 s-1)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Mass
@@ -1411,7 +1411,7 @@ function /* class */ GRIB2CLASS () {
               case 211: this.ParameterNameAndUnit = "Geopotential Height (nearest grid point)(gpm)"; break;
               case 212: this.ParameterNameAndUnit = "Pressure (nearest grid point)(Pa)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Short wave radiation
@@ -1446,7 +1446,7 @@ function /* class */ GRIB2CLASS () {
               case 204: this.ParameterNameAndUnit = "Downward Total Radiation Flux(W m-2)"; break;
               case 205: this.ParameterNameAndUnit = "Upward Total Radiation Flux(W m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 5) { // Long wave radiation
@@ -1465,7 +1465,7 @@ function /* class */ GRIB2CLASS () {
               case 196: this.ParameterNameAndUnit = "Clear Sky Downward Long Wave Flux(W m-2)"; break;
               case 197: this.ParameterNameAndUnit = "Cloud Forcing Net Long Wave Flux(W m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 6) { // Cloud
@@ -1517,7 +1517,7 @@ function /* class */ GRIB2CLASS () {
               case 200: this.ParameterNameAndUnit = "Convective Cloud Mass Flux(Pa s-1)"; break;
               case 201: this.ParameterNameAndUnit = "Sunshine Duration(s)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 7) { // Thermodynamic stability indices
@@ -1546,7 +1546,7 @@ function /* class */ GRIB2CLASS () {
               case 198: this.ParameterNameAndUnit = "Leaf Area Index()"; break;
               case 199: this.ParameterNameAndUnit = "Hourly Maximum of Updraft Helicity over Layer 2km to 5 km AGL(m2 s-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 13) { // Aerosols
@@ -1558,7 +1558,7 @@ function /* class */ GRIB2CLASS () {
               case 195: this.ParameterNameAndUnit = "Integrated column particulate matter (fine)(log10 (g m-3))"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 14) { // Trace gases
@@ -1579,7 +1579,7 @@ function /* class */ GRIB2CLASS () {
               case 202: this.ParameterNameAndUnit = "PM 2.5 Daily Max from 1-hour Average(g m-3)"; break;
               case 203: this.ParameterNameAndUnit = "PM 2.5 Daily Max from 24-hour Average(g m-3)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 15) { // Radar
@@ -1600,7 +1600,7 @@ function /* class */ GRIB2CLASS () {
               case 13: this.ParameterNameAndUnit = "Reflectivity of Graupel(dB)"; break;
               case 14: this.ParameterNameAndUnit = "Reflectivity of Hail(dB)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 16) { // Forecast Radar Imagery
@@ -1619,7 +1619,7 @@ function /* class */ GRIB2CLASS () {
               case 197: this.ParameterNameAndUnit = "Echo Top (See Note 1)(m)"; break;
               case 198: this.ParameterNameAndUnit = "Hourly Maximum of Simulated Reflectivity at 1 km AGL(dB)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
 
@@ -1628,7 +1628,7 @@ function /* class */ GRIB2CLASS () {
               case 192: this.ParameterNameAndUnit = "Lightning(non-dim)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 18) { // Nuclear/radiology
@@ -1648,7 +1648,7 @@ function /* class */ GRIB2CLASS () {
               case 13: this.ParameterNameAndUnit = "Total Deposition (Wet + Dry)(Bq m-2)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 19) { // Physical atmospheric Properties
@@ -1716,7 +1716,7 @@ function /* class */ GRIB2CLASS () {
               case 233: this.ParameterNameAndUnit = "Icing probability(non-dim)"; break;
               case 234: this.ParameterNameAndUnit = "Icing severity(non-dim)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 20) { // Atmospheric Chemical Constituents
@@ -1758,7 +1758,7 @@ function /* class */ GRIB2CLASS () {
               case 109: this.ParameterNameAndUnit = "Aerosol Lidar Extinction from Satellite(m-1)"; break;
               case 110: this.ParameterNameAndUnit = "Aerosol Lidar Extinction from the Ground(m-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 190) { // CCITT IA5 string
@@ -1766,7 +1766,7 @@ function /* class */ GRIB2CLASS () {
               case 0: this.ParameterNameAndUnit = "Arbitrary Text String(CCITTIA5)"; break;
 
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 191) { // Miscellaneous
@@ -1781,7 +1781,7 @@ function /* class */ GRIB2CLASS () {
               case 196: this.ParameterNameAndUnit = "Latitude (nearest neighbor) (-90 to 90)()"; break;
               case 197: this.ParameterNameAndUnit = "East Longitude (nearest neighbor) (0 to 360)()"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 192) { // Covariance
@@ -1801,7 +1801,7 @@ function /* class */ GRIB2CLASS () {
               case 13: this.ParameterNameAndUnit = "Covariance between vertical and vertical components of the wind. Defined as []-[][], where [] indicates the mean over the indicated time span.(Pa2/s2)"; break;
               case 14: this.ParameterNameAndUnit = "Covariance between temperature and temperature. Defined as [TT]-[T][T], where [] indicates the mean over the indicated time span.(K*K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
         }
@@ -1818,7 +1818,7 @@ function /* class */ GRIB2CLASS () {
               case 192: this.ParameterNameAndUnit = "Baseflow-Groundwater Runoff(kg m-2)"; break;
               case 193: this.ParameterNameAndUnit = "Storm Surface Runoff(kg m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Hydrology Probabilities
@@ -1831,7 +1831,7 @@ function /* class */ GRIB2CLASS () {
               case 194: this.ParameterNameAndUnit = "Probability of precipitation exceeding flash flood guidance values(%)"; break;
               case 195: this.ParameterNameAndUnit = "Probability of Wetting Rain, exceeding in 0.10 in a given time period(%)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 2) { // Inland Water and Sediment Properties
@@ -1850,7 +1850,7 @@ function /* class */ GRIB2CLASS () {
               case 11: this.ParameterNameAndUnit = "Attenuation Coefficient of Water with Respect to Solar Attenuation Coefficient of Water with Respect to Solar Radiation(m-1)"; break;
               case 12: this.ParameterNameAndUnit = "Salinity(kg kg-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
         }
@@ -1930,14 +1930,14 @@ function /* class */ GRIB2CLASS () {
               case 229: this.ParameterNameAndUnit = "Canopy water evaporation(W m-2)"; break;
               case 230: this.ParameterNameAndUnit = "Transpiration(W m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Agricultural/aquacultural special products
             switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
               case 192: this.ParameterNameAndUnit = "Cold Advisory for Newborn Livestock()"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Soil
@@ -1978,7 +1978,7 @@ function /* class */ GRIB2CLASS () {
               case 202: this.ParameterNameAndUnit = "Effective Radiative Skin Temperature(K)"; break;
               case 203: this.ParameterNameAndUnit = "Field Capacity(Fraction)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Fire Weather
@@ -1988,7 +1988,7 @@ function /* class */ GRIB2CLASS () {
               case 2: this.ParameterNameAndUnit = "Haines Index(Numeric)"; break;
               case 3: this.ParameterNameAndUnit = "Fire Burned Area(%)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
         }
@@ -2006,7 +2006,7 @@ function /* class */ GRIB2CLASS () {
               case 8: this.ParameterNameAndUnit = "Pixel scene type(See Table 4.218)"; break;
               case 9: this.ParameterNameAndUnit = "Fire Detection Indicator(See Table 4.223)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Quantitative
@@ -2037,7 +2037,7 @@ function /* class */ GRIB2CLASS () {
               case 192: this.ParameterNameAndUnit = "Scatterometer Estimated U Wind Component(m s-1)"; break;
               case 193: this.ParameterNameAndUnit = "Scatterometer Estimated V Wind Component(m s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 192) { // Forecast Satellite Imagery
@@ -2057,7 +2057,7 @@ function /* class */ GRIB2CLASS () {
               case 12: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 11(K)"; break;
               case 13: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 12(K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
         }
@@ -2072,7 +2072,7 @@ function /* class */ GRIB2CLASS () {
               case 4: this.ParameterNameAndUnit = "Parallel Temperature(K)"; break;
               case 5: this.ParameterNameAndUnit = "Perpendicular Temperature(K)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 1) { // Momentum
@@ -2082,7 +2082,7 @@ function /* class */ GRIB2CLASS () {
               case 2: this.ParameterNameAndUnit = "2nd Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
               case 3: this.ParameterNameAndUnit = "3rd Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 2) { // Charged Particle Mass and Number
@@ -2099,7 +2099,7 @@ function /* class */ GRIB2CLASS () {
               case 9: this.ParameterNameAndUnit = "Critical Frequency(Hz)"; break;
               case 10: this.ParameterNameAndUnit = "Scintillation(Numeric)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Electric and Magnetic Fields
@@ -2113,7 +2113,7 @@ function /* class */ GRIB2CLASS () {
               case 6: this.ParameterNameAndUnit = "2nd Vector Component of Electric Field(V m-1)"; break;
               case 7: this.ParameterNameAndUnit = "3rd Vector Component of Electric Field(V m-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Energetic Particles
@@ -2126,14 +2126,14 @@ function /* class */ GRIB2CLASS () {
               case 5: this.ParameterNameAndUnit = "Heavy Ion Flux (iIntegral)((m2 s sr)-1)"; break;
               case 6: this.ParameterNameAndUnit = "Cosmic Ray Neutron Flux(h-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
 
           else if (this.CategoryOfParametersByProductDiscipline == 5) { // Waves
             switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 6) { // Solar Electromagnetic Emissions
@@ -2146,7 +2146,7 @@ function /* class */ GRIB2CLASS () {
               case 5: this.ParameterNameAndUnit = "F10.7(W m-2 Hz-1)"; break;
               case 6: this.ParameterNameAndUnit = "Solar Radio Emissions(W m-2 Hz-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 7) { // Terrestrial Electromagnetic Emissions
@@ -2156,7 +2156,7 @@ function /* class */ GRIB2CLASS () {
               case 2: this.ParameterNameAndUnit = "Disk Intensity Day(m-2 s-1)"; break;
               case 3: this.ParameterNameAndUnit = "Disk Intensity Night(m-2 s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 8) { // Imagery
@@ -2170,7 +2170,7 @@ function /* class */ GRIB2CLASS () {
               case 6: this.ParameterNameAndUnit = "Heliospheric Radiance(W sr-1 m-2)"; break;
               case 7: this.ParameterNameAndUnit = "Thematic Mask(Numeric)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 9) { // Ion-Neutral Coupling
@@ -2179,7 +2179,7 @@ function /* class */ GRIB2CLASS () {
               case 1: this.ParameterNameAndUnit = "Hall Conductivity(S m-1)"; break;
               case 2: this.ParameterNameAndUnit = "Parallel Conductivity(S m-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
         }
@@ -2233,7 +2233,7 @@ function /* class */ GRIB2CLASS () {
               case 45: this.ParameterNameAndUnit = "Spectral Peakedness Factor(s-1)"; break;
               case 192: this.ParameterNameAndUnit = "Wave Steepness(proportion)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
 
@@ -2248,7 +2248,7 @@ function /* class */ GRIB2CLASS () {
               case 194: this.ParameterNameAndUnit = "Barotropic U velocity(m s-1)"; break;
               case 195: this.ParameterNameAndUnit = "Barotropic V velocity(m s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
 
@@ -2265,7 +2265,7 @@ function /* class */ GRIB2CLASS () {
               case 8: this.ParameterNameAndUnit = "Ice Temperature(K)"; break;
               case 9: this.ParameterNameAndUnit = "Ice Internal Pressure(Pa m)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 3) { // Surface Properties
@@ -2293,7 +2293,7 @@ function /* class */ GRIB2CLASS () {
               case 249: this.ParameterNameAndUnit = "90% Tropical Cyclone Storm Surge Exceedance(m)"; break;
               case 250: this.ParameterNameAndUnit = "Extra Tropical Storm Surge Combined Surge and Tide(m)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 4) { // Sub-surface Properties
@@ -2318,7 +2318,7 @@ function /* class */ GRIB2CLASS () {
               case 196: this.ParameterNameAndUnit = "Interface Depths(m)"; break;
               case 197: this.ParameterNameAndUnit = "Ocean Heat Content(J m-2)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
           else if (this.CategoryOfParametersByProductDiscipline == 191) { // Miscellaneous
@@ -2326,7 +2326,7 @@ function /* class */ GRIB2CLASS () {
               case 0: this.ParameterNameAndUnit = "Seconds Prior To Initial Reference Time (Defined In Section 1)(s)"; break;
               case 1: this.ParameterNameAndUnit = "Meridional Overturning Stream Function(m3 s-1)"; break;
               case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default : this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
+              default: this.ParameterNameAndUnit = nf(this.ParameterNumberByProductDisciplineAndParameterCategory, 0); break;
             }
           }
         }
@@ -2346,8 +2346,8 @@ function /* class */ GRIB2CLASS () {
           case 3: println("Month"); DayPortion = 30.5 * 24; break;
           case 4: println("Year"); DayPortion = 365 * 24; break;
           case 5: println("Decade (10 years)"); DayPortion = 10 * 365 * 24; break;
-          case 6: println("Normal (30 years)"); DayPortion = 30 * 365 * 24;break;
-          case 7: println("Century (100 years)"); DayPortion = 100 * 365 * 24;break;
+          case 6: println("Normal (30 years)"); DayPortion = 30 * 365 * 24; break;
+          case 7: println("Century (100 years)"); DayPortion = 100 * 365 * 24; break;
           case 10: println("3 hours"); DayPortion = 3; break;
           case 11: println("6 hours"); DayPortion = 6; break;
           case 12: println("12 hours"); DayPortion = 12; break;
@@ -2501,7 +2501,7 @@ function /* class */ GRIB2CLASS () {
           case 51: println("Spherical harmonics data - complex packing"); break;
           case 61: println("Grid point data - simple packing with logarithm pre-processing"); break;
           case 65535: println("Missing"); break;
-          default : println(this.DataRepresentationTemplateNumber); break;
+          default: println(this.DataRepresentationTemplateNumber); break;
         }
 
         print("Reference value (R):\t");
@@ -2550,7 +2550,7 @@ function /* class */ GRIB2CLASS () {
           //where depth is specified in octet 20 and number of data points is specified in octets 6-9 of the Data Representation Section.
         }
         else if ((this.DataRepresentationTemplateNumber == 2) || // Grid point data - complex packing
-                 (this.DataRepresentationTemplateNumber == 3)) { // Grid point data - complex packing and spatial differencing
+          (this.DataRepresentationTemplateNumber == 3)) { // Grid point data - complex packing and spatial differencing
 
           print("ComplexPacking/Type of Compression:\t");
           ComplexPacking_GroupSplittingMethodUsed = SectionNumbers[22];
@@ -2638,7 +2638,7 @@ function /* class */ GRIB2CLASS () {
           case 0: println("A bit map applies to this product and is specified in this Section."); break;
           case 254: println("A bit map defined previously in the same GRIB message applies to this product."); break;
           case 255: println("A bit map does not apply to this product."); break;
-          default : println("A bit map pre-determined by the originating/generating Centre applies to this product and is not specified in this Section."); break;
+          default: println("A bit map pre-determined by the originating/generating Centre applies to this product and is not specified in this Section."); break;
         }
 
         if (Bitmap_Indicator == 0) { // A bit map applies to this product and is specified in this Section.
@@ -2647,10 +2647,10 @@ function /* class */ GRIB2CLASS () {
 
           println(">>>>> NullBitmapFlags.length", this.NullBitmapFlags.length);
 
-          for(var i = 0; i < SectionNumbers.length - 7; i++) {
+          for (var i = 0; i < SectionNumbers.length - 7; i++) {
             var /* String */ b = binary(SectionNumbers[7 + i], 8);
 
-            for(var j = 0; j < 8; j++) {
+            for (var j = 0; j < 8; j++) {
               this.NullBitmapFlags[i * 8 + j] = int(b.substring(j, j + 1));
             }
           }
@@ -2752,7 +2752,7 @@ function /* class */ GRIB2CLASS () {
             n += 2;
 
             print("Comment: ");
-            for(var i = 0; i < JPEG2000_Lcom - 4; i++) {
+            for (var i = 0; i < JPEG2000_Lcom - 4; i++) {
               cout(fileBytes[n]);
               n += 1;
             }
@@ -2809,11 +2809,11 @@ function /* class */ GRIB2CLASS () {
           println("JPEG2000_SPcod_Transformation =", JPEG2000_SPcod_Transformation); // Wavelet transformation used
           n += 1;
 
-      //Ii through In: Precinct sizePrecinct size
-      //If Scod or Scoc = xxxx xxx0, this parameter is not presen; otherwise
-      //this indicates precinct width and height. The first parameter (8 bits)
-      //corresponds to the NLLL sub-band. Each successive parameter
-      //corresponds to each successive resolution level in order.
+          //Ii through In: Precinct sizePrecinct size
+          //If Scod or Scoc = xxxx xxx0, this parameter is not presen; otherwise
+          //this indicates precinct width and height. The first parameter (8 bits)
+          //corresponds to the NLLL sub-band. Each successive parameter
+          //corresponds to each successive resolution level in order.
 
           println(hex(fileBytes[n], 2), hex(fileBytes[n + 1], 2));  // FF 5C : Marker Quantization default
           n += 2;
@@ -2863,39 +2863,39 @@ function /* class */ GRIB2CLASS () {
 
           //printMore(n, 100); // <<<<<<<<<<<<<<<<<<<<
 
-      /*
+          /*
 
-      see page 84: Annex D
-      Coefficient bit modeling
+          see page 84: Annex D
+          Coefficient bit modeling
 
-        see page 174
+            see page 174
 
-      L-R-C-P: For each quality layer q = 0, …, LYEpoc - 1
-      For each resolution delta r = RSpoc, …, REpoc-1
-      For each component, c=CSpoc, …, CEpoc-1
-      For each precinct, p
-      Packet P(q,r,c,p) appears.
-      */
+          L-R-C-P: For each quality layer q = 0, …, LYEpoc - 1
+          For each resolution delta r = RSpoc, …, REpoc-1
+          For each component, c=CSpoc, …, CEpoc-1
+          For each precinct, p
+          Packet P(q,r,c,p) appears.
+          */
 
           var /* int */ o = 0;
           print("CodeStream: ");
           while (!((fileBytes[n] == -1) && (fileBytes[n + 1] == -39))) { // note: If the Psot is 0 we need another algorithm to read because in that case the tile-part is assumed to contain all data until the EOC marker.
             //cout(fileBytes[n]);
-      /*
-            print(o++);
-            println("(" + hex(fileBytes[n]) + ")");
-      */
+            /*
+                  print(o++);
+                  println("(" + hex(fileBytes[n]) + ")");
+            */
             n += 1;
           }
           println();
 
-           //printing the end of grib
+          //printing the end of grib
 
-           printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
-           n += 2;
+          printMore(n, 2); // <<<<<<<<<<<<<<<<<<<<
+          n += 2;
 
           var /* byte[] */ imageBytes = new Int8Array(1 + Bitmap_endPointer - Bitmap_beginPointer);
-          for(var i = 0; i < imageBytes.length; i++) {
+          for (var i = 0; i < imageBytes.length; i++) {
             imageBytes[i] = fileBytes[i + Bitmap_beginPointer];
           }
           this.DataTitles[memberID] = DATA_Filename.replace(".grib2", "");
@@ -2922,8 +2922,8 @@ function /* class */ GRIB2CLASS () {
 
       else if ((this.DataRepresentationTemplateNumber == 0) || // Grid point data - simple packing
 
-               (this.DataRepresentationTemplateNumber == 2) || // Grid point data - complex packing
-               (this.DataRepresentationTemplateNumber == 3)) { // Grid point data - complex packing and spatial differencing
+        (this.DataRepresentationTemplateNumber == 2) || // Grid point data - complex packing
+        (this.DataRepresentationTemplateNumber == 3)) { // Grid point data - complex packing and spatial differencing
 
         Bitmap_beginPointer = nPointer + 6;
 
@@ -2943,9 +2943,9 @@ function /* class */ GRIB2CLASS () {
 
             data = new float32(this.NumberOfDataPoints);
 
-            for(var i = 0; i < this.NumberOfDataPoints; i++) {
+            for (var i = 0; i < this.NumberOfDataPoints; i++) {
               var /* int[] */ m = new Int32Array(this.NumberOfBitsUsedForEachPackedValue);
-              for(var j = 0; j < m.length; j++) {
+              for (var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -2958,7 +2958,7 @@ function /* class */ GRIB2CLASS () {
           }
 
           if ((this.DataRepresentationTemplateNumber == 2) || // Grid point data - complex packing
-              (this.DataRepresentationTemplateNumber == 3)) { // Grid point data - complex packing and spatial differencing
+            (this.DataRepresentationTemplateNumber == 3)) { // Grid point data - complex packing and spatial differencing
 
             println();
             println("First value(s) of original (undifferenced) scaled data values, followed by the overall minimum of the differences.");
@@ -2969,7 +2969,7 @@ function /* class */ GRIB2CLASS () {
 
             {
               var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
-              for(var j = 0; j < m.length; j++) {
+              for (var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
 
                 b += 1;
@@ -2985,7 +2985,7 @@ function /* class */ GRIB2CLASS () {
             if (ComplexPacking_OrderOfSpatialDifferencing == 2) { //second order spatial differencing
 
               var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
-              for(var j = 0; j < m.length; j++) {
+              for (var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -2999,7 +2999,7 @@ function /* class */ GRIB2CLASS () {
 
             {
               var /* int[] */ m = new Int32Array(8 * ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
-              for(var j = 0; j < m.length; j++) {
+              for (var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -3015,9 +3015,9 @@ function /* class */ GRIB2CLASS () {
             // read the group reference values
             var /* int[] */ group_refs = new Int32Array(ComplexPacking_NumberOfGroupsOfDataValues);
 
-            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+            for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               var /* int[] */ m = new Int32Array(this.NumberOfBitsUsedForEachPackedValue);
-              for(var j = 0; j < m.length; j++) {
+              for (var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -3038,9 +3038,9 @@ function /* class */ GRIB2CLASS () {
             // read the group widths
             var /* int[] */ group_widths = new Int32Array(ComplexPacking_NumberOfGroupsOfDataValues);
 
-            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+            for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               var /* int[] */ m = new Int32Array(ComplexPacking_NumberOfBitsUsedForGroupWidths);
-              for(var j = 0; j < m.length; j++) {
+              for (var j = 0; j < m.length; j++) {
                 m[j] = getNthBit(fileBytes[nPointer], b);
                 b += 1;
                 if (b == 8) {
@@ -3064,9 +3064,9 @@ function /* class */ GRIB2CLASS () {
             var /* int[] */ group_lengths = new Int32Array(ComplexPacking_NumberOfGroupsOfDataValues);
 
             if (ComplexPacking_GroupSplittingMethodUsed == 1) {
-              for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+              for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
                 var /* int[] */ m = new Int32Array(ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths);
-                for(var j = 0; j < m.length; j++) {
+                for (var j = 0; j < m.length; j++) {
                   m[j] = getNthBit(fileBytes[nPointer], b);
                   b += 1;
                   if (b == 8) {
@@ -3093,11 +3093,11 @@ function /* class */ GRIB2CLASS () {
 
             // check
             var /* int */ total = 0;
-            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+            for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               total += group_lengths[i];
             }
             if (total != this.NumberOfDataPoints) {
-            //if (total != this.Np) {
+              //if (total != this.Np) {
               println("Error: Size mismatch!");
             }
 
@@ -3105,11 +3105,11 @@ function /* class */ GRIB2CLASS () {
 
             var /* int */ count = 0;
 
-            for(var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
+            for (var i = 0; i < ComplexPacking_NumberOfGroupsOfDataValues; i++) {
               if (group_widths[i] != 0) {
-                for(var j = 0; j < group_lengths[i]; j++) {
+                for (var j = 0; j < group_lengths[i]; j++) {
                   var /* int[] */ m = new Int32Array(group_widths[i]);
-                  for(var k = 0; k < m.length; k++) {
+                  for (var k = 0; k < m.length; k++) {
                     m[k] = getNthBit(fileBytes[nPointer], b);
                     b += 1;
                     if (b == 8) {
@@ -3124,7 +3124,7 @@ function /* class */ GRIB2CLASS () {
                 }
               }
               else {
-                for(var j = 0; j < group_lengths[i]; j++) {
+                for (var j = 0; j < group_lengths[i]; j++) {
                   data[count] = group_refs[i];
 
                   count += 1;
@@ -3138,7 +3138,7 @@ function /* class */ GRIB2CLASS () {
               // spatial differencing
               if (ComplexPacking_OrderOfSpatialDifferencing == 1) { // case of first order
                 data[0] = FirstValues1;
-                for(var i = 1; i < total; i++) {
+                for (var i = 1; i < total; i++) {
                   data[i] += OverallMinimumOfTheDifferences;
                   data[i] = data[i] + data[i - 1];
                 }
@@ -3146,7 +3146,7 @@ function /* class */ GRIB2CLASS () {
               else if (ComplexPacking_OrderOfSpatialDifferencing == 2) { // case of second order
                 data[0] = FirstValues1;
                 data[1] = FirstValues2;
-                for(var i = 2; i < total; i++) {
+                for (var i = 2; i < total; i++) {
                   data[i] += OverallMinimumOfTheDifferences;
                   data[i] = data[i] + (2 * data[i - 1]) - data[i - 2];
                 }
@@ -3164,8 +3164,8 @@ function /* class */ GRIB2CLASS () {
             var /* float */ tmp;
             var /* int */ mid = int(this.Nx / 2);
             //println( "this.Nx =" +this.Nx +" mid ="+ mid );
-            for(var index = 0; index < data.length; index += this.Nx) {
-              for(var idx = 0; idx < mid; idx++) {
+            for (var index = 0; index < data.length; index += this.Nx) {
+              for (var idx = 0; idx < mid; idx++) {
                 tmp = data[index + idx];
                 data[index + idx] = data[index + this.Nx - idx - 1];
                 data[index + this.Nx - idx - 1] = tmp;
@@ -3179,10 +3179,10 @@ function /* class */ GRIB2CLASS () {
             var /* float */ tmp;
             var /* int */ mid = int(this.Nx / 2);
             //println( "this.Nx =" +this.Nx +" mid ="+ mid );
-            for(var index = 0; index < data.length; index += this.Nx) {
+            for (var index = 0; index < data.length; index += this.Nx) {
               var /* int */ row = int(index / this.Nx);
               if (row % 2 == 1) {  // odd numbered row, calculate reverse index
-                for(var idx = 0; idx < mid; idx++) {
+                for (var idx = 0; idx < mid; idx++) {
                   tmp = data[index + idx];
                   data[index + idx] = data[index + this.Nx - idx - 1];
                   data[index + this.Nx - idx - 1] = tmp;
@@ -3214,7 +3214,7 @@ function /* class */ GRIB2CLASS () {
           if (Bitmap_Indicator == 0) { // A bit map applies to this product
 
             var /* int */ i = -1;
-            for(var q = 0; q < this.Nx * this.Ny; q++) {
+            for (var q = 0; q < this.Nx * this.Ny; q++) {
               if (this.NullBitmapFlags[q] == 0) {
                 this.DataValues[memberID][q] = FLOAT_undefined;
               }
@@ -3226,7 +3226,7 @@ function /* class */ GRIB2CLASS () {
             }
           }
           else {
-            for(var q = 0; q < this.Nx * this.Ny; q++) {
+            for (var q = 0; q < this.Nx * this.Ny; q++) {
               var /* int */ i = q;
 
               this.DataValues[memberID][q] = ((data[i] * BB) + RR) / DD;
@@ -3290,7 +3290,7 @@ function /* class */ GRIB2CLASS () {
           if (Bitmap_Indicator == 0) { // A bit map applies to this product
 
             var /* int */ i = -1;
-            for(var q = 0; q < this.Nx * this.Ny; q++) {
+            for (var q = 0; q < this.Nx * this.Ny; q++) {
               if (this.NullBitmapFlags[q] == 0) {
                 this.DataValues[memberID][q] = FLOAT_undefined;
               }
@@ -3302,7 +3302,7 @@ function /* class */ GRIB2CLASS () {
             }
           }
           else {
-            for(var q = 0; q < this.Nx * this.Ny; q++) {
+            for (var q = 0; q < this.Nx * this.Ny; q++) {
               var /* int */ i = q;
 
               this.DataValues[memberID][q] = ((g2j.data[i] * BB) + RR) / DD;
