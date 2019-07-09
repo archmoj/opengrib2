@@ -152,106 +152,82 @@ function /* float */ IEEE32(/* String */ s) {
   return v_sign * v_fraction * Math.pow(2, v_exponent);
 }
 
-var /* int */ gridTypeOfProjection = 0;
 
-var /* int */ gridNx = 0;
-var /* int */ gridNy = 0;
+module.exports = function /* class */ GRIB2CLASS() {
 
-var /* float */ gridLa1 = -90;
-var /* float */ gridLo1 = -180;
-var /* float */ gridLa2 = 90;
-var /* float */ gridLo2 = 180;
+  /* String */ this.ParameterNameAndUnit = null;
+  /* String[] */ this.DataTitles = [];
+  /* float[][] */ this.DataValues = null;
+  /* boolean */ this.DataAllocated = false;
 
-var /* float */ gridLaD = 0;
-var /* float */ gridLoV = 0;
-var /* float */ gridDx = 1;
-var /* float */ gridDy = 1;
+  /* int */ this.DisciplineOfProcessedData = 0;
+  /* long */ this.LengthOfMessage = 0;
+  /* int */ this.IdentificationOfCentre = 0;
+  /* int */ this.IdentificationOfSubCentre = 0;
+  /* int */ this.MasterTablesVersionNumber = 0;
+  /* int */ this.LocalTablesVersionNumber = 0;
+  /* int */ this.SignificanceOfReferenceTime = 0;
+  /* int */ this.Year = null;
+  /* int */ this.Month = null;
+  /* int */ this.Day = null;
+  /* int */ this.Hour = null;
+  /* int */ this.Minute = null;
+  /* int */ this.Second = null;
+  /* int */ this.ProductionStatusOfData = 0;
+  /* int */ this.TypeOfData = 0;
 
-var /* float */ gridFirstLatIn = 0;
-var /* float */ gridSecondLatIn = 0;
-var /* float */ gridSouthLat = 0;
-var /* float */ gridSouthLon = 0;
-var /* float */ gridRotation = 0;
+  /* int */ this.TypeOfProjection = 0;
 
-var /* int */ gridPCF = 0;
+  /* int */ this.Np = 0;
+  /* int */ this.Nx = 0;
+  /* int */ this.Ny = 0;
 
-var /* int */ gridScanX = 0;
-var /* int */ gridScanY = 0;
+  /* int */ this.ResolutionAndComponentFlags = 0;
 
-function /* class */ GRIB2CLASS() {
-  var /* String */ ParameterNameAndUnit;
-  var /* String[] */ DataTitles = [];
-  var /* float[][] */ DataValues;
-  var /* boolean */ DataAllocated = false;
+  /* float */ this.La1 = -90;
+  /* float */ this.Lo1 = -180;
+  /* float */ this.La2 = 90;
+  /* float */ this.Lo2 = 180;
 
-  var /* int */ DisciplineOfProcessedData = 0;
-  var /* long */ LengthOfMessage = 0;
-  var /* int */ IdentificationOfCentre = 0;
-  var /* int */ IdentificationOfSubCentre = 0;
-  var /* int */ MasterTablesVersionNumber = 0;
-  var /* int */ LocalTablesVersionNumber = 0;
-  var /* int */ SignificanceOfReferenceTime = 0;
-  var /* int */ Year;
-  var /* int */ Month;
-  var /* int */ Day;
-  var /* int */ Hour;
-  var /* int */ Minute;
-  var /* int */ Second;
-  var /* int */ ProductionStatusOfData = 0;
-  var /* int */ TypeOfData = 0;
+  /* float */ this.LaD = 0;
+  /* float */ this.LoV = 0;
+  /* float */ this.Dx = 1;
+  /* float */ this.Dy = 1;
 
-  var /* int */ TypeOfProjection = 0;
+  /* float */ this.FirstLatIn = 0;
+  /* float */ this.SecondLatIn = 0;
+  /* float */ this.SouthLat = 0;
+  /* float */ this.SouthLon = 0;
+  /* float */ this.Rotation = 0;
 
-  var /* int */ Np = 0;
-  var /* int */ Nx = 0;
-  var /* int */ Ny = 0;
+  /* int */ this.PCF = 0;
 
-  var /* int */ ResolutionAndComponentFlags = 0;
+  /* int */ this.ScanX = 0;
+  /* int */ this.ScanY = 0;
 
-  var /* float */ La1 = -90;
-  var /* float */ Lo1 = -180;
-  var /* float */ La2 = 90;
-  var /* float */ Lo2 = 180;
+  /* String */ this.Flag_BitNumbers = "00000000";
+  /* int */ this.ScanningMode = 0;
+  /* String */ this.Mode_BitNumbers = "00000000";
 
-  var /* float */ LaD = 0;
-  var /* float */ LoV = 0;
-  var /* float */ Dx = 1;
-  var /* float */ Dy = 1;
+  /* int */ this.NumberOfCoordinateValuesAfterTemplate = 0;
+  /* int */ this.ProductDefinitionTemplateNumber = 0;
+  /* int */ this.CategoryOfParametersByProductDiscipline = 0;
+  /* int */ this.ParameterNumberByProductDisciplineAndParameterCategory = 0;
+  /* int */ this.IndicatorOfUnitOfTimeRange = 0;
+  /* int */ this.ForecastTimeInDefinedUnits = 0;
 
-  var /* float */ FirstLatIn = 0;
-  var /* float */ SecondLatIn = 0;
-  var /* float */ SouthLat = 0;
-  var /* float */ SouthLon = 0;
-  var /* float */ Rotation = 0;
+  /* float */ this.ForecastConvertedTime = null;
 
-  var /* int */ PCF = 0;
+  /* int */ TypeOfFirstFixedSurface = 0;
+  /* int */ NumberOfDataPoints = 0;
+  /* int */ DataRepresentationTemplateNumber = 0;
 
-  var /* int */ ScanX = 0;
-  var /* int */ ScanY = 0;
+  /* float */ this.ReferenceValue = null;
+  /* int */ this.BinaryScaleFactor = null;
+  /* int */ this.DecimalScaleFactor = null;
+  /* int */ this.NumberOfBitsUsedForEachPackedValue = null;
 
-  var /* String */ Flag_BitNumbers = "00000000";
-  var /* int */ ScanningMode = 0;
-  var /* String */ Mode_BitNumbers = "00000000";
-
-  var /* int */ NumberOfCoordinateValuesAfterTemplate = 0;
-  var /* int */ ProductDefinitionTemplateNumber = 0;
-  var /* int */ CategoryOfParametersByProductDiscipline = 0;
-  var /* int */ ParameterNumberByProductDisciplineAndParameterCategory = 0;
-  var /* int */ IndicatorOfUnitOfTimeRange = 0;
-  var /* int */ ForecastTimeInDefinedUnits = 0;
-
-  var /* float */ ForecastConvertedTime;
-
-  var /* int */ TypeOfFirstFixedSurface = 0;
-  var /* int */ NumberOfDataPoints = 0;
-  var /* int */ DataRepresentationTemplateNumber = 0;
-
-  var /* float */ ReferenceValue;
-  var /* int */ BinaryScaleFactor;
-  var /* int */ DecimalScaleFactor;
-  var /* int */ NumberOfBitsUsedForEachPackedValue;
-
-  var /* int[] */ NullBitmapFlags;
+  /* int[] */ this.NullBitmapFlags = null;
 
   var /* byte[] */ fileBytes = [];
   var /* int */ nPointer;
@@ -3318,4 +3294,4 @@ function /* class */ GRIB2CLASS() {
       }
     }
   }
-}
+};
