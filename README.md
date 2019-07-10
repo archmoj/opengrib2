@@ -19,7 +19,15 @@ This repo offers two demos:
 - one "local" demo, where MSC grib2 files are downloaded and served up locally.
   We decode and plot the grib2 data in the client.
 
-Prequisites: Node.js, npm and a "modern" browser.
+
+##### Prequisites
+
+Node.js, npm and a "modern" browser.
+
+##### Known limitation
+
+- We don't draw a basemap (i.e the coastline overlay) on top of "regional" grib2 data
+- We only draw one ensemble member, even though we decode them all
 
 ## How to run the "local" demo
 
@@ -60,7 +68,6 @@ for "all-client-side" demo:
 - run `npm run build:license_list`
 
 ----------
-
 
 Shoutouts to [Plotly](https://plot.ly/) for letting us take part of this
 hackathon :tada:
