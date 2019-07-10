@@ -1,25 +1,25 @@
 'use strict';
 
 var nf0 = require('./nf0');
-var logger = require('./logger');
-var println = logger.println;
+var println = require('./logger').println;
 
-function whichIs(q, io) {
+function seek(key, io) {
     var last = io.length - 1;
     for (var i = 0; i < last; i++) {
-        if (q === io[0]) return io[1];
+        if (key === io[i][0]) return io[i][1];
     }
-    return io[last]; // i.e defualt
+    return io[last][1]; // i.e defualt
 }
 
-function echo(q, io) {
+function echo(key, io) {
     return println(
-        whichIs(q, io)
+        seek(key, io)
     );
 }
 
-exports.DisciplineOfProcessedData = function (q) {
-    return echo(q, [
+exports.DisciplineOfProcessedData = function (obj) {
+    var key = obj.DisciplineOfProcessedData;
+    obj.meta.DisciplineOfProcessedData = echo(key, [
         [0, "Meteorological products"],
         [1, "Hydrological products"],
         [2, "Land surface products"],
@@ -27,12 +27,13 @@ exports.DisciplineOfProcessedData = function (q) {
         [4, "Space Weather Products "],
         [10, "Oceanographic products"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.IdentificationOfCentre = function (q) {
-    return echo(q, [
+exports.IdentificationOfCentre = function (obj) {
+    var key = obj.IdentificationOfCentre;
+    obj.meta.IdentificationOfCentre = echo(key, [
         [0, "WMO Secretariat"],
         [1, "Melbourne"],
         [2, "Melbourne"],
@@ -245,19 +246,21 @@ exports.IdentificationOfCentre = function (q) {
         [252, "Max Planck Institute for Meteorology (MPI-M)"],
         [254, "EUMETSAT Operation Centre"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.IdentificationOfSubCentre = function (q) {
-    return echo(q, [
+exports.IdentificationOfSubCentre = function (obj) {
+    var key = obj.IdentificationOfSubCentre
+    obj.meta.IdentificationOfSubCentre = echo(key, [
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.MasterTablesVersionNumber = function (q) {
-    return echo(q, [
+exports.MasterTablesVersionNumber = function (obj) {
+    var key = obj.MasterTablesVersionNumber;
+    obj.meta.MasterTablesVersionNumber = echo(key, [
         [0, "Experimental"],
         [1, "Version implemented on 7 November 2001"],
         [2, "Version implemented on 4 November 2003"],
@@ -276,42 +279,46 @@ exports.MasterTablesVersionNumber = function (q) {
         [15, "Version Implemented on 6 May 2015"],
         [16, "Pre-operational to be implemented by next amendment"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.LocalTablesVersionNumber = function (q) {
-    return echo(q, [
+exports.LocalTablesVersionNumber = function (obj) {
+    var key = obj.LocalTablesVersionNumber;
+    obj.meta.LocalTablesVersionNumber = echo(key, [
         [0, "Local tables not used. Only table entries and templates from the current Master table are valid."],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.SignificanceOfReferenceTime = function (q) {
-    return echo(q, [
+exports.SignificanceOfReferenceTime = function (obj) {
+    var key = obj.SignificanceOfReferenceTime;
+    obj.meta.SignificanceOfReferenceTime = echo(key, [
         [0, "Analysis"],
         [1, "Start of forecast"],
         [2, "Verifying time of forecast"],
         [3, "Observation time"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.ProductionStatusOfData = function (q) {
-    return echo(q, [
+exports.ProductionStatusOfData = function (obj) {
+    var key = obj.ProductionStatusOfData;
+    obj.meta.ProductionStatusOfData = echo(key, [
         [0, "Operational products"],
         [1, "Operational test products"],
         [2, "Research products"],
         [3, "Re-analysis products"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.TypeOfData = function (q) {
-    return echo(q, [
+exports.TypeOfData = function (obj) {
+    var key = obj.TypeOfData;
+    obj.meta.TypeOfData = echo(key, [
         [0, "Analysis products"],
         [1, "Forecast products"],
         [2, "Analysis and forecast products"],
@@ -321,12 +328,13 @@ exports.TypeOfData = function (q) {
         [6, "Processed satellite observations"],
         [7, "Processed radar observations"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.ProductDefinitionTemplateNumber = function (q) {
-    return echo(q, [
+exports.ProductDefinitionTemplateNumber = function (obj) {
+    var key = obj.ProductDefinitionTemplateNumber;
+    obj.meta.ProductDefinitionTemplateNumber = echo(key, [
         [0, "Analysis or forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.0)"],
         [1, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time. (see Template 4.1)"],
         [2, "Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer at a point in time. (see Template 4.2)"],
@@ -365,12 +373,13 @@ exports.ProductDefinitionTemplateNumber = function (q) {
         [1100, "Hovmoller-type grid with no averaging or other statistical processing (see Template 4.1100)"],
         [1101, "Hovmoller-type grid with averaging or other statistical processing (see Template 4.1101)"],
         [65535, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.TypeOfFirstFixedSurface = function (q) {
-    return echo(q, [
+exports.TypeOfFirstFixedSurface = function (obj) {
+    var key = obj.TypeOfFirstFixedSurface;
+    obj.meta.TypeOfFirstFixedSurface = echo(key, [
         [1, "Ground or Water Surface"],
         [2, "Cloud Base Level"],
         [3, "Level of Cloud Tops"],
@@ -448,12 +457,13 @@ exports.TypeOfFirstFixedSurface = function (q) {
         [253, "Lowest bottom level of supercooled liquid water layer"],
         [254, "Highest top level of supercooled liquid water layer"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.DataRepresentationTemplateNumber = function (q) {
-    return echo(q, [
+exports.DataRepresentationTemplateNumber = function (obj) {
+    var key = obj.DataRepresentationTemplateNumber;
+    obj.meta.DataRepresentationTemplateNumber = echo(key, [
         [0, "Grid point data - simple packing"],
         [1, "Matrix value - simple packing"],
         [2, "Grid point data - complex packing"],
@@ -465,21 +475,23 @@ exports.DataRepresentationTemplateNumber = function (q) {
         [51, "Spherical harmonics data - complex packing"],
         [61, "Grid point data - simple packing with logarithm pre-processing"],
         [65535, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.Bitmap_Indicator = function (q) {
-    return echo(q, [
+exports.Bitmap_Indicator = function (obj) {
+    var key = obj.Bitmap_Indicator;
+    obj.meta.Bitmap_Indicator = echo(key, [
         [0, "A bit map applies to this product and is specified in this Section."],
         [254, "A bit map defined previously in the same GRIB message applies to this product."],
         [255, "A bit map does not apply to this product."],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.CategoryOfParametersByProductDiscipline = function (q) {
-    return echo(q, [
+exports.CategoryOfParametersByProductDiscipline = function (obj) {
+    var key = obj.CategoryOfParametersByProductDiscipline;
+    obj.meta.CategoryOfParametersByProductDiscipline = echo(key, [
         [0, "Temperature"],
         [1, "Moisture"],
         [2, "Momentum"],
@@ -503,12 +515,13 @@ exports.CategoryOfParametersByProductDiscipline = function (q) {
         [190, "CCITT IA5 string"],
         [191, "Miscellaneous"],
         [255, "Missing"],
-        [null, q]
+        [null, key]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_0 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_0 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Temperature(K)"],
         [1, "Virtual Temperature(K)"],
         [2, "Potential Temperature(K)"],
@@ -544,12 +557,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_0 = function (q
         [203, "Potential Temperature at Top of Viscous Sublayer(K)"],
         [204, "Tropical Cyclone Heat Potential(J/m2K)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_1 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_1 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Specific Humidity(kg kg-1)"],
         [1, "Relative Humidity(%)"],
         [2, "Humidity Mixing Ratio(kg kg-1)"],
@@ -678,12 +692,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_1 = function (q
         [241, "Total Snow(kg m-2)"],
         [242, "Relative Humidity with Respect to Precipitable Water(%)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_2 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_2 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Wind Direction (from whichIs blowing)(true)"],
         [1, "Wind Speed(m s-1)"],
         [2, "U-Component of Wind(m s-1)"],
@@ -755,12 +770,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_2 = function (q
         [224, "Ventilation Rate(m2 s-1)"],
 
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_3 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_3 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Pressure(Pa)"],
         [1, "Pressure Reduced to MSL(Pa)"],
         [2, "Pressure Tendency(Pa s-1)"],
@@ -810,12 +826,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_3 = function (q
         [211, "Geopotential Height (nearest grid point)(gpm)"],
         [212, "Pressure (nearest grid point)(Pa)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_4 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_4 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Net Short-Wave Radiation Flux (Surface)*(W m-2)"],
         [1, "Net Short-Wave Radiation Flux (Top of Atmosphere)*(W m-2)"],
         [2, "Short-Wave Radiation Flux*(W m-2)"],
@@ -846,12 +863,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_4 = function (q
         [204, "Downward Total Radiation Flux(W m-2)"],
         [205, "Upward Total Radiation Flux(W m-2)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_5 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_5 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Net Long-Wave Radiation Flux (Surface)*(W m-2)"],
         [1, "Net Long-Wave Radiation Flux (Top of Atmosphere)*(W m-2)"],
         [2, "Long-Wave Radiation Flux*(W m-2)"],
@@ -866,12 +884,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_5 = function (q
         [196, "Clear Sky Downward Long Wave Flux(W m-2)"],
         [197, "Cloud Forcing Net Long Wave Flux(W m-2)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_6 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_6 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Cloud Ice(kg m-2)"],
         [1, "Total Cloud Cover(%)"],
         [2, "Convective Cloud Cover(%)"],
@@ -919,12 +938,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_6 = function (q
         [200, "Convective Cloud Mass Flux(Pa s-1)"],
         [201, "Sunshine Duration(s)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_7 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_7 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Parcel Lifted Index (to 500 hPa)(K)"],
         [1, "Best Lifted Index (to 500 hPa)(K)"],
         [2, "K Index(K)"],
@@ -949,12 +969,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_7 = function (q
         [198, "Leaf Area Index()"],
         [199, "Hourly Maximum of Updraft Helicity over Layer 2km to 5 km AGL(m2 s-2)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_13 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_13 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Aerosol Type(See Table 4.205)"],
         [192, "Particulate matter (coarse)(g m-3)"],
         [193, "Particulate matter (fine)(g m-3)"],
@@ -962,12 +983,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_13 = function (
         [195, "Integrated column particulate matter (fine)(log10 (g m-3))"],
 
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_14 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_14 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Total Ozone(DU)"],
         [1, "Ozone Mixing Ratio(kg kg-1)"],
         [2, "Total Column Integrated Ozone(DU)"],
@@ -984,12 +1006,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_14 = function (
         [202, "PM 2.5 Daily Max from 1-hour Average(g m-3)"],
         [203, "PM 2.5 Daily Max from 24-hour Average(g m-3)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_15 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_15 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Base Spectrum Width(m s-1)"],
         [1, "Base Reflectivity(dB)"],
         [2, "Base Radial Velocity(m s-1)"],
@@ -1006,12 +1029,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_15 = function (
         [13, "Reflectivity of Graupel(dB)"],
         [14, "Reflectivity of Hail(dB)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_16 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_16 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Equivalent radar reflectivity factor for rain(m m6 m-3)"],
         [1, "Equivalent radar reflectivity factor for snow(m m6 m-3)"],
         [2, "Equivalent radar reflectivity factor for parameterized convection(m m6 m-3)"],
@@ -1026,21 +1050,23 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_16 = function (
         [197, "Echo Top (See Note 1)(m)"],
         [198, "Hourly Maximum of Simulated Reflectivity at 1 km AGL(dB)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_17 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_17 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [192, "Lightning(non-dim)"],
 
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_18 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_18 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Air Concentration of Caesium 137(Bq m-3)"],
         [1, "Air Concentration of Iodine 131(Bq m-3)"],
         [2, "Air Concentration of Radioactive Pollutant(Bq m-3)"],
@@ -1056,12 +1082,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_18 = function (
         [13, "Total Deposition (Wet + Dry)(Bq m-2)"],
 
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_19 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_19 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Visibility(m)"],
         [1, "Albedo(%)"],
         [2, "Thunderstorm Probability(%)"],
@@ -1125,12 +1152,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_19 = function (
         [233, "Icing probability(non-dim)"],
         [234, "Icing severity(non-dim)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_20 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_20 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Mass Density (Concentration)(kg m-3)"],
         [1, "Column-Integrated Mass Density (See Note 1)(kg m-2)"],
         [2, "Mass Mixing Ratio (Mass Fraction in Air)(kg kg-1)"],
@@ -1168,21 +1196,23 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_20 = function (
         [109, "Aerosol Lidar Extinction from Satellite(m-1)"],
         [110, "Aerosol Lidar Extinction from the Ground(m-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_190 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_190 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Arbitrary Text String(CCITTIA5)"],
 
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_191 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_191 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Seconds prior to initial reference time (defined in Section 1)(s)"],
         [1, "Geographical Latitude(N)"],
         [2, "Geographical Longitude(E)"],
@@ -1193,12 +1223,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_191 = function 
         [196, "Latitude (nearest neighbor) (-90 to 90)()"],
         [197, "East Longitude (nearest neighbor) (0 to 360)()"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_0_192 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_0_192 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [1, "Covariance between zonal and meridional components of the wind. Defined as [uv]-[u][v], where [] indicates the mean over the indicated time span.(m2/s2)"],
         [2, "Covariance between zonal component of the wind and temperature. Defined as [uT]-[u][T], where [] indicates the mean over the indicated time span.(K*m/s)"],
         [3, "Covariance between meridional component of the wind and temperature. Defined as [vT]-[v][T], where [] indicates the mean over the indicated time span.(K*m/s)"],
@@ -1214,12 +1245,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_0_192 = function 
         [13, "Covariance between vertical and vertical components of the wind. Defined as []-[][], where [] indicates the mean over the indicated time span.(Pa2/s2)"],
         [14, "Covariance between temperature and temperature. Defined as [TT]-[T][T], where [] indicates the mean over the indicated time span.(K*K)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_1_0 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_1_0 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Flash Flood Guidance (Encoded as an accumulation over a floating subinterval of time between the reference time and valid time)(kg m-2)"],
         [1, "Flash Flood Runoff (Encoded as an accumulation over a floating subinterval of time)(kg m-2)"],
         [2, "Remotely Sensed Snow Cover(See Table 4.215)"],
@@ -1230,12 +1262,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_1_0 = function (q
         [192, "Baseflow-Groundwater Runoff(kg m-2)"],
         [193, "Storm Surface Runoff(kg m-2)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_1_1 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_1_1 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Conditional percent precipitation amount fractile for an overall period (encoded as an accumulation)(kg m-2)"],
         [1, "Percent Precipitation in a sub-period of an overall period (encoded as a percent accumulation over the sub-period)(%)"],
         [2, "Probability of 0.01 inch of precipitation (POP)(%)"],
@@ -1244,12 +1277,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_1_1 = function (q
         [194, "Probability of precipitation exceeding flash flood guidance values(%)"],
         [195, "Probability of Wetting Rain, exceeding in 0.10 in a given time period(%)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_1_2 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_1_2 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Water Depth(m)"],
         [1, "Water Temperature(K)"],
         [2, "Water Fraction(Proportion)"],
@@ -1264,12 +1298,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_1_2 = function (q
         [11, "Attenuation Coefficient of Water with Respect to Solar Attenuation Coefficient of Water with Respect to Solar Radiation(m-1)"],
         [12, "Salinity(kg kg-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_2_0 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_2_0 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Land Cover (0=sea, 1=land)(Proportion)"],
         [1, "Surface Roughness(m)"],
         [2, "Soil Temperature ***(K)"],
@@ -1343,20 +1378,22 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_2_0 = function (q
         [229, "Canopy water evaporation(W m-2)"],
         [230, "Transpiration(W m-2)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_2_1 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_2_1 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [192, "Cold Advisory for Newborn Livestock()"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_2_3 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_2_3 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Soil Type(See Table 4.213)"],
         [1, "Upper Layer Soil Temperature*(K)"],
         [2, "Upper Layer Soil Moisture*(kg m-3)"],
@@ -1393,23 +1430,25 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_2_3 = function (q
         [202, "Effective Radiative Skin Temperature(K)"],
         [203, "Field Capacity(Fraction)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_2_4 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_2_4 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Fire Outlook(See Table 4.224)"],
         [1, "Fire Outlook Due to Dry Thunderstorm(See Table 4.224)"],
         [2, "Haines Index(Numeric)"],
         [3, "Fire Burned Area(%)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_3_0 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_3_0 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Scaled Radiance(Numeric)"],
         [1, "Scaled Albedo(Numeric)"],
         [2, "Scaled Brightness Temperature(Numeric)"],
@@ -1421,12 +1460,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_3_0 = function (q
         [8, "Pixel scene type(See Table 4.218)"],
         [9, "Fire Detection Indicator(See Table 4.223)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_3_1 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_3_1 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Estimated Precipitation(kg m-2)"],
         [1, "Instantaneous Rain Rate(kg m-2 s-1)"],
         [2, "Cloud Top Height(m)"],
@@ -1453,12 +1493,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_3_1 = function (q
         [192, "Scatterometer Estimated U Wind Component(m s-1)"],
         [193, "Scatterometer Estimated V Wind Component(m s-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_3_192 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_3_192 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Simulated Brightness Temperature for GOES 12, Channel 2(K)"],
         [1, "Simulated Brightness Temperature for GOES 12, Channel 3(K)"],
         [2, "Simulated Brightness Temperature for GOES 12, Channel 4(K)"],
@@ -1474,12 +1515,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_3_192 = function 
         [12, "Simulated Brightness Temperature for AMSRE on Aqua, Channel 11(K)"],
         [13, "Simulated Brightness Temperature for AMSRE on Aqua, Channel 12(K)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_0 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_0 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Temperature(K)"],
         [1, "Electron Temperature(K)"],
         [2, "Proton Temperature(K)"],
@@ -1487,23 +1529,25 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_4_0 = function (q
         [4, "Parallel Temperature(K)"],
         [5, "Perpendicular Temperature(K)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_1 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_1 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Velocity Magnitude (Speed)(m s-1)"],
         [1, "1st Vector Component of Velocity (Coordinate system dependent)(m s-1)"],
         [2, "2nd Vector Component of Velocity (Coordinate system dependent)(m s-1)"],
         [3, "3rd Vector Component of Velocity (Coordinate system dependent)(m s-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_2 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_2 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Particle Number Density(m-3)"],
         [1, "Electron Density(m-3)"],
         [2, "Proton Density(m-3)"],
@@ -1516,12 +1560,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_4_2 = function (q
         [9, "Critical Frequency(Hz)"],
         [10, "Scintillation(Numeric)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_3 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_3 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Magnetic Field Magnitude(T)"],
         [1, "1st Vector Component of Magnetic Field(T)"],
         [2, "2nd Vector Component of Magnetic Field(T)"],
@@ -1531,12 +1576,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_4_3 = function (q
         [6, "2nd Vector Component of Electric Field(V m-1)"],
         [7, "3rd Vector Component of Electric Field(V m-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_4 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_4 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Proton Flux (Differential)((m2 s sr eV)-1)"],
         [1, "Proton Flux (Integral)((m2 s sr)-1)"],
         [2, "Electron Flux (Differential)((m2 s sr eV)-1)"],
@@ -1545,19 +1591,21 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_4_4 = function (q
         [5, "Heavy Ion Flux (iIntegral)((m2 s sr)-1)"],
         [6, "Cosmic Ray Neutron Flux(h-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_5 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_5 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_6 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_6 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Integrated Solar Irradiance(W m-2)"],
         [1, "Solar X-ray Flux (XRS Long)(W m-2)"],
         [2, "Solar X-ray Flux (XRS Short)(W m-2)"],
@@ -1566,23 +1614,25 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_4_6 = function (q
         [5, "F10.7(W m-2 Hz-1)"],
         [6, "Solar Radio Emissions(W m-2 Hz-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_7 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_7 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Limb Intensity(m-2 s-1)"],
         [1, "Disk Intensity(m-2 s-1)"],
         [2, "Disk Intensity Day(m-2 s-1)"],
         [3, "Disk Intensity Night(m-2 s-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_8 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_8 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "X-Ray Radiance(W sr-1 m-2)"],
         [1, "EUV Radiance(W sr-1 m-2)"],
         [2, "H-Alpha Radiance(W sr-1 m-2)"],
@@ -1592,22 +1642,24 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_4_8 = function (q
         [6, "Heliospheric Radiance(W sr-1 m-2)"],
         [7, "Thematic Mask(Numeric)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_4_9 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_4_9 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Pedersen Conductivity(S m-1)"],
         [1, "Hall Conductivity(S m-1)"],
         [2, "Parallel Conductivity(S m-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_10_0 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_10_0 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Wave Spectra (1)(-)"],
         [1, "Wave Spectra (2)(-)"],
         [2, "Wave Spectra (3)(-)"],
@@ -1655,12 +1707,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_10_0 = function (
         [45, "Spectral Peakedness Factor(s-1)"],
         [192, "Wave Steepness(proportion)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_10_1 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_10_1 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Current Direction(degree True)"],
         [1, "Current Speed(m s-1)"],
         [2, "U-Component of Current(m s-1)"],
@@ -1670,12 +1723,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_10_1 = function (
         [194, "Barotropic U velocity(m s-1)"],
         [195, "Barotropic V velocity(m s-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_10_2 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_10_2 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Ice Cover(Proportion)"],
         [1, "Ice Thickness(m)"],
         [2, "Direction of Ice Drift(degree True)"],
@@ -1687,12 +1741,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_10_2 = function (
         [8, "Ice Temperature(K)"],
         [9, "Ice Internal Pressure(Pa m)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_10_3 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_10_3 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Water Temperature(K)"],
         [1, "Deviation of Sea Level from Mean(m)"],
         [192, "Hurricane Storm Surge(m)"],
@@ -1716,12 +1771,13 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_10_3 = function (
         [249, "90% Tropical Cyclone Storm Surge Exceedance(m)"],
         [250, "Extra Tropical Storm Surge Combined Surge and Tide(m)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_10_4 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_10_4 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Main Thermocline Depth(m)"],
         [1, "Main Thermocline Anomaly(m)"],
         [2, "Transient Thermocline Depth(m)"],
@@ -1742,15 +1798,16 @@ exports.ParameterNumberByProductDisciplineAndParameterCategory_10_4 = function (
         [196, "Interface Depths(m)"],
         [197, "Ocean Heat Content(J m-2)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }
 
-exports.ParameterNumberByProductDisciplineAndParameterCategory_10_191 = function (q) {
-    return echo(q, [
+exports.ParameterNumberByProductDisciplineAndParameterCategory_10_191 = function (obj) {
+    var key = obj.ParameterNumberByProductDisciplineAndParameterCategory;
+    obj.meta.ParameterNumberByProductDisciplineAndParameterCategory = echo(key, [
         [0, "Seconds Prior To Initial Reference Time (Defined In Section 1)(s)"],
         [1, "Meridional Overturning Stream Function(m3 s-1)"],
         [255, "Missing"],
-        [null, nf0(q)]
+        [null, nf0(key)]
     ]);
 }

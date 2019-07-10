@@ -7,7 +7,7 @@ var info = require('./info');
 var logger = require('./logger');
 
 var println = logger.println;
-var print = logger.print;
+var printChar = logger.printChar;
 var cout = logger.cout;
 
 function jpx_decode(data) {
@@ -175,7 +175,11 @@ function /* float */ IEEE32(/* String */ s) {
 
 
 module.exports = function /* class */ GRIB2CLASS(DATA, options) {
-  //logger.disable(!options.log);
+  logger.disable(!options.log);
+
+  var lThis = this;
+
+  this. /* object */ meta = {};
 
   this. /* String */ ParameterNameAndUnit = null;
   this. /* String[] */ DataTitles = [];
@@ -261,12 +265,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     println();
 
     for (var i = 0; i < displayMORE; i++) {
-      print("(" + hex(this.fileBytes[startN + i], 2) + ")");
+      printChar("(" + hex(this.fileBytes[startN + i], 2) + ")");
     }
     println();
 
     for (var i = 0; i < displayMORE; i++) {
-      print("[" + this.fileBytes[startN + i] + "]");
+      printChar("[" + this.fileBytes[startN + i] + "]");
     }
     println();
   };
@@ -274,7 +278,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
   this. /* int[] */ getGrib2Section = function (/* int */ SectionNumber) {
     println("-----------------------------");
 
-    print("Section:\t");
+    printChar("Section:\t");
     println(SectionNumber);
 
     var /* int */ nFirstBytes = 6;
@@ -328,12 +332,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     }
 
     for (var j = 1; j < SectionNumbers.length; j += 1) {
-      //print("(" + SectionNumbers[j] +  ")");
-      //print("(" + hex(SectionNumbers[j], 2) +  ")");
+      //printChar("(" + SectionNumbers[j] +  ")");
+      //printChar("(" + hex(SectionNumbers[j], 2) +  ")");
     }
     //println();
 
-    print("Length of section:\t");
+    printChar("Length of section:\t");
     println(lengthOfSection);
 
     nPointer += lengthOfSection;
@@ -441,13 +445,11 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       var /* int[] */ SectionNumbers = this.getGrib2Section(0); // Section 0: Indicator Section
 
       if (SectionNumbers.length > 1) {
-        print("Discipline of processed data:\t");
+        printChar("Discipline of processed data:\t");
         this.DisciplineOfProcessedData = SectionNumbers[7];
-        info.DisciplineOfProcessedData(
-          this.DisciplineOfProcessedData
-        );
+        info.DisciplineOfProcessedData(lThis);
 
-        print("Length of message:\t");
+        printChar("Length of message:\t");
         this.LengthOfMessage = U_NUMx8(SectionNumbers[9], SectionNumbers[10], SectionNumbers[11], SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15], SectionNumbers[16]);
         println(this.LengthOfMessage);
       }
@@ -455,71 +457,57 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(1); // Section 1: Identification Section
 
       if (SectionNumbers.length > 1) {
-        print("Identification of originating/generating centre: ");
+        printChar("Identification of originating/generating centre: ");
         this.IdentificationOfCentre = U_NUMx2(SectionNumbers[6], SectionNumbers[7]);
-        info.IdentificationOfCentre(
-          this.IdentificationOfCentre
-        );
+        info.IdentificationOfCentre(lThis);
 
-        print("Sub-centre:\t");
+        printChar("Sub-centre:\t");
         this.IdentificationOfSubCentre = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
-        info.IdentificationOfSubCentre(
-          this.IdentificationOfSubCentre
-        );
+        info.IdentificationOfSubCentre(lThis);
 
-        print("Master Tables Version Number:\t");
+        printChar("Master Tables Version Number:\t");
         this.MasterTablesVersionNumber = SectionNumbers[10];
-        info.MasterTablesVersionNumber(
-          this.MasterTablesVersionNumber
-        );
+        info.MasterTablesVersionNumber(lThis);
 
-        print("Local Tables Version Number:\t");
+        printChar("Local Tables Version Number:\t");
         this.LocalTablesVersionNumber = SectionNumbers[11];
-        info.LocalTablesVersionNumber(
-          this.LocalTablesVersionNumber
-        );
+        info.LocalTablesVersionNumber(lThis);
 
-        print("Significance of Reference Time:\t");
+        printChar("Significance of Reference Time:\t");
         this.SignificanceOfReferenceTime = SectionNumbers[12];
-        info.SignificanceOfReferenceTime(
-          this.SignificanceOfReferenceTime
-        );
+        info.SignificanceOfReferenceTime(lThis);
 
-        print("Year:\t");
+        printChar("Year:\t");
         this.Year = U_NUMx2(SectionNumbers[13], SectionNumbers[14]);
         println(this.Year);
 
-        print("Month:\t");
+        printChar("Month:\t");
         this.Month = SectionNumbers[15];
         println(this.Month);
 
-        print("Day:\t");
+        printChar("Day:\t");
         this.Day = SectionNumbers[16];
         println(this.Day);
 
-        print("Hour:\t");
+        printChar("Hour:\t");
         this.Hour = SectionNumbers[17];
         println(this.Hour);
 
-        print("Minute:\t");
+        printChar("Minute:\t");
         this.Minute = SectionNumbers[18];
         println(this.Minute);
 
-        print("Second:\t");
+        printChar("Second:\t");
         this.Second = SectionNumbers[19];
         println(this.Second);
 
-        print("Production status of data:\t");
+        printChar("Production status of data:\t");
         this.ProductionStatusOfData = SectionNumbers[20];
-        info.ProductionStatusOfData(
-          this.ProductionStatusOfData
-        );
+        info.ProductionStatusOfData(lThis);
 
-        print("Type of data:\t");
+        printChar("Type of data:\t");
         this.TypeOfData = SectionNumbers[20];
-        info.TypeOfData(
-          this.TypeOfData
-        );
+        info.TypeOfData(lThis);
       }
 
       SectionNumbers = this.getGrib2Section(2); // Section 2: Local Use Section (optional)
@@ -529,7 +517,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(3); // Section 3: Grid Definition Section
 
       if (SectionNumbers.length > 1) {
-        print("Grid Definition Template Number:\t");
+        printChar("Grid Definition Template Number:\t");
         this.TypeOfProjection = U_NUMx2(SectionNumbers[13], SectionNumbers[14]);
         switch (this.TypeOfProjection) {
           case 0: GridDEF_ScanningMode = 72; println("Latitude/longitude (equidistant cylindrical)"); break;
@@ -566,15 +554,15 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           default: println(this.TypeOfProjection); break;
         }
 
-        print("Number of data points (Nx * Ny):\t");
+        printChar("Number of data points (Nx * Ny):\t");
         this.Np = U_NUMx4(SectionNumbers[GridDEF_NumberOfDataPoints], SectionNumbers[GridDEF_NumberOfDataPoints + 1], SectionNumbers[GridDEF_NumberOfDataPoints + 2], SectionNumbers[GridDEF_NumberOfDataPoints + 3]);
         println(this.Np);
 
-        print("Number of points along the X-axis:\t");
+        printChar("Number of points along the X-axis:\t");
         this.Nx = U_NUMx4(SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis], SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis + 1], SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis + 2], SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis + 3]);
         println(this.Nx);
 
-        print("Number of points along the Y-axis:\t");
+        printChar("Number of points along the Y-axis:\t");
         this.Ny = U_NUMx4(SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis], SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis + 1], SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis + 2], SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis + 3]);
         println(this.Ny);
 
@@ -694,7 +682,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         }
 
-        print("Flag bit numbers:\n");
+        printChar("Flag bit numbers:\n");
         this.Flag_BitNumbers = binary(this.ResolutionAndComponentFlags, 8);
         {
           if (this.Flag_BitNumbers.substring(2, 3) === "0") {
@@ -719,14 +707,14 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           }
         }
 
-        print("Scanning mode:\t");
+        printChar("Scanning mode:\t");
         this.ScanningMode = SectionNumbers[GridDEF_ScanningMode];
         println(this.ScanningMode);
 
         this.ScanX = 1;
         this.ScanY = 1;
 
-        print("Mode bit numbers:\n");
+        printChar("Mode bit numbers:\n");
         this.Mode_BitNumbers = binary(this.ScanningMode, 8);
         {
           if (this.Mode_BitNumbers.substring(0, 1) === "0") {
@@ -764,272 +752,178 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(4); // Section 4: Product Definition Section
 
       if (SectionNumbers.length > 1) {
-        print("Number of coordinate values after Template:\t");
+        printChar("Number of coordinate values after Template:\t");
         this.NumberOfCoordinateValuesAfterTemplate = U_NUMx2(SectionNumbers[6], SectionNumbers[7]);
         println(this.NumberOfCoordinateValuesAfterTemplate);
 
-        print("Number of coordinate values after Template:\t");
+        printChar("Number of coordinate values after Template:\t");
         this.ProductDefinitionTemplateNumber = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
-        info.ProductDefinitionTemplateNumber(
-          this.ProductDefinitionTemplateNumber
-        );
+        info.ProductDefinitionTemplateNumber(lThis);
 
-        print("Category of parameters by product discipline:\t");
+        printChar("Category of parameters by product discipline:\t");
         this.CategoryOfParametersByProductDiscipline = SectionNumbers[10];
         if (this.DisciplineOfProcessedData === 0) { // Meteorological
-          info.CategoryOfParametersByProductDiscipline(
-            this.CategoryOfParametersByProductDiscipline
-          );
+          info.CategoryOfParametersByProductDiscipline(lThis);
         }
         else {
           println(this.CategoryOfParametersByProductDiscipline);
         }
 
-        print("Parameter number by product discipline and parameter category:\t");
+        printChar("Parameter number by product discipline and parameter category:\t");
         this.ParameterNumberByProductDisciplineAndParameterCategory = SectionNumbers[11];
 
         if (this.DisciplineOfProcessedData === 0) { // Meteorological
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Temperature
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_0(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_0(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Moisture
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_1(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_1(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Momentum
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_2(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_2(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Mass
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_3(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_3(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Short wave radiation
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_4(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_4(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 5) { // Long wave radiation
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_5(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_5(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 6) { // Cloud
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_6(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_6(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 7) { // Thermodynamic stability indices
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_7(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_7(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 13) { // Aerosols
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_13(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_13(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 14) { // Trace gases
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_14(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_14(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 15) { // Radar
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_15(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_15(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 16) { // Forecast Radar Imagery
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_16(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_16(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 17) { // Electrodynamics
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_17(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_17(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 18) { // Nuclear/radiology
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_18(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_18(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 19) { // Physical atmospheric Properties
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_19(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_19(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 20) { // Atmospheric Chemical Constituents
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_20(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_20(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 190) { // CCITT IA5 string
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_190(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_190(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 191) { // Miscellaneous
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_191(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_191(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 192) { // Covariance
-            info.ParameterNumberByProductDisciplineAndParameterCategory_0_192(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_192(lThis);
           }
         }
 
         else if (this.DisciplineOfProcessedData === 1) { // Hydrological
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Hydrology Basic
-            info.ParameterNumberByProductDisciplineAndParameterCategory_1_0(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_1_0(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Hydrology Probabilities
-            info.ParameterNumberByProductDisciplineAndParameterCategory_1_1(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_1_1(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Inland Water and Sediment Properties
-            info.ParameterNumberByProductDisciplineAndParameterCategory_1_2(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_1_2(lThis);
           }
         }
 
         else if (this.DisciplineOfProcessedData === 2) { // Land surface
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Vegetation/Biomass
-            info.ParameterNumberByProductDisciplineAndParameterCategory_2_0(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_0(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Agricultural/aquacultural special products
-            info.ParameterNumberByProductDisciplineAndParameterCategory_2_1(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_1(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Soil
-            info.ParameterNumberByProductDisciplineAndParameterCategory_2_3(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_3(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Fire Weather
-            info.ParameterNumberByProductDisciplineAndParameterCategory_2_4(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_4(lThis);
           }
         }
 
         else if (this.DisciplineOfProcessedData === 3) { // Space
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Image format
-            info.ParameterNumberByProductDisciplineAndParameterCategory_3_0(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_3_0(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Quantitative
-            info.ParameterNumberByProductDisciplineAndParameterCategory_3_1(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_3_1(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 192) { // Forecast Satellite Imagery
-            info.ParameterNumberByProductDisciplineAndParameterCategory_3_192(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_3_192(lThis);
           }
         }
 
         else if (this.DisciplineOfProcessedData === 4) { // Space Weather
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Temperature
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_0(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_0(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Momentum
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_1(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_1(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Charged Particle Mass and Number
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_2(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_2(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Electric and Magnetic Fields
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_3(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_3(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Energetic Particles
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_4(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_4(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 5) { // Waves
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_5(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_5(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 6) { // Solar Electromagnetic Emissions
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_6(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_6(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 7) { // Terrestrial Electromagnetic Emissions
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_7(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_7(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 8) { // Imagery
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_8(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_8(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 9) { // Ion-Neutral Coupling
-            info.ParameterNumberByProductDisciplineAndParameterCategory_4_9(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_9(lThis);
           }
         }
 
         else if (this.DisciplineOfProcessedData === 10) { // Oceanographic
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Waves
-            info.ParameterNumberByProductDisciplineAndParameterCategory_10_0(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_0(lThis);
           }
 
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Currents
-            info.ParameterNumberByProductDisciplineAndParameterCategory_10_1(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_1(lThis);
           }
 
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Ice
-            info.ParameterNumberByProductDisciplineAndParameterCategory_10_2(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_2(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Surface Properties
-            info.ParameterNumberByProductDisciplineAndParameterCategory_10_3(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_3(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Sub-surface Properties
-            info.ParameterNumberByProductDisciplineAndParameterCategory_10_4(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_4(lThis);
           }
           else if (this.CategoryOfParametersByProductDiscipline === 191) { // Miscellaneous
-            info.ParameterNumberByProductDisciplineAndParameterCategory_10_191(
-              this.ParameterNumberByProductDisciplineAndParameterCategory
-            );
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_191(lThis);
           }
         }
         else {
@@ -1039,7 +933,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         var /* float */ DayPortion = 0;
 
-        print("Indicator of unit of time range:\t");
+        printChar("Indicator of unit of time range:\t");
         this.IndicatorOfUnitOfTimeRange = SectionNumbers[18];
         switch (this.IndicatorOfUnitOfTimeRange) {
           case 0: println("Minute"); DayPortion = 1.0 / 60.0; break;
@@ -1058,7 +952,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           default: println(this.IndicatorOfUnitOfTimeRange); break;
         }
 
-        print("Forecast time in defined units:\t");
+        printChar("Forecast time in defined units:\t");
         this.ForecastTimeInDefinedUnits = U_NUMx4(SectionNumbers[19], SectionNumbers[20], SectionNumbers[21], SectionNumbers[22]);
 
         if (this.ProductDefinitionTemplateNumber === 8) { // Average, accumulation, extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.8)
@@ -1098,43 +992,39 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         this.ForecastConvertedTime = this.ForecastTimeInDefinedUnits * DayPortion;
 
-        print("Type of first fixed surface:\t");
+        printChar("Type of first fixed surface:\t");
         this.TypeOfFirstFixedSurface = SectionNumbers[23];
-        info.TypeOfFirstFixedSurface(
-          this.TypeOfFirstFixedSurface
-        );
+        info.TypeOfFirstFixedSurface(lThis);
       }
 
       SectionNumbers = this.getGrib2Section(5); // Section 5: Data Representation Section
 
       if (SectionNumbers.length > 1) {
-        print("Number of data points:\t");
+        printChar("Number of data points:\t");
         this.NumberOfDataPoints = U_NUMx4(SectionNumbers[6], SectionNumbers[7], SectionNumbers[8], SectionNumbers[9]);
         println(this.NumberOfDataPoints);
 
-        print("Data Representation Template Number:\t");
+        printChar("Data Representation Template Number:\t");
         this.DataRepresentationTemplateNumber = U_NUMx2(SectionNumbers[10], SectionNumbers[11]);
-        info.DataRepresentationTemplateNumber(
-          this.DataRepresentationTemplateNumber
-        );
+        info.DataRepresentationTemplateNumber(lThis);
 
-        print("Reference value (R):\t");
+        printChar("Reference value (R):\t");
         this.ReferenceValue = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15])));
         println(this.ReferenceValue);
 
-        print("Binary Scale Factor (E):\t");
+        printChar("Binary Scale Factor (E):\t");
         this.BinaryScaleFactor = S_NUMx2(SectionNumbers[16], SectionNumbers[17]);
         println(this.BinaryScaleFactor);
 
-        print("Decimal Scale Factor (D):\t");
+        printChar("Decimal Scale Factor (D):\t");
         this.DecimalScaleFactor = S_NUMx2(SectionNumbers[18], SectionNumbers[19]);
         println(this.DecimalScaleFactor);
 
-        print("Number of bits used for each packed value:\t");
+        printChar("Number of bits used for each packed value:\t");
         this.NumberOfBitsUsedForEachPackedValue = SectionNumbers[20];
         println(this.NumberOfBitsUsedForEachPackedValue);
 
-        print("Type of original field values:\t");
+        printChar("Type of original field values:\t");
         JPEG2000_TypeOfOriginalFieldValues = SectionNumbers[21];
         switch (JPEG2000_TypeOfOriginalFieldValues) {
           case 0: println("Floating point"); break;
@@ -1148,7 +1038,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
         JPEG2000_TargetCompressionRatio = -1;
         if (this.DataRepresentationTemplateNumber === 40) { // Grid point data – JPEG 2000 Code Stream Format
 
-          print("JPEG-2000/Type of Compression:\t");
+          printChar("JPEG-2000/Type of Compression:\t");
           JPEG2000_TypeOfCompression = SectionNumbers[22];
           switch (JPEG2000_TypeOfCompression) {
             case 0: println("Lossless"); break;
@@ -1157,7 +1047,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             default: println(JPEG2000_TypeOfCompression); break;
           }
 
-          print("JPEG-2000/Target compression ratio (M):\t");
+          printChar("JPEG-2000/Target compression ratio (M):\t");
           JPEG2000_TargetCompressionRatio = SectionNumbers[23];
           println(JPEG2000_TargetCompressionRatio);
           //The compression ratio M:1 (e.g. 20:1) specifies that the encoded stream should be less than ((1/M) x depth x number of data points) bits,
@@ -1166,7 +1056,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
         else if ((this.DataRepresentationTemplateNumber === 2) || // Grid point data - complex packing
           (this.DataRepresentationTemplateNumber === 3)) { // Grid point data - complex packing and spatial differencing
 
-          print("ComplexPacking/Type of Compression:\t");
+          printChar("ComplexPacking/Type of Compression:\t");
           ComplexPacking_GroupSplittingMethodUsed = SectionNumbers[22];
           switch (ComplexPacking_GroupSplittingMethodUsed) {
             case 0: println("Row by row splitting"); break;
@@ -1175,7 +1065,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             default: println(ComplexPacking_GroupSplittingMethodUsed); break;
           }
 
-          print("ComplexPacking/Missing value management used:\t");
+          printChar("ComplexPacking/Missing value management used:\t");
           ComplexPacking_MissingValueManagementUsed = SectionNumbers[23];
           switch (ComplexPacking_MissingValueManagementUsed) {
             case 0: println("No explicit missing values included within data values"); break;
@@ -1185,49 +1075,49 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             default: println(ComplexPacking_MissingValueManagementUsed); break;
           }
 
-          print("ComplexPacking/Primary missing value substitute:\t");
+          printChar("ComplexPacking/Primary missing value substitute:\t");
           ComplexPacking_PrimaryMissingValueSubstitute = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[24], SectionNumbers[25], SectionNumbers[26], SectionNumbers[27])));
           println(ComplexPacking_PrimaryMissingValueSubstitute);
 
-          print("ComplexPacking/Secondary missing value substitute:\t");
+          printChar("ComplexPacking/Secondary missing value substitute:\t");
           ComplexPacking_SecondaryMissingValueSubstitute = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[28], SectionNumbers[29], SectionNumbers[30], SectionNumbers[31])));
           println(ComplexPacking_SecondaryMissingValueSubstitute);
 
-          print("ComplexPacking/Number of groups of data values into which field is split:\t");
+          printChar("ComplexPacking/Number of groups of data values into which field is split:\t");
           ComplexPacking_NumberOfGroupsOfDataValues = U_NUMx4(SectionNumbers[32], SectionNumbers[33], SectionNumbers[34], SectionNumbers[35]);
           println(ComplexPacking_NumberOfGroupsOfDataValues);
 
-          print("ComplexPacking/Reference for group widths:\t");
+          printChar("ComplexPacking/Reference for group widths:\t");
           ComplexPacking_ReferenceForGroupWidths = SectionNumbers[36];
           println(ComplexPacking_ReferenceForGroupWidths);
 
-          print("ComplexPacking/Number of bits used for group widths:\t");
+          printChar("ComplexPacking/Number of bits used for group widths:\t");
           ComplexPacking_NumberOfBitsUsedForGroupWidths = SectionNumbers[37];
           println(ComplexPacking_NumberOfBitsUsedForGroupWidths);
 
-          print("ComplexPacking/Reference for group lengths:\t");
+          printChar("ComplexPacking/Reference for group lengths:\t");
           ComplexPacking_ReferenceForGroupLengths = U_NUMx4(SectionNumbers[38], SectionNumbers[39], SectionNumbers[40], SectionNumbers[41]);
           println(ComplexPacking_ReferenceForGroupLengths);
 
-          print("ComplexPacking/Length increment for the group lengths:\t");
+          printChar("ComplexPacking/Length increment for the group lengths:\t");
           ComplexPacking_LengthIncrementForTheGroupLengths = SectionNumbers[42];
           println(ComplexPacking_LengthIncrementForTheGroupLengths);
 
-          print("ComplexPacking/True length of last group:\t");
+          printChar("ComplexPacking/True length of last group:\t");
           ComplexPacking_TrueLengthOfLastGroup = U_NUMx4(SectionNumbers[43], SectionNumbers[44], SectionNumbers[45], SectionNumbers[46]);
           println(ComplexPacking_TrueLengthOfLastGroup);
 
-          print("ComplexPacking/Number of bits used for the scaled group lengths:\t");
+          printChar("ComplexPacking/Number of bits used for the scaled group lengths:\t");
           ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths = SectionNumbers[47];
           println(ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths);
 
           if (this.DataRepresentationTemplateNumber === 3) { // Grid point data - complex packing and spatial differencing
 
-            print("ComplexPacking/Order of Spatial Differencing:\t");
+            printChar("ComplexPacking/Order of Spatial Differencing:\t");
             ComplexPacking_OrderOfSpatialDifferencing = SectionNumbers[48];
             println(ComplexPacking_OrderOfSpatialDifferencing);
 
-            print("ComplexPacking/Number of octets required in the Data Section to specify the extra descriptors:\t");
+            printChar("ComplexPacking/Number of octets required in the Data Section to specify the extra descriptors:\t");
             ComplexPacking_NumberOfExtraOctetsRequiredInDataSection = SectionNumbers[49];
             println(ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
           }
@@ -1249,11 +1139,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(6); // Section 6: Bit-Map Section
 
       if (SectionNumbers.length > 1) {
-        print("Bit map indicator:\t");
+        printChar("Bit map indicator:\t");
         this.Bitmap_Indicator = SectionNumbers[6];
-        info.Bitmap_Indicator(
-          this.Bitmap_Indicator
-        );
+        info.Bitmap_Indicator(lThis);
 
         if (this.Bitmap_Indicator === 0) { // A bit map applies to this product and is specified in this Section.
 
@@ -1296,7 +1184,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           JPEG2000_Rsiz = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Rsiz =", JPEG2000_Rsiz);  // Rsiz : Denotes capabilities that a decoder needs to properly decode the codestream
           n += 2;
-          print("\t");
+          printChar("\t");
           switch (JPEG2000_Rsiz) {
             case 0: println("Capabilities specified in this Recommendation | International Standard only"); break;
             case 1: println("Codestream restricted as described for Profile 0 from Table A.45"); break;
@@ -1365,7 +1253,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             println("Rcom =", JPEG2000_Rcom);  // Rcom : Registration value of the marker segment
             n += 2;
 
-            print("Comment: ");
+            printChar("Comment: ");
             for (var i = 0; i < JPEG2000_Lcom - 4; i++) {
               cout(this.fileBytes[n]);
               n += 1;
@@ -1466,7 +1354,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           JPEG2000_TNsot = this.fileBytes[n];
           println("TNsot =", JPEG2000_TNsot);  // TNsot : Number of tile-parts of a tile in the codestream. Two values are allowed: the correct number of tileparts for that tile and zero. A zero value indicates that the number of tile-parts of this tile is not specified in this tile-part.
           n += 1;
-          print("\t");
+          printChar("\t");
           switch (JPEG2000_TNsot) {
             case 0: println("Number of tile-parts of this tile in the codestream is not defined in this header"); break;
             default: println("Number of tile-parts of this tile in the codestream"); break;
