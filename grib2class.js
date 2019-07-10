@@ -3,20 +3,20 @@
 'use strict';
 
 function jpx_decode(data) {
-    var t0 = performance.now();
-    var jpxImage = new JpxImage();
-    jpxImage.parse(data);
-    var t1 = performance.now();
-    var image = {
-        length : data.length,
-        sx :  jpxImage.width,
-        sy :  jpxImage.height,
-        nbChannels : jpxImage.componentsCount,
-        perf_timetodecode : t1 - t0,
-        pixelData : jpxImage.tiles[0].items
-    };
+  var t0 = performance.now();
+  var jpxImage = new JpxImage();
+  jpxImage.parse(data);
+  var t1 = performance.now();
+  var image = {
+    length: data.length,
+    sx: jpxImage.width,
+    sy: jpxImage.height,
+    nbChannels: jpxImage.componentsCount,
+    perf_timetodecode: t1 - t0,
+    pixelData: jpxImage.tiles[0].items
+  };
 
-    return image;
+  return image;
 }
 
 function nf0(number) {
@@ -31,7 +31,7 @@ function println(/* String */ a, /* optional String */ b) {
   if (!log) return;
   var s =
     (a === undefined) ? '' :
-    (b === undefined) ? a : a + ' ' + b;
+      (b === undefined) ? a : a + ' ' + b;
 
   console.log(s);
   // process.stdout.write(s + '\n');
@@ -423,7 +423,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     var /* int */ ComplexPacking_OrderOfSpatialDifferencing = 0;
     var /* int */ ComplexPacking_NumberOfExtraOctetsRequiredInDataSection = 0;
 
-    var /* int */ Bitmap_Indicator = 0;
+    this. /* int */ Bitmap_Indicator = 0;
     var /* int */ Bitmap_beginPointer = 0;
     var /* int */ Bitmap_endPointer = 0;
 
@@ -472,16 +472,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       if (SectionNumbers.length > 1) {
         print("Discipline of processed data:\t");
         this.DisciplineOfProcessedData = SectionNumbers[7];
-        switch (this.DisciplineOfProcessedData) {
-          case 0: println("Meteorological products"); break;
-          case 1: println("Hydrological products"); break;
-          case 2: println("Land surface products"); break;
-          case 3: println("Space products"); break;
-          case 4: println("Space Weather Products "); break;
-          case 10: println("Oceanographic products"); break;
-          case 255: println("Missing"); break;
-          default: println(this.DisciplineOfProcessedData); break;
-        }
+        info_DisciplineOfProcessedData(
+          this.DisciplineOfProcessedData
+        );
 
         print("Length of message:\t");
         this.LengthOfMessage = U_NUMx8(SectionNumbers[9], SectionNumbers[10], SectionNumbers[11], SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15], SectionNumbers[16]);
@@ -493,271 +486,33 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       if (SectionNumbers.length > 1) {
         print("Identification of originating/generating centre: ");
         this.IdentificationOfCentre = U_NUMx2(SectionNumbers[6], SectionNumbers[7]);
-        switch (this.IdentificationOfCentre) {
-          case 0: println("WMO Secretariat"); break;
-          case 1: println("Melbourne"); break;
-          case 2: println("Melbourne"); break;
-          case 4: println("Moscow"); break;
-          case 5: println("Moscow"); break;
-          case 7: println("US National Weather Service - National Centres for Environmental Prediction (NCEP)"); break;
-          case 8: println("US National Weather Service Telecommunications Gateway (NWSTG)"); break;
-          case 9: println("US National Weather Service - Other"); break;
-          case 10: println("Cairo (RSMC)"); break;
-          case 12: println("Dakar (RSMC)"); break;
-          case 14: println("Nairobi (RSMC)"); break;
-          case 16: println("Casablanca (RSMC)"); break;
-          case 17: println("Tunis (RSMC)"); break;
-          case 18: println("Tunis - Casablanca (RSMC)"); break;
-          case 20: println("Las Palmas"); break;
-          case 21: println("Algiers (RSMC)"); break;
-          case 22: println("ACMAD"); break;
-          case 23: println("Mozambique (NMC)"); break;
-          case 24: println("Pretoria (RSMC)"); break;
-          case 25: println("La Réunion (RSMC)"); break;
-          case 26: println("Khabarovsk (RSMC)"); break;
-          case 28: println("New Delhi (RSMC)"); break;
-          case 30: println("Novosibirsk (RSMC)"); break;
-          case 32: println("Tashkent (RSMC)"); break;
-          case 33: println("Jeddah (RSMC)"); break;
-          case 34: println("Tokyo (RSMC), Japan Meteorological Agency"); break;
-          case 36: println("Bangkok"); break;
-          case 37: println("Ulaanbaatar"); break;
-          case 38: println("Beijing (RSMC)"); break;
-          case 40: println("Seoul"); break;
-          case 41: println("Buenos Aires (RSMC)"); break;
-          case 43: println("Brasilia (RSMC)"); break;
-          case 45: println("Santiago"); break;
-          case 46: println("Brazilian Space Agency ­ INPE"); break;
-          case 47: println("Colombia (NMC)"); break;
-          case 48: println("Ecuador (NMC)"); break;
-          case 49: println("Peru (NMC)"); break;
-          case 50: println("Venezuela (Bolivarian Republic of) (NMC)"); break;
-          case 51: println("Miami (RSMC)"); break;
-          case 52: println("Miami (RSMC), National Hurricane Centre"); break;
-          case 53: println("Montreal (RSMC)"); break;
-          case 54: println("Montreal (RSMC)"); break;
-          case 55: println("San Francisco"); break;
-          case 56: println("ARINC Centre"); break;
-          case 57: println("US Air Force - Air Force Global Weather Central"); break;
-          case 58: println("Fleet Numerical Meteorology and Oceanography Center, Monterey, CA, United States"); break;
-          case 59: println("The NOAA Forecast Systems Laboratory, Boulder, CO, United States"); break;
-          case 60: println("United States National Center for Atmospheric Research (NCAR)"); break;
-          case 61: println("Service ARGOS - Landover"); break;
-          case 62: println("US Naval Oceanographic Office"); break;
-          case 63: println("International Research Institute for Climate and Society (IRI)"); break;
-          case 64: println("Honolulu (RSMC)"); break;
-          case 65: println("Darwin (RSMC)"); break;
-          case 67: println("Melbourne (RSMC)"); break;
-          case 69: println("Wellington (RSMC)"); break;
-          case 71: println("Nadi (RSMC)"); break;
-          case 72: println("Singapore"); break;
-          case 73: println("Malaysia (NMC)"); break;
-          case 74: println("UK Meteorological Office ­ Exeter (RSMC)"); break;
-          case 76: println("Moscow (RSMC)"); break;
-          case 78: println("Offenbach (RSMC)"); break;
-          case 80: println("Rome (RSMC)"); break;
-          case 82: println("Norrköping"); break;
-          case 84: println("Toulouse (RSMC)"); break;
-          case 85: println("Toulouse (RSMC)"); break;
-          case 86: println("Helsinki"); break;
-          case 87: println("Belgrade"); break;
-          case 88: println("Oslo"); break;
-          case 89: println("Prague"); break;
-          case 90: println("Episkopi"); break;
-          case 91: println("Ankara"); break;
-          case 92: println("Frankfurt/Main"); break;
-          case 93: println("London (WAFC)"); break;
-          case 94: println("Copenhagen"); break;
-          case 95: println("Rota"); break;
-          case 96: println("Athens"); break;
-          case 97: println("European Space Agency (ESA)"); break;
-          case 98: println("European Centre for Medium-Range Weather Forecasts (ECMWF) (RSMC)"); break;
-          case 99: println("De Bilt"); break;
-          case 100: println("Brazzaville"); break;
-          case 101: println("Abidjan"); break;
-          case 102: println("Libya (NMC)"); break;
-          case 103: println("Madagascar (NMC)"); break;
-          case 104: println("Mauritius (NMC)"); break;
-          case 105: println("Niger (NMC)"); break;
-          case 106: println("Seychelles (NMC)"); break;
-          case 107: println("Uganda (NMC)"); break;
-          case 108: println("United Republic of Tanzania (NMC)"); break;
-          case 109: println("Zimbabwe (NMC)"); break;
-          case 110: println("Hong-Kong, China"); break;
-          case 111: println("Afghanistan (NMC)"); break;
-          case 112: println("Bahrain (NMC)"); break;
-          case 113: println("Bangladesh (NMC)"); break;
-          case 114: println("Bhutan (NMC)"); break;
-          case 115: println("Cambodia (NMC)"); break;
-          case 116: println("Democratic People's Republic of Korea (NMC)"); break;
-          case 117: println("Islamic Republic of Iran (NMC)"); break;
-          case 118: println("Iraq (NMC)"); break;
-          case 119: println("Kazakhstan (NMC)"); break;
-          case 120: println("Kuwait (NMC)"); break;
-          case 121: println("Kyrgyzstan (NMC)"); break;
-          case 122: println("Lao People's Democratic Republic (NMC)"); break;
-          case 123: println("Macao, China"); break;
-          case 124: println("Maldives (NMC)"); break;
-          case 125: println("Myanmar (NMC)"); break;
-          case 126: println("Nepal (NMC)"); break;
-          case 127: println("Oman (NMC)"); break;
-          case 128: println("Pakistan (NMC)"); break;
-          case 129: println("Qatar (NMC)"); break;
-          case 130: println("Yemen (NMC)"); break;
-          case 131: println("Sri Lanka (NMC)"); break;
-          case 132: println("Tajikistan (NMC)"); break;
-          case 133: println("Turkmenistan (NMC)"); break;
-          case 134: println("United Arab Emirates (NMC)"); break;
-          case 135: println("Uzbekistan (NMC)"); break;
-          case 136: println("Viet Nam (NMC)"); break;
-          case 140: println("Bolivia (Plurinational State of) (NMC)"); break;
-          case 141: println("Guyana (NMC)"); break;
-          case 142: println("Paraguay (NMC)"); break;
-          case 143: println("Suriname (NMC)"); break;
-          case 144: println("Uruguay (NMC)"); break;
-          case 145: println("French Guiana"); break;
-          case 146: println("Brazilian Navy Hydrographic Centre"); break;
-          case 147: println("National Commission on Space Activities (CONAE) - Argentina"); break;
-          case 150: println("Antigua and Barbuda (NMC)"); break;
-          case 151: println("Bahamas (NMC)"); break;
-          case 152: println("Barbados (NMC)"); break;
-          case 153: println("Belize (NMC)"); break;
-          case 154: println("British Caribbean Territories Centre"); break;
-          case 155: println("San José"); break;
-          case 156: println("Cuba (NMC)"); break;
-          case 157: println("Dominica (NMC)"); break;
-          case 158: println("Dominican Republic (NMC)"); break;
-          case 159: println("El Salvador (NMC)"); break;
-          case 160: println("US NOAA/NESDIS"); break;
-          case 161: println("US NOAA Office of Oceanic and Atmospheric Research"); break;
-          case 162: println("Guatemala (NMC)"); break;
-          case 163: println("Haiti (NMC)"); break;
-          case 164: println("Honduras (NMC)"); break;
-          case 165: println("Jamaica (NMC)"); break;
-          case 166: println("Mexico City"); break;
-          case 167: println("Curaçao and Sint Maarten (NMC)"); break;
-          case 168: println("Nicaragua (NMC)"); break;
-          case 169: println("Panama (NMC)"); break;
-          case 170: println("Saint Lucia (NMC)"); break;
-          case 171: println("Trinidad and Tobago (NMC)"); break;
-          case 172: println("French Departments in RA IV"); break;
-          case 173: println("US National Aeronautics and Space Administration (NASA)"); break;
-          case 174: println("Integrated Science Data Management/Marine Environmental Data Service (ISDM/MEDS) - Canada"); break;
-          case 175: println("University Corporation for Atmospheric Research (UCAR) - United States"); break;
-          case 176: println("Cooperative Institute for Meteorological Satellite Studies (CIMSS) - United States"); break;
-          case 177: println("NOAA National Ocean Service - United States"); break;
-          case 190: println("Cook Islands (NMC)"); break;
-          case 191: println("French Polynesia (NMC)"); break;
-          case 192: println("Tonga (NMC)"); break;
-          case 193: println("Vanuatu (NMC)"); break;
-          case 194: println("Brunei Darussalam (NMC)"); break;
-          case 195: println("Indonesia (NMC)"); break;
-          case 196: println("Kiribati (NMC)"); break;
-          case 197: println("Federated States of Micronesia (NMC)"); break;
-          case 198: println("New Caledonia (NMC)"); break;
-          case 199: println("Niue"); break;
-          case 200: println("Papua New Guinea (NMC)"); break;
-          case 201: println("Philippines (NMC)"); break;
-          case 202: println("Samoa (NMC)"); break;
-          case 203: println("Solomon Islands (NMC)"); break;
-          case 204: println("National Institute of Water and Atmospheric Research (NIWA - New Zealand)"); break;
-          case 210: println("Frascati (ESA/ESRIN)"); break;
-          case 211: println("Lannion"); break;
-          case 212: println("Lisbon"); break;
-          case 213: println("Reykjavik"); break;
-          case 214: println("Madrid"); break;
-          case 215: println("Zurich"); break;
-          case 216: println("Service ARGOS - Toulouse"); break;
-          case 217: println("Bratislava"); break;
-          case 218: println("Budapest"); break;
-          case 219: println("Ljubljana"); break;
-          case 220: println("Warsaw"); break;
-          case 221: println("Zagreb"); break;
-          case 222: println("Albania (NMC)"); break;
-          case 223: println("Armenia (NMC)"); break;
-          case 224: println("Austria (NMC)"); break;
-          case 225: println("Azerbaijan (NMC)"); break;
-          case 226: println("Belarus (NMC)"); break;
-          case 227: println("Belgium (NMC)"); break;
-          case 228: println("Bosnia and Herzegovina (NMC)"); break;
-          case 229: println("Bulgaria (NMC)"); break;
-          case 230: println("Cyprus (NMC)"); break;
-          case 231: println("Estonia (NMC)"); break;
-          case 232: println("Georgia (NMC)"); break;
-          case 233: println("Dublin"); break;
-          case 234: println("Israel (NMC)"); break;
-          case 235: println("Jordan (NMC)"); break;
-          case 236: println("Latvia (NMC)"); break;
-          case 237: println("Lebanon (NMC)"); break;
-          case 238: println("Lithuania (NMC)"); break;
-          case 239: println("Luxembourg"); break;
-          case 240: println("Malta (NMC)"); break;
-          case 241: println("Monaco"); break;
-          case 242: println("Romania (NMC)"); break;
-          case 243: println("Syrian Arab Republic (NMC)"); break;
-          case 244: println("The former Yugoslav Republic of Macedonia (NMC)"); break;
-          case 245: println("Ukraine (NMC)"); break;
-          case 246: println("Republic of Moldova (NMC)"); break;
-          case 247: println("Operational Programme for the Exchange of weather RAdar information (OPERA) - EUMETNET"); break;
-          case 248: println("Montenegro (NMC)"); break;
-          case 249: println("Barcelona Dust Forecast Center"); break;
-          case 250: println("COnsortium for Small scale MOdelling  (COSMO)"); break;
-          case 251: println("Meteorological Cooperation on Operational NWP (MetCoOp)"); break;
-          case 252: println("Max Planck Institute for Meteorology (MPI-M)"); break;
-          case 254: println("EUMETSAT Operation Centre"); break;
-          case 255: println("Missing"); break;
-          default: println(this.IdentificationOfCentre); break;
-        }
+        info_IdentificationOfCentre(
+          this.IdentificationOfCentre
+        );
 
         print("Sub-centre:\t");
         this.IdentificationOfSubCentre = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
-        switch (this.IdentificationOfSubCentre) {
-          case 255: println("Missing"); break;
-          default: println(this.IdentificationOfSubCentre); break;
-        }
+        info_IdentificationOfSubCentre(
+          this.IdentificationOfSubCentre
+        );
 
         print("Master Tables Version Number:\t");
         this.MasterTablesVersionNumber = SectionNumbers[10];
-        switch (this.MasterTablesVersionNumber) {
-          case 0: println("Experimental"); break;
-          case 1: println("Version implemented on 7 November 2001"); break;
-          case 2: println("Version implemented on 4 November 2003"); break;
-          case 3: println("Version implemented on 2 November 2005"); break;
-          case 4: println("Version implemented on 7 November 2007"); break;
-          case 5: println("Version Implemented on 4 November 2009"); break;
-          case 6: println("Version Implemented on 15 September 2010"); break;
-          case 7: println("Version Implemented on 4 May 2011"); break;
-          case 8: println("Version Implemented on 8 November 2011"); break;
-          case 9: println("Version Implemented on 2 May 2012"); break;
-          case 10: println("Version Implemented on 7 November 2012 "); break;
-          case 11: println("Version Implemented on 8 May 2013"); break;
-          case 12: println("Version Implemented on 14 November 2013"); break;
-          case 13: println("Version Implemented on 7 May 2014"); break;
-          case 14: println("Version Implemented on 5 November 2014"); break;
-          case 15: println("Version Implemented on 6 May 2015"); break;
-          case 16: println("Pre-operational to be implemented by next amendment"); break;
-          case 255: println("Missing"); break;
-          default: println(this.MasterTablesVersionNumber); break;
-        }
+        info_MasterTablesVersionNumber(
+          this.MasterTablesVersionNumber
+        );
 
         print("Local Tables Version Number:\t");
         this.LocalTablesVersionNumber = SectionNumbers[11];
-        switch (this.LocalTablesVersionNumber) {
-          case 0: println("Local tables not used. Only table entries and templates from the current Master table are valid."); break;
-          case 255: println("Missing"); break;
-          default: println(this.LocalTablesVersionNumber); break;
-        }
+        info_LocalTablesVersionNumber(
+          this.LocalTablesVersionNumber
+        );
 
         print("Significance of Reference Time:\t");
         this.SignificanceOfReferenceTime = SectionNumbers[12];
-        switch (this.SignificanceOfReferenceTime) {
-          case 0: println("Analysis"); break;
-          case 1: println("Start of forecast"); break;
-          case 2: println("Verifying time of forecast"); break;
-          case 3: println("Observation time"); break;
-          case 255: println("Missing"); break;
-          default: println(this.SignificanceOfReferenceTime); break;
-        }
+        info_SignificanceOfReferenceTime(
+          this.SignificanceOfReferenceTime
+        );
 
         print("Year:\t");
         this.Year = U_NUMx2(SectionNumbers[13], SectionNumbers[14]);
@@ -785,29 +540,15 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Production status of data:\t");
         this.ProductionStatusOfData = SectionNumbers[20];
-        switch (this.ProductionStatusOfData) {
-          case 0: println("Operational products"); break;
-          case 1: println("Operational test products"); break;
-          case 2: println("Research products"); break;
-          case 3: println("Re-analysis products"); break;
-          case 255: println("Missing"); break;
-          default: println(this.ProductionStatusOfData); break;
-        }
+        info_ProductionStatusOfData(
+          this.ProductionStatusOfData
+        );
 
         print("Type of data:\t");
         this.TypeOfData = SectionNumbers[20];
-        switch (this.TypeOfData) {
-          case 0: println("Analysis products"); break;
-          case 1: println("Forecast products"); break;
-          case 2: println("Analysis and forecast products"); break;
-          case 3: println("Control forecast products"); break;
-          case 4: println("Perturbed forecast products"); break;
-          case 5: println("Control and perturbed forecast products"); break;
-          case 6: println("Processed satellite observations"); break;
-          case 7: println("Processed radar observations"); break;
-          case 255: println("Missing"); break;
-          default: println(this.TypeOfData); break;
-        }
+        info_TypeOfData(
+          this.TypeOfData
+        );
       }
 
       SectionNumbers = this.getGrib2Section(2); // Section 2: Local Use Section (optional)
@@ -1058,47 +799,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Number of coordinate values after Template:\t");
         this.ProductDefinitionTemplateNumber = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
-        switch (this.ProductDefinitionTemplateNumber) {
-          case 0: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.0)"); break;
-          case 1: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time. (see Template 4.1)"); break;
-          case 2: println("Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer at a point in time. (see Template 4.2)"); break;
-          case 3: println("Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.3)"); break;
-          case 4: println("Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.4)"); break;
-          case 5: println("Probability forecasts at a horizontal level or in a horizontal layer at a point in time. (see Template 4.5)"); break;
-          case 6: println("Percentile forecasts at a horizontal level or in a horizontal layer at a point in time. (see Template 4.6)"); break;
-          case 7: println("Analysis or forecast error at a horizontal level or in a horizontal layer at a point in time. (see Template 4.7)"); break;
-          case 8: println("Average, accumulation, extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.8)"); break;
-          case 9: println("Probability forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.9)"); break;
-          case 10: println("Percentile forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.10)"); break;
-          case 11: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.11)"); break;
-          case 12: println("Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.12)"); break;
-          case 13: println("Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.13)"); break;
-          case 14: println("Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.14)"); break;
-          case 15: println("Average, accumulation, extreme values or other statistically-processed values over a spatial area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.15)"); break;
-          case 20: println("Radar product (see Template 4.20)"); break;
-          case 30: println("Satellite product (see Template 4.30) NOTE:This template is deprecated. Template 4.31 should be used instead."); break;
-          case 31: println("Satellite product (see Template 4.31)"); break;
-          case 32: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for simulate (synthetic) staellite data (see Template 4.32)"); break;
-          case 40: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents. (see Template 4.40)"); break;
-          case 41: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents. (see Template 4.41)"); break;
-          case 42: println("Average, accumulation, and/or extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for atmospheric chemical constituents. (see Template 4.42)"); break;
-          case 43: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for atmospheric chemical constituents. (see Template 4.43)"); break;
-          case 44: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for aerosol. (see Template 4.44)"); break;
-          case 45: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for aerosol. (see Template 4.45)"); break;
-          case 46: println("Average, accumulation, and/or extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for aerosol. (see Template 4.46)"); break;
-          case 47: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for aerosol. (see Template 4.47)"); break;
-          case 48: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for aerosol. (see Template 4.48)"); break;
-          case 51: println("Categorical forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.51)"); break;
-          case 91: println("Categorical forecast at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.91)"); break;
-          case 254: println("CCITT IA5 character string (see Template 4.254)"); break;
-          case 1000: println("Cross-section of analysis and forecast at a point in time. (see Template 4.1000)"); break;
-          case 1001: println("Cross-section of averaged or otherwise statistically processed analysis or forecast over a range of time. (see Template 4.1001)"); break;
-          case 1002: println("Cross-section of analysis and forecast, averaged or otherwise statistically-processed over latitude or longitude. (see Template 4.1002)"); break;
-          case 1100: println("Hovmoller-type grid with no averaging or other statistical processing (see Template 4.1100)"); break;
-          case 1101: println("Hovmoller-type grid with averaging or other statistical processing (see Template 4.1101)"); break;
-          case 65535: println("Missing"); break;
-          default: println(this.ProductDefinitionTemplateNumber); break;
-        }
+        info_ProductDefinitionTemplateNumber(
+          this.ProductDefinitionTemplateNumber
+        );
 
         print("Category of parameters by product discipline:\t");
         this.CategoryOfParametersByProductDiscipline = SectionNumbers[10];
@@ -2425,86 +2128,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Type of first fixed surface:\t");
         this.TypeOfFirstFixedSurface = SectionNumbers[23];
-        switch (this.TypeOfFirstFixedSurface) {
-          case 1: println("Ground or Water Surface"); break;
-          case 2: println("Cloud Base Level"); break;
-          case 3: println("Level of Cloud Tops"); break;
-          case 4: println("Level of 0o C Isotherm"); break;
-          case 5: println("Level of Adiabatic Condensation Lifted from the Surface"); break;
-          case 6: println("Maximum Wind Level"); break;
-          case 7: println("Tropopause"); break;
-          case 8: println("Nominal Top of the Atmosphere"); break;
-          case 9: println("Sea Bottom"); break;
-          case 10: println("Entire Atmosphere"); break;
-          case 11: println("Cumulonimbus Base (CB)"); break;
-          case 12: println("Cumulonimbus Top (CT)"); break;
-          case 20: println("Isothermal Level"); break;
-          case 100: println("Isobaric Surface"); break;
-          case 101: println("Mean Sea Level"); break;
-          case 102: println("Specific Altitude Above Mean Sea Level"); break;
-          case 103: println("Specified Height Level Above Ground"); break;
-          case 104: println("Sigma Level"); break;
-          case 105: println("Hybrid Level"); break;
-          case 106: println("Depth Below Land Surface"); break;
-          case 107: println("Isentropic (theta) Level"); break;
-          case 108: println("Level at Specified Pressure Difference from Ground to Level"); break;
-          case 109: println("Potential Vorticity Surface"); break;
-          case 111: println("Eta Level"); break;
-          case 113: println("Logarithmic Hybrid Level"); break;
-          case 114: println("Snow Level"); break;
-          case 117: println("Mixed Layer Depth"); break;
-          case 118: println("Hybrid Height Level"); break;
-          case 119: println("Hybrid Pressure Level"); break;
-          case 150: println("Generalized Vertical Height Coordinate (see Note 5)"); break;
-          case 160: println("Depth Below Sea Level"); break;
-          case 161: println("Depth Below Water Surface"); break;
-          case 162: println("Lake or River Bottom"); break;
-          case 163: println("Bottom Of Sediment Layer"); break;
-          case 164: println("Bottom Of Thermally Active Sediment Layer"); break;
-          case 165: println("Bottom Of Sediment Layer Penetrated By Thermal Wave"); break;
-          case 166: println("Maxing Layer"); break;
-          case 200: println("Entire atmosphere (considered as a single layer)"); break;
-          case 201: println("Entire ocean (considered as a single layer)"); break;
-          case 204: println("Highest tropospheric freezing level"); break;
-          case 206: println("Grid scale cloud bottom level"); break;
-          case 207: println("Grid scale cloud top level"); break;
-          case 209: println("Boundary layer cloud bottom level"); break;
-          case 210: println("Boundary layer cloud top level"); break;
-          case 211: println("Boundary layer cloud layer"); break;
-          case 212: println("Low cloud bottom level"); break;
-          case 213: println("Low cloud top level"); break;
-          case 214: println("Low cloud layer"); break;
-          case 215: println("Cloud ceiling"); break;
-          case 220: println("Planetary Boundary Layer"); break;
-          case 221: println("Layer Between Two Hybrid Levels"); break;
-          case 222: println("Middle cloud bottom level"); break;
-          case 223: println("Middle cloud top level"); break;
-          case 224: println("Middle cloud layer"); break;
-          case 232: println("High cloud bottom level"); break;
-          case 233: println("High cloud top level"); break;
-          case 234: println("High cloud layer"); break;
-          case 235: println("Ocean Isotherm Level (1/10  C)"); break;
-          case 236: println("Layer between two depths below ocean surface"); break;
-          case 237: println("Bottom of Ocean Mixed Layer (m)"); break;
-          case 238: println("Bottom of Ocean Isothermal Layer (m)"); break;
-          case 239: println("Layer Ocean Surface and 26C Ocean Isothermal Level"); break;
-          case 240: println("Ocean Mixed Layer"); break;
-          case 241: println("Ordered Sequence of Data"); break;
-          case 242: println("Convective cloud bottom level"); break;
-          case 243: println("Convective cloud top level"); break;
-          case 244: println("Convective cloud layer"); break;
-          case 245: println("Lowest level of the wet bulb zero"); break;
-          case 246: println("Maximum equivalent potential temperature level"); break;
-          case 247: println("Equilibrium level"); break;
-          case 248: println("Shallow convective cloud bottom level"); break;
-          case 249: println("Shallow convective cloud top level"); break;
-          case 251: println("Deep convective cloud bottom level"); break;
-          case 252: println("Deep convective cloud top level"); break;
-          case 253: println("Lowest bottom level of supercooled liquid water layer"); break;
-          case 254: println("Highest top level of supercooled liquid water layer"); break;
-          case 255: println("Missing"); break;
-          default: println(this.TypeOfFirstFixedSurface); break;
-        }
+        info_TypeOfFirstFixedSurface(
+          this.TypeOfFirstFixedSurface
+        );
       }
 
       SectionNumbers = this.getGrib2Section(5); // Section 5: Data Representation Section
@@ -2516,20 +2142,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Data Representation Template Number:\t");
         this.DataRepresentationTemplateNumber = U_NUMx2(SectionNumbers[10], SectionNumbers[11]);
-        switch (this.DataRepresentationTemplateNumber) {
-          case 0: println("Grid point data - simple packing"); break;
-          case 1: println("Matrix value - simple packing"); break;
-          case 2: println("Grid point data - complex packing"); break;
-          case 3: println("Grid point data - complex packing and spatial differencing"); break;
-          case 4: println("Grid point data – IEEE floating point data"); break;
-          case 40: println("Grid point data – JPEG 2000 Code Stream Format"); break;
-          case 41: println("Grid point data – Portable Network Graphics (PNG)"); break;
-          case 50: println("Spectral data -simple packing"); break;
-          case 51: println("Spherical harmonics data - complex packing"); break;
-          case 61: println("Grid point data - simple packing with logarithm pre-processing"); break;
-          case 65535: println("Missing"); break;
-          default: println(this.DataRepresentationTemplateNumber); break;
-        }
+        info_DataRepresentationTemplateNumber(
+          this.DataRepresentationTemplateNumber
+        );
 
         print("Reference value (R):\t");
         this.ReferenceValue = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15])));
@@ -2663,15 +2278,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
       if (SectionNumbers.length > 1) {
         print("Bit map indicator:\t");
-        Bitmap_Indicator = SectionNumbers[6];
-        switch (Bitmap_Indicator) {
-          case 0: println("A bit map applies to this product and is specified in this Section."); break;
-          case 254: println("A bit map defined previously in the same GRIB message applies to this product."); break;
-          case 255: println("A bit map does not apply to this product."); break;
-          default: println("A bit map pre-determined by the originating/generating Centre applies to this product and is not specified in this Section."); break;
-        }
+        this.Bitmap_Indicator = SectionNumbers[6];
+        info_Bitmap_Indicator(
+          this.Bitmap_Indicator
+        );
 
-        if (Bitmap_Indicator === 0) { // A bit map applies to this product and is specified in this Section.
+        if (this.Bitmap_Indicator === 0) { // A bit map applies to this product and is specified in this Section.
 
           this.NullBitmapFlags = new Int32Array((SectionNumbers.length - 7) * 8);
 
@@ -3197,7 +2809,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
           var /* float */ RR = this.ReferenceValue;
 
-          if (Bitmap_Indicator === 0) { // A bit map applies to this product
+          if (this.Bitmap_Indicator === 0) { // A bit map applies to this product
 
             var /* int */ i = -1;
             for (var q = 0; q < this.Nx * this.Ny; q++) {
@@ -3234,7 +2846,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
         var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
         var /* float */ RR = this.ReferenceValue;
 
-        if (Bitmap_Indicator === 0) { // A bit map applies to this product
+        if (this.Bitmap_Indicator === 0) { // A bit map applies to this product
 
           var /* int */ i = -1;
           for (var q = 0; q < this.Nx * this.Ny; q++) {
@@ -3265,3 +2877,479 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     this.readGrib2Members(DATA.numMembers);
   };
 };
+
+
+function whichIs(q, io) {
+  var last = io.length - 1;
+  for (var i = 0; i < last; i++) {
+    if (q === io[0]) return io[1];
+  }
+  return io[last]; // i.e defualt
+}
+
+function echo(q, io) {
+  return println(
+    whichIs(q, io)
+  );
+}
+
+function info_DisciplineOfProcessedData(q) {
+  return echo(q, [
+    [0, "Meteorological products"],
+    [1, "Hydrological products"],
+    [2, "Land surface products"],
+    [3, "Space products"],
+    [4, "Space Weather Products "],
+    [10, "Oceanographic products"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_IdentificationOfCentre(q) {
+  return echo(q, [
+    [0, "WMO Secretariat"],
+    [1, "Melbourne"],
+    [2, "Melbourne"],
+    [4, "Moscow"],
+    [5, "Moscow"],
+    [7, "US National Weather Service - National Centres for Environmental Prediction (NCEP)"],
+    [8, "US National Weather Service Telecommunications Gateway (NWSTG)"],
+    [9, "US National Weather Service - Other"],
+    [10, "Cairo (RSMC)"],
+    [12, "Dakar (RSMC)"],
+    [14, "Nairobi (RSMC)"],
+    [16, "Casablanca (RSMC)"],
+    [17, "Tunis (RSMC)"],
+    [18, "Tunis - Casablanca (RSMC)"],
+    [20, "Las Palmas"],
+    [21, "Algiers (RSMC)"],
+    [22, "ACMAD"],
+    [23, "Mozambique (NMC)"],
+    [24, "Pretoria (RSMC)"],
+    [25, "La Réunion (RSMC)"],
+    [26, "Khabarovsk (RSMC)"],
+    [28, "New Delhi (RSMC)"],
+    [30, "Novosibirsk (RSMC)"],
+    [32, "Tashkent (RSMC)"],
+    [33, "Jeddah (RSMC)"],
+    [34, "Tokyo (RSMC), Japan Meteorological Agency"],
+    [36, "Bangkok"],
+    [37, "Ulaanbaatar"],
+    [38, "Beijing (RSMC)"],
+    [40, "Seoul"],
+    [41, "Buenos Aires (RSMC)"],
+    [43, "Brasilia (RSMC)"],
+    [45, "Santiago"],
+    [46, "Brazilian Space Agency ­ INPE"],
+    [47, "Colombia (NMC)"],
+    [48, "Ecuador (NMC)"],
+    [49, "Peru (NMC)"],
+    [50, "Venezuela (Bolivarian Republic of) (NMC)"],
+    [51, "Miami (RSMC)"],
+    [52, "Miami (RSMC), National Hurricane Centre"],
+    [53, "Montreal (RSMC)"],
+    [54, "Montreal (RSMC)"],
+    [55, "San Francisco"],
+    [56, "ARINC Centre"],
+    [57, "US Air Force - Air Force Global Weather Central"],
+    [58, "Fleet Numerical Meteorology and Oceanography Center, Monterey, CA, United States"],
+    [59, "The NOAA Forecast Systems Laboratory, Boulder, CO, United States"],
+    [60, "United States National Center for Atmospheric Research (NCAR)"],
+    [61, "Service ARGOS - Landover"],
+    [62, "US Naval Oceanographic Office"],
+    [63, "International Research Institute for Climate and Society (IRI)"],
+    [64, "Honolulu (RSMC)"],
+    [65, "Darwin (RSMC)"],
+    [67, "Melbourne (RSMC)"],
+    [69, "Wellington (RSMC)"],
+    [71, "Nadi (RSMC)"],
+    [72, "Singapore"],
+    [73, "Malaysia (NMC)"],
+    [74, "UK Meteorological Office ­ Exeter (RSMC)"],
+    [76, "Moscow (RSMC)"],
+    [78, "Offenbach (RSMC)"],
+    [80, "Rome (RSMC)"],
+    [82, "Norrköping"],
+    [84, "Toulouse (RSMC)"],
+    [85, "Toulouse (RSMC)"],
+    [86, "Helsinki"],
+    [87, "Belgrade"],
+    [88, "Oslo"],
+    [89, "Prague"],
+    [90, "Episkopi"],
+    [91, "Ankara"],
+    [92, "Frankfurt/Main"],
+    [93, "London (WAFC)"],
+    [94, "Copenhagen"],
+    [95, "Rota"],
+    [96, "Athens"],
+    [97, "European Space Agency (ESA)"],
+    [98, "European Centre for Medium-Range Weather Forecasts (ECMWF) (RSMC)"],
+    [99, "De Bilt"],
+    [100, "Brazzaville"],
+    [101, "Abidjan"],
+    [102, "Libya (NMC)"],
+    [103, "Madagascar (NMC)"],
+    [104, "Mauritius (NMC)"],
+    [105, "Niger (NMC)"],
+    [106, "Seychelles (NMC)"],
+    [107, "Uganda (NMC)"],
+    [108, "United Republic of Tanzania (NMC)"],
+    [109, "Zimbabwe (NMC)"],
+    [110, "Hong-Kong, China"],
+    [111, "Afghanistan (NMC)"],
+    [112, "Bahrain (NMC)"],
+    [113, "Bangladesh (NMC)"],
+    [114, "Bhutan (NMC)"],
+    [115, "Cambodia (NMC)"],
+    [116, "Democratic People's Republic of Korea (NMC)"],
+    [117, "Islamic Republic of Iran (NMC)"],
+    [118, "Iraq (NMC)"],
+    [119, "Kazakhstan (NMC)"],
+    [120, "Kuwait (NMC)"],
+    [121, "Kyrgyzstan (NMC)"],
+    [122, "Lao People's Democratic Republic (NMC)"],
+    [123, "Macao, China"],
+    [124, "Maldives (NMC)"],
+    [125, "Myanmar (NMC)"],
+    [126, "Nepal (NMC)"],
+    [127, "Oman (NMC)"],
+    [128, "Pakistan (NMC)"],
+    [129, "Qatar (NMC)"],
+    [130, "Yemen (NMC)"],
+    [131, "Sri Lanka (NMC)"],
+    [132, "Tajikistan (NMC)"],
+    [133, "Turkmenistan (NMC)"],
+    [134, "United Arab Emirates (NMC)"],
+    [135, "Uzbekistan (NMC)"],
+    [136, "Viet Nam (NMC)"],
+    [140, "Bolivia (Plurinational State of) (NMC)"],
+    [141, "Guyana (NMC)"],
+    [142, "Paraguay (NMC)"],
+    [143, "Suriname (NMC)"],
+    [144, "Uruguay (NMC)"],
+    [145, "French Guiana"],
+    [146, "Brazilian Navy Hydrographic Centre"],
+    [147, "National Commission on Space Activities (CONAE) - Argentina"],
+    [150, "Antigua and Barbuda (NMC)"],
+    [151, "Bahamas (NMC)"],
+    [152, "Barbados (NMC)"],
+    [153, "Belize (NMC)"],
+    [154, "British Caribbean Territories Centre"],
+    [155, "San José"],
+    [156, "Cuba (NMC)"],
+    [157, "Dominica (NMC)"],
+    [158, "Dominican Republic (NMC)"],
+    [159, "El Salvador (NMC)"],
+    [160, "US NOAA/NESDIS"],
+    [161, "US NOAA Office of Oceanic and Atmospheric Research"],
+    [162, "Guatemala (NMC)"],
+    [163, "Haiti (NMC)"],
+    [164, "Honduras (NMC)"],
+    [165, "Jamaica (NMC)"],
+    [166, "Mexico City"],
+    [167, "Curaçao and Sint Maarten (NMC)"],
+    [168, "Nicaragua (NMC)"],
+    [169, "Panama (NMC)"],
+    [170, "Saint Lucia (NMC)"],
+    [171, "Trinidad and Tobago (NMC)"],
+    [172, "French Departments in RA IV"],
+    [173, "US National Aeronautics and Space Administration (NASA)"],
+    [174, "Integrated Science Data Management/Marine Environmental Data Service (ISDM/MEDS) - Canada"],
+    [175, "University Corporation for Atmospheric Research (UCAR) - United States"],
+    [176, "Cooperative Institute for Meteorological Satellite Studies (CIMSS) - United States"],
+    [177, "NOAA National Ocean Service - United States"],
+    [190, "Cook Islands (NMC)"],
+    [191, "French Polynesia (NMC)"],
+    [192, "Tonga (NMC)"],
+    [193, "Vanuatu (NMC)"],
+    [194, "Brunei Darussalam (NMC)"],
+    [195, "Indonesia (NMC)"],
+    [196, "Kiribati (NMC)"],
+    [197, "Federated States of Micronesia (NMC)"],
+    [198, "New Caledonia (NMC)"],
+    [199, "Niue"],
+    [200, "Papua New Guinea (NMC)"],
+    [201, "Philippines (NMC)"],
+    [202, "Samoa (NMC)"],
+    [203, "Solomon Islands (NMC)"],
+    [204, "National Institute of Water and Atmospheric Research (NIWA - New Zealand)"],
+    [210, "Frascati (ESA/ESRIN)"],
+    [211, "Lannion"],
+    [212, "Lisbon"],
+    [213, "Reykjavik"],
+    [214, "Madrid"],
+    [215, "Zurich"],
+    [216, "Service ARGOS - Toulouse"],
+    [217, "Bratislava"],
+    [218, "Budapest"],
+    [219, "Ljubljana"],
+    [220, "Warsaw"],
+    [221, "Zagreb"],
+    [222, "Albania (NMC)"],
+    [223, "Armenia (NMC)"],
+    [224, "Austria (NMC)"],
+    [225, "Azerbaijan (NMC)"],
+    [226, "Belarus (NMC)"],
+    [227, "Belgium (NMC)"],
+    [228, "Bosnia and Herzegovina (NMC)"],
+    [229, "Bulgaria (NMC)"],
+    [230, "Cyprus (NMC)"],
+    [231, "Estonia (NMC)"],
+    [232, "Georgia (NMC)"],
+    [233, "Dublin"],
+    [234, "Israel (NMC)"],
+    [235, "Jordan (NMC)"],
+    [236, "Latvia (NMC)"],
+    [237, "Lebanon (NMC)"],
+    [238, "Lithuania (NMC)"],
+    [239, "Luxembourg"],
+    [240, "Malta (NMC)"],
+    [241, "Monaco"],
+    [242, "Romania (NMC)"],
+    [243, "Syrian Arab Republic (NMC)"],
+    [244, "The former Yugoslav Republic of Macedonia (NMC)"],
+    [245, "Ukraine (NMC)"],
+    [246, "Republic of Moldova (NMC)"],
+    [247, "Operational Programme for the Exchange of weather RAdar information (OPERA) - EUMETNET"],
+    [248, "Montenegro (NMC)"],
+    [249, "Barcelona Dust Forecast Center"],
+    [250, "COnsortium for Small scale MOdelling  (COSMO)"],
+    [251, "Meteorological Cooperation on Operational NWP (MetCoOp)"],
+    [252, "Max Planck Institute for Meteorology (MPI-M)"],
+    [254, "EUMETSAT Operation Centre"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_IdentificationOfSubCentre(q) {
+  return echo(q, [
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_MasterTablesVersionNumber(q) {
+  return echo(q, [
+    [0, "Experimental"],
+    [1, "Version implemented on 7 November 2001"],
+    [2, "Version implemented on 4 November 2003"],
+    [3, "Version implemented on 2 November 2005"],
+    [4, "Version implemented on 7 November 2007"],
+    [5, "Version Implemented on 4 November 2009"],
+    [6, "Version Implemented on 15 September 2010"],
+    [7, "Version Implemented on 4 May 2011"],
+    [8, "Version Implemented on 8 November 2011"],
+    [9, "Version Implemented on 2 May 2012"],
+    [10, "Version Implemented on 7 November 2012 "],
+    [11, "Version Implemented on 8 May 2013"],
+    [12, "Version Implemented on 14 November 2013"],
+    [13, "Version Implemented on 7 May 2014"],
+    [14, "Version Implemented on 5 November 2014"],
+    [15, "Version Implemented on 6 May 2015"],
+    [16, "Pre-operational to be implemented by next amendment"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_LocalTablesVersionNumber(q) {
+  return echo(q, [
+    [0, "Local tables not used. Only table entries and templates from the current Master table are valid."],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_SignificanceOfReferenceTime(q) {
+  return echo(q, [
+    [0, "Analysis"],
+    [1, "Start of forecast"],
+    [2, "Verifying time of forecast"],
+    [3, "Observation time"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_ProductionStatusOfData(q) {
+  return echo(q, [
+    [0, "Operational products"],
+    [1, "Operational test products"],
+    [2, "Research products"],
+    [3, "Re-analysis products"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_TypeOfData(q) {
+  return echo(q, [
+    [0, "Analysis products"],
+    [1, "Forecast products"],
+    [2, "Analysis and forecast products"],
+    [3, "Control forecast products"],
+    [4, "Perturbed forecast products"],
+    [5, "Control and perturbed forecast products"],
+    [6, "Processed satellite observations"],
+    [7, "Processed radar observations"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_ProductDefinitionTemplateNumber(q) {
+  return echo(q, [
+    [0, "Analysis or forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.0)"],
+    [1, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time. (see Template 4.1)"],
+    [2, "Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer at a point in time. (see Template 4.2)"],
+    [3, "Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.3)"],
+    [4, "Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.4)"],
+    [5, "Probability forecasts at a horizontal level or in a horizontal layer at a point in time. (see Template 4.5)"],
+    [6, "Percentile forecasts at a horizontal level or in a horizontal layer at a point in time. (see Template 4.6)"],
+    [7, "Analysis or forecast error at a horizontal level or in a horizontal layer at a point in time. (see Template 4.7)"],
+    [8, "Average, accumulation, extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.8)"],
+    [9, "Probability forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.9)"],
+    [10, "Percentile forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.10)"],
+    [11, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.11)"],
+    [12, "Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.12)"],
+    [13, "Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.13)"],
+    [14, "Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.14)"],
+    [15, "Average, accumulation, extreme values or other statistically-processed values over a spatial area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.15)"],
+    [20, "Radar product (see Template 4.20)"],
+    [30, "Satellite product (see Template 4.30) NOTE:This template is deprecated. Template 4.31 should be used instead."],
+    [31, "Satellite product (see Template 4.31)"],
+    [32, "Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for simulate (synthetic) staellite data (see Template 4.32)"],
+    [40, "Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents. (see Template 4.40)"],
+    [41, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents. (see Template 4.41)"],
+    [42, "Average, accumulation, and/or extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for atmospheric chemical constituents. (see Template 4.42)"],
+    [43, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for atmospheric chemical constituents. (see Template 4.43)"],
+    [44, "Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for aerosol. (see Template 4.44)"],
+    [45, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for aerosol. (see Template 4.45)"],
+    [46, "Average, accumulation, and/or extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for aerosol. (see Template 4.46)"],
+    [47, "Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for aerosol. (see Template 4.47)"],
+    [48, "Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for aerosol. (see Template 4.48)"],
+    [51, "Categorical forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.51)"],
+    [91, "Categorical forecast at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.91)"],
+    [254, "CCITT IA5 character string (see Template 4.254)"],
+    [1000, "Cross-section of analysis and forecast at a point in time. (see Template 4.1000)"],
+    [1001, "Cross-section of averaged or otherwise statistically processed analysis or forecast over a range of time. (see Template 4.1001)"],
+    [1002, "Cross-section of analysis and forecast, averaged or otherwise statistically-processed over latitude or longitude. (see Template 4.1002)"],
+    [1100, "Hovmoller-type grid with no averaging or other statistical processing (see Template 4.1100)"],
+    [1101, "Hovmoller-type grid with averaging or other statistical processing (see Template 4.1101)"],
+    [65535, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_TypeOfFirstFixedSurface(q) {
+  return echo(q, [
+    [1, "Ground or Water Surface"],
+    [2, "Cloud Base Level"],
+    [3, "Level of Cloud Tops"],
+    [4, "Level of 0o C Isotherm"],
+    [5, "Level of Adiabatic Condensation Lifted from the Surface"],
+    [6, "Maximum Wind Level"],
+    [7, "Tropopause"],
+    [8, "Nominal Top of the Atmosphere"],
+    [9, "Sea Bottom"],
+    [10, "Entire Atmosphere"],
+    [11, "Cumulonimbus Base (CB)"],
+    [12, "Cumulonimbus Top (CT)"],
+    [20, "Isothermal Level"],
+    [100, "Isobaric Surface"],
+    [101, "Mean Sea Level"],
+    [102, "Specific Altitude Above Mean Sea Level"],
+    [103, "Specified Height Level Above Ground"],
+    [104, "Sigma Level"],
+    [105, "Hybrid Level"],
+    [106, "Depth Below Land Surface"],
+    [107, "Isentropic (theta) Level"],
+    [108, "Level at Specified Pressure Difference from Ground to Level"],
+    [109, "Potential Vorticity Surface"],
+    [111, "Eta Level"],
+    [113, "Logarithmic Hybrid Level"],
+    [114, "Snow Level"],
+    [117, "Mixed Layer Depth"],
+    [118, "Hybrid Height Level"],
+    [119, "Hybrid Pressure Level"],
+    [150, "Generalized Vertical Height Coordinate (see Note 5)"],
+    [160, "Depth Below Sea Level"],
+    [161, "Depth Below Water Surface"],
+    [162, "Lake or River Bottom"],
+    [163, "Bottom Of Sediment Layer"],
+    [164, "Bottom Of Thermally Active Sediment Layer"],
+    [165, "Bottom Of Sediment Layer Penetrated By Thermal Wave"],
+    [166, "Maxing Layer"],
+    [200, "Entire atmosphere (considered as a single layer)"],
+    [201, "Entire ocean (considered as a single layer)"],
+    [204, "Highest tropospheric freezing level"],
+    [206, "Grid scale cloud bottom level"],
+    [207, "Grid scale cloud top level"],
+    [209, "Boundary layer cloud bottom level"],
+    [210, "Boundary layer cloud top level"],
+    [211, "Boundary layer cloud layer"],
+    [212, "Low cloud bottom level"],
+    [213, "Low cloud top level"],
+    [214, "Low cloud layer"],
+    [215, "Cloud ceiling"],
+    [220, "Planetary Boundary Layer"],
+    [221, "Layer Between Two Hybrid Levels"],
+    [222, "Middle cloud bottom level"],
+    [223, "Middle cloud top level"],
+    [224, "Middle cloud layer"],
+    [232, "High cloud bottom level"],
+    [233, "High cloud top level"],
+    [234, "High cloud layer"],
+    [235, "Ocean Isotherm Level (1/10  C)"],
+    [236, "Layer between two depths below ocean surface"],
+    [237, "Bottom of Ocean Mixed Layer (m)"],
+    [238, "Bottom of Ocean Isothermal Layer (m)"],
+    [239, "Layer Ocean Surface and 26C Ocean Isothermal Level"],
+    [240, "Ocean Mixed Layer"],
+    [241, "Ordered Sequence of Data"],
+    [242, "Convective cloud bottom level"],
+    [243, "Convective cloud top level"],
+    [244, "Convective cloud layer"],
+    [245, "Lowest level of the wet bulb zero"],
+    [246, "Maximum equivalent potential temperature level"],
+    [247, "Equilibrium level"],
+    [248, "Shallow convective cloud bottom level"],
+    [249, "Shallow convective cloud top level"],
+    [251, "Deep convective cloud bottom level"],
+    [252, "Deep convective cloud top level"],
+    [253, "Lowest bottom level of supercooled liquid water layer"],
+    [254, "Highest top level of supercooled liquid water layer"],
+    [255, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_DataRepresentationTemplateNumber(q) {
+  return echo(q, [
+    [0, "Grid point data - simple packing"],
+    [1, "Matrix value - simple packing"],
+    [2, "Grid point data - complex packing"],
+    [3, "Grid point data - complex packing and spatial differencing"],
+    [4, "Grid point data – IEEE floating point data"],
+    [40, "Grid point data – JPEG 2000 Code Stream Format"],
+    [41, "Grid point data – Portable Network Graphics (PNG)"],
+    [50, "Spectral data -simple packing"],
+    [51, "Spherical harmonics data - complex packing"],
+    [61, "Grid point data - simple packing with logarithm pre-processing"],
+    [65535, "Missing"],
+    [null, q]
+  ]);
+}
+
+function info_Bitmap_Indicator(q) {
+  return echo(q, [
+    [0, "A bit map applies to this product and is specified in this Section."],
+    [254, "A bit map defined previously in the same GRIB message applies to this product."],
+    [255, "A bit map does not apply to this product."],
+    [null, q]
+  ]);
+}
+
