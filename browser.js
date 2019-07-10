@@ -27,9 +27,7 @@ var DATA = {
         allLayers: [],
         allLevels: [],
         allDomains: allDomains,
-        ParameterLevel: ParameterLevel,
-
-        Filename: "prototype"
+        ParameterLevel: ParameterLevel
 };
 
 //var link = 'https://dd.weather.gc.ca/ensemble/geps/grib2/raw/00/060/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2';
@@ -51,13 +49,8 @@ DATA.numMembers = link.indexOf('ensemble') ?
         21 : // i.e. ensembles
         1; //i.e. deterministic
 
-var BaseFolder = ".";
-var TempFolder = BaseFolder + "/temp/";
-var OutputFolder = BaseFolder + "/output/";
-
 var myGrid = new GRIB2CLASS(DATA, {
-        TempFolder: TempFolder,
-        OutputFolder: OutputFolder
+        log: true
 });
 
 http.get(link, function (res) {

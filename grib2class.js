@@ -19,16 +19,11 @@ function jpx_decode(data) {
     return image;
 }
 
-var fs = require('fs');
-function saveBytes(filename, bytes) {
-  // fs.writeFileSync(filename, bytes);
-}
-
 function nf0(number) {
   return Math.round(number);
 }
 
-var /* boolean */ log = false;
+var /* boolean */ log = false; // could be enabled by options
 
 var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US"];
 
@@ -36,12 +31,13 @@ function println(/* String */ a, /* optional String */ b) {
   var s =
     (a === undefined) ? '' :
     (b === undefined) ? a : a + ' ' + b;
-  // console.log(s);
+
+  console.log(s);
   // process.stdout.write(s + '\n');
 }
 
 function print(/* char */ c) {
-  // console.log(c); // Change me! For the moment this prints with this new line!
+  console.log(c); // Change me! For the moment this prints with this new line!
   // process.stdout.write(c);
 }
 
@@ -205,12 +201,8 @@ function /* float */ IEEE32(/* String */ s) {
 }
 
 
-module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
-  var TempFolder = opts.TempFolder;
-  var OutputFolder = opts.OutputFolder;
-  var Grib2Folder = TempFolder + "grib2/";
-  var Jpeg2000Folder = TempFolder + "jp2/";
-
+module.exports = function /* class */ GRIB2CLASS(DATA, options) {
+  log = !!options.log;
 
   this. /* String */ ParameterNameAndUnit = null;
   this. /* String[] */ DataTitles = [];
@@ -434,7 +426,6 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
     var /* int */ Bitmap_beginPointer = 0;
     var /* int */ Bitmap_endPointer = 0;
     var /* int */ Bitmap_FileLength = 0;
-    var Bitmap_FileName = "";
 
     var /* int */ JPEG2000_TypeOfOriginalFieldValues = 0;
     var /* int */ JPEG2000_TypeOfCompression = 0;
@@ -2935,15 +2926,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           for (var i = 0; i < imageBytes.length; i++) {
             imageBytes[i] = this.fileBytes[i + Bitmap_beginPointer];
           }
-          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
-
-          Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2";
-
-          //saveBytes(Bitmap_FileName, imageBytes);
-          //println("Bitmap section saved at:", Bitmap_FileName);
 
           var image = jpx_decode(imageBytes);
           this.data = image.pixelData;
@@ -2951,11 +2936,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
           Bitmap_FileLength = 1 + Bitmap_endPointer - Bitmap_beginPointer;
         }
         else {
-          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
-          Bitmap_FileName = "";
           Bitmap_FileLength = 0;
         }
       }
@@ -3275,21 +3258,17 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
           //for (var q = 0; q < 20; q++) println(this.DataValues[memberID][q]);
 
-          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
-          Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2"; // not a jp2 file!
           Bitmap_FileLength = 1 + Bitmap_endPointer - Bitmap_beginPointer;
 
         }
         /*
         else {
-          this.DataTitles[memberID] = DATA.Filename.replace(".grib2", "");
           if (DATA.numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
-          Bitmap_FileName = "";
           Bitmap_FileLength = 0;
         }
         */
