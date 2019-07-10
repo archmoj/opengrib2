@@ -74,35 +74,10 @@ module.exports = function () {
 
         ["PRMSL_MSL_0", "", "", "", "", "", "", "", ""],
         ["PRES_SFC_0", "", "", "", "", "", "", "", ""],
-        ["HGT", "", "", "", "", "", "", "", ""], // cloud ceiling
-        ["HGT", "", "", "", "", "", "", "", ""], // cloud top
         ["HCDC_SFC_0", "", "", "", "", "", "", "", ""],
         ["MCDC_SFC_0", "", "", "", "", "", "", "", ""],
         ["LCDC_SFC_0", "", "", "", "", "", "", "", ""],
         ["TCDC_SFC_0", "", "", "", "", "", "", "", ""],
-        ["ALBDO_SFC_0", "", "", "", "", "", "", "", ""],
-
-        ["SOLAR_HOR", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_DIF", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_DIR", "", "", "", "", "", "", "", ""], // to be post-processed
-
-        ["EFFECT_DIR", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["EFFECT_DIF", "", "", "", "", "", "", "", ""], // to be post-processed
-
-        ["SOLAR_TRK", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_LAT", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_S45", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_S00", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_N00", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_E00", "", "", "", "", "", "", "", ""], // to be post-processed
-        ["SOLAR_W00", "", "", "", "", "", "", "", ""], // to be post-processed
-
-        ["WPOW_TGL_10", "WPOW_TGL_40", "WPOW_TGL_80", "WPOW_TGL_120", "WPOW_ISBL_1000", "WPOW_ISBL_0850", "WPOW_ISBL_0700", "WPOW_ISBL_0500", "WPOW_ISBL_0250"], // to be post-processed
-
-        ["FLOWxONLY_TGL_10", "FLOWxONLY_TGL_40", "FLOWxONLY_TGL_80", "FLOWxONLY_TGL_120", "FLOWxONLY_ISBL_1000", "FLOWxONLY_ISBL_0850", "FLOWxONLY_ISBL_0700", "FLOWxONLY_ISBL_0500", "FLOWxONLY_ISBL_0250"], // to be post-processed
-        ["FLOWxPRM_TGL_10", "FLOWxPRM_TGL_40", "FLOWxPRM_TGL_80", "FLOWxPRM_TGL_120", "FLOWxPRM_ISBL_1000", "FLOWxPRM_ISBL_0850", "FLOWxPRM_ISBL_0700", "FLOWxPRM_ISBL_0500", "FLOWxPRM_ISBL_0250"], // to be post-processed
-        ["FLOWxPCP_TGL_10", "FLOWxPCP_TGL_40", "FLOWxPCP_TGL_80", "FLOWxPCP_TGL_120", "FLOWxPCP_ISBL_1000", "FLOWxPCP_ISBL_0850", "FLOWxPCP_ISBL_0700", "FLOWxPCP_ISBL_0500", "FLOWxPCP_ISBL_0250"], // to be post-processed
-        ["FLOWxEFF_TGL_10", "FLOWxEFF_TGL_40", "FLOWxEFF_TGL_80", "FLOWxEFF_TGL_120", "FLOWxEFF_ISBL_1000", "FLOWxEFF_ISBL_0850", "FLOWxEFF_ISBL_0700", "FLOWxEFF_ISBL_0500", "FLOWxEFF_ISBL_0250"], // to be post-processed
-
+        ["ALBDO_SFC_0", "", "", "", "", "", "", "", ""]
     ];
 };
