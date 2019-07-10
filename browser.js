@@ -45,12 +45,12 @@ var link = 'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/18/054/CMC_re
 link = link.replace('https://', 'http://');
 link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
 
-DATA.numMembers = link.indexOf('ensemble') ?
+DATA.numMembers = link.indexOf('ensemble') !== -1 ?
         21 : // i.e. ensembles
         1; //i.e. deterministic
 
 var myGrid = new GRIB2CLASS(DATA, {
-        log: true
+        log: false
 });
 
 http.get(link, function (res) {
