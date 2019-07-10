@@ -9,22 +9,23 @@ exports.disable = function (state) {
 };
 
 exports.println = function (/* String */ a, /* optional String */ b) {
-    if (!log) return;
     var s =
         (a === undefined) ? '' :
             (b === undefined) ? a : a + ' ' + b;
 
-    console.log(s);
-    // process.stdout.write(s + '\n'); // node.js
+    if (log) {
+        console.log(s);
+        // process.stdout.write(s + '\n'); // node.js
+    }
 
     return s;
 };
 
 exports.printChar = function (/* char */ c) {
-    if (!log) return;
-
-    console.log(c);
-    // process.stdout.write(c); // node.js
+    if (log) {
+        console.log(c);
+        // process.stdout.write(c); // node.js
+    }
 
     return c;
 };
