@@ -33,20 +33,48 @@ var DATA = {
 
 var mocks;
 
+const deltaTime = 6; // i.e. the delay needed for the input models to be available on the web
+const modelTime = new Date();
+modelTime.setHours(modelTime.getHours() - deltaTime);
+
+const YEAR = modelTime.getUTCFullYear();
+const MONTH = modelTime.getUTCMonth() + 1;
+const DAY = modelTime.getUTCDate();
+const HOUR = modelTime.getUTCHours();
+//console.log(YEAR, MONTH, DAY, HOUR);
+
+var YYYY = String('0000' + YEAR).slice(-4);
+var DD = String('00' + DAY).slice(-2);
+var MM = String('00' + MONTH).slice(-2);
+var HH = String('00' + HOUR).slice(-2);
+HH = 12 * Math.floor(HH / 12);
+//console.log(YYYY, MM, DD, HH);
+
+var FHR = '000';
+
+var timeStamp = YYYY + MM + DD + HH + '_P' + FHR;
+
 switch(process.env.NODE_ENV) {
     case 'proxy-data':
         mocks = [
-            'https://dd.meteo.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2',
-            'https://dd.meteo.gc.ca/model_gem_global/25km/grib2/lat_lon/00/048/CMC_glb_TMP_ISBL_970_latlon.24x.24_2019071000_P048.grib2'
+                { global: true, link: 'https://dd.meteo.gc.ca/model_gem_global/25km/grib2/lat_lon/' + HH + '/' + FHR + '/CMC_glb_TMP_ISBL_1000_latlon.24x.24_' + timeStamp + '.grib2' },
+                { global: true, link: 'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/' + HH + '/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_' + timeStamp + '.grib2' },
+                { global: false, link: 'https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/' + HH + '/' + FHR + '/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_' + timeStamp + '_allmbrs.grib2' },
+                { global: false, link: 'https://dd.weather.gc.ca/model_hrdps/west/grib2/' + HH + '/' + FHR + '/CMC_hrdps_west_TMP_TGL_2_ps2.5km_' + timeStamp + '-00.grib2' },
+                { global: false, link: 'https://dd.weather.gc.ca/model_hrdps/east/grib2/' + HH + '/' + FHR + '/CMC_hrdps_east_TMP_TGL_2_ps2.5km_' + timeStamp + '-00.grib2' },
+                { global: false, link: 'https://dd.weather.gc.ca/model_hrdps/continental/grib2/' + HH + '/' + FHR + '/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_' + timeStamp + '-00.grib2' },
+                { global: false, link: 'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/' + HH + '/' + FHR + '/CMC_reg_TMP_TGL_2_ps10km_' + timeStamp + '.grib2' },
+                { global: false, link: 'https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/' + HH + '/' + FHR + '/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_' + timeStamp + '_allmbrs.grib2' },
+                { global: true, link: 'https://dd.weather.gc.ca/ensemble/geps/grib2/raw/' + HH + '/' + FHR + '/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_' + timeStamp + '_allmbrs.grib2' }
         ];
 
         console.log('Using grib2 data fetched from Datamart using proxy server!')
         break;
     case 'local-data':
         mocks = [
-            './grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019071000_P000.grib2',
-            './grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2',
-            './grib2/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2'
+                { global: true, link: './grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019071000_P000.grib2' },
+                { global: true, link: './grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2' },
+                { global: true, link: './grib2/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2' }
         ];
 
         console.log('Using local (already downloaded) grib2 data')
@@ -61,8 +89,8 @@ function makeDropDown() {
   var i;
   for (i in mocks) {
     var opt = document.createElement("option");
-    opt.value = mocks[i];
-    opt.text = mocks[i].replace('https://dd.meteo.gc.ca', '');
+    opt.value = mocks[i].link;
+    opt.text = mocks[i].link.replace('https://dd.meteo.gc.ca', '');
     dropDown.append(opt);
   }
 
@@ -78,6 +106,10 @@ function go(link) {
       link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
       link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
   }
+
+  var isGlobal =
+        link.indexOf('geps') != -1 ||
+        link.indexOf('global') != -1;
 
   DATA.numMembers = link.indexOf('ensemble') !== -1 ?
           21 : // i.e. ensembles
@@ -97,7 +129,7 @@ function go(link) {
                   console.log(myGrid);
 
                   //basicPlot(myGrid);
-                  interactivePlot(myGrid);
+                  interactivePlot(myGrid, isGlobal);
           });
   });
 }
@@ -161,10 +193,9 @@ function basicPlot(grid) {
         ctx.putImageData(img, 0, 0);
 }
 
-function interactivePlot(grid) {
+function interactivePlot(grid, isGlobal) {
         var nx = grid.Nx;
         var ny = grid.Ny;
-        var nMembers = grid.DataValues.length; // actual values are here in correct scale - undefined values are NaN!
 
         // let's start with deterministic data i.e. member 0
         var values = grid.DataValues[0];
@@ -187,9 +218,20 @@ function interactivePlot(grid) {
                 colorbar: {
                         len: 0.5
                 }
-        }, {
-                type: 'scattergeo'
         }];
+
+        if(isGlobal) {
+                data.push({
+                        type: 'scattergeo'
+                });
+        }
+
+
+
+        var title = [
+                'TypeOfData: ' + grid.meta.TypeOfData,
+                'Variable: ' + grid.meta.CategoryOfParametersByProductDiscipline
+        ].join('<br>');
 
         var layout = {
                 xaxis: {
@@ -209,7 +251,20 @@ function interactivePlot(grid) {
                         bgcolor: 'rgba(0,0,0,0)',
                         dragmode: false
                 },
-                margin: {t:0, b:0}
+                annotations: [{
+                        text: title,
+                        showarrow: false,
+                        xref: "paper",
+                        yref: "paper",
+                        xanchor: "left",
+                        yanchor: "top",
+                        x: 0,
+                        y: 0.8
+                }],
+                margin: {
+                        t:0,
+                        b:0
+                }
         };
 
         var config = {
@@ -223,26 +278,8 @@ function interactivePlot(grid) {
                 });
 }
 
-// Global wave model
-//var link = 'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/00/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019071000_P000.grib2';
-
-// Global model
-var link = 'https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2';
-
-// Global ensemble model
-//var link = 'https://dd.weather.gc.ca/ensemble/geps/grib2/raw/00/060/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2';
-
-// Other:
-//var link = 'https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/00/072/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_2019070900_P072_allmbrs.grib2';
-//var link = 'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/18/054/CMC_reg_TMP_TGL_2_ps10km_2019070918_P054.grib2';
-//var link = 'https://dd.weather.gc.ca/model_hrdps/continental/grib2/18/006/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_2019070918_P006-00.grib2';
-//var link = 'https://dd.weather.gc.ca/model_hrdps/west/grib2/12/006/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019070912_P006-00.grib2';
-//var link = 'https://dd.weather.gc.ca/model_hrdps/east/grib2/12/006/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019070912_P006-00.grib2';
-
 window.go = go
 
 makeDropDown();
-go(mocks[0]);
-
-// go('https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2')
+go(mocks[0].link);
 
