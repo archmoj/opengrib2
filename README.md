@@ -19,6 +19,8 @@ This repo offers two demos:
 - one "local" demo, where MSC grib2 files are downloaded and served up locally.
   We decode and plot the grib2 data in the client.
 
+We also built a script that scrapes the [Datamart indices](https://dd.weather.gc.ca/), building a list of URLs to grib2 files.
+For more info, look under `./scraper/README.md`.
 
 ##### Prequisites
 
