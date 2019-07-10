@@ -2,20 +2,6 @@
 
 'use strict';
 
-// mock imports for jpeg-2000
-
-/* import */ function /* Buffer */ RandomAccessFile(b, c) {
-  this.read = function () {
-    return;
-  }
-};
-/* import */ function /* Buffer */ Grib2JpegDecoder(args) {
-  this.data = [];
-  this.decode = function () {
-    return;
-  }
-};
-
 function jpx_decode(data) {
     var t0 = performance.now();
     var jpxImage = new JpxImage();
@@ -31,24 +17,6 @@ function jpx_decode(data) {
     };
 
     return image;
-}
-
-function jpx_draw(image_jpx) {
-    console.log(image_jpx);
-    var canvas = document.getElementById('canvas')
-    var ctx = canvas.getContext('2d')
-    canvas.width = image_jpx.sx;
-    canvas.height = image_jpx.sy;
-
-    var ctxImageData = ctx.createImageData(image_jpx.sx, image_jpx.sy);
-    for (var i = 0; i < (image_jpx.sx * image_jpx.sy) ; i++) {
-        var val = image_jpx.pixelData[i*image_jpx.nbChannels];
-        ctxImageData.data[i*4+0] = 0; //val;
-        ctxImageData.data[i*4+1] = 0; //val;
-        ctxImageData.data[i*4+2] = 0; //val;
-        ctxImageData.data[i*4+3] = 255 - val / 10;
-    }
-    ctx.putImageData(ctxImageData, 0, 0);
 }
 
 var fs = require('fs');
@@ -2974,13 +2942,11 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
           Bitmap_FileName = Jpeg2000Folder + this.DataTitles[memberID] + ".jp2";
 
-          // TODO: convert JPEG2000 into an array stored in this.data
+          //saveBytes(Bitmap_FileName, imageBytes);
+          //println("Bitmap section saved at:", Bitmap_FileName);
+
           var image = jpx_decode(imageBytes);
           this.data = image.pixelData;
-          jpx_draw(image);
-
-          saveBytes(Bitmap_FileName, imageBytes);
-          println("Bitmap section saved at:", Bitmap_FileName);
 
           Bitmap_FileLength = 1 + Bitmap_endPointer - Bitmap_beginPointer;
         }
@@ -3332,60 +3298,32 @@ module.exports = function /* class */ GRIB2CLASS(DATA, opts) {
 
       SectionNumbers = this.getGrib2Section(8); // Section 8: 7777
 
+      if (this.DataRepresentationTemplateNumber == 40) { // Grid point data – JPEG 2000 Code Stream Format
+        var /* float */ BB = Math.pow(2, this.BinaryScaleFactor);
+        var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
+        var /* float */ RR = this.ReferenceValue;
 
-      try {
-        if (this.DataRepresentationTemplateNumber == 40) { // Grid point data – JPEG 2000 Code Stream Format
+        if (Bitmap_Indicator == 0) { // A bit map applies to this product
 
-          println("Openning:", Bitmap_FileName);
-
-          var /* RandomAccessFile */ raf = new RandomAccessFile(Bitmap_FileName, "r");
-
-          var argv = [
-            "-rate",
-            nf0(this.NumberOfBitsUsedForEachPackedValue, 0), // number of bits per pixel
-            "-verbose",
-            "off"
-          ];
-
-          var /* Grib2JpegDecoder */ g2j = new Grib2JpegDecoder(argv);
-
-          var /* byte[] */ buf = new Uint8Array(Bitmap_FileLength);
-
-          raf.read(buf);
-          g2j.decode(buf);
-
-          println("g2j.data.length", g2j.data.length);
-          println("Nx X Ny", this.Nx, this.Ny, this.Nx * this.Ny);
-
-          var /* float */ BB = Math.pow(2, this.BinaryScaleFactor);
-          var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
-          var /* float */ RR = this.ReferenceValue;
-
-          if (Bitmap_Indicator == 0) { // A bit map applies to this product
-
-            var /* int */ i = -1;
-            for (var q = 0; q < this.Nx * this.Ny; q++) {
-              if (this.NullBitmapFlags[q] == 0) {
-                this.DataValues[memberID][q] = undefined;
-              }
-              else {
-                i += 1;
-
-                this.DataValues[memberID][q] = ((g2j.data[i] * BB) + RR) / DD;
-              }
+          var /* int */ i = -1;
+          for (var q = 0; q < this.Nx * this.Ny; q++) {
+            if (this.NullBitmapFlags[q] == 0) {
+              this.DataValues[memberID][q] = undefined;
             }
-          }
-          else {
-            for (var q = 0; q < this.Nx * this.Ny; q++) {
-              var /* int */ i = q;
+            else {
+              i += 1;
 
-              this.DataValues[memberID][q] = ((g2j.data[i] * BB) + RR) / DD;
+              this.DataValues[memberID][q] = ((this.data[i] * BB) + RR) / DD;
             }
           }
         }
-      }
-      catch (error) {
-        println("error:", error);
+        else {
+          for (var q = 0; q < this.Nx * this.Ny; q++) {
+            var /* int */ i = q;
+
+            this.DataValues[memberID][q] = ((this.data[i] * BB) + RR) / DD;
+          }
+        }
       }
     }
   };
