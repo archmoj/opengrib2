@@ -5,10 +5,6 @@ var Plotly = require("plotly.js-dist");
 
 var GRIB2CLASS = require('./grib2class');
 
-var allDomains = require('./domains')();
-
-var ParameterLevel = require('./parameter_level')();
-
 var DATA = {
         ModelYear: -1,
         ModelMonth: -1,
@@ -26,9 +22,7 @@ var DATA = {
         numTimes: -1, // download n grib2 files in front
 
         allLayers: [],
-        allLevels: [],
-        allDomains: allDomains,
-        ParameterLevel: ParameterLevel
+        allLevels: []
 };
 
 var mocks;
