@@ -17,7 +17,8 @@ This repo offers two demos:
   Datamart does not (yet) have [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setup.
 
 - one "local" demo, where MSC grib2 files are downloaded and served up locally.
-  We decode and plot the grib2 data in the client.
+  We decode and plot the grib2 data in the client. This demo is also available
+  online at: https://archmoj.github.io/opengrib2/
 
 We also built a script that scrapes the [Datamart indices](https://dd.weather.gc.ca/), building a list of URLs to grib2 files.
 For more info, look under `./scraper/README.md`.
