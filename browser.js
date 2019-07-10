@@ -26,6 +26,7 @@ var DATA = {
 };
 
 var mocks;
+var loading = document.getElementById('loading');
 
 const deltaTime = 6; // i.e. the delay needed for the input models to be available on the web
 const modelTime = new Date();
@@ -84,7 +85,10 @@ function makeDropDown() {
   for (i in mocks) {
     var opt = document.createElement("option");
     opt.value = mocks[i].link;
-    opt.text = mocks[i].link.replace('https://dd.meteo.gc.ca', '');
+    opt.text = mocks[i].link
+          .replace('https://dd.meteo.gc.ca', '')
+          .replace('./grib2/', '');
+
     dropDown.append(opt);
   }
 
@@ -94,6 +98,7 @@ function makeDropDown() {
 }
 
 function go(link) {
+  loading.style.display = 'block'
   link = link.replace('https://', 'http://');
 
   if(process.env.NODE_ENV === 'proxy-data') {
@@ -113,7 +118,10 @@ function go(link) {
           log: false
   });
 
-  http.get(link, function (res) {
+  http.get(link, function (res, err) {
+          if(err) {
+            loading.style.display = 'none'
+          }
           var allChunks = [];
           res.on("data", function (chunk) {
                   allChunks.push(chunk);
@@ -125,7 +133,11 @@ function go(link) {
                   //basicPlot(myGrid);
                   interactivePlot(myGrid, isGlobal);
           });
-  });
+  })
+  .on('error', function(err) {
+    loading.style.display = 'none';
+    window.alert(err)
+  })
 }
 
 function basicPlot(grid) {
@@ -263,17 +275,20 @@ function interactivePlot(grid, isGlobal) {
 
         var config = {
                 scrollZoom: false,
-                responsive: true
+                responsive: true,
+                modeBarButtons: [ ['toggleHover'] ]
         };
 
         Plotly.newPlot('gd', data, layout, config)
                 .then(function (gd) {
                         Plotly.d3.select(gd).select('g.geo > .bg > rect').style('pointer-events', null)
+
+                        loading.style.display = 'none'
                 });
 }
 
 window.go = go
 
 makeDropDown();
-go(mocks[0].link);
 
+go(mocks[0].link);
