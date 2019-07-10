@@ -44,6 +44,7 @@ Node.js, npm and a "modern" browser.
 - run `npm run build:bundle-local-data`
 - git add `build/bundle.js`
 - commit and push to `origin/master`, or make a PR ;)
+- view it at: https://archmoj.github.io/opengrib2/
 
 ## How to run the "all client-side" demo
 
