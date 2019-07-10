@@ -2,58 +2,29 @@
 
 'use strict';
 
+var nf0 = require('./nf0');
+var info = require('./info');
+var logger = require('./logger');
+
+var println = logger.println;
+var print = logger.print;
+var cout = logger.cout;
+
 function jpx_decode(data) {
-    var t0 = performance.now();
-    var jpxImage = new JpxImage();
-    jpxImage.parse(data);
-    var t1 = performance.now();
-    var image = {
-        length : data.length,
-        sx :  jpxImage.width,
-        sy :  jpxImage.height,
-        nbChannels : jpxImage.componentsCount,
-        perf_timetodecode : t1 - t0,
-        pixelData : jpxImage.tiles[0].items
-    };
+  var t0 = performance.now();
+  var jpxImage = new JpxImage();
+  jpxImage.parse(data);
+  var t1 = performance.now();
+  var image = {
+    length: data.length,
+    sx: jpxImage.width,
+    sy: jpxImage.height,
+    nbChannels: jpxImage.componentsCount,
+    perf_timetodecode: t1 - t0,
+    pixelData: jpxImage.tiles[0].items
+  };
 
-    return image;
-}
-
-function nf0(number) {
-  return Math.round(number);
-}
-
-var /* boolean */ log = false; // could be enabled by options
-
-var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", "HT", "LF", "VT", "FF", "CR", "SO", "SI", "DLE", "DC1", "DC2", "DC3", "DC4", "NAK", "SYN", "ETB", "CAN", "EM", "SUB", "ESC", "FS", "GS", "RS", "US"];
-
-function println(/* String */ a, /* optional String */ b) {
-  if (!log) return;
-  var s =
-    (a === undefined) ? '' :
-    (b === undefined) ? a : a + ' ' + b;
-
-  console.log(s);
-  // process.stdout.write(s + '\n');
-}
-
-function print(/* char */ c) {
-  if (!log) return;
-  console.log(c); // Change me! For the moment this prints with this new line!
-  // process.stdout.write(c);
-}
-
-function /* void */ cout(/* int */ c) {
-  if (!log) return;
-  if (c > 31) print(c);
-  else {
-    print("[" + asciiTable[c] + "]");
-    //print("_");
-  }
-}
-
-function /* void */ sout(/* String */ a) {
-  if (log) println(a);
+  return image;
 }
 
 function /* int */ U_NUMx2(/* int */ m2, /* int */ m1) {
@@ -204,7 +175,7 @@ function /* float */ IEEE32(/* String */ s) {
 
 
 module.exports = function /* class */ GRIB2CLASS(DATA, options) {
-  log = !!options.log;
+  //logger.disable(!options.log);
 
   this. /* String */ ParameterNameAndUnit = null;
   this. /* String[] */ DataTitles = [];
@@ -423,7 +394,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     var /* int */ ComplexPacking_OrderOfSpatialDifferencing = 0;
     var /* int */ ComplexPacking_NumberOfExtraOctetsRequiredInDataSection = 0;
 
-    var /* int */ Bitmap_Indicator = 0;
+    this. /* int */ Bitmap_Indicator = 0;
     var /* int */ Bitmap_beginPointer = 0;
     var /* int */ Bitmap_endPointer = 0;
 
@@ -472,16 +443,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       if (SectionNumbers.length > 1) {
         print("Discipline of processed data:\t");
         this.DisciplineOfProcessedData = SectionNumbers[7];
-        switch (this.DisciplineOfProcessedData) {
-          case 0: println("Meteorological products"); break;
-          case 1: println("Hydrological products"); break;
-          case 2: println("Land surface products"); break;
-          case 3: println("Space products"); break;
-          case 4: println("Space Weather Products "); break;
-          case 10: println("Oceanographic products"); break;
-          case 255: println("Missing"); break;
-          default: println(this.DisciplineOfProcessedData); break;
-        }
+        info.DisciplineOfProcessedData(
+          this.DisciplineOfProcessedData
+        );
 
         print("Length of message:\t");
         this.LengthOfMessage = U_NUMx8(SectionNumbers[9], SectionNumbers[10], SectionNumbers[11], SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15], SectionNumbers[16]);
@@ -493,271 +457,33 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       if (SectionNumbers.length > 1) {
         print("Identification of originating/generating centre: ");
         this.IdentificationOfCentre = U_NUMx2(SectionNumbers[6], SectionNumbers[7]);
-        switch (this.IdentificationOfCentre) {
-          case 0: println("WMO Secretariat"); break;
-          case 1: println("Melbourne"); break;
-          case 2: println("Melbourne"); break;
-          case 4: println("Moscow"); break;
-          case 5: println("Moscow"); break;
-          case 7: println("US National Weather Service - National Centres for Environmental Prediction (NCEP)"); break;
-          case 8: println("US National Weather Service Telecommunications Gateway (NWSTG)"); break;
-          case 9: println("US National Weather Service - Other"); break;
-          case 10: println("Cairo (RSMC)"); break;
-          case 12: println("Dakar (RSMC)"); break;
-          case 14: println("Nairobi (RSMC)"); break;
-          case 16: println("Casablanca (RSMC)"); break;
-          case 17: println("Tunis (RSMC)"); break;
-          case 18: println("Tunis - Casablanca (RSMC)"); break;
-          case 20: println("Las Palmas"); break;
-          case 21: println("Algiers (RSMC)"); break;
-          case 22: println("ACMAD"); break;
-          case 23: println("Mozambique (NMC)"); break;
-          case 24: println("Pretoria (RSMC)"); break;
-          case 25: println("La Réunion (RSMC)"); break;
-          case 26: println("Khabarovsk (RSMC)"); break;
-          case 28: println("New Delhi (RSMC)"); break;
-          case 30: println("Novosibirsk (RSMC)"); break;
-          case 32: println("Tashkent (RSMC)"); break;
-          case 33: println("Jeddah (RSMC)"); break;
-          case 34: println("Tokyo (RSMC), Japan Meteorological Agency"); break;
-          case 36: println("Bangkok"); break;
-          case 37: println("Ulaanbaatar"); break;
-          case 38: println("Beijing (RSMC)"); break;
-          case 40: println("Seoul"); break;
-          case 41: println("Buenos Aires (RSMC)"); break;
-          case 43: println("Brasilia (RSMC)"); break;
-          case 45: println("Santiago"); break;
-          case 46: println("Brazilian Space Agency ­ INPE"); break;
-          case 47: println("Colombia (NMC)"); break;
-          case 48: println("Ecuador (NMC)"); break;
-          case 49: println("Peru (NMC)"); break;
-          case 50: println("Venezuela (Bolivarian Republic of) (NMC)"); break;
-          case 51: println("Miami (RSMC)"); break;
-          case 52: println("Miami (RSMC), National Hurricane Centre"); break;
-          case 53: println("Montreal (RSMC)"); break;
-          case 54: println("Montreal (RSMC)"); break;
-          case 55: println("San Francisco"); break;
-          case 56: println("ARINC Centre"); break;
-          case 57: println("US Air Force - Air Force Global Weather Central"); break;
-          case 58: println("Fleet Numerical Meteorology and Oceanography Center, Monterey, CA, United States"); break;
-          case 59: println("The NOAA Forecast Systems Laboratory, Boulder, CO, United States"); break;
-          case 60: println("United States National Center for Atmospheric Research (NCAR)"); break;
-          case 61: println("Service ARGOS - Landover"); break;
-          case 62: println("US Naval Oceanographic Office"); break;
-          case 63: println("International Research Institute for Climate and Society (IRI)"); break;
-          case 64: println("Honolulu (RSMC)"); break;
-          case 65: println("Darwin (RSMC)"); break;
-          case 67: println("Melbourne (RSMC)"); break;
-          case 69: println("Wellington (RSMC)"); break;
-          case 71: println("Nadi (RSMC)"); break;
-          case 72: println("Singapore"); break;
-          case 73: println("Malaysia (NMC)"); break;
-          case 74: println("UK Meteorological Office ­ Exeter (RSMC)"); break;
-          case 76: println("Moscow (RSMC)"); break;
-          case 78: println("Offenbach (RSMC)"); break;
-          case 80: println("Rome (RSMC)"); break;
-          case 82: println("Norrköping"); break;
-          case 84: println("Toulouse (RSMC)"); break;
-          case 85: println("Toulouse (RSMC)"); break;
-          case 86: println("Helsinki"); break;
-          case 87: println("Belgrade"); break;
-          case 88: println("Oslo"); break;
-          case 89: println("Prague"); break;
-          case 90: println("Episkopi"); break;
-          case 91: println("Ankara"); break;
-          case 92: println("Frankfurt/Main"); break;
-          case 93: println("London (WAFC)"); break;
-          case 94: println("Copenhagen"); break;
-          case 95: println("Rota"); break;
-          case 96: println("Athens"); break;
-          case 97: println("European Space Agency (ESA)"); break;
-          case 98: println("European Centre for Medium-Range Weather Forecasts (ECMWF) (RSMC)"); break;
-          case 99: println("De Bilt"); break;
-          case 100: println("Brazzaville"); break;
-          case 101: println("Abidjan"); break;
-          case 102: println("Libya (NMC)"); break;
-          case 103: println("Madagascar (NMC)"); break;
-          case 104: println("Mauritius (NMC)"); break;
-          case 105: println("Niger (NMC)"); break;
-          case 106: println("Seychelles (NMC)"); break;
-          case 107: println("Uganda (NMC)"); break;
-          case 108: println("United Republic of Tanzania (NMC)"); break;
-          case 109: println("Zimbabwe (NMC)"); break;
-          case 110: println("Hong-Kong, China"); break;
-          case 111: println("Afghanistan (NMC)"); break;
-          case 112: println("Bahrain (NMC)"); break;
-          case 113: println("Bangladesh (NMC)"); break;
-          case 114: println("Bhutan (NMC)"); break;
-          case 115: println("Cambodia (NMC)"); break;
-          case 116: println("Democratic People's Republic of Korea (NMC)"); break;
-          case 117: println("Islamic Republic of Iran (NMC)"); break;
-          case 118: println("Iraq (NMC)"); break;
-          case 119: println("Kazakhstan (NMC)"); break;
-          case 120: println("Kuwait (NMC)"); break;
-          case 121: println("Kyrgyzstan (NMC)"); break;
-          case 122: println("Lao People's Democratic Republic (NMC)"); break;
-          case 123: println("Macao, China"); break;
-          case 124: println("Maldives (NMC)"); break;
-          case 125: println("Myanmar (NMC)"); break;
-          case 126: println("Nepal (NMC)"); break;
-          case 127: println("Oman (NMC)"); break;
-          case 128: println("Pakistan (NMC)"); break;
-          case 129: println("Qatar (NMC)"); break;
-          case 130: println("Yemen (NMC)"); break;
-          case 131: println("Sri Lanka (NMC)"); break;
-          case 132: println("Tajikistan (NMC)"); break;
-          case 133: println("Turkmenistan (NMC)"); break;
-          case 134: println("United Arab Emirates (NMC)"); break;
-          case 135: println("Uzbekistan (NMC)"); break;
-          case 136: println("Viet Nam (NMC)"); break;
-          case 140: println("Bolivia (Plurinational State of) (NMC)"); break;
-          case 141: println("Guyana (NMC)"); break;
-          case 142: println("Paraguay (NMC)"); break;
-          case 143: println("Suriname (NMC)"); break;
-          case 144: println("Uruguay (NMC)"); break;
-          case 145: println("French Guiana"); break;
-          case 146: println("Brazilian Navy Hydrographic Centre"); break;
-          case 147: println("National Commission on Space Activities (CONAE) - Argentina"); break;
-          case 150: println("Antigua and Barbuda (NMC)"); break;
-          case 151: println("Bahamas (NMC)"); break;
-          case 152: println("Barbados (NMC)"); break;
-          case 153: println("Belize (NMC)"); break;
-          case 154: println("British Caribbean Territories Centre"); break;
-          case 155: println("San José"); break;
-          case 156: println("Cuba (NMC)"); break;
-          case 157: println("Dominica (NMC)"); break;
-          case 158: println("Dominican Republic (NMC)"); break;
-          case 159: println("El Salvador (NMC)"); break;
-          case 160: println("US NOAA/NESDIS"); break;
-          case 161: println("US NOAA Office of Oceanic and Atmospheric Research"); break;
-          case 162: println("Guatemala (NMC)"); break;
-          case 163: println("Haiti (NMC)"); break;
-          case 164: println("Honduras (NMC)"); break;
-          case 165: println("Jamaica (NMC)"); break;
-          case 166: println("Mexico City"); break;
-          case 167: println("Curaçao and Sint Maarten (NMC)"); break;
-          case 168: println("Nicaragua (NMC)"); break;
-          case 169: println("Panama (NMC)"); break;
-          case 170: println("Saint Lucia (NMC)"); break;
-          case 171: println("Trinidad and Tobago (NMC)"); break;
-          case 172: println("French Departments in RA IV"); break;
-          case 173: println("US National Aeronautics and Space Administration (NASA)"); break;
-          case 174: println("Integrated Science Data Management/Marine Environmental Data Service (ISDM/MEDS) - Canada"); break;
-          case 175: println("University Corporation for Atmospheric Research (UCAR) - United States"); break;
-          case 176: println("Cooperative Institute for Meteorological Satellite Studies (CIMSS) - United States"); break;
-          case 177: println("NOAA National Ocean Service - United States"); break;
-          case 190: println("Cook Islands (NMC)"); break;
-          case 191: println("French Polynesia (NMC)"); break;
-          case 192: println("Tonga (NMC)"); break;
-          case 193: println("Vanuatu (NMC)"); break;
-          case 194: println("Brunei Darussalam (NMC)"); break;
-          case 195: println("Indonesia (NMC)"); break;
-          case 196: println("Kiribati (NMC)"); break;
-          case 197: println("Federated States of Micronesia (NMC)"); break;
-          case 198: println("New Caledonia (NMC)"); break;
-          case 199: println("Niue"); break;
-          case 200: println("Papua New Guinea (NMC)"); break;
-          case 201: println("Philippines (NMC)"); break;
-          case 202: println("Samoa (NMC)"); break;
-          case 203: println("Solomon Islands (NMC)"); break;
-          case 204: println("National Institute of Water and Atmospheric Research (NIWA - New Zealand)"); break;
-          case 210: println("Frascati (ESA/ESRIN)"); break;
-          case 211: println("Lannion"); break;
-          case 212: println("Lisbon"); break;
-          case 213: println("Reykjavik"); break;
-          case 214: println("Madrid"); break;
-          case 215: println("Zurich"); break;
-          case 216: println("Service ARGOS - Toulouse"); break;
-          case 217: println("Bratislava"); break;
-          case 218: println("Budapest"); break;
-          case 219: println("Ljubljana"); break;
-          case 220: println("Warsaw"); break;
-          case 221: println("Zagreb"); break;
-          case 222: println("Albania (NMC)"); break;
-          case 223: println("Armenia (NMC)"); break;
-          case 224: println("Austria (NMC)"); break;
-          case 225: println("Azerbaijan (NMC)"); break;
-          case 226: println("Belarus (NMC)"); break;
-          case 227: println("Belgium (NMC)"); break;
-          case 228: println("Bosnia and Herzegovina (NMC)"); break;
-          case 229: println("Bulgaria (NMC)"); break;
-          case 230: println("Cyprus (NMC)"); break;
-          case 231: println("Estonia (NMC)"); break;
-          case 232: println("Georgia (NMC)"); break;
-          case 233: println("Dublin"); break;
-          case 234: println("Israel (NMC)"); break;
-          case 235: println("Jordan (NMC)"); break;
-          case 236: println("Latvia (NMC)"); break;
-          case 237: println("Lebanon (NMC)"); break;
-          case 238: println("Lithuania (NMC)"); break;
-          case 239: println("Luxembourg"); break;
-          case 240: println("Malta (NMC)"); break;
-          case 241: println("Monaco"); break;
-          case 242: println("Romania (NMC)"); break;
-          case 243: println("Syrian Arab Republic (NMC)"); break;
-          case 244: println("The former Yugoslav Republic of Macedonia (NMC)"); break;
-          case 245: println("Ukraine (NMC)"); break;
-          case 246: println("Republic of Moldova (NMC)"); break;
-          case 247: println("Operational Programme for the Exchange of weather RAdar information (OPERA) - EUMETNET"); break;
-          case 248: println("Montenegro (NMC)"); break;
-          case 249: println("Barcelona Dust Forecast Center"); break;
-          case 250: println("COnsortium for Small scale MOdelling  (COSMO)"); break;
-          case 251: println("Meteorological Cooperation on Operational NWP (MetCoOp)"); break;
-          case 252: println("Max Planck Institute for Meteorology (MPI-M)"); break;
-          case 254: println("EUMETSAT Operation Centre"); break;
-          case 255: println("Missing"); break;
-          default: println(this.IdentificationOfCentre); break;
-        }
+        info.IdentificationOfCentre(
+          this.IdentificationOfCentre
+        );
 
         print("Sub-centre:\t");
         this.IdentificationOfSubCentre = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
-        switch (this.IdentificationOfSubCentre) {
-          case 255: println("Missing"); break;
-          default: println(this.IdentificationOfSubCentre); break;
-        }
+        info.IdentificationOfSubCentre(
+          this.IdentificationOfSubCentre
+        );
 
         print("Master Tables Version Number:\t");
         this.MasterTablesVersionNumber = SectionNumbers[10];
-        switch (this.MasterTablesVersionNumber) {
-          case 0: println("Experimental"); break;
-          case 1: println("Version implemented on 7 November 2001"); break;
-          case 2: println("Version implemented on 4 November 2003"); break;
-          case 3: println("Version implemented on 2 November 2005"); break;
-          case 4: println("Version implemented on 7 November 2007"); break;
-          case 5: println("Version Implemented on 4 November 2009"); break;
-          case 6: println("Version Implemented on 15 September 2010"); break;
-          case 7: println("Version Implemented on 4 May 2011"); break;
-          case 8: println("Version Implemented on 8 November 2011"); break;
-          case 9: println("Version Implemented on 2 May 2012"); break;
-          case 10: println("Version Implemented on 7 November 2012 "); break;
-          case 11: println("Version Implemented on 8 May 2013"); break;
-          case 12: println("Version Implemented on 14 November 2013"); break;
-          case 13: println("Version Implemented on 7 May 2014"); break;
-          case 14: println("Version Implemented on 5 November 2014"); break;
-          case 15: println("Version Implemented on 6 May 2015"); break;
-          case 16: println("Pre-operational to be implemented by next amendment"); break;
-          case 255: println("Missing"); break;
-          default: println(this.MasterTablesVersionNumber); break;
-        }
+        info.MasterTablesVersionNumber(
+          this.MasterTablesVersionNumber
+        );
 
         print("Local Tables Version Number:\t");
         this.LocalTablesVersionNumber = SectionNumbers[11];
-        switch (this.LocalTablesVersionNumber) {
-          case 0: println("Local tables not used. Only table entries and templates from the current Master table are valid."); break;
-          case 255: println("Missing"); break;
-          default: println(this.LocalTablesVersionNumber); break;
-        }
+        info.LocalTablesVersionNumber(
+          this.LocalTablesVersionNumber
+        );
 
         print("Significance of Reference Time:\t");
         this.SignificanceOfReferenceTime = SectionNumbers[12];
-        switch (this.SignificanceOfReferenceTime) {
-          case 0: println("Analysis"); break;
-          case 1: println("Start of forecast"); break;
-          case 2: println("Verifying time of forecast"); break;
-          case 3: println("Observation time"); break;
-          case 255: println("Missing"); break;
-          default: println(this.SignificanceOfReferenceTime); break;
-        }
+        info.SignificanceOfReferenceTime(
+          this.SignificanceOfReferenceTime
+        );
 
         print("Year:\t");
         this.Year = U_NUMx2(SectionNumbers[13], SectionNumbers[14]);
@@ -785,29 +511,15 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Production status of data:\t");
         this.ProductionStatusOfData = SectionNumbers[20];
-        switch (this.ProductionStatusOfData) {
-          case 0: println("Operational products"); break;
-          case 1: println("Operational test products"); break;
-          case 2: println("Research products"); break;
-          case 3: println("Re-analysis products"); break;
-          case 255: println("Missing"); break;
-          default: println(this.ProductionStatusOfData); break;
-        }
+        info.ProductionStatusOfData(
+          this.ProductionStatusOfData
+        );
 
         print("Type of data:\t");
         this.TypeOfData = SectionNumbers[20];
-        switch (this.TypeOfData) {
-          case 0: println("Analysis products"); break;
-          case 1: println("Forecast products"); break;
-          case 2: println("Analysis and forecast products"); break;
-          case 3: println("Control forecast products"); break;
-          case 4: println("Perturbed forecast products"); break;
-          case 5: println("Control and perturbed forecast products"); break;
-          case 6: println("Processed satellite observations"); break;
-          case 7: println("Processed radar observations"); break;
-          case 255: println("Missing"); break;
-          default: println(this.TypeOfData); break;
-        }
+        info.TypeOfData(
+          this.TypeOfData
+        );
       }
 
       SectionNumbers = this.getGrib2Section(2); // Section 2: Local Use Section (optional)
@@ -1058,77 +770,16 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Number of coordinate values after Template:\t");
         this.ProductDefinitionTemplateNumber = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
-        switch (this.ProductDefinitionTemplateNumber) {
-          case 0: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.0)"); break;
-          case 1: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time. (see Template 4.1)"); break;
-          case 2: println("Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer at a point in time. (see Template 4.2)"); break;
-          case 3: println("Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.3)"); break;
-          case 4: println("Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.4)"); break;
-          case 5: println("Probability forecasts at a horizontal level or in a horizontal layer at a point in time. (see Template 4.5)"); break;
-          case 6: println("Percentile forecasts at a horizontal level or in a horizontal layer at a point in time. (see Template 4.6)"); break;
-          case 7: println("Analysis or forecast error at a horizontal level or in a horizontal layer at a point in time. (see Template 4.7)"); break;
-          case 8: println("Average, accumulation, extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.8)"); break;
-          case 9: println("Probability forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.9)"); break;
-          case 10: println("Percentile forecasts at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.10)"); break;
-          case 11: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.11)"); break;
-          case 12: println("Derived forecasts based on all ensemble members at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.12)"); break;
-          case 13: println("Derived forecasts based on a cluster of ensemble members over a rectangular area at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.13)"); break;
-          case 14: println("Derived forecasts based on a cluster of ensemble members over a circular area at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval. (see Template 4.14)"); break;
-          case 15: println("Average, accumulation, extreme values or other statistically-processed values over a spatial area at a horizontal level or in a horizontal layer at a point in time. (see Template 4.15)"); break;
-          case 20: println("Radar product (see Template 4.20)"); break;
-          case 30: println("Satellite product (see Template 4.30) NOTE:This template is deprecated. Template 4.31 should be used instead."); break;
-          case 31: println("Satellite product (see Template 4.31)"); break;
-          case 32: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for simulate (synthetic) staellite data (see Template 4.32)"); break;
-          case 40: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents. (see Template 4.40)"); break;
-          case 41: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer at a point in time for atmospheric chemical constituents. (see Template 4.41)"); break;
-          case 42: println("Average, accumulation, and/or extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for atmospheric chemical constituents. (see Template 4.42)"); break;
-          case 43: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for atmospheric chemical constituents. (see Template 4.43)"); break;
-          case 44: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for aerosol. (see Template 4.44)"); break;
-          case 45: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for aerosol. (see Template 4.45)"); break;
-          case 46: println("Average, accumulation, and/or extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval for aerosol. (see Template 4.46)"); break;
-          case 47: println("Individual ensemble forecast, control and perturbed, at a horizontal level or in a horizontal layer, in a continuous or non-continuous time interval for aerosol. (see Template 4.47)"); break;
-          case 48: println("Analysis or forecast at a horizontal level or in a horizontal layer at a point in time for aerosol. (see Template 4.48)"); break;
-          case 51: println("Categorical forecast at a horizontal level or in a horizontal layer at a point in time. (see Template 4.51)"); break;
-          case 91: println("Categorical forecast at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.91)"); break;
-          case 254: println("CCITT IA5 character string (see Template 4.254)"); break;
-          case 1000: println("Cross-section of analysis and forecast at a point in time. (see Template 4.1000)"); break;
-          case 1001: println("Cross-section of averaged or otherwise statistically processed analysis or forecast over a range of time. (see Template 4.1001)"); break;
-          case 1002: println("Cross-section of analysis and forecast, averaged or otherwise statistically-processed over latitude or longitude. (see Template 4.1002)"); break;
-          case 1100: println("Hovmoller-type grid with no averaging or other statistical processing (see Template 4.1100)"); break;
-          case 1101: println("Hovmoller-type grid with averaging or other statistical processing (see Template 4.1101)"); break;
-          case 65535: println("Missing"); break;
-          default: println(this.ProductDefinitionTemplateNumber); break;
-        }
+        info.ProductDefinitionTemplateNumber(
+          this.ProductDefinitionTemplateNumber
+        );
 
         print("Category of parameters by product discipline:\t");
         this.CategoryOfParametersByProductDiscipline = SectionNumbers[10];
         if (this.DisciplineOfProcessedData === 0) { // Meteorological
-          switch (this.CategoryOfParametersByProductDiscipline) {
-            case 0: println("Temperature"); break;
-            case 1: println("Moisture"); break;
-            case 2: println("Momentum"); break;
-            case 3: println("Mass"); break;
-            case 4: println("Short-wave Radiation"); break;
-            case 5: println("Long-wave Radiation"); break;
-            case 6: println("Cloud"); break;
-            case 7: println("Thermodynamic Stability indices"); break;
-            case 8: println("Kinematic Stability indices"); break;
-            case 9: println("Temperature Probabilities"); break;
-            case 10: println("Moisture Probabilities"); break;
-            case 11: println("Momentum Probabilities"); break;
-            case 12: println("Mass Probabilities"); break;
-            case 13: println("Aerosols"); break;
-            case 14: println("Trace gases (e.g., ozone, CO2)"); break;
-            case 15: println("Radar"); break;
-            case 16: println("Forecast Radar Imagery"); break;
-            case 17: println("Electro-dynamics"); break;
-            case 18: println("Nuclear/radiology"); break;
-            case 19: println("Physical atmospheric properties"); break;
-            case 190: println("CCITT IA5 string"); break;
-            case 191: println("Miscellaneous"); break;
-            case 255: println("Missing"); break;
-            default: println(this.CategoryOfParametersByProductDiscipline); break;
-          }
+          info.CategoryOfParametersByProductDiscipline(
+            this.CategoryOfParametersByProductDiscipline
+          );
         }
         else {
           println(this.CategoryOfParametersByProductDiscipline);
@@ -1139,1222 +790,246 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         if (this.DisciplineOfProcessedData === 0) { // Meteorological
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Temperature
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Temperature(K)"; break;
-              case 1: this.ParameterNameAndUnit = "Virtual Temperature(K)"; break;
-              case 2: this.ParameterNameAndUnit = "Potential Temperature(K)"; break;
-              case 3: this.ParameterNameAndUnit = "Pseudo-Adiabatic Potential Temperature (or Equivalent Potential Temperature)(K)"; break;
-              case 4: this.ParameterNameAndUnit = "Maximum Temperature*(K)"; break;
-              case 5: this.ParameterNameAndUnit = "Minimum Temperature*(K)"; break;
-              case 6: this.ParameterNameAndUnit = "Dew Point Temperature(K)"; break;
-              case 7: this.ParameterNameAndUnit = "Dew Point Depression (or Deficit)(K)"; break;
-              case 8: this.ParameterNameAndUnit = "Lapse Rate(K m-1)"; break;
-              case 9: this.ParameterNameAndUnit = "Temperature Anomaly(K)"; break;
-              case 10: this.ParameterNameAndUnit = "Latent Heat Net Flux(W m-2)"; break;
-              case 11: this.ParameterNameAndUnit = "Sensible Heat Net Flux(W m-2)"; break;
-              case 12: this.ParameterNameAndUnit = "Heat Index(K)"; break;
-              case 13: this.ParameterNameAndUnit = "Wind Chill Factor(K)"; break;
-              case 14: this.ParameterNameAndUnit = "Minimum Dew Point Depression*(K)"; break;
-              case 15: this.ParameterNameAndUnit = "Virtual Potential Temperature(K)"; break;
-              case 16: this.ParameterNameAndUnit = "Snow Phase Change Heat Flux(W m-2)"; break;
-              case 17: this.ParameterNameAndUnit = "Skin Temperature(K)"; break;
-              case 18: this.ParameterNameAndUnit = "Snow Temperature (top of snow)(K)"; break;
-              case 19: this.ParameterNameAndUnit = "Turbulent Transfer Coefficient for Heat(Numeric)"; break;
-              case 20: this.ParameterNameAndUnit = "Turbulent Diffusion Coefficient for Heat(m2s-1)"; break;
-              case 192: this.ParameterNameAndUnit = "Snow Phase Change Heat Flux(W m-2)"; break;
-              case 193: this.ParameterNameAndUnit = "Temperature Tendency by All Radiation(K s-1)"; break;
-              case 194: this.ParameterNameAndUnit = "Relative Error Variance()"; break;
-              case 195: this.ParameterNameAndUnit = "Large Scale Condensate Heating Rate(K/s)"; break;
-              case 196: this.ParameterNameAndUnit = "Deep Convective Heating Rate(K/s)"; break;
-              case 197: this.ParameterNameAndUnit = "Total Downward Heat Flux at Surface(W m-2)"; break;
-              case 198: this.ParameterNameAndUnit = "Temperature Tendency by All Physics(K s-1)"; break;
-              case 199: this.ParameterNameAndUnit = "Temperature Tendency by Non-radiation Physics(K s-1)"; break;
-              case 200: this.ParameterNameAndUnit = "Standard Dev. of IR Temp. over 1x1 deg. area(K)"; break;
-              case 201: this.ParameterNameAndUnit = "Shallow Convective Heating Rate(K/s)"; break;
-              case 202: this.ParameterNameAndUnit = "Vertical Diffusion Heating rate(K/s)"; break;
-              case 203: this.ParameterNameAndUnit = "Potential Temperature at Top of Viscous Sublayer(K)"; break;
-              case 204: this.ParameterNameAndUnit = "Tropical Cyclone Heat Potential(J/m2K)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_0(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Moisture
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Specific Humidity(kg kg-1)"; break;
-              case 1: this.ParameterNameAndUnit = "Relative Humidity(%)"; break;
-              case 2: this.ParameterNameAndUnit = "Humidity Mixing Ratio(kg kg-1)"; break;
-              case 3: this.ParameterNameAndUnit = "Precipitable Water(kg m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Vapour Pressure(Pa)"; break;
-              case 5: this.ParameterNameAndUnit = "Saturation Deficit(Pa)"; break;
-              case 6: this.ParameterNameAndUnit = "Evaporation(kg m-2)"; break;
-              case 7: this.ParameterNameAndUnit = "Precipitation Rate *(kg m-2 s-1)"; break;
-              case 8: this.ParameterNameAndUnit = "Total Precipitation ***(kg m-2)"; break;
-              case 9: this.ParameterNameAndUnit = "Large-Scale Precipitation (non-convective) ***(kg m-2)"; break;
-              case 10: this.ParameterNameAndUnit = "Convective Precipitation ***(kg m-2)"; break;
-              case 11: this.ParameterNameAndUnit = "Snow Depth(m)"; break;
-              case 12: this.ParameterNameAndUnit = "Snowfall Rate Water Equivalent *(kg m-2 s-1)"; break;
-              case 13: this.ParameterNameAndUnit = "Water Equivalent of Accumulated Snow Depth ***(kg m-2)"; break;
-              case 14: this.ParameterNameAndUnit = "Convective Snow ***(kg m-2)"; break;
-              case 15: this.ParameterNameAndUnit = "Large-Scale Snow ***(kg m-2)"; break;
-              case 16: this.ParameterNameAndUnit = "Snow Melt(kg m-2)"; break;
-              case 17: this.ParameterNameAndUnit = "Snow Age(day)"; break;
-              case 18: this.ParameterNameAndUnit = "Absolute Humidity(kg m-3)"; break;
-              case 19: this.ParameterNameAndUnit = "Precipitation Type(See Table 4.201)"; break;
-              case 20: this.ParameterNameAndUnit = "Integrated Liquid Water(kg m-2)"; break;
-              case 21: this.ParameterNameAndUnit = "Condensate(kg kg-1)"; break;
-              case 22: this.ParameterNameAndUnit = "Cloud Mixing Ratio(kg kg-1)"; break;
-              case 23: this.ParameterNameAndUnit = "Ice Water Mixing Ratio(kg kg-1)"; break;
-              case 24: this.ParameterNameAndUnit = "Rain Mixing Ratio(kg kg-1)"; break;
-              case 25: this.ParameterNameAndUnit = "Snow Mixing Ratio(kg kg-1)"; break;
-              case 26: this.ParameterNameAndUnit = "Horizontal Moisture Convergence(kg kg-1 s-1)"; break;
-              case 27: this.ParameterNameAndUnit = "Maximum Relative Humidity *(%)"; break;
-              case 28: this.ParameterNameAndUnit = "Maximum Absolute Humidity *(kg m-3)"; break;
-              case 29: this.ParameterNameAndUnit = "Total Snowfall ***(m)"; break;
-              case 30: this.ParameterNameAndUnit = "Precipitable Water Category(See Table 4.202)"; break;
-              case 31: this.ParameterNameAndUnit = "Hail(m)"; break;
-              case 32: this.ParameterNameAndUnit = "Graupel(kg kg-1)"; break;
-              case 33: this.ParameterNameAndUnit = "Categorical Rain(Code table 4.222)"; break;
-              case 34: this.ParameterNameAndUnit = "Categorical Freezing Rain(Code table 4.222)"; break;
-              case 35: this.ParameterNameAndUnit = "Categorical Ice Pellets(Code table 4.222)"; break;
-              case 36: this.ParameterNameAndUnit = "Categorical Snow(Code table 4.222)"; break;
-              case 37: this.ParameterNameAndUnit = "Convective Precipitation Rate(kg m-2 s-1)"; break;
-              case 38: this.ParameterNameAndUnit = "Horizontal Moisture Divergence(kg kg-1 s-1)"; break;
-              case 39: this.ParameterNameAndUnit = "Percent frozen precipitation(%)"; break;
-              case 40: this.ParameterNameAndUnit = "Potential Evaporation(kg m-2)"; break;
-              case 41: this.ParameterNameAndUnit = "Potential Evaporation Rate(W m-2)"; break;
-              case 42: this.ParameterNameAndUnit = "Snow Cover(%)"; break;
-              case 43: this.ParameterNameAndUnit = "Rain Fraction of Total Cloud Water(Proportion)"; break;
-              case 44: this.ParameterNameAndUnit = "Rime Factor(Numeric)"; break;
-              case 45: this.ParameterNameAndUnit = "Total Column Integrated Rain(kg m-2)"; break;
-              case 46: this.ParameterNameAndUnit = "Total Column Integrated Snow(kg m-2)"; break;
-              case 47: this.ParameterNameAndUnit = "Large Scale Water Precipitation (Non-Convective) ***(kg m-2)"; break;
-              case 48: this.ParameterNameAndUnit = "Convective Water Precipitation ***(kg m-2)"; break;
-              case 49: this.ParameterNameAndUnit = "Total Water Precipitation ***(kg m-2)"; break;
-              case 50: this.ParameterNameAndUnit = "Total Snow Precipitation ***(kg m-2)"; break;
-              case 51: this.ParameterNameAndUnit = "Total Column Water (Vertically integrated total water (vapour+cloud water/ice)(kg m-2)"; break;
-              case 52: this.ParameterNameAndUnit = "Total Precipitation Rate **(kg m-2 s-1)"; break;
-              case 53: this.ParameterNameAndUnit = "Total Snowfall Rate Water Equivalent **(kg m-2 s-1)"; break;
-              case 54: this.ParameterNameAndUnit = "Large Scale Precipitation Rate(kg m-2 s-1)"; break;
-              case 55: this.ParameterNameAndUnit = "Convective Snowfall Rate Water Equivalent(kg m-2 s-1)"; break;
-              case 56: this.ParameterNameAndUnit = "Large Scale Snowfall Rate Water Equivalent(kg m-2 s-1)"; break;
-              case 57: this.ParameterNameAndUnit = "Total Snowfall Rate(m s-1)"; break;
-              case 58: this.ParameterNameAndUnit = "Convective Snowfall Rate(m s-1)"; break;
-              case 59: this.ParameterNameAndUnit = "Large Scale Snowfall Rate(m s-1)"; break;
-              case 60: this.ParameterNameAndUnit = "Snow Depth Water Equivalent(kg m-2)"; break;
-              case 61: this.ParameterNameAndUnit = "Snow Density(kg m-3)"; break;
-              case 62: this.ParameterNameAndUnit = "Snow Evaporation(kg m-2)"; break;
-              case 64: this.ParameterNameAndUnit = "Total Column Integrated Water Vapour(kg m-2)"; break;
-              case 65: this.ParameterNameAndUnit = "Rain Precipitation Rate(kg m-2 s-1)"; break;
-              case 66: this.ParameterNameAndUnit = "Snow Precipitation Rate(kg m-2 s-1)"; break;
-              case 67: this.ParameterNameAndUnit = "Freezing Rain Precipitation Rate(kg m-2 s-1)"; break;
-              case 68: this.ParameterNameAndUnit = "Ice Pellets Precipitation Rate(kg m-2 s-1)"; break;
-              case 69: this.ParameterNameAndUnit = "Total Column Integrate Cloud Water(kg m-2)"; break;
-              case 70: this.ParameterNameAndUnit = "Total Column Integrate Cloud Ice(kg m-2)"; break;
-              case 71: this.ParameterNameAndUnit = "Hail Mixing Ratio(kg kg-1)"; break;
-              case 72: this.ParameterNameAndUnit = "Total Column Integrate Hail(kg m-2)"; break;
-              case 73: this.ParameterNameAndUnit = "Hail Prepitation Rate(kg m-2 s-1)"; break;
-              case 74: this.ParameterNameAndUnit = "Total Column Integrate Graupel(kg m-2)"; break;
-              case 75: this.ParameterNameAndUnit = "Graupel (Snow Pellets) Prepitation Rate(kg m-2 s-1)"; break;
-              case 76: this.ParameterNameAndUnit = "Convective Rain Rate(kg m-2 s-1)"; break;
-              case 77: this.ParameterNameAndUnit = "Large Scale Rain Rate(kg m-2 s-1)"; break;
-              case 78: this.ParameterNameAndUnit = "Total Column Integrate Water (All components including precipitation)(kg m-2)"; break;
-              case 79: this.ParameterNameAndUnit = "Evaporation Rate(kg m-2 s-1)"; break;
-              case 80: this.ParameterNameAndUnit = "Total Condensatea(kg kg-1)"; break;
-              case 81: this.ParameterNameAndUnit = "Total Column-Integrate Condensate(kg m-2)"; break;
-              case 82: this.ParameterNameAndUnit = "Cloud Ice Mixing Ratio(kg kg-1)"; break;
-              case 83: this.ParameterNameAndUnit = "Specific Cloud Liquid Water Content(kg kg-1)"; break;
-              case 84: this.ParameterNameAndUnit = "Specific Cloud Ice Water Content(kg kg-1)"; break;
-              case 85: this.ParameterNameAndUnit = "Specific Rain Water Content(kg kg-1)"; break;
-              case 86: this.ParameterNameAndUnit = "Specific Snow Water Content(kg kg-1)"; break;
-              case 90: this.ParameterNameAndUnit = "Total Kinematic Moisture Flux(kg kg-1 m s-1)"; break;
-              case 91: this.ParameterNameAndUnit = "U-component (zonal) Kinematic Moisture Flux(kg kg-1 m s-1)"; break;
-              case 92: this.ParameterNameAndUnit = "V-component (meridional) Kinematic Moisture Flux(kg kg-1 m s-1)"; break;
-              case 192: this.ParameterNameAndUnit = "Categorical Rain(Code table 4.222)"; break;
-              case 193: this.ParameterNameAndUnit = "Categorical Freezing Rain(Code table 4.222)"; break;
-              case 194: this.ParameterNameAndUnit = "Categorical Ice Pellets(Code table 4.222)"; break;
-              case 195: this.ParameterNameAndUnit = "Categorical Snow(Code table 4.222)"; break;
-              case 196: this.ParameterNameAndUnit = "Convective Precipitation Rate(kg m-2 s-1)"; break;
-              case 197: this.ParameterNameAndUnit = "Horizontal Moisture Divergence(kg kg-1 s-1)"; break;
-              case 198: this.ParameterNameAndUnit = "Minimum Relative Humidity(%)"; break;
-              case 199: this.ParameterNameAndUnit = "Potential Evaporation(kg m-2)"; break;
-              case 200: this.ParameterNameAndUnit = "Potential Evaporation Rate(W m-2)"; break;
-              case 201: this.ParameterNameAndUnit = "Snow Cover(%)"; break;
-              case 202: this.ParameterNameAndUnit = "Rain Fraction of Total Liquid Water(non-dim)"; break;
-              case 203: this.ParameterNameAndUnit = "Rime Factor(non-dim)"; break;
-              case 204: this.ParameterNameAndUnit = "Total Column Integrated Rain(kg m-2)"; break;
-              case 205: this.ParameterNameAndUnit = "Total Column Integrated Snow(kg m-2)"; break;
-              case 206: this.ParameterNameAndUnit = "Total Icing Potential Diagnostic(non-dim)"; break;
-              case 207: this.ParameterNameAndUnit = "Number concentration for ice particles(non-dim)"; break;
-              case 208: this.ParameterNameAndUnit = "Snow temperature(K)"; break;
-              case 209: this.ParameterNameAndUnit = "Total column-integrated supercooled liquid water(kg m-2)"; break;
-              case 210: this.ParameterNameAndUnit = "Total column-integrated melting ice(kg m-2)"; break;
-              case 211: this.ParameterNameAndUnit = "Evaporation - Precipitation(cm/day)"; break;
-              case 212: this.ParameterNameAndUnit = "Sublimation (evaporation from snow)(W m-2)"; break;
-              case 213: this.ParameterNameAndUnit = "Deep Convective Moistening Rate(kg kg-1 s-1)"; break;
-              case 214: this.ParameterNameAndUnit = "Shallow Convective Moistening Rate(kg kg-1 s-1)"; break;
-              case 215: this.ParameterNameAndUnit = "Vertical Diffusion Moistening Rate(kg kg-1 s-1)"; break;
-              case 216: this.ParameterNameAndUnit = "Condensation Pressure of Parcali Lifted From Indicate Surface(Pa)"; break;
-              case 217: this.ParameterNameAndUnit = "Large scale moistening rate(kg kg-1 s-1)"; break;
-              case 218: this.ParameterNameAndUnit = "Specific humidity at top of viscous sublayer(kg kg-1)"; break;
-              case 219: this.ParameterNameAndUnit = "Maximum specific humidity at 2m(kg kg-1)"; break;
-              case 220: this.ParameterNameAndUnit = "Minimum specific humidity at 2m(kg kg-1)"; break;
-              case 221: this.ParameterNameAndUnit = "Liquid precipitation (Rainfall)(kg m-2)"; break;
-              case 222: this.ParameterNameAndUnit = "Snow temperature, depth-avg(K)"; break;
-              case 223: this.ParameterNameAndUnit = "Total precipitation (nearest grid point)(kg m-2)"; break;
-              case 224: this.ParameterNameAndUnit = "Convective precipitation (nearest grid point)(kg m-2)"; break;
-              case 225: this.ParameterNameAndUnit = "Freezing Rain(kg m-2)"; break;
-              case 226: this.ParameterNameAndUnit = "Predominant Weather(Numeric (See note 1))"; break;
-              case 227: this.ParameterNameAndUnit = "Frozen Rain(kg m-2)"; break;
-              case 241: this.ParameterNameAndUnit = "Total Snow(kg m-2)"; break;
-              case 242: this.ParameterNameAndUnit = "Relative Humidity with Respect to Precipitable Water(%)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_1(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Momentum
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Wind Direction (from which blowing)(true)"; break;
-              case 1: this.ParameterNameAndUnit = "Wind Speed(m s-1)"; break;
-              case 2: this.ParameterNameAndUnit = "U-Component of Wind(m s-1)"; break;
-              case 3: this.ParameterNameAndUnit = "V-Component of Wind(m s-1)"; break;
-              case 4: this.ParameterNameAndUnit = "Stream Function(m2 s-1)"; break;
-              case 5: this.ParameterNameAndUnit = "Velocity Potential(m2 s-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Montgomery Stream Function(m2 s-2)"; break;
-              case 7: this.ParameterNameAndUnit = "Sigma Coordinate Vertical Velocity(s-1)"; break;
-              case 8: this.ParameterNameAndUnit = "Vertical Velocity (Pressure)(Pa s-1)"; break;
-              case 9: this.ParameterNameAndUnit = "Vertical Velocity (Geometric)(m s-1)"; break;
-              case 10: this.ParameterNameAndUnit = "Absolute Vorticity(s-1)"; break;
-              case 11: this.ParameterNameAndUnit = "Absolute Divergence(s-1)"; break;
-              case 12: this.ParameterNameAndUnit = "Relative Vorticity(s-1)"; break;
-              case 13: this.ParameterNameAndUnit = "Relative Divergence(s-1)"; break;
-              case 14: this.ParameterNameAndUnit = "Potential Vorticity(K m2 kg-1 s-1)"; break;
-              case 15: this.ParameterNameAndUnit = "Vertical U-Component Shear(s-1)"; break;
-              case 16: this.ParameterNameAndUnit = "Vertical V-Component Shear(s-1)"; break;
-              case 17: this.ParameterNameAndUnit = "Momentum Flux, U-Component(N m-2)"; break;
-              case 18: this.ParameterNameAndUnit = "Momentum Flux, V-Component(N m-2)"; break;
-              case 19: this.ParameterNameAndUnit = "Wind Mixing Energy(J)"; break;
-              case 20: this.ParameterNameAndUnit = "Boundary Layer Dissipation(W m-2)"; break;
-              case 21: this.ParameterNameAndUnit = "Maximum Wind Speed *(m s-1)"; break;
-              case 22: this.ParameterNameAndUnit = "Wind Speed (Gust)(m s-1)"; break;
-              case 23: this.ParameterNameAndUnit = "U-Component of Wind (Gust)(m s-1)"; break;
-              case 24: this.ParameterNameAndUnit = "V-Component of Wind (Gust)(m s-1)"; break;
-              case 25: this.ParameterNameAndUnit = "Vertical Speed Shear(s-1)"; break;
-              case 26: this.ParameterNameAndUnit = "Horizontal Momentum Flux(N m-2)"; break;
-              case 27: this.ParameterNameAndUnit = "U-Component Storm Motion(m s-1)"; break;
-              case 28: this.ParameterNameAndUnit = "V-Component Storm Motion(m s-1)"; break;
-              case 29: this.ParameterNameAndUnit = "Drag Coefficient(Numeric)"; break;
-              case 30: this.ParameterNameAndUnit = "Frictional Velocity(m s-1)"; break;
-              case 31: this.ParameterNameAndUnit = "Turbulent Diffusion Coefficient for Momentum(m2 s-1)"; break;
-              case 32: this.ParameterNameAndUnit = "Eta Coordinate Vertical Velocity(s-1)"; break;
-              case 33: this.ParameterNameAndUnit = "Wind Fetch(m)"; break;
-              case 34: this.ParameterNameAndUnit = "Normal Wind Component **(m s-1)"; break;
-              case 35: this.ParameterNameAndUnit = "Tangential Wind Component **(m s-1)"; break;
-              case 192: this.ParameterNameAndUnit = "Vertical Speed Shear(s-1)"; break;
-              case 193: this.ParameterNameAndUnit = "Horizontal Momentum Flux(N m-2)"; break;
-              case 194: this.ParameterNameAndUnit = "U-Component Storm Motion(m s-1)"; break;
-              case 195: this.ParameterNameAndUnit = "V-Component Storm Motion(m s-1)"; break;
-              case 196: this.ParameterNameAndUnit = "Drag Coefficient(non-dim)"; break;
-              case 197: this.ParameterNameAndUnit = "Frictional Velocity(m s-1)"; break;
-              case 198: this.ParameterNameAndUnit = "Latitude of U Wind Component of Velocity(deg)"; break;
-              case 199: this.ParameterNameAndUnit = "Longitude of U Wind Component of Velocity(deg)"; break;
-              case 200: this.ParameterNameAndUnit = "Latitude of V Wind Component of Velocity(deg)"; break;
-              case 201: this.ParameterNameAndUnit = "Longitude of V Wind Component of Velocity(deg)"; break;
-              case 202: this.ParameterNameAndUnit = "Latitude of Presure Point(deg)"; break;
-              case 203: this.ParameterNameAndUnit = "Longitude of Presure Point(deg)"; break;
-              case 204: this.ParameterNameAndUnit = "Vertical Eddy Diffusivity Heat exchange(m2 s-1)"; break;
-              case 205: this.ParameterNameAndUnit = "Covariance between Meridional and Zonal Components of the wind.(m2 s-2)"; break;
-              case 206: this.ParameterNameAndUnit = "Covariance between Temperature and Zonal Components of the wind.(K*m s-1)"; break;
-              case 207: this.ParameterNameAndUnit = "Covariance between Temperature and Meridional Components of the wind.(K*m s-1)"; break;
-              case 208: this.ParameterNameAndUnit = "Vertical Diffusion Zonal Acceleration(m s-2)"; break;
-              case 209: this.ParameterNameAndUnit = "Vertical Diffusion Meridional Acceleration(m s-2)"; break;
-              case 210: this.ParameterNameAndUnit = "Gravity wave drag zonal acceleration(m s-2)"; break;
-              case 211: this.ParameterNameAndUnit = "Gravity wave drag meridional acceleration(m s-2)"; break;
-              case 212: this.ParameterNameAndUnit = "Convective zonal momentum mixing acceleration(m s-2)"; break;
-              case 213: this.ParameterNameAndUnit = "Convective meridional momentum mixing acceleration(m s-2)"; break;
-              case 214: this.ParameterNameAndUnit = "Tendency of vertical velocity(m s-2)"; break;
-              case 215: this.ParameterNameAndUnit = "Omega (Dp/Dt) divide by density(K)"; break;
-              case 216: this.ParameterNameAndUnit = "Convective Gravity wave drag zonal acceleration(m s-2)"; break;
-              case 217: this.ParameterNameAndUnit = "Convective Gravity wave drag meridional acceleration(m s-2)"; break;
-              case 218: this.ParameterNameAndUnit = "Velocity Point Model Surface()"; break;
-              case 219: this.ParameterNameAndUnit = "Potential Vorticity (Mass-Weighted)(1/s/m)"; break;
-              case 220: this.ParameterNameAndUnit = "Hourly Maximum of Upward Vertical Velocity in the lowest 400hPa(m s-1)"; break;
-              case 221: this.ParameterNameAndUnit = "Hourly Maximum of Downward Vertical Velocity in the lowest 400hPa(m s-1)"; break;
-              case 222: this.ParameterNameAndUnit = "U Component of Hourly Maximum 10m Wind Speed(m s-1)"; break;
-              case 223: this.ParameterNameAndUnit = "V Component of Hourly Maximum 10m Wind Speed(m s-1)"; break;
-              case 224: this.ParameterNameAndUnit = "Ventilation Rate(m2 s-1)"; break;
-
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_2(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Mass
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Pressure(Pa)"; break;
-              case 1: this.ParameterNameAndUnit = "Pressure Reduced to MSL(Pa)"; break;
-              case 2: this.ParameterNameAndUnit = "Pressure Tendency(Pa s-1)"; break;
-              case 3: this.ParameterNameAndUnit = "ICAO Standard Atmosphere Reference Height(m)"; break;
-              case 4: this.ParameterNameAndUnit = "Geopotential(m2 s-2)"; break;
-              case 5: this.ParameterNameAndUnit = "Geopotential Height(gpm)"; break;
-              case 6: this.ParameterNameAndUnit = "Geometric Height(m)"; break;
-              case 7: this.ParameterNameAndUnit = "Standard Deviation of Height(m)"; break;
-              case 8: this.ParameterNameAndUnit = "Pressure Anomaly(Pa)"; break;
-              case 9: this.ParameterNameAndUnit = "Geopotential Height Anomaly(gpm)"; break;
-              case 10: this.ParameterNameAndUnit = "Density(kg m-3)"; break;
-              case 11: this.ParameterNameAndUnit = "Altimeter Setting(Pa)"; break;
-              case 12: this.ParameterNameAndUnit = "Thickness(m)"; break;
-              case 13: this.ParameterNameAndUnit = "Pressure Altitude(m)"; break;
-              case 14: this.ParameterNameAndUnit = "Density Altitude(m)"; break;
-              case 15: this.ParameterNameAndUnit = "5-Wave Geopotential Height(gpm)"; break;
-              case 16: this.ParameterNameAndUnit = "Zonal Flux of Gravity Wave Stress(N m-2)"; break;
-              case 17: this.ParameterNameAndUnit = "Meridional Flux of Gravity Wave Stress(N m-2)"; break;
-              case 18: this.ParameterNameAndUnit = "Planetary Boundary Layer Height(m)"; break;
-              case 19: this.ParameterNameAndUnit = "5-Wave Geopotential Height Anomaly(gpm)"; break;
-              case 20: this.ParameterNameAndUnit = "Standard Deviation of Sub-Grid Scale Orography(m)"; break;
-              case 21: this.ParameterNameAndUnit = "Angle of Sub-Grid Scale Orography(rad)"; break;
-              case 22: this.ParameterNameAndUnit = "Slope of Sub-Grid Scale Orography(Numeric)"; break;
-              case 23: this.ParameterNameAndUnit = "Gravity Wave Dissipation(W m-2)"; break;
-              case 24: this.ParameterNameAndUnit = "Anisotropy of Sub-Grid Scale Orography(Numeric)"; break;
-              case 25: this.ParameterNameAndUnit = "Natural Logarithm of Pressure in Pa(Numeric)"; break;
-              case 26: this.ParameterNameAndUnit = "Exner Pressure(Numeric)"; break;
-              case 192: this.ParameterNameAndUnit = "MSLP (Eta model reduction)(Pa)"; break;
-              case 193: this.ParameterNameAndUnit = "5-Wave Geopotential Height(gpm)"; break;
-              case 194: this.ParameterNameAndUnit = "Zonal Flux of Gravity Wave Stress(N m-2)"; break;
-              case 195: this.ParameterNameAndUnit = "Meridional Flux of Gravity Wave Stress(N m-2)"; break;
-              case 196: this.ParameterNameAndUnit = "Planetary Boundary Layer Height(m)"; break;
-              case 197: this.ParameterNameAndUnit = "5-Wave Geopotential Height Anomaly(gpm)"; break;
-              case 198: this.ParameterNameAndUnit = "MSLP (MAPS System Reduction)(Pa)"; break;
-              case 199: this.ParameterNameAndUnit = "3-hr pressure tendency (Std. Atmos. Reduction)(Pa s-1)"; break;
-              case 200: this.ParameterNameAndUnit = "Pressure of level from which parcel was lifted(Pa)"; break;
-              case 201: this.ParameterNameAndUnit = "X-gradient of Log Pressure(m-1)"; break;
-              case 202: this.ParameterNameAndUnit = "Y-gradient of Log Pressure(m-1)"; break;
-              case 203: this.ParameterNameAndUnit = "X-gradient of Height(m-1)"; break;
-              case 204: this.ParameterNameAndUnit = "Y-gradient of Height(m-1)"; break;
-              case 205: this.ParameterNameAndUnit = "Layer Thickness(m)"; break;
-              case 206: this.ParameterNameAndUnit = "Natural Log of Surface Pressure(ln (kPa))"; break;
-              case 207: this.ParameterNameAndUnit = "Convective updraft mass flux(kg m-2 s-1)"; break;
-              case 208: this.ParameterNameAndUnit = "Convective downdraft mass flux(kg m-2 s-1)"; break;
-              case 209: this.ParameterNameAndUnit = "Convective detrainment mass flux(kg m-2 s-1)"; break;
-              case 210: this.ParameterNameAndUnit = "Mass Point Model Surface()"; break;
-              case 211: this.ParameterNameAndUnit = "Geopotential Height (nearest grid point)(gpm)"; break;
-              case 212: this.ParameterNameAndUnit = "Pressure (nearest grid point)(Pa)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_3(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Short wave radiation
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Net Short-Wave Radiation Flux (Surface)*(W m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Net Short-Wave Radiation Flux (Top of Atmosphere)*(W m-2)"; break;
-              case 2: this.ParameterNameAndUnit = "Short-Wave Radiation Flux*(W m-2)"; break;
-              case 3: this.ParameterNameAndUnit = "Global Radiation Flux(W m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Brightness Temperature(K)"; break;
-              case 5: this.ParameterNameAndUnit = "Radiance (with respect to wave number)(W m-1 sr-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Radiance (with respect to wavelength)(W m-3 sr-1)"; break;
-              case 7: this.ParameterNameAndUnit = "Downward Short-Wave Radiation Flux(W m-2)"; break;
-              case 8: this.ParameterNameAndUnit = "Upward Short-Wave Radiation Flux(W m-2)"; break;
-              case 9: this.ParameterNameAndUnit = "Net Short Wave Radiation Flux(W m-2)"; break;
-              case 10: this.ParameterNameAndUnit = "Photosynthetically Active Radiation(W m-2)"; break;
-              case 11: this.ParameterNameAndUnit = "Net Short-Wave Radiation Flux, Clear Sky(W m-2)"; break;
-              case 12: this.ParameterNameAndUnit = "Downward UV Radiation(W m-2)"; break;
-              case 50: this.ParameterNameAndUnit = "UV Index (Under Clear Sky)**(Numeric)"; break;
-              case 51: this.ParameterNameAndUnit = "UV Index**(W m-2)"; break;
-              case 192: this.ParameterNameAndUnit = "Downward Short-Wave Radiation Flux(W m-2)"; break;
-              case 193: this.ParameterNameAndUnit = "Upward Short-Wave Radiation Flux(W m-2)"; break;
-              case 194: this.ParameterNameAndUnit = "UV-B Downward Solar Flux(W m-2)"; break;
-              case 195: this.ParameterNameAndUnit = "Clear sky UV-B Downward Solar Flux(W m-2)"; break;
-              case 196: this.ParameterNameAndUnit = "Clear Sky Downward Solar Flux(W m-2)"; break;
-              case 197: this.ParameterNameAndUnit = "Solar Radiative Heating Rate(K s-1)"; break;
-              case 198: this.ParameterNameAndUnit = "Clear Sky Upward Solar Flux(W m-2)"; break;
-              case 199: this.ParameterNameAndUnit = "Cloud Forcing Net Solar Flux(W m-2)"; break;
-              case 200: this.ParameterNameAndUnit = "Visible Beam Downward Solar Flux(W m-2)"; break;
-              case 201: this.ParameterNameAndUnit = "Visible Diffuse Downward Solar Flux(W m-2)"; break;
-              case 202: this.ParameterNameAndUnit = "Near IR Beam Downward Solar Flux(W m-2)"; break;
-              case 203: this.ParameterNameAndUnit = "Near IR Diffuse Downward Solar Flux(W m-2)"; break;
-              case 204: this.ParameterNameAndUnit = "Downward Total Radiation Flux(W m-2)"; break;
-              case 205: this.ParameterNameAndUnit = "Upward Total Radiation Flux(W m-2)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_4(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 5) { // Long wave radiation
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Net Long-Wave Radiation Flux (Surface)*(W m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Net Long-Wave Radiation Flux (Top of Atmosphere)*(W m-2)"; break;
-              case 2: this.ParameterNameAndUnit = "Long-Wave Radiation Flux*(W m-2)"; break;
-              case 3: this.ParameterNameAndUnit = "Downward Long-Wave Rad. Flux(W m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Upward Long-Wave Rad. Flux(W m-2)"; break;
-              case 5: this.ParameterNameAndUnit = "Net Long-Wave Radiation Flux(W m-2)"; break;
-              case 6: this.ParameterNameAndUnit = "Net Long-Wave Radiation Flux, Clear Sky(W m-2)"; break;
-              case 192: this.ParameterNameAndUnit = "Downward Long-Wave Rad. Flux(W m-2)"; break;
-              case 193: this.ParameterNameAndUnit = "Upward Long-Wave Rad. Flux(W m-2)"; break;
-              case 194: this.ParameterNameAndUnit = "Long-Wave Radiative Heating Rate(K s-1)"; break;
-              case 195: this.ParameterNameAndUnit = "Clear Sky Upward Long Wave Flux(W m-2)"; break;
-              case 196: this.ParameterNameAndUnit = "Clear Sky Downward Long Wave Flux(W m-2)"; break;
-              case 197: this.ParameterNameAndUnit = "Cloud Forcing Net Long Wave Flux(W m-2)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_5(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 6) { // Cloud
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Cloud Ice(kg m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Total Cloud Cover(%)"; break;
-              case 2: this.ParameterNameAndUnit = "Convective Cloud Cover(%)"; break;
-              case 3: this.ParameterNameAndUnit = "Low Cloud Cover(%)"; break;
-              case 4: this.ParameterNameAndUnit = "Medium Cloud Cover(%)"; break;
-              case 5: this.ParameterNameAndUnit = "High Cloud Cover(%)"; break;
-              case 6: this.ParameterNameAndUnit = "Cloud Water(kg m-2)"; break;
-              case 7: this.ParameterNameAndUnit = "Cloud Amount(%)"; break;
-              case 8: this.ParameterNameAndUnit = "Cloud Type(See Table 4.203)"; break;
-              case 9: this.ParameterNameAndUnit = "Thunderstorm Maximum Tops(m)"; break;
-              case 10: this.ParameterNameAndUnit = "Thunderstorm Coverage(See Table 4.204)"; break;
-              case 11: this.ParameterNameAndUnit = "Cloud Base(m)"; break;
-              case 12: this.ParameterNameAndUnit = "Cloud Top(m)"; break;
-              case 13: this.ParameterNameAndUnit = "Ceiling(m)"; break;
-              case 14: this.ParameterNameAndUnit = "Non-Convective Cloud Cover(%)"; break;
-              case 15: this.ParameterNameAndUnit = "Cloud Work Function(J kg-1)"; break;
-              case 16: this.ParameterNameAndUnit = "Convective Cloud Efficiency(Proportion)"; break;
-              case 17: this.ParameterNameAndUnit = "Total Condensate *(kg kg-1)"; break;
-              case 18: this.ParameterNameAndUnit = "Total Column-Integrated Cloud Water *(kg m-2)"; break;
-              case 19: this.ParameterNameAndUnit = "Total Column-Integrated Cloud Ice *(kg m-2)"; break;
-              case 20: this.ParameterNameAndUnit = "Total Column-Integrated Condensate *(kg m-2)"; break;
-              case 21: this.ParameterNameAndUnit = "Ice fraction of total condensate(Proportion)"; break;
-              case 22: this.ParameterNameAndUnit = "Cloud Cover(%)"; break;
-              case 23: this.ParameterNameAndUnit = "Cloud Ice Mixing Ratio *(kg kg-1)"; break;
-              case 24: this.ParameterNameAndUnit = "Sunshine(Numeric)"; break;
-              case 25: this.ParameterNameAndUnit = "Horizontal Extent of Cumulonimbus (CB)(%)"; break;
-              case 26: this.ParameterNameAndUnit = "Height of Convective Cloud Base(m)"; break;
-              case 27: this.ParameterNameAndUnit = "Height of Convective Cloud Top(m)"; break;
-              case 28: this.ParameterNameAndUnit = "Number Concentration of Cloud Droplets(kg-1)"; break;
-              case 29: this.ParameterNameAndUnit = "Number Concentration of Cloud Ice(kg-1)"; break;
-              case 30: this.ParameterNameAndUnit = "Number Density of Cloud Droplets(m-3)"; break;
-              case 31: this.ParameterNameAndUnit = "Number Density of Cloud Ice(m-3)"; break;
-              case 32: this.ParameterNameAndUnit = "Fraction of Cloud Cover(Numeric)"; break;
-              case 33: this.ParameterNameAndUnit = "Sunshine Duration(s)"; break;
-              case 34: this.ParameterNameAndUnit = "Surface Long Wave Effective Total Cloudiness(Numeric)"; break;
-              case 35: this.ParameterNameAndUnit = "Surface Short Wave Effective Total Cloudiness(Numeric)"; break;
-              case 192: this.ParameterNameAndUnit = "Non-Convective Cloud Cover(%)"; break;
-              case 193: this.ParameterNameAndUnit = "Cloud Work Function(J kg-1)"; break;
-              case 194: this.ParameterNameAndUnit = "Convective Cloud Efficiency(non-dim)"; break;
-              case 195: this.ParameterNameAndUnit = "Total Condensate(kg kg-1)"; break;
-              case 196: this.ParameterNameAndUnit = "Total Column-Integrated Cloud Water(kg m-2)"; break;
-              case 197: this.ParameterNameAndUnit = "Total Column-Integrated Cloud Ice(kg m-2)"; break;
-              case 198: this.ParameterNameAndUnit = "Total Column-Integrated Condensate(kg m-2)"; break;
-              case 199: this.ParameterNameAndUnit = "Ice fraction of total condensate(non-dim)"; break;
-              case 200: this.ParameterNameAndUnit = "Convective Cloud Mass Flux(Pa s-1)"; break;
-              case 201: this.ParameterNameAndUnit = "Sunshine Duration(s)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_6(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 7) { // Thermodynamic stability indices
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Parcel Lifted Index (to 500 hPa)(K)"; break;
-              case 1: this.ParameterNameAndUnit = "Best Lifted Index (to 500 hPa)(K)"; break;
-              case 2: this.ParameterNameAndUnit = "K Index(K)"; break;
-              case 3: this.ParameterNameAndUnit = "KO Index(K)"; break;
-              case 4: this.ParameterNameAndUnit = "Total Totals Index(K)"; break;
-              case 5: this.ParameterNameAndUnit = "Sweat Index(Numeric)"; break;
-              case 6: this.ParameterNameAndUnit = "Convective Available Potential Energy(J kg-1)"; break;
-              case 7: this.ParameterNameAndUnit = "Convective Inhibition(J kg-1)"; break;
-              case 8: this.ParameterNameAndUnit = "Storm Relative Helicity(m2 s-2)"; break;
-              case 9: this.ParameterNameAndUnit = "Energy Helicity Index(Numeric)"; break;
-              case 10: this.ParameterNameAndUnit = "Surface Lifted Index(K)"; break;
-              case 11: this.ParameterNameAndUnit = "Best (4 layer) Lifted Index(K)"; break;
-              case 12: this.ParameterNameAndUnit = "Richardson Number(Numeric)"; break;
-              case 13: this.ParameterNameAndUnit = "Showalter Index(K)"; break;
-              case 15: this.ParameterNameAndUnit = "Updraft Helicity(m2 s-2)"; break;
-              case 192: this.ParameterNameAndUnit = "Surface Lifted Index(K)"; break;
-              case 193: this.ParameterNameAndUnit = "Best (4 layer) Lifted Index(K)"; break;
-              case 194: this.ParameterNameAndUnit = "Richardson Number(Numeric)"; break;
-              case 195: this.ParameterNameAndUnit = "Convective Weather Detection Index()"; break;
-              case 196: this.ParameterNameAndUnit = "Ultra Violet Index(W m-2)"; break;
-              case 197: this.ParameterNameAndUnit = "Updraft Helicity(m2 s-2)"; break;
-              case 198: this.ParameterNameAndUnit = "Leaf Area Index()"; break;
-              case 199: this.ParameterNameAndUnit = "Hourly Maximum of Updraft Helicity over Layer 2km to 5 km AGL(m2 s-2)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_7(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 13) { // Aerosols
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Aerosol Type(See Table 4.205)"; break;
-              case 192: this.ParameterNameAndUnit = "Particulate matter (coarse)(g m-3)"; break;
-              case 193: this.ParameterNameAndUnit = "Particulate matter (fine)(g m-3)"; break;
-              case 194: this.ParameterNameAndUnit = "Particulate matter (fine)(log10 (g m-3))"; break;
-              case 195: this.ParameterNameAndUnit = "Integrated column particulate matter (fine)(log10 (g m-3))"; break;
-
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_13(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 14) { // Trace gases
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Total Ozone(DU)"; break;
-              case 1: this.ParameterNameAndUnit = "Ozone Mixing Ratio(kg kg-1)"; break;
-              case 2: this.ParameterNameAndUnit = "Total Column Integrated Ozone(DU)"; break;
-              case 192: this.ParameterNameAndUnit = "Ozone Mixing Ratio(kg kg-1)"; break;
-              case 193: this.ParameterNameAndUnit = "Ozone Concentration(ppb)"; break;
-              case 194: this.ParameterNameAndUnit = "Categorical Ozone Concentration(Non-Dim)"; break;
-              case 195: this.ParameterNameAndUnit = "Ozone Vertical Diffusion(kg kg-1 s-1)"; break;
-              case 196: this.ParameterNameAndUnit = "Ozone Production(kg kg-1 s-1)"; break;
-              case 197: this.ParameterNameAndUnit = "Ozone Tendency(kg kg-1 s-1)"; break;
-              case 198: this.ParameterNameAndUnit = "Ozone Production from Temperature Term(kg kg-1 s-1)"; break;
-              case 199: this.ParameterNameAndUnit = "Ozone Production from Column Ozone Term(kg kg-1 s-1)"; break;
-              case 200: this.ParameterNameAndUnit = "Ozone Daily Max from 1-hour Average(ppbV)"; break;
-              case 201: this.ParameterNameAndUnit = "Ozone Daily Max from 8-hour Average(ppbV)"; break;
-              case 202: this.ParameterNameAndUnit = "PM 2.5 Daily Max from 1-hour Average(g m-3)"; break;
-              case 203: this.ParameterNameAndUnit = "PM 2.5 Daily Max from 24-hour Average(g m-3)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_14(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 15) { // Radar
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Base Spectrum Width(m s-1)"; break;
-              case 1: this.ParameterNameAndUnit = "Base Reflectivity(dB)"; break;
-              case 2: this.ParameterNameAndUnit = "Base Radial Velocity(m s-1)"; break;
-              case 3: this.ParameterNameAndUnit = "Vertically-Integrated Liquid Water(kg m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Layer Maximum Base Reflectivity(dB)"; break;
-              case 5: this.ParameterNameAndUnit = "Precipitation(kg m-2)"; break;
-              case 6: this.ParameterNameAndUnit = "Radar Spectra (1)()"; break;
-              case 7: this.ParameterNameAndUnit = "Radar Spectra (2)()"; break;
-              case 8: this.ParameterNameAndUnit = "Radar Spectra (3)()"; break;
-              case 9: this.ParameterNameAndUnit = "Reflectivity of Cloud Droplets(dB)"; break;
-              case 10: this.ParameterNameAndUnit = "Reflectivity of Cloud Ice(dB)"; break;
-              case 11: this.ParameterNameAndUnit = "Reflectivity of Snow(dB)"; break;
-              case 12: this.ParameterNameAndUnit = "Reflectivity of Rain(dB)"; break;
-              case 13: this.ParameterNameAndUnit = "Reflectivity of Graupel(dB)"; break;
-              case 14: this.ParameterNameAndUnit = "Reflectivity of Hail(dB)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_15(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 16) { // Forecast Radar Imagery
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Equivalent radar reflectivity factor for rain(m m6 m-3)"; break;
-              case 1: this.ParameterNameAndUnit = "Equivalent radar reflectivity factor for snow(m m6 m-3)"; break;
-              case 2: this.ParameterNameAndUnit = "Equivalent radar reflectivity factor for parameterized convection(m m6 m-3)"; break;
-              case 3: this.ParameterNameAndUnit = "Echo Top (See Note 1)(m)"; break;
-              case 4: this.ParameterNameAndUnit = "Reflectivity(dB)"; break;
-              case 5: this.ParameterNameAndUnit = "Composite reflectivity(dB)"; break;
-              case 192: this.ParameterNameAndUnit = "Equivalent radar reflectivity factor for rain(m m6 m-3)"; break;
-              case 193: this.ParameterNameAndUnit = "Equivalent radar reflectivity factor for snow(m m6 m-3)"; break;
-              case 194: this.ParameterNameAndUnit = "Equivalent radar reflectivity factor for parameterized convection(m m6 m-3)"; break;
-              case 195: this.ParameterNameAndUnit = "Reflectivity(dB)"; break;
-              case 196: this.ParameterNameAndUnit = "Composite reflectivity(dB)"; break;
-              case 197: this.ParameterNameAndUnit = "Echo Top (See Note 1)(m)"; break;
-              case 198: this.ParameterNameAndUnit = "Hourly Maximum of Simulated Reflectivity at 1 km AGL(dB)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_16(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
-
           else if (this.CategoryOfParametersByProductDiscipline === 17) { // Electrodynamics
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 192: this.ParameterNameAndUnit = "Lightning(non-dim)"; break;
-
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_17(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 18) { // Nuclear/radiology
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Air Concentration of Caesium 137(Bq m-3)"; break;
-              case 1: this.ParameterNameAndUnit = "Air Concentration of Iodine 131(Bq m-3)"; break;
-              case 2: this.ParameterNameAndUnit = "Air Concentration of Radioactive Pollutant(Bq m-3)"; break;
-              case 3: this.ParameterNameAndUnit = "Ground Deposition of Caesium 137(Bq m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Ground Deposition of Iodine 131(Bq m-2)"; break;
-              case 5: this.ParameterNameAndUnit = "Ground Deposition of Radioactive Pollutant(Bq m-2)"; break;
-              case 6: this.ParameterNameAndUnit = "Time Integrated Air Concentration of Cesium Pollutant See Note 1(Bq s m-3)"; break;
-              case 7: this.ParameterNameAndUnit = "Time Integrated Air Concentration of Iodine Pollutant See Note 1(Bq s m-3)"; break;
-              case 8: this.ParameterNameAndUnit = "Time Integrated Air Concentration of Radioactive Pollutant See Note 1(Bq s m-3)"; break;
-              case 10: this.ParameterNameAndUnit = "Air Concentration(Bq m-3)"; break;
-              case 11: this.ParameterNameAndUnit = "Wet Deposition(Bq m-2)"; break;
-              case 12: this.ParameterNameAndUnit = "Dry Deposition(Bq m-2)"; break;
-              case 13: this.ParameterNameAndUnit = "Total Deposition (Wet + Dry)(Bq m-2)"; break;
-
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_18(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 19) { // Physical atmospheric Properties
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Visibility(m)"; break;
-              case 1: this.ParameterNameAndUnit = "Albedo(%)"; break;
-              case 2: this.ParameterNameAndUnit = "Thunderstorm Probability(%)"; break;
-              case 3: this.ParameterNameAndUnit = "Mixed Layer Depth(m)"; break;
-              case 4: this.ParameterNameAndUnit = "Volcanic Ash(See Table 4.206)"; break;
-              case 5: this.ParameterNameAndUnit = "Icing Top(m)"; break;
-              case 6: this.ParameterNameAndUnit = "Icing Base(m)"; break;
-              case 7: this.ParameterNameAndUnit = "Icing(See Table 4.207)"; break;
-              case 8: this.ParameterNameAndUnit = "Turbulence Top(m)"; break;
-              case 9: this.ParameterNameAndUnit = "Turbulence Base(m)"; break;
-              case 10: this.ParameterNameAndUnit = "Turbulence(See Table 4.208)"; break;
-              case 11: this.ParameterNameAndUnit = "Turbulent Kinetic Energy(J kg-1)"; break;
-              case 12: this.ParameterNameAndUnit = "Planetary Boundary Layer Regime(See Table 4.209)"; break;
-              case 13: this.ParameterNameAndUnit = "Contrail Intensity(See Table 4.210)"; break;
-              case 14: this.ParameterNameAndUnit = "Contrail Engine Type(See Table 4.211)"; break;
-              case 15: this.ParameterNameAndUnit = "Contrail Top(m)"; break;
-              case 16: this.ParameterNameAndUnit = "Contrail Base(m)"; break;
-              case 17: this.ParameterNameAndUnit = "Maximum Snow Albedosee Note 1(%)"; break;
-              case 18: this.ParameterNameAndUnit = "Snow-Free Albedo(%)"; break;
-              case 19: this.ParameterNameAndUnit = "Snow Albedo(%)"; break;
-              case 20: this.ParameterNameAndUnit = "Icing(%)"; break;
-              case 21: this.ParameterNameAndUnit = "In-Cloud Turbulence(%)"; break;
-              case 22: this.ParameterNameAndUnit = "Clear Air Turbulence (CAT)(%)"; break;
-              case 23: this.ParameterNameAndUnit = "Supercooled Large Droplet Probabilitysee Note 2(%)"; break;
-              case 24: this.ParameterNameAndUnit = "Convective Turbulent Kinetic Energy(J kg-1)"; break;
-              case 25: this.ParameterNameAndUnit = "Weather(See Table 4.225)"; break;
-              case 26: this.ParameterNameAndUnit = "Convective Outlook(See Table 4.224)"; break;
-              case 27: this.ParameterNameAndUnit = "Icing Scenario(See Table 4.227)"; break;
-              case 192: this.ParameterNameAndUnit = "Maximum Snow Albedo(%)"; break;
-              case 193: this.ParameterNameAndUnit = "Snow-Free Albedo(%)"; break;
-              case 194: this.ParameterNameAndUnit = "Slight risk convective outlook(categorical)"; break;
-              case 195: this.ParameterNameAndUnit = "Moderate risk convective outlook(categorical)"; break;
-              case 196: this.ParameterNameAndUnit = "High risk convective outlook(categorical)"; break;
-              case 197: this.ParameterNameAndUnit = "Tornado probability(%)"; break;
-              case 198: this.ParameterNameAndUnit = "Hail probability(%)"; break;
-              case 199: this.ParameterNameAndUnit = "Wind probability(%)"; break;
-              case 200: this.ParameterNameAndUnit = "Significant Tornado probability(%)"; break;
-              case 201: this.ParameterNameAndUnit = "Significant Hail probability(%)"; break;
-              case 202: this.ParameterNameAndUnit = "Significant Wind probability(%)"; break;
-              case 203: this.ParameterNameAndUnit = "Categorical Thunderstorm(Code table 4.222)"; break;
-              case 204: this.ParameterNameAndUnit = "Number of mixed layers next to surface(integer)"; break;
-              case 205: this.ParameterNameAndUnit = "Flight Category()"; break;
-              case 206: this.ParameterNameAndUnit = "Confidence - Ceiling()"; break;
-              case 207: this.ParameterNameAndUnit = "Confidence - Visibility()"; break;
-              case 208: this.ParameterNameAndUnit = "Confidence - Flight Category()"; break;
-              case 209: this.ParameterNameAndUnit = "Low-Level aviation interest()"; break;
-              case 210: this.ParameterNameAndUnit = "High-Level aviation interest()"; break;
-              case 211: this.ParameterNameAndUnit = "Visible, Black Sky Albedo(%)"; break;
-              case 212: this.ParameterNameAndUnit = "Visible, White Sky Albedo(%)"; break;
-              case 213: this.ParameterNameAndUnit = "Near IR, Black Sky Albedo(%)"; break;
-              case 214: this.ParameterNameAndUnit = "Near IR, White Sky Albedo(%)"; break;
-              case 215: this.ParameterNameAndUnit = "Total Probability of Severe Thunderstorms (Days 2,3)(%)"; break;
-              case 216: this.ParameterNameAndUnit = "Total Probability of Extreme Severe Thunderstorms (Days 2,3)(%)"; break;
-              case 217: this.ParameterNameAndUnit = "Supercooled Large Droplet (SLD) Icingsee Note 2(See Table 4.207)"; break;
-              case 218: this.ParameterNameAndUnit = "Radiative emissivity()"; break;
-              case 219: this.ParameterNameAndUnit = "Turbulence Potential Forecast Index()"; break;
-              case 220: this.ParameterNameAndUnit = "Categorical Severe Thunderstorm(Code table 4.222)"; break;
-              case 221: this.ParameterNameAndUnit = "Probability of Convection(%)"; break;
-              case 222: this.ParameterNameAndUnit = "Convection Potential(Code table 4.222)"; break;
-              case 232: this.ParameterNameAndUnit = "Volcanic Ash Forecast Transport and Dispersion(log10 (kg m-3))"; break;
-              case 233: this.ParameterNameAndUnit = "Icing probability(non-dim)"; break;
-              case 234: this.ParameterNameAndUnit = "Icing severity(non-dim)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_19(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 20) { // Atmospheric Chemical Constituents
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Mass Density (Concentration)(kg m-3)"; break;
-              case 1: this.ParameterNameAndUnit = "Column-Integrated Mass Density (See Note 1)(kg m-2)"; break;
-              case 2: this.ParameterNameAndUnit = "Mass Mixing Ratio (Mass Fraction in Air)(kg kg-1)"; break;
-              case 3: this.ParameterNameAndUnit = ">Atmosphere Emission Mass Flux(kg m-2s-1)"; break;
-              case 4: this.ParameterNameAndUnit = "Atmosphere Net Production Mass Flux(kg m-2s-1)"; break;
-              case 5: this.ParameterNameAndUnit = ">Atmosphere Net Production And Emision Mass Flux(kg m-2s-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Surface Dry Deposition Mass Flux(kg m-2s-1)"; break;
-              case 7: this.ParameterNameAndUnit = "Surface Wet Deposition Mass Flux(kg m-2s-1)"; break;
-              case 8: this.ParameterNameAndUnit = "Atmosphere Re-Emission Mass Flux(kg m-2s-1)"; break;
-              case 9: this.ParameterNameAndUnit = "Wet Deposition by Large-Scale Precipitation Mass Flux(kg m-2s-1)"; break;
-              case 10: this.ParameterNameAndUnit = "Wet Deposition by Convective Precipitation Mass Flux(kg m-2s-1)"; break;
-              case 11: this.ParameterNameAndUnit = "Sedimentation Mass Flux(kg m-2s-1)"; break;
-              case 12: this.ParameterNameAndUnit = "Dry Deposition Mass Flux(kg m-2s-1)"; break;
-              case 13: this.ParameterNameAndUnit = "Transfer From Hydrophobic to Hydrophilic(kg kg-1s-1)"; break;
-              case 14: this.ParameterNameAndUnit = "Transfer From SO2 (Sulphur Dioxide) to SO4 (Sulphate)(kg kg-1s-1)"; break;
-              case 50: this.ParameterNameAndUnit = "Amount in Atmosphere(mol)"; break;
-              case 51: this.ParameterNameAndUnit = "Concentration In Air(mol m-3)"; break;
-              case 52: this.ParameterNameAndUnit = "Volume Mixing Ratio (Fraction in Air)(mol mol-1)"; break;
-              case 53: this.ParameterNameAndUnit = "Chemical Gross Production Rate of Concentration(mol m-3s-1)"; break;
-              case 54: this.ParameterNameAndUnit = "Chemical Gross Destruction Rate of Concentration(mol m-3s-1)"; break;
-              case 55: this.ParameterNameAndUnit = "Surface Flux(mol m-2s-1)"; break;
-              case 56: this.ParameterNameAndUnit = "Changes Of Amount in Atmosphere (See Note 1)(mol s-1)"; break;
-              case 57: this.ParameterNameAndUnit = "Total Yearly Average Burden of The Atmosphere>(mol)"; break;
-              case 58: this.ParameterNameAndUnit = "Total Yearly Average Atmospheric Loss (See Note 1)(mol s-1)"; break;
-              case 59: this.ParameterNameAndUnit = "Aerosol Number Concentration(m-3)"; break;
-              case 100: this.ParameterNameAndUnit = "Surface Area Density (Aerosol)(m-1)"; break;
-              case 101: this.ParameterNameAndUnit = "Vertical Visual Range(m)"; break;
-              case 102: this.ParameterNameAndUnit = "Aerosol Optical Thickness(Numeric)"; break;
-              case 103: this.ParameterNameAndUnit = "Single Scattering Albedo(Numeric)"; break;
-              case 104: this.ParameterNameAndUnit = "Asymmetry Factor(Numeric)"; break;
-              case 105: this.ParameterNameAndUnit = "Aerosol Extinction Coefficient(m-1)"; break;
-              case 106: this.ParameterNameAndUnit = "Aerosol Absorption Coefficient(m-1)"; break;
-              case 107: this.ParameterNameAndUnit = "Aerosol Lidar Backscatter from Satellite(m-1sr-1)"; break;
-              case 108: this.ParameterNameAndUnit = "Aerosol Lidar Backscatter from the Ground(m-1sr-1)"; break;
-              case 109: this.ParameterNameAndUnit = "Aerosol Lidar Extinction from Satellite(m-1)"; break;
-              case 110: this.ParameterNameAndUnit = "Aerosol Lidar Extinction from the Ground(m-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_20(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 190) { // CCITT IA5 string
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Arbitrary Text String(CCITTIA5)"; break;
-
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_190(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 191) { // Miscellaneous
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Seconds prior to initial reference time (defined in Section 1)(s)"; break;
-              case 1: this.ParameterNameAndUnit = "Geographical Latitude(N)"; break;
-              case 2: this.ParameterNameAndUnit = "Geographical Longitude(E)"; break;
-              case 192: this.ParameterNameAndUnit = "Latitude (-90 to 90)()"; break;
-              case 193: this.ParameterNameAndUnit = "East Longitude (0 to 360)()"; break;
-              case 194: this.ParameterNameAndUnit = "Seconds prior to initial reference time(s)"; break;
-              case 195: this.ParameterNameAndUnit = "Model Layer number (From bottom up)()"; break;
-              case 196: this.ParameterNameAndUnit = "Latitude (nearest neighbor) (-90 to 90)()"; break;
-              case 197: this.ParameterNameAndUnit = "East Longitude (nearest neighbor) (0 to 360)()"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_191(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 192) { // Covariance
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 1: this.ParameterNameAndUnit = "Covariance between zonal and meridional components of the wind. Defined as [uv]-[u][v], where [] indicates the mean over the indicated time span.(m2/s2)"; break;
-              case 2: this.ParameterNameAndUnit = "Covariance between zonal component of the wind and temperature. Defined as [uT]-[u][T], where [] indicates the mean over the indicated time span.(K*m/s)"; break;
-              case 3: this.ParameterNameAndUnit = "Covariance between meridional component of the wind and temperature. Defined as [vT]-[v][T], where [] indicates the mean over the indicated time span.(K*m/s)"; break;
-              case 4: this.ParameterNameAndUnit = "Covariance between temperature and vertical component of the wind. Defined as [wT]-[w][T], where [] indicates the mean over the indicated time span.(K*m/s)"; break;
-              case 5: this.ParameterNameAndUnit = "Covariance between zonal and zonal components of the wind. Defined as [uu]-[u][u], where [] indicates the mean over the indicated time span.(m2/s2)"; break;
-              case 6: this.ParameterNameAndUnit = "Covariance between meridional and meridional components of the wind. Defined as [vv]-[v][v], where [] indicates the mean over the indicated time span.(m2/s2)"; break;
-              case 7: this.ParameterNameAndUnit = "Covariance between specific humidity and zonal components of the wind. Defined as [uq]-[u][q], where [] indicates the mean over the indicated time span.(kg/kg*m/s)"; break;
-              case 8: this.ParameterNameAndUnit = "Covariance between specific humidity and meridional components of the wind. Defined as [vq]-[v][q], where [] indicates the mean over the indicated time span.(kg/kg*m/s)"; break;
-              case 9: this.ParameterNameAndUnit = "Covariance between temperature and vertical components of the wind. Defined as [T]-[][T], where [] indicates the mean over the indicated time span.(K*Pa/s)"; break;
-              case 10: this.ParameterNameAndUnit = "Covariance between specific humidity and vertical components of the wind. Defined as [q]-[][q], where [] indicates the mean over the indicated time span.(kg/kg*Pa/s)"; break;
-              case 11: this.ParameterNameAndUnit = "Covariance between surface pressure and surface pressure. Defined as [Psfc]-[Psfc][Psfc], where [] indicates the mean over the indicated time span.(Pa*Pa)"; break;
-              case 12: this.ParameterNameAndUnit = "Covariance between specific humidity and specific humidy. Defined as [qq]-[q][q], where [] indicates the mean over the indicated time span.(kg/kg*kg/kg)"; break;
-              case 13: this.ParameterNameAndUnit = "Covariance between vertical and vertical components of the wind. Defined as []-[][], where [] indicates the mean over the indicated time span.(Pa2/s2)"; break;
-              case 14: this.ParameterNameAndUnit = "Covariance between temperature and temperature. Defined as [TT]-[T][T], where [] indicates the mean over the indicated time span.(K*K)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_0_192(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
         }
+
         else if (this.DisciplineOfProcessedData === 1) { // Hydrological
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Hydrology Basic
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Flash Flood Guidance (Encoded as an accumulation over a floating subinterval of time between the reference time and valid time)(kg m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Flash Flood Runoff (Encoded as an accumulation over a floating subinterval of time)(kg m-2)"; break;
-              case 2: this.ParameterNameAndUnit = "Remotely Sensed Snow Cover(See Table 4.215)"; break;
-              case 3: this.ParameterNameAndUnit = "Elevation of Snow Covered Terrain(See Table 4.216)"; break;
-              case 4: this.ParameterNameAndUnit = "Snow Water Equivalent Percent of Normal(%)"; break;
-              case 5: this.ParameterNameAndUnit = "Baseflow-Groundwater Runoff(kg m-2)"; break;
-              case 6: this.ParameterNameAndUnit = "Storm Surface Runoff(kg m-2)"; break;
-              case 192: this.ParameterNameAndUnit = "Baseflow-Groundwater Runoff(kg m-2)"; break;
-              case 193: this.ParameterNameAndUnit = "Storm Surface Runoff(kg m-2)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_1_0(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Hydrology Probabilities
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Conditional percent precipitation amount fractile for an overall period (encoded as an accumulation)(kg m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Percent Precipitation in a sub-period of an overall period (encoded as a percent accumulation over the sub-period)(%)"; break;
-              case 2: this.ParameterNameAndUnit = "Probability of 0.01 inch of precipitation (POP)(%)"; break;
-              case 192: this.ParameterNameAndUnit = "Probability of Freezing Precipitation(%)"; break;
-              case 193: this.ParameterNameAndUnit = "Probability of Frozen Precipitation(%)"; break;
-              case 194: this.ParameterNameAndUnit = "Probability of precipitation exceeding flash flood guidance values(%)"; break;
-              case 195: this.ParameterNameAndUnit = "Probability of Wetting Rain, exceeding in 0.10 in a given time period(%)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_1_1(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Inland Water and Sediment Properties
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Water Depth(m)"; break;
-              case 1: this.ParameterNameAndUnit = "Water Temperature(K)"; break;
-              case 2: this.ParameterNameAndUnit = "Water Fraction(Proportion)"; break;
-              case 3: this.ParameterNameAndUnit = "Sediment Thickness(m)"; break;
-              case 4: this.ParameterNameAndUnit = "Sediment Temperature(K)"; break;
-              case 5: this.ParameterNameAndUnit = "Ice Thickness(m)"; break;
-              case 6: this.ParameterNameAndUnit = "Ice Temperature(K)"; break;
-              case 7: this.ParameterNameAndUnit = "Ice Cover(Proportion)"; break;
-              case 8: this.ParameterNameAndUnit = "Land Cover (0=water, 1=land)(Proportion)"; break;
-              case 9: this.ParameterNameAndUnit = "Shape Factor with Respect to Salinity Profile()"; break;
-              case 10: this.ParameterNameAndUnit = "Shape Factor with Respect to Temperature Profile in Thermocline()"; break;
-              case 11: this.ParameterNameAndUnit = "Attenuation Coefficient of Water with Respect to Solar Attenuation Coefficient of Water with Respect to Solar Radiation(m-1)"; break;
-              case 12: this.ParameterNameAndUnit = "Salinity(kg kg-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_1_2(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
         }
+
         else if (this.DisciplineOfProcessedData === 2) { // Land surface
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Vegetation/Biomass
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Land Cover (0=sea, 1=land)(Proportion)"; break;
-              case 1: this.ParameterNameAndUnit = "Surface Roughness(m)"; break;
-              case 2: this.ParameterNameAndUnit = "Soil Temperature ***(K)"; break;
-              case 3: this.ParameterNameAndUnit = "Soil Moisture Content*(kg m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Vegetation(%)"; break;
-              case 5: this.ParameterNameAndUnit = "Water Runoff(kg m-2)"; break;
-              case 6: this.ParameterNameAndUnit = "Evapotranspiration(kg-2 s-1)"; break;
-              case 7: this.ParameterNameAndUnit = "Model Terrain Height(m)"; break;
-              case 8: this.ParameterNameAndUnit = "Land Use(See Table 4.212)"; break;
-              case 9: this.ParameterNameAndUnit = "Volumetric Soil Moisture Content**(Proportion)"; break;
-              case 10: this.ParameterNameAndUnit = "Ground Heat Flux*(W m-2)"; break;
-              case 11: this.ParameterNameAndUnit = "Moisture Availability(%)"; break;
-              case 12: this.ParameterNameAndUnit = "Exchange Coefficient(kg m-2 s-1)"; break;
-              case 13: this.ParameterNameAndUnit = "Plant Canopy Surface Water(kg m-2)"; break;
-              case 14: this.ParameterNameAndUnit = "Blackadar's Mixing Length Scale(m)"; break;
-              case 15: this.ParameterNameAndUnit = "Canopy Conductance(m s-1)"; break;
-              case 16: this.ParameterNameAndUnit = "Minimal Stomatal Resistance(s m-1)"; break;
-              case 17: this.ParameterNameAndUnit = "Wilting Point*(Proportion)"; break;
-              case 18: this.ParameterNameAndUnit = "Solar parameter in canopy conductance(Proportion)"; break;
-              case 19: this.ParameterNameAndUnit = "Temperature parameter in canopy(Proportion)"; break;
-              case 20: this.ParameterNameAndUnit = "Humidity parameter in canopy conductance(Proportion)"; break;
-              case 21: this.ParameterNameAndUnit = "Soil moisture parameter in canopy conductance(Proportion)"; break;
-              case 22: this.ParameterNameAndUnit = "Soil Moisture ***(kg m-3)"; break;
-              case 23: this.ParameterNameAndUnit = "Column-Integrated Soil Water ***(kg m-2)"; break;
-              case 24: this.ParameterNameAndUnit = "Heat Flux(W m-2)"; break;
-              case 25: this.ParameterNameAndUnit = "Volumetric Soil Moisture(m3 m-3)"; break;
-              case 26: this.ParameterNameAndUnit = "Wilting Point(kg m-3)"; break;
-              case 27: this.ParameterNameAndUnit = "Volumetric Wilting Point(m3 m-3)"; break;
-              case 28: this.ParameterNameAndUnit = "Leaf Area Index(Numeric)"; break;
-              case 29: this.ParameterNameAndUnit = "Evergreen Forest(Numeric)"; break;
-              case 30: this.ParameterNameAndUnit = "Deciduous Forest(Numeric)"; break;
-              case 31: this.ParameterNameAndUnit = "Normalized Differential Vegetation Index (NDVI)(Numeric)"; break;
-              case 32: this.ParameterNameAndUnit = "Root Depth of Vegetation(m)"; break;
-              case 192: this.ParameterNameAndUnit = "Volumetric Soil Moisture Content(Fraction)"; break;
-              case 193: this.ParameterNameAndUnit = "Ground Heat Flux(W m-2)"; break;
-              case 194: this.ParameterNameAndUnit = "Moisture Availability(%)"; break;
-              case 195: this.ParameterNameAndUnit = "Exchange Coefficient((kg m-3) (m s-1))"; break;
-              case 196: this.ParameterNameAndUnit = "Plant Canopy Surface Water(kg m-2)"; break;
-              case 197: this.ParameterNameAndUnit = "Blackadars Mixing Length Scale(m)"; break;
-              case 198: this.ParameterNameAndUnit = "Vegetation Type(Integer (0-13))"; break;
-              case 199: this.ParameterNameAndUnit = "Canopy Conductance(m s-1)"; break;
-              case 200: this.ParameterNameAndUnit = "Minimal Stomatal Resistance(s m-1)"; break;
-              case 201: this.ParameterNameAndUnit = "Wilting Point(Fraction)"; break;
-              case 202: this.ParameterNameAndUnit = "Solar parameter in canopy conductance(Fraction)"; break;
-              case 203: this.ParameterNameAndUnit = "Temperature parameter in canopy conductance(Fraction)"; break;
-              case 204: this.ParameterNameAndUnit = "Humidity parameter in canopy conductance(Fraction)"; break;
-              case 205: this.ParameterNameAndUnit = "Soil moisture parameter in canopy conductance(Fraction)"; break;
-              case 206: this.ParameterNameAndUnit = "Rate of water dropping from canopy to ground()"; break;
-              case 207: this.ParameterNameAndUnit = "Ice-free water surface(%)"; break;
-              case 208: this.ParameterNameAndUnit = "Surface exchange coefficients for T and Q divided by delta z(m s-1)"; break;
-              case 209: this.ParameterNameAndUnit = "Surface exchange coefficients for U and V divided by delta z(m s-1)"; break;
-              case 210: this.ParameterNameAndUnit = "Vegetation canopy temperature(K)"; break;
-              case 211: this.ParameterNameAndUnit = "Surface water storage(Kg m-2)"; break;
-              case 212: this.ParameterNameAndUnit = "Liquid soil moisture content (non-frozen)(Kg m-2)"; break;
-              case 213: this.ParameterNameAndUnit = "Open water evaporation (standing water)(W m-2)"; break;
-              case 214: this.ParameterNameAndUnit = "Groundwater recharge(Kg m-2)"; break;
-              case 215: this.ParameterNameAndUnit = "Flood plain recharge(Kg m-2)"; break;
-              case 216: this.ParameterNameAndUnit = "Roughness length for heat(m)"; break;
-              case 217: this.ParameterNameAndUnit = "Normalized Difference Vegetation Index()"; break;
-              case 218: this.ParameterNameAndUnit = "Land-sea coverage (nearest neighbor) [land=1,sea=0]()"; break;
-              case 219: this.ParameterNameAndUnit = "Asymptotic mixing length scale(m)"; break;
-              case 220: this.ParameterNameAndUnit = "Water vapor added by precip assimilation(Kg m-2)"; break;
-              case 221: this.ParameterNameAndUnit = "Water condensate added by precip assimilation(Kg m-2)"; break;
-              case 222: this.ParameterNameAndUnit = "Water Vapor Flux Convergance (Vertical Int)(Kg m-2)"; break;
-              case 223: this.ParameterNameAndUnit = "Water Condensate Flux Convergance (Vertical Int)(Kg m-2)"; break;
-              case 224: this.ParameterNameAndUnit = "Water Vapor Zonal Flux (Vertical Int)(Kg m-2)"; break;
-              case 225: this.ParameterNameAndUnit = "Water Vapor Meridional Flux (Vertical Int)(Kg m-2)"; break;
-              case 226: this.ParameterNameAndUnit = "Water Condensate Zonal Flux (Vertical Int)(Kg m-2)"; break;
-              case 227: this.ParameterNameAndUnit = "Water Condensate Meridional Flux (Vertical Int)(Kg m-2)"; break;
-              case 228: this.ParameterNameAndUnit = "Aerodynamic conductance(m s-1)"; break;
-              case 229: this.ParameterNameAndUnit = "Canopy water evaporation(W m-2)"; break;
-              case 230: this.ParameterNameAndUnit = "Transpiration(W m-2)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_0(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Agricultural/aquacultural special products
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 192: this.ParameterNameAndUnit = "Cold Advisory for Newborn Livestock()"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_1(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Soil
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Soil Type(See Table 4.213)"; break;
-              case 1: this.ParameterNameAndUnit = "Upper Layer Soil Temperature*(K)"; break;
-              case 2: this.ParameterNameAndUnit = "Upper Layer Soil Moisture*(kg m-3)"; break;
-              case 3: this.ParameterNameAndUnit = "Lower Layer Soil Moisture*(kg m-3)"; break;
-              case 4: this.ParameterNameAndUnit = "Bottom Layer Soil Temperature*(K)"; break;
-              case 5: this.ParameterNameAndUnit = "Liquid Volumetric Soil Moisture (non-frozen)**(Proportion)"; break;
-              case 6: this.ParameterNameAndUnit = "Number of Soil Layers in Root Zone(Numeric)"; break;
-              case 7: this.ParameterNameAndUnit = "Transpiration Stress-onset (soil moisture)**(Proportion)"; break;
-              case 8: this.ParameterNameAndUnit = "Direct Evaporation Cease (soil moisture)**(Proportion)"; break;
-              case 9: this.ParameterNameAndUnit = "Soil Porosity**(Proportion)"; break;
-              case 10: this.ParameterNameAndUnit = "Liquid Volumetric Soil Moisture (Non-Frozen)(m3 m-3)"; break;
-              case 11: this.ParameterNameAndUnit = "Volumetric Transpiration Stree-Onset(Soil Moisture)(m3 m-3)"; break;
-              case 12: this.ParameterNameAndUnit = "Transpiration Stree-Onset(Soil Moisture)(kg m-3)"; break;
-              case 13: this.ParameterNameAndUnit = "Volumetric Direct Evaporation Cease(Soil Moisture)(m3 m-3)"; break;
-              case 14: this.ParameterNameAndUnit = "Direct Evaporation Cease(Soil Moisture)(kg m-3)"; break;
-              case 15: this.ParameterNameAndUnit = "Soil Porosity(m3 m-3)"; break;
-              case 16: this.ParameterNameAndUnit = "Volumetric Saturation Of Soil Moisture(m3 m-3)"; break;
-              case 17: this.ParameterNameAndUnit = "Saturation Of Soil Moisture(kg m-3)"; break;
-              case 18: this.ParameterNameAndUnit = "Soil Temperature(K)"; break;
-              case 19: this.ParameterNameAndUnit = "Soil Moisture(kg m-3)"; break;
-              case 20: this.ParameterNameAndUnit = "Column-Integrated Soil Moisture(kg m-2)"; break;
-              case 21: this.ParameterNameAndUnit = "Soil Ice(kg m-3)"; break;
-              case 22: this.ParameterNameAndUnit = "Column-Integrated Soil Ice(kg m-2)"; break;
-              case 192: this.ParameterNameAndUnit = "Liquid Volumetric Soil Moisture (non Frozen)(Proportion)"; break;
-              case 193: this.ParameterNameAndUnit = "Number of Soil Layers in Root Zone(non-dim)"; break;
-              case 194: this.ParameterNameAndUnit = "Surface Slope Type(Index)"; break;
-              case 195: this.ParameterNameAndUnit = "Transpiration Stress-onset (soil moisture)(Proportion)"; break;
-              case 196: this.ParameterNameAndUnit = "Direct Evaporation Cease (soil moisture)(Proportion)"; break;
-              case 197: this.ParameterNameAndUnit = "Soil Porosity(Proportion)"; break;
-              case 198: this.ParameterNameAndUnit = "Direct Evaporation from Bare Soil(W m-2)"; break;
-              case 199: this.ParameterNameAndUnit = "Land Surface Precipitation Accumulation(kg m-2)"; break;
-              case 200: this.ParameterNameAndUnit = "Bare Soil Surface Skin temperature(K)"; break;
-              case 201: this.ParameterNameAndUnit = "Average Surface Skin Temperature(K)"; break;
-              case 202: this.ParameterNameAndUnit = "Effective Radiative Skin Temperature(K)"; break;
-              case 203: this.ParameterNameAndUnit = "Field Capacity(Fraction)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_3(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Fire Weather
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Fire Outlook(See Table 4.224)"; break;
-              case 1: this.ParameterNameAndUnit = "Fire Outlook Due to Dry Thunderstorm(See Table 4.224)"; break;
-              case 2: this.ParameterNameAndUnit = "Haines Index(Numeric)"; break;
-              case 3: this.ParameterNameAndUnit = "Fire Burned Area(%)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_2_4(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
         }
+
         else if (this.DisciplineOfProcessedData === 3) { // Space
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Image format
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Scaled Radiance(Numeric)"; break;
-              case 1: this.ParameterNameAndUnit = "Scaled Albedo(Numeric)"; break;
-              case 2: this.ParameterNameAndUnit = "Scaled Brightness Temperature(Numeric)"; break;
-              case 3: this.ParameterNameAndUnit = "Scaled Precipitable Water(Numeric)"; break;
-              case 4: this.ParameterNameAndUnit = "Scaled Lifted Index(Numeric)"; break;
-              case 5: this.ParameterNameAndUnit = "Scaled Cloud Top Pressure(Numeric)"; break;
-              case 6: this.ParameterNameAndUnit = "Scaled Skin Temperature(Numeric)"; break;
-              case 7: this.ParameterNameAndUnit = "Cloud Mask(See Table 4.217)"; break;
-              case 8: this.ParameterNameAndUnit = "Pixel scene type(See Table 4.218)"; break;
-              case 9: this.ParameterNameAndUnit = "Fire Detection Indicator(See Table 4.223)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_3_0(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Quantitative
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Estimated Precipitation(kg m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Instantaneous Rain Rate(kg m-2 s-1)"; break;
-              case 2: this.ParameterNameAndUnit = "Cloud Top Height(m)"; break;
-              case 3: this.ParameterNameAndUnit = "Cloud Top Height Quality Indicator(Code table 4.219)"; break;
-              case 4: this.ParameterNameAndUnit = "Estimated u-Component of Wind(m s-1)"; break;
-              case 5: this.ParameterNameAndUnit = "Estimated v-Component of Wind(m s-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Number Of Pixels Used(Numeric)"; break;
-              case 7: this.ParameterNameAndUnit = "Solar Zenith Angle()"; break;
-              case 8: this.ParameterNameAndUnit = "Relative Azimuth Angle()"; break;
-              case 9: this.ParameterNameAndUnit = "Reflectance in 0.6 Micron Channel(%)"; break;
-              case 10: this.ParameterNameAndUnit = "Reflectance in 0.8 Micron Channel(%)"; break;
-              case 11: this.ParameterNameAndUnit = "Reflectance in 1.6 Micron Channel(%)"; break;
-              case 12: this.ParameterNameAndUnit = "Reflectance in 3.9 Micron Channel(%)"; break;
-              case 13: this.ParameterNameAndUnit = "Atmospheric Divergence(s-1)"; break;
-              case 14: this.ParameterNameAndUnit = "Cloudy Brightness Temperature(K)"; break;
-              case 15: this.ParameterNameAndUnit = "Clear Sky Brightness Temperature(K)"; break;
-              case 16: this.ParameterNameAndUnit = "Cloudy Radiance (with respect to wave number)(W m-1 sr-1)"; break;
-              case 17: this.ParameterNameAndUnit = "Clear Sky Radiance (with respect to wave number)(W m-1 sr-1)"; break;
-              case 19: this.ParameterNameAndUnit = "Wind Speed(m s-1)"; break;
-              case 20: this.ParameterNameAndUnit = "Aerosol Optical Thickness at 0.635 m()"; break;
-              case 21: this.ParameterNameAndUnit = "Aerosol Optical Thickness at 0.810 m()"; break;
-              case 22: this.ParameterNameAndUnit = "Aerosol Optical Thickness at 1.640 m()"; break;
-              case 23: this.ParameterNameAndUnit = "Angstrom Coefficient()"; break;
-              case 192: this.ParameterNameAndUnit = "Scatterometer Estimated U Wind Component(m s-1)"; break;
-              case 193: this.ParameterNameAndUnit = "Scatterometer Estimated V Wind Component(m s-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_3_1(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 192) { // Forecast Satellite Imagery
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 12, Channel 2(K)"; break;
-              case 1: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 12, Channel 3(K)"; break;
-              case 2: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 12, Channel 4(K)"; break;
-              case 3: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 12, Channel 6(K)"; break;
-              case 4: this.ParameterNameAndUnit = "Simulated Brightness Counts for GOES 12, Channel 3(Byte)"; break;
-              case 5: this.ParameterNameAndUnit = "Simulated Brightness Counts for GOES 12, Channel 4(Byte)"; break;
-              case 6: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 11, Channel 2(K)"; break;
-              case 7: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 11, Channel 3(K)"; break;
-              case 8: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 11, Channel 4(K)"; break;
-              case 9: this.ParameterNameAndUnit = "Simulated Brightness Temperature for GOES 11, Channel 5(K)"; break;
-              case 10: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 9(K)"; break;
-              case 11: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 10(K)"; break;
-              case 12: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 11(K)"; break;
-              case 13: this.ParameterNameAndUnit = "Simulated Brightness Temperature for AMSRE on Aqua, Channel 12(K)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_3_192(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
         }
 
         else if (this.DisciplineOfProcessedData === 4) { // Space Weather
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Temperature
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Temperature(K)"; break;
-              case 1: this.ParameterNameAndUnit = "Electron Temperature(K)"; break;
-              case 2: this.ParameterNameAndUnit = "Proton Temperature(K)"; break;
-              case 3: this.ParameterNameAndUnit = "Ion Temperature(K)"; break;
-              case 4: this.ParameterNameAndUnit = "Parallel Temperature(K)"; break;
-              case 5: this.ParameterNameAndUnit = "Perpendicular Temperature(K)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_0(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Momentum
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Velocity Magnitude (Speed)(m s-1)"; break;
-              case 1: this.ParameterNameAndUnit = "1st Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
-              case 2: this.ParameterNameAndUnit = "2nd Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
-              case 3: this.ParameterNameAndUnit = "3rd Vector Component of Velocity (Coordinate system dependent)(m s-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_1(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Charged Particle Mass and Number
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Particle Number Density(m-3)"; break;
-              case 1: this.ParameterNameAndUnit = "Electron Density(m-3)"; break;
-              case 2: this.ParameterNameAndUnit = "Proton Density(m-3)"; break;
-              case 3: this.ParameterNameAndUnit = "Ion Density(m-3)"; break;
-              case 4: this.ParameterNameAndUnit = "Vertical Electron Content(m-2)"; break;
-              case 5: this.ParameterNameAndUnit = "HF Absorption Frequency(Hz)"; break;
-              case 6: this.ParameterNameAndUnit = "HF Absorption(dB)"; break;
-              case 7: this.ParameterNameAndUnit = "Spread F(m)"; break;
-              case 8: this.ParameterNameAndUnit = "h'F(m)"; break;
-              case 9: this.ParameterNameAndUnit = "Critical Frequency(Hz)"; break;
-              case 10: this.ParameterNameAndUnit = "Scintillation(Numeric)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_2(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Electric and Magnetic Fields
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Magnetic Field Magnitude(T)"; break;
-              case 1: this.ParameterNameAndUnit = "1st Vector Component of Magnetic Field(T)"; break;
-              case 2: this.ParameterNameAndUnit = "2nd Vector Component of Magnetic Field(T)"; break;
-              case 3: this.ParameterNameAndUnit = "3rd Vector Component of Magnetic Field(T)"; break;
-              case 4: this.ParameterNameAndUnit = "Electric Field Magnitude(V m-1)"; break;
-              case 5: this.ParameterNameAndUnit = "1st Vector Component of Electric Field(V m-1)"; break;
-              case 6: this.ParameterNameAndUnit = "2nd Vector Component of Electric Field(V m-1)"; break;
-              case 7: this.ParameterNameAndUnit = "3rd Vector Component of Electric Field(V m-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_3(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Energetic Particles
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Proton Flux (Differential)((m2 s sr eV)-1)"; break;
-              case 1: this.ParameterNameAndUnit = "Proton Flux (Integral)((m2 s sr)-1)"; break;
-              case 2: this.ParameterNameAndUnit = "Electron Flux (Differential)((m2 s sr eV)-1)"; break;
-              case 3: this.ParameterNameAndUnit = "Electron Flux (Integral)((m2 s sr)-1)"; break;
-              case 4: this.ParameterNameAndUnit = "Heavy Ion Flux (Differential)((m2 s sr eV / nuc)-1)"; break;
-              case 5: this.ParameterNameAndUnit = "Heavy Ion Flux (iIntegral)((m2 s sr)-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Cosmic Ray Neutron Flux(h-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_4(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
-
           else if (this.CategoryOfParametersByProductDiscipline === 5) { // Waves
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_5(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 6) { // Solar Electromagnetic Emissions
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Integrated Solar Irradiance(W m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "Solar X-ray Flux (XRS Long)(W m-2)"; break;
-              case 2: this.ParameterNameAndUnit = "Solar X-ray Flux (XRS Short)(W m-2)"; break;
-              case 3: this.ParameterNameAndUnit = "Solar EUV Irradiance(W m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "Solar Spectral Irradiance(W m-2 nm-1)"; break;
-              case 5: this.ParameterNameAndUnit = "F10.7(W m-2 Hz-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Solar Radio Emissions(W m-2 Hz-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_6(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 7) { // Terrestrial Electromagnetic Emissions
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Limb Intensity(m-2 s-1)"; break;
-              case 1: this.ParameterNameAndUnit = "Disk Intensity(m-2 s-1)"; break;
-              case 2: this.ParameterNameAndUnit = "Disk Intensity Day(m-2 s-1)"; break;
-              case 3: this.ParameterNameAndUnit = "Disk Intensity Night(m-2 s-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_7(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 8) { // Imagery
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "X-Ray Radiance(W sr-1 m-2)"; break;
-              case 1: this.ParameterNameAndUnit = "EUV Radiance(W sr-1 m-2)"; break;
-              case 2: this.ParameterNameAndUnit = "H-Alpha Radiance(W sr-1 m-2)"; break;
-              case 3: this.ParameterNameAndUnit = "White Light Radiance(W sr-1 m-2)"; break;
-              case 4: this.ParameterNameAndUnit = "CaII-K Radiance(W sr-1 m-2)"; break;
-              case 5: this.ParameterNameAndUnit = "White Light Coronagraph Radiance(W sr-1 m-2)"; break;
-              case 6: this.ParameterNameAndUnit = "Heliospheric Radiance(W sr-1 m-2)"; break;
-              case 7: this.ParameterNameAndUnit = "Thematic Mask(Numeric)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_8(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 9) { // Ion-Neutral Coupling
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Pedersen Conductivity(S m-1)"; break;
-              case 1: this.ParameterNameAndUnit = "Hall Conductivity(S m-1)"; break;
-              case 2: this.ParameterNameAndUnit = "Parallel Conductivity(S m-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_4_9(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
         }
+
         else if (this.DisciplineOfProcessedData === 10) { // Oceanographic
           if (this.CategoryOfParametersByProductDiscipline === 0) { // Waves
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Wave Spectra (1)(-)"; break;
-              case 1: this.ParameterNameAndUnit = "Wave Spectra (2)(-)"; break;
-              case 2: this.ParameterNameAndUnit = "Wave Spectra (3)(-)"; break;
-              case 3: this.ParameterNameAndUnit = "Significant Height of Combined Wind Waves and Swell(m)"; break;
-              case 4: this.ParameterNameAndUnit = "Direction of Wind Waves(degree true)"; break;
-              case 5: this.ParameterNameAndUnit = "Significant Height of Wind Waves(m)"; break;
-              case 6: this.ParameterNameAndUnit = "Mean Period of Wind Waves(s)"; break;
-              case 7: this.ParameterNameAndUnit = "Direction of Swell Waves(degree true)"; break;
-              case 8: this.ParameterNameAndUnit = "Significant Height of Swell Waves(m)"; break;
-              case 9: this.ParameterNameAndUnit = "Mean Period of Swell Waves(s)"; break;
-              case 10: this.ParameterNameAndUnit = "Primary Wave Direction(degree true)"; break;
-              case 11: this.ParameterNameAndUnit = "Primary Wave Mean Period(s)"; break;
-              case 12: this.ParameterNameAndUnit = "Secondary Wave Direction(degree true)"; break;
-              case 13: this.ParameterNameAndUnit = "Secondary Wave Mean Period(s)"; break;
-              case 14: this.ParameterNameAndUnit = "Direction of Combined Wind Waves and Swell(degree true)"; break;
-              case 15: this.ParameterNameAndUnit = "Mean Period of Combined Wind Waves and Swell(s)"; break;
-              case 16: this.ParameterNameAndUnit = "Coefficient of Drag With Waves(-)"; break;
-              case 17: this.ParameterNameAndUnit = "Friction Velocity(m s-1)"; break;
-              case 18: this.ParameterNameAndUnit = "Wave Stress(N m-2)"; break;
-              case 19: this.ParameterNameAndUnit = "Normalised Waves Stress(-)"; break;
-              case 20: this.ParameterNameAndUnit = "Mean Square Slope of Waves(-)"; break;
-              case 21: this.ParameterNameAndUnit = "U-component Surface Stokes Drift(m s-1)"; break;
-              case 22: this.ParameterNameAndUnit = "V-component Surface Stokes Drift(m s-1)"; break;
-              case 23: this.ParameterNameAndUnit = "Period of Maximum Individual Wave Height(s)"; break;
-              case 24: this.ParameterNameAndUnit = "Maximum Individual Wave Height(m)"; break;
-              case 25: this.ParameterNameAndUnit = "Inverse Mean Wave Frequency(s)"; break;
-              case 26: this.ParameterNameAndUnit = "Inverse Mean Frequency of The Wind Waves(s)"; break;
-              case 27: this.ParameterNameAndUnit = "Inverse Mean Frequency of The Total Swell(s)"; break;
-              case 28: this.ParameterNameAndUnit = "Mean Zero-Crossing Wave Period(s)"; break;
-              case 29: this.ParameterNameAndUnit = "Mean Zero-Crossing Period of The Wind Waves(s)"; break;
-              case 30: this.ParameterNameAndUnit = "Mean Zero-Crossing Period of The Total Swell(s)"; break;
-              case 31: this.ParameterNameAndUnit = "Wave Directional Width(-)"; break;
-              case 32: this.ParameterNameAndUnit = "Directional Width of The Wind Waves(-)"; break;
-              case 33: this.ParameterNameAndUnit = "Directional Width of The Total Swell(-)"; break;
-              case 34: this.ParameterNameAndUnit = "Peak Wave Period(s)"; break;
-              case 35: this.ParameterNameAndUnit = "Peak Period of The Wind Waves(s)"; break;
-              case 36: this.ParameterNameAndUnit = "Peak Period of The Total Swell(s)"; break;
-              case 37: this.ParameterNameAndUnit = "Altimeter Wave Height(m)"; break;
-              case 38: this.ParameterNameAndUnit = "Altimeter Corrected Wave Height(m)"; break;
-              case 39: this.ParameterNameAndUnit = "Altimeter Range Relative Correction(-)"; break;
-              case 40: this.ParameterNameAndUnit = "10 Metre Neutral Wind Speed Over Waves(m s-1)"; break;
-              case 41: this.ParameterNameAndUnit = "10 Metre Wind Direction Over Waves(degree true)"; break;
-              case 42: this.ParameterNameAndUnit = "Wave Engery Spectrum(m-2 s rad-1)"; break;
-              case 43: this.ParameterNameAndUnit = "Kurtosis of The Sea Surface Elevation Due to Waves(-)"; break;
-              case 45: this.ParameterNameAndUnit = "Spectral Peakedness Factor(s-1)"; break;
-              case 192: this.ParameterNameAndUnit = "Wave Steepness(proportion)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_0(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
 
           else if (this.CategoryOfParametersByProductDiscipline === 1) { // Currents
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Current Direction(degree True)"; break;
-              case 1: this.ParameterNameAndUnit = "Current Speed(m s-1)"; break;
-              case 2: this.ParameterNameAndUnit = "U-Component of Current(m s-1)"; break;
-              case 3: this.ParameterNameAndUnit = "V-Component of Current(m s-1)"; break;
-              case 192: this.ParameterNameAndUnit = "Ocean Mixed Layer U Velocity(m s-1)"; break;
-              case 193: this.ParameterNameAndUnit = "Ocean Mixed Layer V Velocity(m s-1)"; break;
-              case 194: this.ParameterNameAndUnit = "Barotropic U velocity(m s-1)"; break;
-              case 195: this.ParameterNameAndUnit = "Barotropic V velocity(m s-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_1(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
 
           else if (this.CategoryOfParametersByProductDiscipline === 2) { // Ice
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Ice Cover(Proportion)"; break;
-              case 1: this.ParameterNameAndUnit = "Ice Thickness(m)"; break;
-              case 2: this.ParameterNameAndUnit = "Direction of Ice Drift(degree True)"; break;
-              case 3: this.ParameterNameAndUnit = "Speed of Ice Drift(m s-1)"; break;
-              case 4: this.ParameterNameAndUnit = "U-Component of Ice Drift(m s-1)"; break;
-              case 5: this.ParameterNameAndUnit = "V-Component of Ice Drift(m s-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Ice Growth Rate(m s-1)"; break;
-              case 7: this.ParameterNameAndUnit = "Ice Divergence(s-1)"; break;
-              case 8: this.ParameterNameAndUnit = "Ice Temperature(K)"; break;
-              case 9: this.ParameterNameAndUnit = "Ice Internal Pressure(Pa m)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_2(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 3) { // Surface Properties
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Water Temperature(K)"; break;
-              case 1: this.ParameterNameAndUnit = "Deviation of Sea Level from Mean(m)"; break;
-              case 192: this.ParameterNameAndUnit = "Hurricane Storm Surge(m)"; break;
-              case 193: this.ParameterNameAndUnit = "Extra Tropical Storm Surge(m)"; break;
-              case 194: this.ParameterNameAndUnit = "Ocean Surface Elevation Relative to Geoid(m)"; break;
-              case 195: this.ParameterNameAndUnit = "Sea Surface Height Relative to Geoid(m)"; break;
-              case 196: this.ParameterNameAndUnit = "Ocean Mixed Layer Potential Density (Reference 2000m)(kg m-3)"; break;
-              case 197: this.ParameterNameAndUnit = "Net Air-Ocean Heat Flux(W m-2)"; break;
-              case 198: this.ParameterNameAndUnit = "Assimilative Heat Flux(W m-2)"; break;
-              case 199: this.ParameterNameAndUnit = "Surface Temperature Trend(degree per day)"; break;
-              case 200: this.ParameterNameAndUnit = "Surface Salinity Trend(psu per day)"; break;
-              case 201: this.ParameterNameAndUnit = "Kinetic Energy(J kg-1)"; break;
-              case 202: this.ParameterNameAndUnit = "Salt Flux(kg m-2s-1)"; break;
-              case 242: this.ParameterNameAndUnit = "20% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 243: this.ParameterNameAndUnit = "30% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 244: this.ParameterNameAndUnit = "40% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 245: this.ParameterNameAndUnit = "50% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 246: this.ParameterNameAndUnit = "60% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 247: this.ParameterNameAndUnit = "70% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 248: this.ParameterNameAndUnit = "80% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 249: this.ParameterNameAndUnit = "90% Tropical Cyclone Storm Surge Exceedance(m)"; break;
-              case 250: this.ParameterNameAndUnit = "Extra Tropical Storm Surge Combined Surge and Tide(m)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_3(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 4) { // Sub-surface Properties
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Main Thermocline Depth(m)"; break;
-              case 1: this.ParameterNameAndUnit = "Main Thermocline Anomaly(m)"; break;
-              case 2: this.ParameterNameAndUnit = "Transient Thermocline Depth(m)"; break;
-              case 3: this.ParameterNameAndUnit = "Salinity(kg kg-1)"; break;
-              case 4: this.ParameterNameAndUnit = "Ocean Vertical Heat Diffusivity(m2 s-1)"; break;
-              case 5: this.ParameterNameAndUnit = "Ocean Vertical Salt Diffusivity(m2 s-1)"; break;
-              case 6: this.ParameterNameAndUnit = "Ocean Vertical Momentum Diffusivity(m2 s-1)"; break;
-              case 7: this.ParameterNameAndUnit = "Bathymetry(m)"; break;
-              case 11: this.ParameterNameAndUnit = "Shape Factor With Respect To Salinity Profile()"; break;
-              case 12: this.ParameterNameAndUnit = "Shape Factor With Respect To Temperature Profile In Thermocline()"; break;
-              case 13: this.ParameterNameAndUnit = "Attenuation Coefficient Of Water With Respect to Solar Radiation(m-1)"; break;
-              case 14: this.ParameterNameAndUnit = "Water Depth(m)"; break;
-              case 15: this.ParameterNameAndUnit = "Water Temperature(K)"; break;
-              case 192: this.ParameterNameAndUnit = "3-D Temperature(c)"; break;
-              case 193: this.ParameterNameAndUnit = "3-D Salinity(psu)"; break;
-              case 194: this.ParameterNameAndUnit = "Barotropic Kinectic Energy(J kg-1)"; break;
-              case 195: this.ParameterNameAndUnit = "Geometric Depth Below Sea Surface(m)"; break;
-              case 196: this.ParameterNameAndUnit = "Interface Depths(m)"; break;
-              case 197: this.ParameterNameAndUnit = "Ocean Heat Content(J m-2)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_4(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
           else if (this.CategoryOfParametersByProductDiscipline === 191) { // Miscellaneous
-            switch (this.ParameterNumberByProductDisciplineAndParameterCategory) {
-              case 0: this.ParameterNameAndUnit = "Seconds Prior To Initial Reference Time (Defined In Section 1)(s)"; break;
-              case 1: this.ParameterNameAndUnit = "Meridional Overturning Stream Function(m3 s-1)"; break;
-              case 255: this.ParameterNameAndUnit = "Missing"; break;
-              default: this.ParameterNameAndUnit = nf0(this.ParameterNumberByProductDisciplineAndParameterCategory); break;
-            }
+            info.ParameterNumberByProductDisciplineAndParameterCategory_10_191(
+              this.ParameterNumberByProductDisciplineAndParameterCategory
+            );
           }
         }
         else {
@@ -2425,86 +1100,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Type of first fixed surface:\t");
         this.TypeOfFirstFixedSurface = SectionNumbers[23];
-        switch (this.TypeOfFirstFixedSurface) {
-          case 1: println("Ground or Water Surface"); break;
-          case 2: println("Cloud Base Level"); break;
-          case 3: println("Level of Cloud Tops"); break;
-          case 4: println("Level of 0o C Isotherm"); break;
-          case 5: println("Level of Adiabatic Condensation Lifted from the Surface"); break;
-          case 6: println("Maximum Wind Level"); break;
-          case 7: println("Tropopause"); break;
-          case 8: println("Nominal Top of the Atmosphere"); break;
-          case 9: println("Sea Bottom"); break;
-          case 10: println("Entire Atmosphere"); break;
-          case 11: println("Cumulonimbus Base (CB)"); break;
-          case 12: println("Cumulonimbus Top (CT)"); break;
-          case 20: println("Isothermal Level"); break;
-          case 100: println("Isobaric Surface"); break;
-          case 101: println("Mean Sea Level"); break;
-          case 102: println("Specific Altitude Above Mean Sea Level"); break;
-          case 103: println("Specified Height Level Above Ground"); break;
-          case 104: println("Sigma Level"); break;
-          case 105: println("Hybrid Level"); break;
-          case 106: println("Depth Below Land Surface"); break;
-          case 107: println("Isentropic (theta) Level"); break;
-          case 108: println("Level at Specified Pressure Difference from Ground to Level"); break;
-          case 109: println("Potential Vorticity Surface"); break;
-          case 111: println("Eta Level"); break;
-          case 113: println("Logarithmic Hybrid Level"); break;
-          case 114: println("Snow Level"); break;
-          case 117: println("Mixed Layer Depth"); break;
-          case 118: println("Hybrid Height Level"); break;
-          case 119: println("Hybrid Pressure Level"); break;
-          case 150: println("Generalized Vertical Height Coordinate (see Note 5)"); break;
-          case 160: println("Depth Below Sea Level"); break;
-          case 161: println("Depth Below Water Surface"); break;
-          case 162: println("Lake or River Bottom"); break;
-          case 163: println("Bottom Of Sediment Layer"); break;
-          case 164: println("Bottom Of Thermally Active Sediment Layer"); break;
-          case 165: println("Bottom Of Sediment Layer Penetrated By Thermal Wave"); break;
-          case 166: println("Maxing Layer"); break;
-          case 200: println("Entire atmosphere (considered as a single layer)"); break;
-          case 201: println("Entire ocean (considered as a single layer)"); break;
-          case 204: println("Highest tropospheric freezing level"); break;
-          case 206: println("Grid scale cloud bottom level"); break;
-          case 207: println("Grid scale cloud top level"); break;
-          case 209: println("Boundary layer cloud bottom level"); break;
-          case 210: println("Boundary layer cloud top level"); break;
-          case 211: println("Boundary layer cloud layer"); break;
-          case 212: println("Low cloud bottom level"); break;
-          case 213: println("Low cloud top level"); break;
-          case 214: println("Low cloud layer"); break;
-          case 215: println("Cloud ceiling"); break;
-          case 220: println("Planetary Boundary Layer"); break;
-          case 221: println("Layer Between Two Hybrid Levels"); break;
-          case 222: println("Middle cloud bottom level"); break;
-          case 223: println("Middle cloud top level"); break;
-          case 224: println("Middle cloud layer"); break;
-          case 232: println("High cloud bottom level"); break;
-          case 233: println("High cloud top level"); break;
-          case 234: println("High cloud layer"); break;
-          case 235: println("Ocean Isotherm Level (1/10  C)"); break;
-          case 236: println("Layer between two depths below ocean surface"); break;
-          case 237: println("Bottom of Ocean Mixed Layer (m)"); break;
-          case 238: println("Bottom of Ocean Isothermal Layer (m)"); break;
-          case 239: println("Layer Ocean Surface and 26C Ocean Isothermal Level"); break;
-          case 240: println("Ocean Mixed Layer"); break;
-          case 241: println("Ordered Sequence of Data"); break;
-          case 242: println("Convective cloud bottom level"); break;
-          case 243: println("Convective cloud top level"); break;
-          case 244: println("Convective cloud layer"); break;
-          case 245: println("Lowest level of the wet bulb zero"); break;
-          case 246: println("Maximum equivalent potential temperature level"); break;
-          case 247: println("Equilibrium level"); break;
-          case 248: println("Shallow convective cloud bottom level"); break;
-          case 249: println("Shallow convective cloud top level"); break;
-          case 251: println("Deep convective cloud bottom level"); break;
-          case 252: println("Deep convective cloud top level"); break;
-          case 253: println("Lowest bottom level of supercooled liquid water layer"); break;
-          case 254: println("Highest top level of supercooled liquid water layer"); break;
-          case 255: println("Missing"); break;
-          default: println(this.TypeOfFirstFixedSurface); break;
-        }
+        info.TypeOfFirstFixedSurface(
+          this.TypeOfFirstFixedSurface
+        );
       }
 
       SectionNumbers = this.getGrib2Section(5); // Section 5: Data Representation Section
@@ -2516,20 +1114,9 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         print("Data Representation Template Number:\t");
         this.DataRepresentationTemplateNumber = U_NUMx2(SectionNumbers[10], SectionNumbers[11]);
-        switch (this.DataRepresentationTemplateNumber) {
-          case 0: println("Grid point data - simple packing"); break;
-          case 1: println("Matrix value - simple packing"); break;
-          case 2: println("Grid point data - complex packing"); break;
-          case 3: println("Grid point data - complex packing and spatial differencing"); break;
-          case 4: println("Grid point data – IEEE floating point data"); break;
-          case 40: println("Grid point data – JPEG 2000 Code Stream Format"); break;
-          case 41: println("Grid point data – Portable Network Graphics (PNG)"); break;
-          case 50: println("Spectral data -simple packing"); break;
-          case 51: println("Spherical harmonics data - complex packing"); break;
-          case 61: println("Grid point data - simple packing with logarithm pre-processing"); break;
-          case 65535: println("Missing"); break;
-          default: println(this.DataRepresentationTemplateNumber); break;
-        }
+        info.DataRepresentationTemplateNumber(
+          this.DataRepresentationTemplateNumber
+        );
 
         print("Reference value (R):\t");
         this.ReferenceValue = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15])));
@@ -2663,15 +1250,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
       if (SectionNumbers.length > 1) {
         print("Bit map indicator:\t");
-        Bitmap_Indicator = SectionNumbers[6];
-        switch (Bitmap_Indicator) {
-          case 0: println("A bit map applies to this product and is specified in this Section."); break;
-          case 254: println("A bit map defined previously in the same GRIB message applies to this product."); break;
-          case 255: println("A bit map does not apply to this product."); break;
-          default: println("A bit map pre-determined by the originating/generating Centre applies to this product and is not specified in this Section."); break;
-        }
+        this.Bitmap_Indicator = SectionNumbers[6];
+        info.Bitmap_Indicator(
+          this.Bitmap_Indicator
+        );
 
-        if (Bitmap_Indicator === 0) { // A bit map applies to this product and is specified in this Section.
+        if (this.Bitmap_Indicator === 0) { // A bit map applies to this product and is specified in this Section.
 
           this.NullBitmapFlags = new Int32Array((SectionNumbers.length - 7) * 8);
 
@@ -3197,7 +1781,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
           var /* float */ RR = this.ReferenceValue;
 
-          if (Bitmap_Indicator === 0) { // A bit map applies to this product
+          if (this.Bitmap_Indicator === 0) { // A bit map applies to this product
 
             var /* int */ i = -1;
             for (var q = 0; q < this.Nx * this.Ny; q++) {
@@ -3234,7 +1818,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
         var /* float */ DD = Math.pow(10, this.DecimalScaleFactor);
         var /* float */ RR = this.ReferenceValue;
 
-        if (Bitmap_Indicator === 0) { // A bit map applies to this product
+        if (this.Bitmap_Indicator === 0) { // A bit map applies to this product
 
           var /* int */ i = -1;
           for (var q = 0; q < this.Nx * this.Ny; q++) {
