@@ -14,7 +14,7 @@ The JavaScript file is located in `./vendor/jpx.min.js`, downloaded from [@OHIF/
 
 This repo offers two demos:
 
-- one all client-side demo, where MSC grib2 data is downloaded, decoded and
+- one "all client-side" demo, where MSC grib2 data is fetched, decoded and
   plotted all in the client. This demo requires a proxy server, as the MSC's
   Datamart does not (yet) have [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setup.
 
