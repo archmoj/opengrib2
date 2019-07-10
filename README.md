@@ -78,3 +78,5 @@ for "all-client-side" demo:
 
 Shoutouts to [Plotly](https://plot.ly/) for letting us take part of this
 hackathon :tada:
+
+![plotly logo](plotly-logo.png)
