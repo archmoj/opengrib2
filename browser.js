@@ -63,7 +63,9 @@ function makeDropDown() {
   for (i in mocks) {
     var opt = document.createElement("option");
     opt.value = mocks[i];
-    opt.text = mocks[i].replace('https://dd.meteo.gc.ca', '');
+    opt.text = mocks[i]
+          .replace('https://dd.meteo.gc.ca', '')
+          .replace('./grib2/', '');
     dropDown.append(opt);
   }
 
@@ -223,7 +225,8 @@ function interactivePlot(grid) {
 
         var config = {
                 scrollZoom: false,
-                responsive: true
+                responsive: true,
+                modeBarButtonsToRemove: ['pan2d']
         };
 
         Plotly.newPlot('gd', data, layout, config)
