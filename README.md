@@ -70,7 +70,7 @@ for "all-client-side" demo:
   - run `npm start` in a 3rd terminal tab
 
 
-## How to list license list of JavaScript dependencies
+## How to make list of JavaScript dependencies licenses
 
 - run `npm run build:license_list`
 
