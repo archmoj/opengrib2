@@ -1,0 +1,20 @@
+{
+  "name": "meteohack-scrapper-graphs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 9000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "plotly.js-dist": "^1.48.3"
+  },
+  "devDependencies": {
+    "browserify": "^16.3.0",
+    "http-server": "^0.11.1",
+    "indexhtmlify": "^2.0.0"
+  }
+}
