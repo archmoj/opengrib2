@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "watchify browser.js -o build/bundle.js -v",
     "proxy": "node server/proxy.js",
-    "build:license_list": "license-checker > license_list.txt"
+    "build:license_list": "license-checker > license_list.txt",
+    "build:bundle-proxy-data": "NODE_ENV='proxy-data' browserify browser.js -t envify > build/bundle.js",
+    "build:bundle-local-data": "NODE_ENV='local-data' browserify browser.js -t envify > build/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,8 @@
   },
   "homepage": "https://github.com/archmoj/opengrib2#readme",
   "devDependencies": {
+    "browserify": "^16.3.0",
+    "envify": "^4.1.0",
     "license-checker": "^25.0.1",
     "watchify": "^3.11.1"
   },
