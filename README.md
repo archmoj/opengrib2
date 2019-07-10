@@ -31,6 +31,7 @@ Node.js, npm and a "modern" browser.
 
 - We don't draw a basemap (i.e the coastline overlay) on top of "regional" grib2 data
 - We only draw one ensemble member, even though we decode them all
+- Can't be exported as PNG, nor uploaded to plot.ly (like other plotly.js graphs)
 
 ## How to run the "local" demo
 
