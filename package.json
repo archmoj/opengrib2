@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "watchify browser.js -o build/bundle.js -v",
+    "dev": "watchify browser.js -t envify -o build/bundle.js -v ",
     "proxy": "node server/proxy.js",
     "build:license_list": "license-checker > license_list.txt",
     "build:bundle-proxy-data": "NODE_ENV='proxy-data' browserify browser.js -t envify > build/bundle.js",
