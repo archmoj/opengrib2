@@ -35,7 +35,6 @@
   "dependencies": {
     "command-line-args": "^5.1.1",
     "http-proxy": "^1.17.0",
-    "netcdfjs": "^1.0.0",
     "plotly.js-dist": "^1.48.3"
   }
 }

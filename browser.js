@@ -1,6 +1,7 @@
 'use strict';
 
 var http = require("http");
+var Plotly = require("plotly.js-dist");
 
 var GRIB2CLASS = require('./grib2class');
 
@@ -30,17 +31,23 @@ var DATA = {
         ParameterLevel: ParameterLevel
 };
 
+// Global wave model
+//var link = 'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/00/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019071000_P000.grib2';
+
+// Global model
+var link = 'https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2';
+
+// Global ensemble model
 //var link = 'https://dd.weather.gc.ca/ensemble/geps/grib2/raw/00/060/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2';
+
+// Other:
 //var link = 'https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/00/072/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_2019070900_P072_allmbrs.grib2';
-
-//var link = 'https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019070900_P003.grib2';
-var link = 'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/18/054/CMC_reg_TMP_TGL_2_ps10km_2019070918_P054.grib2';
+//var link = 'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/18/054/CMC_reg_TMP_TGL_2_ps10km_2019070918_P054.grib2';
 //var link = 'https://dd.weather.gc.ca/model_hrdps/continental/grib2/18/006/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_2019070918_P006-00.grib2';
-
 //var link = 'https://dd.weather.gc.ca/model_hrdps/west/grib2/12/006/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019070912_P006-00.grib2';
 //var link = 'https://dd.weather.gc.ca/model_hrdps/east/grib2/12/006/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019070912_P006-00.grib2';
 
-//var link = 'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/00/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019070900_P000.grib2';
+
 
 link = link.replace('https://', 'http://');
 link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
@@ -61,14 +68,16 @@ http.get(link, function (res) {
         res.on("end", function () {
                 myGrid.parse(Buffer.concat(allChunks));
                 console.log(myGrid);
-                plot(myGrid);
+
+                //basicPlot(myGrid);
+                interactivePlot(myGrid);
         });
 });
 
-function plot(grid) {
+function basicPlot(grid) {
         var i, v;
         var nx = grid.Nx;
-        var ny  = grid.Ny;
+        var ny = grid.Ny;
         var nPoints = nx * ny;
         var nMembers = grid.DataValues.length; // actual values are here in correct scale - undefined values are NaN!
 
@@ -122,4 +131,69 @@ function plot(grid) {
         }
 
         ctx.putImageData(img, 0, 0);
+}
+
+function interactivePlot(grid) {
+        var nx = grid.Nx;
+        var ny = grid.Ny;
+        var nMembers = grid.DataValues.length; // actual values are here in correct scale - undefined values are NaN!
+
+        // let's start with deterministic data i.e. member 0
+        var values = grid.DataValues[0];
+
+        var k = 0;
+        var z = new Array(ny);
+        for (var i = 0; i < ny; i++) {
+                z[i] = new Array(nx);
+                for (var j = 0; j < nx; j++) {
+                        z[i][j] = values[k++];
+                }
+        }
+
+        var gd = document.createElement('div')
+        document.body.appendChild(gd)
+
+        var data = [{
+                type: 'heatmap',
+                z: z,
+                //x: reader.getDataVariable(LON_NAME),
+                //y: reader.getDataVariable(LAT_NAME),
+                hovertemplate: '%{z:.1f}K<extra>(%{x}, %{y})</extra>',
+                colorbar: {
+                        len: 0.5
+                }
+        }, {
+                type: 'scattergeo'
+        }];
+
+        var layout = {
+                width: 0.9 * window.innerWidth,
+                height: 0.9 * window.innerHeight,
+                xaxis: {
+                        visible: false,
+                        constrain: 'domain',
+                        scaleanchor: 'y',
+                        fixedrange: true
+                },
+                yaxis: {
+                        visible: false,
+                        constrain: 'domain',
+                        scaleratio: 0.5,
+                        fixedrange: true
+                },
+                geo: {
+                        projection: { rotation: { lon: 180 + grid.Lo1 } },
+                        bgcolor: 'rgba(0,0,0,0)',
+                        dragmode: false
+                }
+        };
+
+        var config = {
+                scrollZoom: false
+        };
+
+        Plotly.newPlot(gd, data, layout, config)
+                .then(function (gd) {
+                        Plotly.d3.select(gd).select('g.geo > .bg > rect').style('pointer-events', null)
+                });
 }
