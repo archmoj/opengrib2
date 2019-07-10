@@ -45,7 +45,7 @@ var HH = String('00' + HOUR).slice(-2);
 HH = 12 * Math.floor(HH / 12);
 //console.log(YYYY, MM, DD, HH);
 
-var FHR = '000';
+var FHR = '024';
 
 var timeStamp = YYYY + MM + DD + HH + '_P' + FHR;
 
