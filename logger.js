@@ -16,20 +16,24 @@ exports.println = function (/* String */ a, /* optional String */ b) {
 
     console.log(s);
     // process.stdout.write(s + '\n'); // node.js
+
+    return s;
 };
 
-exports.print = function (/* char */ c) {
+exports.printChar = function (/* char */ c) {
     if (!log) return;
 
     console.log(c);
     // process.stdout.write(c); // node.js
+
+    return c;
 };
 
 exports.cout = function (/* int */ c) {
     if (!log) return;
-    if (c > 31) this.print(c);
+    if (c > 31) exports.printChar(c);
     else {
-        this.print("[" + asciiTable[c] + "]");
-        //print("_");
+        exports.printChar("[" + asciiTable[c] + "]");
+        //exports.printChar("_");
     }
 };

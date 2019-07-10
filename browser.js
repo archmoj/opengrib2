@@ -49,7 +49,7 @@ var link = 'https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/
 
 
 
-link = link.replace('https://', 'http://');
+link = link.replace('https://', 'http://'); // i.e. to support both http and https links
 link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
 
 DATA.numMembers = link.indexOf('ensemble') !== -1 ?
