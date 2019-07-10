@@ -1,6 +1,6 @@
 # METEOHACK
 
-Team [meteo.io](https://www.hackworks.com/fr/meteohack/teams/meteoio)'s opengrid2 project for the 2019 METEOHACK hackathon.
+Team [meteo.io](https://www.hackworks.com/fr/meteohack/teams/meteoio)'s `opengrid2` project for the 2019 [METEOHACK](https://www.hackworks.com/fr/meteohack) hackathon.
 
 ## What is this thing?
 
@@ -8,7 +8,7 @@ Most of the work here is under `./grib2class.js` which is a grib2 reader written
 in pure JavaScript (i.e. that runs in the browser!)
 
 To decode the MSC grib2 files (which use JPEG2000 for compression) we must include a third-party module called `jpx.js`.
-The JavaScript file is located in `./vendor/jpx.min.js, downloaded from [@OHIF/image-JPEG2000](https://github.com/OHIF/image-JPEG2000).
+The JavaScript file is located in `./vendor/jpx.min.js`, downloaded from [@OHIF/image-JPEG2000](https://github.com/OHIF/image-JPEG2000).
 
 This repo offers two demos:
 
@@ -17,11 +17,11 @@ This repo offers two demos:
   Datamart does not (yet) have [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) setup.
 
 - one "local" demo, where MSC grib2 files are downloaded and served up locally.
-  We decode and plot the grib2 data in client-side.
+  We decode and plot the grib2 data in the client.
+
+Prequisites: Node.js, npm and a "modern" browser.
 
 ## How to run the "local" demo
-
-Prequisites: Node.js, npm and "modern" browser.
 
 - run `npm i`
 - run `./wget-grib2.sh` to download a few grib2 files
@@ -35,8 +35,6 @@ Prequisites: Node.js, npm and "modern" browser.
 - commit and push to `origin/master`, or make a PR ;)
 
 ## How to run the "all client-side" demo
-
-Prequisites: Node.js, npm and "modern" browser.
 
 - run `npm i`
 - run `npm run build:bundle-proxy-data`
