@@ -1,8 +1,3 @@
-├─ @types/utf8@2.1.6
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/DefinitelyTyped/DefinitelyTyped
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/@types/utf8
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/@types/utf8/LICENSE
 ├─ JSONStream@1.3.5
 │  ├─ licenses: (MIT OR Apache-2.0)
 │  ├─ repository: https://github.com/dominictarr/JSONStream
@@ -154,6 +149,12 @@
 │  ├─ url: https://paulmillr.com/
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/async-each
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/async-each/README.md
+├─ async@1.5.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/async
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/async/LICENSE
 ├─ atob@2.1.2
 │  ├─ licenses: (MIT OR Apache-2.0)
 │  ├─ repository: git://git.coolaj86.com/coolaj86/atob.js
@@ -366,6 +367,12 @@
 │  ├─ email: dfcreative@gmail.com
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/color-name
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/color-name/LICENSE
+├─ colors@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Marak/colors.js
+│  ├─ publisher: Marak Squires
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/colors
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/colors/ReadMe.md
 ├─ combine-source-map@0.8.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/thlorenz/combine-source-map
@@ -439,6 +446,13 @@
 │  ├─ url: http://blog.izs.me/
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/core-util-is
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/core-util-is/LICENSE
+├─ corser@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/agrueneberg/Corser
+│  ├─ publisher: Alexander Grüneberg
+│  ├─ email: alexander.grueneberg@googlemail.com
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/corser
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/corser/LICENSE
 ├─ create-ecdh@4.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/createECDH
@@ -588,6 +602,14 @@
 │  ├─ url: http://www.fknsrs.biz/
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/duplexer2
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/duplexer2/LICENSE.md
+├─ ecstatic@3.3.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jfhbrook/node-ecstatic
+│  ├─ publisher: Joshua Holbrook
+│  ├─ email: josh@nodejitsu.com
+│  ├─ url: http://jesusabdullah.net
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ecstatic
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ecstatic/LICENSE.txt
 ├─ elliptic@6.5.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/elliptic
@@ -595,6 +617,14 @@
 │  ├─ email: fedor@indutny.com
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/elliptic
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/elliptic/README.md
+├─ envify@4.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/hughsk/envify
+│  ├─ publisher: Hugh Kennedy
+│  ├─ email: hughskennedy@gmail.com
+│  ├─ url: http://hughskennedy.com/
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/envify
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/envify/README.md
 ├─ escape-string-regexp@1.0.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/escape-string-regexp
@@ -603,6 +633,13 @@
 │  ├─ url: sindresorhus.com
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/escape-string-regexp
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/escape-string-regexp/license
+├─ esprima@4.0.1
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/jquery/esprima
+│  ├─ publisher: Ariya Hidayat
+│  ├─ email: ariya.hidayat@gmail.com
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/esprima
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/esprima/LICENSE.BSD
 ├─ eventemitter3@3.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/primus/eventemitter3
@@ -795,6 +832,13 @@
 │  ├─ email: fedor@indutny.com
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/hash.js
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/hash.js/README.md
+├─ he@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/mathiasbynens/he
+│  ├─ publisher: Mathias Bynens
+│  ├─ url: https://mathiasbynens.be/
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/he
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/he/LICENSE-MIT.txt
 ├─ hmac-drbg@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/hmac-drbg
@@ -824,6 +868,11 @@
 │  ├─ email: charlie.robbins@gmail.com
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/http-proxy
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/http-proxy/LICENSE
+├─ http-server@0.11.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/indexzero/http-server
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/http-server
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/http-server/LICENSE
 ├─ https-browserify@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/https-browserify
@@ -879,12 +928,6 @@
 │  ├─ url: http://substack.net
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/insert-module-globals
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/insert-module-globals/LICENSE
-├─ iobuffer@4.0.1
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/image-js/iobuffer
-│  ├─ publisher: Michaël Zasso
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/iobuffer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/iobuffer/LICENSE
 ├─ is-accessor-descriptor@0.1.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-accessor-descriptor
@@ -1145,6 +1188,14 @@
 │  ├─ email: fedor@indutny.com
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/miller-rabin
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/miller-rabin/README.md
+├─ mime@1.6.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/broofa/node-mime
+│  ├─ publisher: Robert Kieffer
+│  ├─ email: robert@broofa.com
+│  ├─ url: http://github.com/broofa
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/mime
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/mime/LICENSE
 ├─ minimalistic-assert@1.0.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/calvinmetcalf/minimalistic-assert
@@ -1165,6 +1216,14 @@
 │  ├─ url: http://blog.izs.me
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/minimatch
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/minimatch/LICENSE
+├─ minimist@0.0.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/minimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/optimist/node_modules/minimist
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/optimist/node_modules/minimist/LICENSE
 ├─ minimist@0.0.8
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/minimist
@@ -1221,14 +1280,6 @@
 │  ├─ url: https://github.com/jonschlinkert
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/nanomatch
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/nanomatch/LICENSE
-├─ netcdfjs@1.0.0
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/cheminfo-js/netcdfjs
-│  ├─ publisher: Miguel Asencio
-│  ├─ email: maasencioh@gmail.com
-│  ├─ url: https://github.com/maasencioh
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/netcdfjs
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/netcdfjs/LICENSE
 ├─ nopt@4.0.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/nopt
@@ -1295,12 +1346,28 @@
 │  ├─ url: http://blog.izs.me/
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/once
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/once/LICENSE
+├─ opener@1.4.3
+│  ├─ licenses: (WTFPL OR MIT)
+│  ├─ repository: https://github.com/domenic/opener
+│  ├─ publisher: Domenic Denicola
+│  ├─ email: d@domenic.me
+│  ├─ url: https://domenic.me/
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/opener
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/opener/LICENSE.txt
 ├─ opengrib2@0.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/archmoj/opengrib2
 │  ├─ publisher: Mojatab Samimi, Étienne Tétreault-Pinard, Antoine Roy-Gobeil
 │  ├─ path: /home/etienne/Documents/repos/opengrib2
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/license.md
+├─ optimist@0.6.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/substack/node-optimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/optimist
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/optimist/LICENSE
 ├─ os-browserify@0.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/CoderPuppy/os-browserify
@@ -1412,6 +1479,13 @@
 │  ├─ publisher: Plotly, Inc.
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/plotly.js-dist
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/plotly.js-dist/LICENSE
+├─ portfinder@1.0.20
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/indexzero/node-portfinder
+│  ├─ publisher: Charlie Robbins
+│  ├─ email: charlie.robbins@gmail.com
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/portfinder
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/portfinder/LICENSE
 ├─ posix-character-classes@0.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/posix-character-classes
@@ -1451,6 +1525,11 @@
 │  ├─ url: https://mathiasbynens.be/
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/punycode
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/punycode/LICENSE-MIT.txt
+├─ qs@2.3.3
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/hapijs/qs
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/qs
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/qs/LICENSE
 ├─ querystring-es3@0.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/mike-spainhower/querystring
@@ -1941,6 +2020,13 @@
 │  ├─ url: https://github.com/jonschlinkert
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/union-value
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/union-value/LICENSE
+├─ union@0.4.6
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/flatiron/union
+│  ├─ publisher: Charlie Robbins
+│  ├─ email: charlie.robbins@gmail.com
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/union
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/union/LICENSE
 ├─ unset-value@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/unset-value
@@ -1961,6 +2047,14 @@
 │  ├─ publisher: Simon Lydell
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/urix
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/urix/LICENSE
+├─ url-join@2.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jfromaniello/url-join
+│  ├─ publisher: José F. Romaniello
+│  ├─ email: jfromaniello@gmail.com
+│  ├─ url: http://joseoncode.com
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/url-join
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/url-join/LICENSE
 ├─ url@0.11.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/defunctzombie/node-url
@@ -1973,13 +2067,6 @@
 │  ├─ url: https://github.com/jonschlinkert
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/use
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/use/LICENSE
-├─ utf8@3.0.0
-│  ├─ licenses: MIT
-│  ├─ repository: https://github.com/mathiasbynens/utf8.js
-│  ├─ publisher: Mathias Bynens
-│  ├─ url: https://mathiasbynens.be/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/utf8
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/utf8/LICENSE-MIT.txt
 ├─ util-deprecate@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/TooTallNate/util-deprecate
@@ -2031,6 +2118,14 @@
 │  ├─ url: http://substack.net
 │  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/watchify
 │  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/watchify/LICENSE
+├─ wordwrap@0.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-wordwrap
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/wordwrap
+│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/wordwrap/LICENSE
 ├─ wrappy@1.0.2
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/wrappy
