@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "watchify browser.js -o build/bundle.js -v",
-    "proxy": "node server/proxy.js"
+    "proxy": "node server/proxy.js",
+    "build:license_list": "license-checker > license_list.txt"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/archmoj/opengrib2#readme",
   "devDependencies": {
+    "license-checker": "^25.0.1",
     "watchify": "^3.11.1"
   },
   "dependencies": {
