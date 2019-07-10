@@ -32,6 +32,7 @@ var DATA = {
 };
 
 var mocks;
+var loading = document.getElementById('loading');
 
 switch(process.env.NODE_ENV) {
     case 'proxy-data':
@@ -74,6 +75,7 @@ function makeDropDown() {
 }
 
 function go(link) {
+  loading.style.display = 'block'
   link = link.replace('https://', 'http://');
 
   if(process.env.NODE_ENV === 'proxy-data') {
@@ -89,7 +91,10 @@ function go(link) {
           log: false
   });
 
-  http.get(link, function (res) {
+  http.get(link, function (res, err) {
+          if(err) {
+            loading.style.display = 'none'
+          }
           var allChunks = [];
           res.on("data", function (chunk) {
                   allChunks.push(chunk);
@@ -101,7 +106,11 @@ function go(link) {
                   //basicPlot(myGrid);
                   interactivePlot(myGrid);
           });
-  });
+  })
+  .on('error', function(err) {
+    loading.style.display = 'none';
+    window.alert(err)
+  })
 }
 
 function basicPlot(grid) {
@@ -223,6 +232,8 @@ function interactivePlot(grid) {
         Plotly.newPlot('gd', data, layout, config)
                 .then(function (gd) {
                         Plotly.d3.select(gd).select('g.geo > .bg > rect').style('pointer-events', null)
+
+                        loading.style.display = 'none'
                 });
 }
 
@@ -248,4 +259,3 @@ makeDropDown();
 go(mocks[0]);
 
 // go('https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2')
-

@@ -4,7 +4,7 @@
   "description": "native JavaScript utility for opening grib2 data",
   "main": "index.js",
   "scripts": {
-    "dev": "watchify browser.js -o build/bundle.js -v",
+    "dev": "watchify browser.js -t envify -o build/bundle.js -v ",
     "start": "http-server -p 2121 -o",
     "proxy": "node server/proxy.js",
     "build:license_list": "license-checker > license_list.txt",
