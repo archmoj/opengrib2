@@ -3,3 +3,4 @@ etc.js
 
 build/*
 !build/README.md
+!build/bundle.js

@@ -31,10 +31,53 @@ var DATA = {
         ParameterLevel: ParameterLevel
 };
 
+var mocks;
+
+switch(process.env.NODE_ENV) {
+    case 'proxy-data':
+        mocks = [
+            'https://dd.meteo.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2',
+            'https://dd.meteo.gc.ca/model_gem_global/25km/grib2/lat_lon/00/048/CMC_glb_TMP_ISBL_970_latlon.24x.24_2019071000_P048.grib2'
+        ];
+
+        console.log('Using grib2 data fetched from Datamart using proxy server!')
+        break;
+    case 'local-data':
+        mocks = [
+            './grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019071000_P000.grib2',
+            './grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2',
+            './grib2/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2'
+        ];
+
+        console.log('Using local (already downloaded) grib2 data')
+        break;
+    default:
+        console.error('BAD BUNDLE');
+        break;
+}
+
+function makeDropDown() {
+  var dropDown = document.getElementById("file-selector");
+  var i;
+  for (i in mocks) {
+    var opt = document.createElement("option");
+    opt.value = mocks[i];
+    opt.text = mocks[i].replace('https://dd.meteo.gc.ca', '');
+    dropDown.append(opt);
+  }
+
+  dropDown.addEventListener("change", function(e) {
+    go(e.target.value);
+  });
+}
+
 function go(link) {
   link = link.replace('https://', 'http://');
-  link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
-  link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
+
+  if(process.env.NODE_ENV === 'proxy-data') {
+      link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
+      link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
+  }
 
   DATA.numMembers = link.indexOf('ensemble') !== -1 ?
           21 : // i.e. ensembles
@@ -135,9 +178,6 @@ function interactivePlot(grid) {
                 }
         }
 
-        // var gd = document.createElement('div')
-        // document.body.appendChild(gd)
-
         var data = [{
                 type: 'heatmap',
                 z: z,
@@ -200,4 +240,9 @@ var link = 'https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/
 //var link = 'https://dd.weather.gc.ca/model_hrdps/east/grib2/12/006/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019070912_P006-00.grib2';
 
 window.go = go
-go('https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2')
+
+makeDropDown();
+go(mocks[0]);
+
+// go('https://dd.weather.gc.ca/model_gem_global/25km/grib2/lat_lon/00/003/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2')
+
