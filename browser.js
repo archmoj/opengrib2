@@ -31,10 +31,25 @@ var DATA = {
         ParameterLevel: ParameterLevel
 };
 
+switch(process.env.NODE_ENV) {
+    case 'proxy-data':
+        console.log('Using grib2 data fetched from Datamart using proxy server!')
+        break;
+    case 'local-data':
+        console.log('Using local (already downloaded) grib2 data')
+        break;
+    default:
+        console.error('BAD BUNDLE');
+        break;
+}
+
 function go(link) {
   link = link.replace('https://', 'http://');
-  link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
-  link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
+
+  if(process.env.NODE_ENV === 'proxy-data') {
+      link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
+      link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
+  }
 
   DATA.numMembers = link.indexOf('ensemble') !== -1 ?
           21 : // i.e. ensembles
