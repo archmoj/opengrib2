@@ -44,7 +44,8 @@ var link = 'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/18/054/CMC_re
 
 //var link = 'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/00/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019070900_P000.grib2';
 
-link = link.replace('https://dd.weather.gc.ca/', 'http://localhost:3000/')
+link = link.replace('https://', 'http://');
+link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
 
 DATA.numMembers = link.indexOf('ensemble') ?
         21 : // i.e. ensembles
