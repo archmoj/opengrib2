@@ -1,6 +1,8 @@
 # METEOHACK
 
-Team [meteo.io](https://www.hackworks.com/fr/meteohack/teams/meteoio)'s `opengrid2` project for the 2019 [METEOHACK](https://www.hackworks.com/fr/meteohack) hackathon.
+Team [meteo.io](https://www.hackworks.com/fr/meteohack/teams/meteoio)'s `opengrib2` project for the 2019 [METEOHACK](https://www.hackworks.com/fr/meteohack) hackathon.
+
+![opengrib2 preview](preview.gif)
 
 ## What is this thing?
 
