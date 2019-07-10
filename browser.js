@@ -214,7 +214,8 @@ function interactivePlot(grid) {
 
         var config = {
                 scrollZoom: false,
-                responsive: true
+                responsive: true,
+                modeBarButtonsToRemove: ['pan2d']
         };
 
         Plotly.newPlot('gd', data, layout, config)
