@@ -226,9 +226,7 @@ function interactivePlot(grid) {
         var config = {
                 scrollZoom: false,
                 responsive: true,
-                modeBarButtons: [
-                    ['toImage', 'sendDataToCloud', 'toggleHover']
-                ]
+                modeBarButtons: [ ['toggleHover'] ]
         };
 
         Plotly.newPlot('gd', data, layout, config)
