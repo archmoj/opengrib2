@@ -3,7 +3,7 @@
 var http = require("http");
 var GRIB2CLASS = require('grib2class');
 
-var isInteractive = true;
+var isInteractive = true; // could be set to false for non-interactive graphs - useful e.g. for working with the ensembles
 var Plotly = (isInteractive) ? require("plotly.js-dist") : null;
 
 var jpeg2000decoder = function (imageBytes) {
@@ -37,9 +37,8 @@ var FHR = '024';
 var timeStamp = YYYY + MM + DD + HH + '_P' + FHR;
 
 var liveMocks = [
-        'https://dd.weather.gc.ca//model_gem_global/25km/grib2/lat_lon/' + HH + '/' + FHR + '/CMC_glb_TMP_ISBL_1000_latlon.24x.24_' + timeStamp + '.grib2',
         'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/' + HH + '/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_' + timeStamp + '.grib2',
-        'https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/' + HH + '/' + FHR + '/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_' + timeStamp + '_allmbrs.grib2',
+        'https://dd.weather.gc.ca//model_gem_global/25km/grib2/lat_lon/' + HH + '/' + FHR + '/CMC_glb_TMP_TGL_2_latlon.24x.24_' + timeStamp + '.grib2',
         'https://dd.weather.gc.ca/model_hrdps/west/grib2/' + HH + '/' + FHR + '/CMC_hrdps_west_TMP_TGL_2_ps2.5km_' + timeStamp + '-00.grib2',
         'https://dd.weather.gc.ca/model_hrdps/east/grib2/' + HH + '/' + FHR + '/CMC_hrdps_east_TMP_TGL_2_ps2.5km_' + timeStamp + '-00.grib2',
         'https://dd.weather.gc.ca/model_hrdps/continental/grib2/' + HH + '/' + FHR + '/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_' + timeStamp + '-00.grib2',
@@ -49,9 +48,14 @@ var liveMocks = [
 ];
 
 var localMocks = [
-        './grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019071000_P000.grib2',
-        './grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019070900_P060_allmbrs.grib2',
-        './grib2/CMC_glb_TMP_ISBL_1000_latlon.24x.24_2019071000_P003.grib2'
+        './grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019081112_P024.grib2',
+        './grib2/CMC_glb_TMP_TGL_2_latlon.24x.24_2019081112_P024.grib2',
+        './grib2/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2',
+        './grib2/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2',
+        './grib2/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_2019081112_P024-00.grib2',
+        './grib2/CMC_reg_TMP_TGL_2_ps10km_2019081112_P024.grib2',
+        './grib2/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_2019081112_P024_allmbrs.grib2',
+        './grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019081112_P024_allmbrs.grib2'
 ];
 
 console.log(
@@ -96,12 +100,13 @@ function getNumMembers(link) {
 var isGlobal;
 
 function go(link) {
+        console.log("Loading:'" + link + "'");
+        loading.style.display = 'block';
 
         isGlobal =
                 link.indexOf('geps') != -1 ||
                 link.indexOf('glb') != -1 ||
                 link.indexOf('global') != -1;
-
 
         link = link.replace('https://', 'http://');
 
@@ -109,9 +114,6 @@ function go(link) {
                 link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
                 link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
         }
-
-        console.log("Loading...");
-        loading.style.display = 'block';
 
         var myGrid = new GRIB2CLASS({
                 numMembers: getNumMembers(link),
@@ -176,16 +178,18 @@ function basicPlot(grid) {
         }
 
         // display
-        var canvas = document.getElementById('canvas');
+        var canvas = document.getElementById('basicPlot');
         canvas.width = nx;
         canvas.height = ny;
 
         var ctx = canvas.getContext('2d');
+
         var img = ctx.createImageData(nx, ny);
 
-        var q = 0;
+        var p = 0;
         for (i = 0; i < nPoints; i++) {
                 var r = ratios[i];
+                var q = 4 * (p++);
                 if (r === undefined) {
                         img.data[q + 0] = 127;
                         img.data[q + 1] = 127;
@@ -197,10 +201,11 @@ function basicPlot(grid) {
                         img.data[q + 2] = 255 * (1 - r);
                         img.data[q + 3] = 255;
                 }
-                q += 4;
         }
 
         ctx.putImageData(img, 0, 0);
+
+        loading.style.display = 'none';
 }
 
 function interactivePlot(grid) {
@@ -281,7 +286,7 @@ function interactivePlot(grid) {
                 modeBarButtons: [['toggleHover']]
         };
 
-        Plotly.newPlot('gd', data, layout, config)
+        Plotly.newPlot('interactivePlot', data, layout, config)
                 .then(function (gd) {
                         Plotly.d3.select(gd).select('g.geo > .bg > rect').style('pointer-events', null);
 
