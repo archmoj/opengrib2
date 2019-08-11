@@ -7,25 +7,8 @@ var info = require('./info');
 var logger = require('./logger');
 
 var println = logger.println;
-var printChar = logger.printChar;
+var printst = logger.printst;
 var cout = logger.cout;
-
-function jpx_decode(data) {
-  var t0 = performance.now();
-  var jpxImage = new JpxImage();
-  jpxImage.parse(data);
-  var t1 = performance.now();
-  var image = {
-    length: data.length,
-    sx: jpxImage.width,
-    sy: jpxImage.height,
-    nbChannels: jpxImage.componentsCount,
-    perf_timetodecode: t1 - t0,
-    pixelData: jpxImage.tiles[0].items
-  };
-
-  return image;
-}
 
 function /* int */ U_NUMx2(/* int */ m2, /* int */ m1) {
   return ((m2 << 8) + m1);
@@ -174,8 +157,9 @@ function /* float */ IEEE32(/* String */ s) {
 }
 
 
-module.exports = function /* class */ GRIB2CLASS(DATA, options) {
+module.exports = function /* class */ GRIB2CLASS(options) {
   logger.disable(!options.log);
+  var numMembers = options.numMembers || 1;
 
   var lThis = this;
 
@@ -265,12 +249,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     println();
 
     for (var i = 0; i < displayMORE; i++) {
-      printChar("(" + hex(this.fileBytes[startN + i], 2) + ")");
+      printst("(" + hex(this.fileBytes[startN + i], 2) + ")");
     }
     println();
 
     for (var i = 0; i < displayMORE; i++) {
-      printChar("[" + this.fileBytes[startN + i] + "]");
+      printst("[" + this.fileBytes[startN + i] + "]");
     }
     println();
   };
@@ -278,7 +262,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
   this. /* int[] */ getGrib2Section = function (/* int */ SectionNumber) {
     println("-----------------------------");
 
-    printChar("Section:\t");
+    printst("Section:\t");
     println(SectionNumber);
 
     var /* int */ nFirstBytes = 6;
@@ -332,12 +316,12 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
     }
 
     for (var j = 1; j < SectionNumbers.length; j += 1) {
-      //printChar("(" + SectionNumbers[j] +  ")");
-      //printChar("(" + hex(SectionNumbers[j], 2) +  ")");
+      //printst("(" + SectionNumbers[j] +  ")");
+      //printst("(" + hex(SectionNumbers[j], 2) +  ")");
     }
     //println();
 
-    printChar("Length of section:\t");
+    printst("Length of section:\t");
     println(lengthOfSection);
 
     nPointer += lengthOfSection;
@@ -445,11 +429,11 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       var /* int[] */ SectionNumbers = this.getGrib2Section(0); // Section 0: Indicator Section
 
       if (SectionNumbers.length > 1) {
-        printChar("Discipline of processed data:\t");
+        printst("Discipline of processed data:\t");
         this.DisciplineOfProcessedData = SectionNumbers[7];
         info.DisciplineOfProcessedData(lThis);
 
-        printChar("Length of message:\t");
+        printst("Length of message:\t");
         this.LengthOfMessage = U_NUMx8(SectionNumbers[9], SectionNumbers[10], SectionNumbers[11], SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15], SectionNumbers[16]);
         println(this.LengthOfMessage);
       }
@@ -457,55 +441,55 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(1); // Section 1: Identification Section
 
       if (SectionNumbers.length > 1) {
-        printChar("Identification of originating/generating centre: ");
+        printst("Identification of originating/generating centre: ");
         this.IdentificationOfCentre = U_NUMx2(SectionNumbers[6], SectionNumbers[7]);
         info.IdentificationOfCentre(lThis);
 
-        printChar("Sub-centre:\t");
+        printst("Sub-centre:\t");
         this.IdentificationOfSubCentre = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
         info.IdentificationOfSubCentre(lThis);
 
-        printChar("Master Tables Version Number:\t");
+        printst("Master Tables Version Number:\t");
         this.MasterTablesVersionNumber = SectionNumbers[10];
         info.MasterTablesVersionNumber(lThis);
 
-        printChar("Local Tables Version Number:\t");
+        printst("Local Tables Version Number:\t");
         this.LocalTablesVersionNumber = SectionNumbers[11];
         info.LocalTablesVersionNumber(lThis);
 
-        printChar("Significance of Reference Time:\t");
+        printst("Significance of Reference Time:\t");
         this.SignificanceOfReferenceTime = SectionNumbers[12];
         info.SignificanceOfReferenceTime(lThis);
 
-        printChar("Year:\t");
+        printst("Year:\t");
         this.Year = U_NUMx2(SectionNumbers[13], SectionNumbers[14]);
         println(this.Year);
 
-        printChar("Month:\t");
+        printst("Month:\t");
         this.Month = SectionNumbers[15];
         println(this.Month);
 
-        printChar("Day:\t");
+        printst("Day:\t");
         this.Day = SectionNumbers[16];
         println(this.Day);
 
-        printChar("Hour:\t");
+        printst("Hour:\t");
         this.Hour = SectionNumbers[17];
         println(this.Hour);
 
-        printChar("Minute:\t");
+        printst("Minute:\t");
         this.Minute = SectionNumbers[18];
         println(this.Minute);
 
-        printChar("Second:\t");
+        printst("Second:\t");
         this.Second = SectionNumbers[19];
         println(this.Second);
 
-        printChar("Production status of data:\t");
+        printst("Production status of data:\t");
         this.ProductionStatusOfData = SectionNumbers[20];
         info.ProductionStatusOfData(lThis);
 
-        printChar("Type of data:\t");
+        printst("Type of data:\t");
         this.TypeOfData = SectionNumbers[20];
         info.TypeOfData(lThis);
       }
@@ -517,7 +501,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(3); // Section 3: Grid Definition Section
 
       if (SectionNumbers.length > 1) {
-        printChar("Grid Definition Template Number:\t");
+        printst("Grid Definition Template Number:\t");
         this.TypeOfProjection = U_NUMx2(SectionNumbers[13], SectionNumbers[14]);
         switch (this.TypeOfProjection) {
           case 0: GridDEF_ScanningMode = 72; println("Latitude/longitude (equidistant cylindrical)"); break;
@@ -554,15 +538,15 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           default: println(this.TypeOfProjection); break;
         }
 
-        printChar("Number of data points (Nx * Ny):\t");
+        printst("Number of data points (Nx * Ny):\t");
         this.Np = U_NUMx4(SectionNumbers[GridDEF_NumberOfDataPoints], SectionNumbers[GridDEF_NumberOfDataPoints + 1], SectionNumbers[GridDEF_NumberOfDataPoints + 2], SectionNumbers[GridDEF_NumberOfDataPoints + 3]);
         println(this.Np);
 
-        printChar("Number of points along the X-axis:\t");
+        printst("Number of points along the X-axis:\t");
         this.Nx = U_NUMx4(SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis], SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis + 1], SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis + 2], SectionNumbers[GridDEF_NumberOfPointsAlongTheXaxis + 3]);
         println(this.Nx);
 
-        printChar("Number of points along the Y-axis:\t");
+        printst("Number of points along the Y-axis:\t");
         this.Ny = U_NUMx4(SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis], SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis + 1], SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis + 2], SectionNumbers[GridDEF_NumberOfPointsAlongTheYaxis + 3]);
         println(this.Ny);
 
@@ -682,7 +666,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         }
 
-        printChar("Flag bit numbers:\n");
+        printst("Flag bit numbers:\n");
         this.Flag_BitNumbers = binary(this.ResolutionAndComponentFlags, 8);
         {
           if (this.Flag_BitNumbers.substring(2, 3) === "0") {
@@ -707,14 +691,14 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           }
         }
 
-        printChar("Scanning mode:\t");
+        printst("Scanning mode:\t");
         this.ScanningMode = SectionNumbers[GridDEF_ScanningMode];
         println(this.ScanningMode);
 
         this.ScanX = 1;
         this.ScanY = 1;
 
-        printChar("Mode bit numbers:\n");
+        printst("Mode bit numbers:\n");
         this.Mode_BitNumbers = binary(this.ScanningMode, 8);
         {
           if (this.Mode_BitNumbers.substring(0, 1) === "0") {
@@ -752,15 +736,15 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(4); // Section 4: Product Definition Section
 
       if (SectionNumbers.length > 1) {
-        printChar("Number of coordinate values after Template:\t");
+        printst("Number of coordinate values after Template:\t");
         this.NumberOfCoordinateValuesAfterTemplate = U_NUMx2(SectionNumbers[6], SectionNumbers[7]);
         println(this.NumberOfCoordinateValuesAfterTemplate);
 
-        printChar("Number of coordinate values after Template:\t");
+        printst("Number of coordinate values after Template:\t");
         this.ProductDefinitionTemplateNumber = U_NUMx2(SectionNumbers[8], SectionNumbers[9]);
         info.ProductDefinitionTemplateNumber(lThis);
 
-        printChar("Category of parameters by product discipline:\t");
+        printst("Category of parameters by product discipline:\t");
         this.CategoryOfParametersByProductDiscipline = SectionNumbers[10];
         if (this.DisciplineOfProcessedData === 0) { // Meteorological
           info.CategoryOfParametersByProductDiscipline(lThis);
@@ -769,7 +753,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           println(this.CategoryOfParametersByProductDiscipline);
         }
 
-        printChar("Parameter number by product discipline and parameter category:\t");
+        printst("Parameter number by product discipline and parameter category:\t");
         this.ParameterNumberByProductDisciplineAndParameterCategory = SectionNumbers[11];
 
         if (this.DisciplineOfProcessedData === 0) { // Meteorological
@@ -933,7 +917,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         var /* float */ DayPortion = 0;
 
-        printChar("Indicator of unit of time range:\t");
+        printst("Indicator of unit of time range:\t");
         this.IndicatorOfUnitOfTimeRange = SectionNumbers[18];
         switch (this.IndicatorOfUnitOfTimeRange) {
           case 0: println("Minute"); DayPortion = 1.0 / 60.0; break;
@@ -952,7 +936,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           default: println(this.IndicatorOfUnitOfTimeRange); break;
         }
 
-        printChar("Forecast time in defined units:\t");
+        printst("Forecast time in defined units:\t");
         this.ForecastTimeInDefinedUnits = U_NUMx4(SectionNumbers[19], SectionNumbers[20], SectionNumbers[21], SectionNumbers[22]);
 
         if (this.ProductDefinitionTemplateNumber === 8) { // Average, accumulation, extreme values or other statistically processed values at a horizontal level or in a horizontal layer in a continuous or non-continuous time interval. (see Template 4.8)
@@ -992,7 +976,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
         this.ForecastConvertedTime = this.ForecastTimeInDefinedUnits * DayPortion;
 
-        printChar("Type of first fixed surface:\t");
+        printst("Type of first fixed surface:\t");
         this.TypeOfFirstFixedSurface = SectionNumbers[23];
         info.TypeOfFirstFixedSurface(lThis);
       }
@@ -1000,31 +984,31 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(5); // Section 5: Data Representation Section
 
       if (SectionNumbers.length > 1) {
-        printChar("Number of data points:\t");
+        printst("Number of data points:\t");
         this.NumberOfDataPoints = U_NUMx4(SectionNumbers[6], SectionNumbers[7], SectionNumbers[8], SectionNumbers[9]);
         println(this.NumberOfDataPoints);
 
-        printChar("Data Representation Template Number:\t");
+        printst("Data Representation Template Number:\t");
         this.DataRepresentationTemplateNumber = U_NUMx2(SectionNumbers[10], SectionNumbers[11]);
         info.DataRepresentationTemplateNumber(lThis);
 
-        printChar("Reference value (R):\t");
+        printst("Reference value (R):\t");
         this.ReferenceValue = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[12], SectionNumbers[13], SectionNumbers[14], SectionNumbers[15])));
         println(this.ReferenceValue);
 
-        printChar("Binary Scale Factor (E):\t");
+        printst("Binary Scale Factor (E):\t");
         this.BinaryScaleFactor = S_NUMx2(SectionNumbers[16], SectionNumbers[17]);
         println(this.BinaryScaleFactor);
 
-        printChar("Decimal Scale Factor (D):\t");
+        printst("Decimal Scale Factor (D):\t");
         this.DecimalScaleFactor = S_NUMx2(SectionNumbers[18], SectionNumbers[19]);
         println(this.DecimalScaleFactor);
 
-        printChar("Number of bits used for each packed value:\t");
+        printst("Number of bits used for each packed value:\t");
         this.NumberOfBitsUsedForEachPackedValue = SectionNumbers[20];
         println(this.NumberOfBitsUsedForEachPackedValue);
 
-        printChar("Type of original field values:\t");
+        printst("Type of original field values:\t");
         JPEG2000_TypeOfOriginalFieldValues = SectionNumbers[21];
         switch (JPEG2000_TypeOfOriginalFieldValues) {
           case 0: println("Floating point"); break;
@@ -1038,7 +1022,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
         JPEG2000_TargetCompressionRatio = -1;
         if (this.DataRepresentationTemplateNumber === 40) { // Grid point data – JPEG 2000 Code Stream Format
 
-          printChar("JPEG-2000/Type of Compression:\t");
+          printst("JPEG-2000/Type of Compression:\t");
           JPEG2000_TypeOfCompression = SectionNumbers[22];
           switch (JPEG2000_TypeOfCompression) {
             case 0: println("Lossless"); break;
@@ -1047,7 +1031,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             default: println(JPEG2000_TypeOfCompression); break;
           }
 
-          printChar("JPEG-2000/Target compression ratio (M):\t");
+          printst("JPEG-2000/Target compression ratio (M):\t");
           JPEG2000_TargetCompressionRatio = SectionNumbers[23];
           println(JPEG2000_TargetCompressionRatio);
           //The compression ratio M:1 (e.g. 20:1) specifies that the encoded stream should be less than ((1/M) x depth x number of data points) bits,
@@ -1056,7 +1040,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
         else if ((this.DataRepresentationTemplateNumber === 2) || // Grid point data - complex packing
           (this.DataRepresentationTemplateNumber === 3)) { // Grid point data - complex packing and spatial differencing
 
-          printChar("ComplexPacking/Type of Compression:\t");
+          printst("ComplexPacking/Type of Compression:\t");
           ComplexPacking_GroupSplittingMethodUsed = SectionNumbers[22];
           switch (ComplexPacking_GroupSplittingMethodUsed) {
             case 0: println("Row by row splitting"); break;
@@ -1065,7 +1049,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             default: println(ComplexPacking_GroupSplittingMethodUsed); break;
           }
 
-          printChar("ComplexPacking/Missing value management used:\t");
+          printst("ComplexPacking/Missing value management used:\t");
           ComplexPacking_MissingValueManagementUsed = SectionNumbers[23];
           switch (ComplexPacking_MissingValueManagementUsed) {
             case 0: println("No explicit missing values included within data values"); break;
@@ -1075,49 +1059,49 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             default: println(ComplexPacking_MissingValueManagementUsed); break;
           }
 
-          printChar("ComplexPacking/Primary missing value substitute:\t");
+          printst("ComplexPacking/Primary missing value substitute:\t");
           ComplexPacking_PrimaryMissingValueSubstitute = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[24], SectionNumbers[25], SectionNumbers[26], SectionNumbers[27])));
           println(ComplexPacking_PrimaryMissingValueSubstitute);
 
-          printChar("ComplexPacking/Secondary missing value substitute:\t");
+          printst("ComplexPacking/Secondary missing value substitute:\t");
           ComplexPacking_SecondaryMissingValueSubstitute = IEEE32(IntToBinary32(U_NUMx4(SectionNumbers[28], SectionNumbers[29], SectionNumbers[30], SectionNumbers[31])));
           println(ComplexPacking_SecondaryMissingValueSubstitute);
 
-          printChar("ComplexPacking/Number of groups of data values into which field is split:\t");
+          printst("ComplexPacking/Number of groups of data values into which field is split:\t");
           ComplexPacking_NumberOfGroupsOfDataValues = U_NUMx4(SectionNumbers[32], SectionNumbers[33], SectionNumbers[34], SectionNumbers[35]);
           println(ComplexPacking_NumberOfGroupsOfDataValues);
 
-          printChar("ComplexPacking/Reference for group widths:\t");
+          printst("ComplexPacking/Reference for group widths:\t");
           ComplexPacking_ReferenceForGroupWidths = SectionNumbers[36];
           println(ComplexPacking_ReferenceForGroupWidths);
 
-          printChar("ComplexPacking/Number of bits used for group widths:\t");
+          printst("ComplexPacking/Number of bits used for group widths:\t");
           ComplexPacking_NumberOfBitsUsedForGroupWidths = SectionNumbers[37];
           println(ComplexPacking_NumberOfBitsUsedForGroupWidths);
 
-          printChar("ComplexPacking/Reference for group lengths:\t");
+          printst("ComplexPacking/Reference for group lengths:\t");
           ComplexPacking_ReferenceForGroupLengths = U_NUMx4(SectionNumbers[38], SectionNumbers[39], SectionNumbers[40], SectionNumbers[41]);
           println(ComplexPacking_ReferenceForGroupLengths);
 
-          printChar("ComplexPacking/Length increment for the group lengths:\t");
+          printst("ComplexPacking/Length increment for the group lengths:\t");
           ComplexPacking_LengthIncrementForTheGroupLengths = SectionNumbers[42];
           println(ComplexPacking_LengthIncrementForTheGroupLengths);
 
-          printChar("ComplexPacking/True length of last group:\t");
+          printst("ComplexPacking/True length of last group:\t");
           ComplexPacking_TrueLengthOfLastGroup = U_NUMx4(SectionNumbers[43], SectionNumbers[44], SectionNumbers[45], SectionNumbers[46]);
           println(ComplexPacking_TrueLengthOfLastGroup);
 
-          printChar("ComplexPacking/Number of bits used for the scaled group lengths:\t");
+          printst("ComplexPacking/Number of bits used for the scaled group lengths:\t");
           ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths = SectionNumbers[47];
           println(ComplexPacking_NumberOfBitsUsedForTheScaledGroupLengths);
 
           if (this.DataRepresentationTemplateNumber === 3) { // Grid point data - complex packing and spatial differencing
 
-            printChar("ComplexPacking/Order of Spatial Differencing:\t");
+            printst("ComplexPacking/Order of Spatial Differencing:\t");
             ComplexPacking_OrderOfSpatialDifferencing = SectionNumbers[48];
             println(ComplexPacking_OrderOfSpatialDifferencing);
 
-            printChar("ComplexPacking/Number of octets required in the Data Section to specify the extra descriptors:\t");
+            printst("ComplexPacking/Number of octets required in the Data Section to specify the extra descriptors:\t");
             ComplexPacking_NumberOfExtraOctetsRequiredInDataSection = SectionNumbers[49];
             println(ComplexPacking_NumberOfExtraOctetsRequiredInDataSection);
           }
@@ -1128,7 +1112,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       if (this.DataAllocated === false) {
         this.DataTitles = [];
         this.DataValues = [];
-        for (var i = 0; i < DATA.numMembers; i++) {
+        for (var i = 0; i < numMembers; i++) {
           this.DataValues[i] = new Float32Array(this.Nx * this.Ny);
         }
 
@@ -1139,7 +1123,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
       SectionNumbers = this.getGrib2Section(6); // Section 6: Bit-Map Section
 
       if (SectionNumbers.length > 1) {
-        printChar("Bit map indicator:\t");
+        printst("Bit map indicator:\t");
         this.Bitmap_Indicator = SectionNumbers[6];
         info.Bitmap_Indicator(lThis);
 
@@ -1184,7 +1168,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           JPEG2000_Rsiz = U_NUMx2(this.fileBytes[n], this.fileBytes[n + 1]);
           println("Rsiz =", JPEG2000_Rsiz);  // Rsiz : Denotes capabilities that a decoder needs to properly decode the codestream
           n += 2;
-          printChar("\t");
+          printst("\t");
           switch (JPEG2000_Rsiz) {
             case 0: println("Capabilities specified in this Recommendation | International Standard only"); break;
             case 1: println("Codestream restricted as described for Profile 0 from Table A.45"); break;
@@ -1253,7 +1237,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
             println("Rcom =", JPEG2000_Rcom);  // Rcom : Registration value of the marker segment
             n += 2;
 
-            printChar("Comment: ");
+            printst("Comment: ");
             for (var i = 0; i < JPEG2000_Lcom - 4; i++) {
               cout(this.fileBytes[n]);
               n += 1;
@@ -1354,7 +1338,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           JPEG2000_TNsot = this.fileBytes[n];
           println("TNsot =", JPEG2000_TNsot);  // TNsot : Number of tile-parts of a tile in the codestream. Two values are allowed: the correct number of tileparts for that tile and zero. A zero value indicates that the number of tile-parts of this tile is not specified in this tile-part.
           n += 1;
-          printChar("\t");
+          printst("\t");
           switch (JPEG2000_TNsot) {
             case 0: println("Number of tile-parts of this tile in the codestream is not defined in this header"); break;
             default: println("Number of tile-parts of this tile in the codestream"); break;
@@ -1370,15 +1354,14 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
           for (var i = 0; i < imageBytes.length; i++) {
             imageBytes[i] = this.fileBytes[i + Bitmap_beginPointer];
           }
-          if (DATA.numMembers > 1) {
+          if (numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
 
-          var image = jpx_decode(imageBytes);
-          this.data = image.pixelData;
+          this.data = options.jpeg2000decoder(imageBytes);
         }
         else {
-          if (DATA.numMembers > 1) {
+          if (numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
         }
@@ -1693,7 +1676,7 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
 
           //for (var q = 0; q < 20; q++) println(this.DataValues[memberID][q]);
 
-          if (DATA.numMembers > 1) {
+          if (numMembers > 1) {
             this.DataTitles[memberID] += nf0(memberID, 2);
           }
         }
@@ -1734,6 +1717,6 @@ module.exports = function /* class */ GRIB2CLASS(DATA, options) {
   this. /* void */ parse = function (bytes) {
     this.fileBytes = bytes;
 
-    this.readGrib2Members(DATA.numMembers);
+    this.readGrib2Members(numMembers);
   };
 };

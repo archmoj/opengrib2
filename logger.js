@@ -4,37 +4,39 @@ var asciiTable = ["NUL", "SOH", "STX", "ETX", "EOT", "ENQ", "ACK", "BEL", "BS", 
 
 var /* boolean */ log = false; // can be enabled by options
 
-exports.disable = function (state) {
-    log = !state;
-};
+module.exports = {
+    disable: function (state) {
+        log = !state;
+    },
 
-exports.println = function (/* String */ a, /* optional String */ b) {
-    var s =
-        (a === undefined) ? '' :
-            (b === undefined) ? a : a + ' ' + b;
+    println: function (/* optional String */ a, /* optional String */ b) {
+        var s =
+            (a === undefined) ? '' :
+                (b === undefined) ? a : a + ' ' + b;
 
-    if (log) {
-        console.log(s);
-        // process.stdout.write(s + '\n'); // node.js
-    }
+        if (log) {
+            console.log(s);
+            // process.stdout.write(s + '\n'); // node.js
+        }
 
-    return s;
-};
+        return s;
+    },
 
-exports.printChar = function (/* char */ c) {
-    if (log) {
-        console.log(c);
-        // process.stdout.write(c); // node.js
-    }
+    printst: function (/* String */ c) {
+        if (log) {
+            console.log(c);
+            // process.stdout.write(c); // node.js
+        }
 
-    return c;
-};
+        return c;
+    },
 
-exports.cout = function (/* int */ c) {
-    if (!log) return;
-    if (c > 31) exports.printChar(c);
-    else {
-        exports.printChar("[" + asciiTable[c] + "]");
-        //exports.printChar("_");
+    cout: function (/* int */ c) {
+        if (!log) return;
+        if (c > 31) this.printst(c);
+        else {
+            this.printst("[" + asciiTable[c] + "]");
+            // exports.printst("_");
+        }
     }
 };

@@ -2,7 +2,7 @@
   "name": "opengrib2",
   "version": "0.0.0",
   "description": "native JavaScript utility for opening grib2 data",
-  "main": "index.js",
+  "main": "browser.js",
   "scripts": {
     "dev": "watchify browser.js -t envify -o build/bundle.js -v ",
     "start": "http-server -p 2121 -o",
@@ -22,7 +22,14 @@
     "js",
     "javascript",
     "node",
-    "meteo"
+    "meteo",
+    "meteo.io",
+    "meteohack",
+    "solarchvision",
+    "CMC",
+    "MSC",
+    "ECCC",
+    "plotly"
   ],
   "author": "Mojatab Samimi, Étienne Tétreault-Pinard, Antoine Roy-Gobeil",
   "license": "MIT",
