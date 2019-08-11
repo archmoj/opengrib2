@@ -40,7 +40,6 @@ Node.js, npm and a "modern" browser.
 ## How to run the "local" demo
 
 - run `npm i`
-- run `./wget-grib2.sh` to download a few grib2 files
 - run `npm run build:bundle-local-data`
 - run `npm start`
 
