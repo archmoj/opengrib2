@@ -4,2141 +4,2147 @@
 │  ├─ publisher: Dominic Tarr
 │  ├─ email: dominic.tarr@gmail.com
 │  ├─ url: http://bit.ly/dominictarr
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/JSONStream
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/JSONStream/LICENSE.APACHE2
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/JSONStream
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/JSONStream/LICENSE.APACHE2
 ├─ abbrev@1.1.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/abbrev-js
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/abbrev
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/abbrev/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/abbrev
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/abbrev/LICENSE
 ├─ acorn-dynamic-import@4.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/kesne/acorn-dynamic-import
 │  ├─ publisher: Jordan Gensler
 │  ├─ email: jordangens@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/acorn-dynamic-import
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/acorn-dynamic-import/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/acorn-dynamic-import
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/acorn-dynamic-import/LICENSE
 ├─ acorn-node@1.7.0
 │  ├─ licenses: Apache-2.0
 │  ├─ repository: https://github.com/browserify/acorn-node
 │  ├─ publisher: Renée Kooi
 │  ├─ email: renee@kooi.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/acorn-node
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/acorn-node/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/acorn-node
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/acorn-node/LICENSE.md
 ├─ acorn-walk@6.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/acornjs/acorn
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/acorn-walk
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/acorn-walk/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/acorn-walk
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/acorn-walk/LICENSE
 ├─ acorn@6.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/acornjs/acorn
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/acorn
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/acorn/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/acorn
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/acorn/LICENSE
 ├─ ansi-styles@3.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/chalk/ansi-styles
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ansi-styles
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ansi-styles/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/ansi-styles
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/ansi-styles/license
 ├─ anymatch@2.0.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/micromatch/anymatch
 │  ├─ publisher: Elan Shanker
 │  ├─ url: http://github.com/es128
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/anymatch
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/anymatch/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/anymatch
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/anymatch/LICENSE
 ├─ arr-diff@4.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/arr-diff
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/arr-diff
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/arr-diff/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/arr-diff
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/arr-diff/LICENSE
 ├─ arr-flatten@1.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/arr-flatten
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/arr-flatten
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/arr-flatten/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/arr-flatten
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/arr-flatten/LICENSE
 ├─ arr-union@3.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/arr-union
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/arr-union
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/arr-union/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/arr-union
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/arr-union/LICENSE
 ├─ array-back@3.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/75lb/array-back
 │  ├─ publisher: Lloyd Brookes
 │  ├─ email: 75pound@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/array-back
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/array-back/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/array-back
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/array-back/LICENSE
 ├─ array-filter@0.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/juliangruber/array-filter
 │  ├─ publisher: Julian Gruber
 │  ├─ email: mail@juliangruber.com
 │  ├─ url: http://juliangruber.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/array-filter
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/array-filter/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/array-filter
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/array-filter/README.md
 ├─ array-find-index@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/array-find-index
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/array-find-index
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/array-find-index/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/array-find-index
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/array-find-index/license
 ├─ array-map@0.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/array-map
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/array-map
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/array-map/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/array-map
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/array-map/LICENSE
 ├─ array-reduce@0.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/array-reduce
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/array-reduce
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/array-reduce/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/array-reduce
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/array-reduce/LICENSE
 ├─ array-unique@0.3.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/array-unique
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/array-unique
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/array-unique/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/array-unique
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/array-unique/LICENSE
 ├─ asap@2.0.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/kriskowal/asap
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/asap
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/asap/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/asap
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/asap/LICENSE.md
 ├─ asn1.js@4.10.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/asn1.js
 │  ├─ publisher: Fedor Indutny
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/asn1.js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/asn1.js/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/asn1.js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/asn1.js/README.md
 ├─ assert@1.5.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/commonjs-assert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/assert
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/assert/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/assert
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/assert/LICENSE
 ├─ assign-symbols@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/assign-symbols
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/assign-symbols
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/assign-symbols/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/assign-symbols
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/assign-symbols/LICENSE
 ├─ async-each@1.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/paulmillr/async-each
 │  ├─ publisher: Paul Miller
 │  ├─ url: https://paulmillr.com/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/async-each
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/async-each/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/async-each
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/async-each/README.md
 ├─ async@1.5.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/caolan/async
 │  ├─ publisher: Caolan McMahon
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/async
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/async/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/async
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/async/LICENSE
 ├─ atob@2.1.2
 │  ├─ licenses: (MIT OR Apache-2.0)
 │  ├─ repository: git://git.coolaj86.com/coolaj86/atob.js
 │  ├─ publisher: AJ ONeal
 │  ├─ email: coolaj86@gmail.com
 │  ├─ url: https://coolaj86.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/atob
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/atob/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/atob
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/atob/LICENSE
 ├─ balanced-match@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/juliangruber/balanced-match
 │  ├─ publisher: Julian Gruber
 │  ├─ email: mail@juliangruber.com
 │  ├─ url: http://juliangruber.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/balanced-match
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/balanced-match/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/balanced-match
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/balanced-match/LICENSE.md
 ├─ base64-js@1.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/beatgammit/base64-js
 │  ├─ publisher: T. Jameson Little
 │  ├─ email: t.jameson.little@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/base64-js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/base64-js/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/base64-js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/base64-js/LICENSE
 ├─ base@0.11.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/node-base/base
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/base
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/base/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/base
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/base/LICENSE
 ├─ binary-extensions@1.13.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/binary-extensions
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/binary-extensions
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/binary-extensions/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/binary-extensions
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/binary-extensions/license
 ├─ bn.js@4.11.8
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/bn.js
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/bn.js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/bn.js/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/bn.js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/bn.js/README.md
 ├─ brace-expansion@1.1.11
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/juliangruber/brace-expansion
 │  ├─ publisher: Julian Gruber
 │  ├─ email: mail@juliangruber.com
 │  ├─ url: http://juliangruber.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/brace-expansion
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/brace-expansion/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/brace-expansion
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/brace-expansion/LICENSE
 ├─ braces@2.3.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/micromatch/braces
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/braces
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/braces/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/braces
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/braces/LICENSE
 ├─ brorand@1.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/brorand
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/brorand
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/brorand/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/brorand
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/brorand/README.md
 ├─ browser-pack@6.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/browser-pack
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browser-pack
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browser-pack/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browser-pack
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browser-pack/LICENSE
 ├─ browser-resolve@1.11.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/shtylman/node-browser-resolve
 │  ├─ publisher: Roman Shtylman
 │  ├─ email: shtylman@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browser-resolve
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browser-resolve/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browser-resolve
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browser-resolve/LICENSE
 ├─ browserify-aes@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/browserify-aes
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-aes
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-aes/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-aes
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-aes/LICENSE
 ├─ browserify-cipher@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/browserify-cipher
 │  ├─ publisher: Calvin Metcalf
 │  ├─ email: calvin.metcalf@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-cipher
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-cipher/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-cipher
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-cipher/LICENSE
 ├─ browserify-des@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/browserify-des
 │  ├─ publisher: Calvin Metcalf
 │  ├─ email: calvin.metcalf@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-des
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-des/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-des
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-des/license
 ├─ browserify-rsa@4.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/browserify-rsa
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-rsa
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-rsa/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-rsa
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-rsa/LICENSE
 ├─ browserify-sign@4.0.4
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/crypto-browserify/browserify-sign
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-sign
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-sign/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-sign
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-sign/LICENSE
 ├─ browserify-zlib@0.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/devongovett/browserify-zlib
 │  ├─ publisher: Devon Govett
 │  ├─ email: devongovett@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-zlib
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify-zlib/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-zlib
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify-zlib/LICENSE
 ├─ browserify@16.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/browserify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browserify/LICENSE
 ├─ buffer-from@1.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/LinusU/buffer-from
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/buffer-from
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/buffer-from/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/buffer-from
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/buffer-from/LICENSE
 ├─ buffer-xor@1.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/buffer-xor
 │  ├─ publisher: Daniel Cousens
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/buffer-xor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/buffer-xor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/buffer-xor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/buffer-xor/LICENSE
 ├─ buffer@5.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/feross/buffer
 │  ├─ publisher: Feross Aboukhadijeh
 │  ├─ email: feross@feross.org
 │  ├─ url: http://feross.org
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/buffer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/buffer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/buffer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/buffer/LICENSE
 ├─ builtin-status-codes@3.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/bendrucker/builtin-status-codes
 │  ├─ publisher: Ben Drucker
 │  ├─ email: bvdrucker@gmail.com
 │  ├─ url: bendrucker.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/builtin-status-codes
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/builtin-status-codes/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/builtin-status-codes
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/builtin-status-codes/license
 ├─ cache-base@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/cache-base
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/cache-base
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/cache-base/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/cache-base
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/cache-base/LICENSE
 ├─ cached-path-relative@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/ashaffer/cached-path-relative
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/cached-path-relative
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/cached-path-relative/Readme.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/cached-path-relative
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/cached-path-relative/Readme.md
 ├─ chalk@2.4.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/chalk/chalk
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/chalk
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/chalk/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/chalk
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/chalk/license
 ├─ chokidar@2.1.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/paulmillr/chokidar
 │  ├─ publisher: Paul Miller
 │  ├─ url: https://paulmillr.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/chokidar
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/chokidar/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/chokidar
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/chokidar/README.md
 ├─ cipher-base@1.0.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/cipher-base
 │  ├─ publisher: Calvin Metcalf
 │  ├─ email: calvin.metcalf@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/cipher-base
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/cipher-base/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/cipher-base
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/cipher-base/LICENSE
 ├─ class-utils@0.3.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/class-utils
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/class-utils
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/class-utils/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/class-utils
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/class-utils/LICENSE
 ├─ collection-visit@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/collection-visit
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/collection-visit
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/collection-visit/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/collection-visit
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/collection-visit/LICENSE
 ├─ color-convert@1.9.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Qix-/color-convert
 │  ├─ publisher: Heather Arthur
 │  ├─ email: fayearthur@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/color-convert
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/color-convert/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/color-convert
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/color-convert/LICENSE
 ├─ color-name@1.1.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/dfcreative/color-name
 │  ├─ publisher: DY
 │  ├─ email: dfcreative@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/color-name
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/color-name/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/color-name
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/color-name/LICENSE
 ├─ colors@1.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Marak/colors.js
 │  ├─ publisher: Marak Squires
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/colors
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/colors/ReadMe.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/colors
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/colors/ReadMe.md
 ├─ combine-source-map@0.8.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/thlorenz/combine-source-map
 │  ├─ publisher: Thorsten Lorenz
 │  ├─ email: thlorenz@gmx.de
 │  ├─ url: http://thlorenz.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/combine-source-map
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/combine-source-map/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/combine-source-map
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/combine-source-map/LICENSE
 ├─ command-line-args@5.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/75lb/command-line-args
 │  ├─ publisher: Lloyd Brookes
 │  ├─ email: 75pound@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/command-line-args
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/command-line-args/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/command-line-args
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/command-line-args/LICENSE
 ├─ component-emitter@1.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/component/emitter
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/component-emitter
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/component-emitter/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/component-emitter
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/component-emitter/LICENSE
 ├─ concat-map@0.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-concat-map
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/concat-map
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/concat-map/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/concat-map
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/concat-map/LICENSE
 ├─ concat-stream@1.6.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/maxogden/concat-stream
 │  ├─ publisher: Max Ogden
 │  ├─ email: max@maxogden.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/concat-stream
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/concat-stream/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/concat-stream
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/concat-stream/LICENSE
 ├─ console-browserify@1.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Raynos/console-browserify
 │  ├─ publisher: Raynos
 │  ├─ email: raynos2@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/console-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/console-browserify/LICENCE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/console-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/console-browserify/LICENCE
 ├─ constants-browserify@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/juliangruber/constants-browserify
 │  ├─ publisher: Julian Gruber
 │  ├─ email: julian@juliangruber.com
 │  ├─ url: http://juliangruber.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/constants-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/constants-browserify/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/constants-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/constants-browserify/README.md
 ├─ convert-source-map@1.1.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/thlorenz/convert-source-map
 │  ├─ publisher: Thorsten Lorenz
 │  ├─ email: thlorenz@gmx.de
 │  ├─ url: http://thlorenz.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/convert-source-map
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/convert-source-map/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/convert-source-map
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/convert-source-map/LICENSE
 ├─ copy-descriptor@0.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/copy-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/copy-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/copy-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/copy-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/copy-descriptor/LICENSE
 ├─ core-util-is@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/isaacs/core-util-is
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/core-util-is
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/core-util-is/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/core-util-is
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/core-util-is/LICENSE
 ├─ corser@2.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/agrueneberg/Corser
 │  ├─ publisher: Alexander Grüneberg
 │  ├─ email: alexander.grueneberg@googlemail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/corser
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/corser/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/corser
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/corser/LICENSE
 ├─ create-ecdh@4.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/createECDH
 │  ├─ publisher: Calvin Metcalf
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/create-ecdh
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/create-ecdh/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/create-ecdh
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/create-ecdh/LICENSE
 ├─ create-hash@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/createHash
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/create-hash
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/create-hash/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/create-hash
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/create-hash/LICENSE
 ├─ create-hmac@1.1.7
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/createHmac
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/create-hmac
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/create-hmac/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/create-hmac
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/create-hmac/LICENSE
 ├─ crypto-browserify@3.12.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/crypto-browserify
 │  ├─ publisher: Dominic Tarr
 │  ├─ email: dominic.tarr@gmail.com
 │  ├─ url: dominictarr.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/crypto-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/crypto-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/crypto-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/crypto-browserify/LICENSE
 ├─ dash-ast@1.0.0
 │  ├─ licenses: Apache-2.0
 │  ├─ repository: https://github.com/goto-bus-stop/dash-ast
 │  ├─ publisher: Renée Kooi
 │  ├─ email: renee@kooi.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/dash-ast
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/dash-ast/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/dash-ast
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/dash-ast/LICENSE.md
 ├─ date-now@0.1.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Colingo/date-now
 │  ├─ publisher: Raynos
 │  ├─ email: raynos2@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/date-now
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/date-now/LICENCE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/date-now
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/date-now/LICENCE
 ├─ debug@2.6.9
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/visionmedia/debug
 │  ├─ publisher: TJ Holowaychuk
 │  ├─ email: tj@vision-media.ca
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/debug
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/debug/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/debug
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/debug/LICENSE
 ├─ debug@3.2.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/visionmedia/debug
 │  ├─ publisher: TJ Holowaychuk
 │  ├─ email: tj@vision-media.ca
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/follow-redirects/node_modules/debug
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/follow-redirects/node_modules/debug/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/follow-redirects/node_modules/debug
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/follow-redirects/node_modules/debug/LICENSE
 ├─ debuglog@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sam-github/node-debuglog
 │  ├─ publisher: Sam Roberts
 │  ├─ email: sam@strongloop.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/debuglog
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/debuglog/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/debuglog
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/debuglog/LICENSE
 ├─ decode-uri-component@0.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/SamVerschueren/decode-uri-component
 │  ├─ publisher: Sam Verschueren
 │  ├─ email: sam.verschueren@gmail.com
 │  ├─ url: github.com/SamVerschueren
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/decode-uri-component
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/decode-uri-component/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/decode-uri-component
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/decode-uri-component/license
 ├─ define-property@0.2.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/define-property
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/class-utils/node_modules/define-property
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/class-utils/node_modules/define-property/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/class-utils/node_modules/define-property
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/class-utils/node_modules/define-property/LICENSE
 ├─ define-property@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/define-property
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/define-property
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/define-property/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/define-property
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/define-property/LICENSE
 ├─ define-property@2.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/define-property
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/define-property
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/define-property/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/define-property
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/define-property/LICENSE
 ├─ defined@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/defined
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/defined
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/defined/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/defined
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/defined/LICENSE
 ├─ deps-sort@2.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/deps-sort
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/deps-sort
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/deps-sort/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/deps-sort
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/deps-sort/LICENSE
 ├─ des.js@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/des.js
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/des.js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/des.js/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/des.js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/des.js/README.md
 ├─ detective@5.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/detective
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/detective
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/detective/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/detective
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/detective/LICENSE
 ├─ dezalgo@1.0.3
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/dezalgo
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/dezalgo
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/dezalgo/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/dezalgo
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/dezalgo/LICENSE
 ├─ diffie-hellman@5.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/diffie-hellman
 │  ├─ publisher: Calvin Metcalf
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/diffie-hellman
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/diffie-hellman/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/diffie-hellman
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/diffie-hellman/LICENSE
 ├─ domain-browser@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/bevry/domain-browser
 │  ├─ publisher: 2013+ Bevry Pty Ltd
 │  ├─ email: us@bevry.me
 │  ├─ url: http://bevry.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/domain-browser
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/domain-browser/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/domain-browser
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/domain-browser/LICENSE.md
 ├─ duplexer2@0.1.4
 │  ├─ licenses: BSD-3-Clause
 │  ├─ repository: https://github.com/deoxxa/duplexer2
 │  ├─ publisher: Conrad Pankoff
 │  ├─ email: deoxxa@fknsrs.biz
 │  ├─ url: http://www.fknsrs.biz/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/duplexer2
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/duplexer2/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/duplexer2
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/duplexer2/LICENSE.md
 ├─ ecstatic@3.3.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jfhbrook/node-ecstatic
 │  ├─ publisher: Joshua Holbrook
 │  ├─ email: josh@nodejitsu.com
 │  ├─ url: http://jesusabdullah.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ecstatic
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ecstatic/LICENSE.txt
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/ecstatic
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/ecstatic/LICENSE.txt
 ├─ elliptic@6.5.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/elliptic
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/elliptic
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/elliptic/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/elliptic
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/elliptic/README.md
 ├─ envify@4.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/hughsk/envify
 │  ├─ publisher: Hugh Kennedy
 │  ├─ email: hughskennedy@gmail.com
 │  ├─ url: http://hughskennedy.com/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/envify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/envify/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/envify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/envify/README.md
 ├─ escape-string-regexp@1.0.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/escape-string-regexp
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/escape-string-regexp
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/escape-string-regexp/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/escape-string-regexp
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/escape-string-regexp/license
 ├─ esprima@4.0.1
 │  ├─ licenses: BSD-2-Clause
 │  ├─ repository: https://github.com/jquery/esprima
 │  ├─ publisher: Ariya Hidayat
 │  ├─ email: ariya.hidayat@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/esprima
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/esprima/LICENSE.BSD
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/esprima
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/esprima/LICENSE.BSD
 ├─ eventemitter3@3.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/primus/eventemitter3
 │  ├─ publisher: Arnout Kazemier
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/eventemitter3
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/eventemitter3/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/eventemitter3
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/eventemitter3/LICENSE
 ├─ events@2.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Gozala/events
 │  ├─ publisher: Irakli Gozalishvili
 │  ├─ email: rfobic@gmail.com
 │  ├─ url: http://jeditoolkit.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/events
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/events/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/events
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/events/LICENSE
 ├─ evp_bytestokey@1.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/EVP_BytesToKey
 │  ├─ publisher: Calvin Metcalf
 │  ├─ email: calvin.metcalf@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/evp_bytestokey
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/evp_bytestokey/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/evp_bytestokey
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/evp_bytestokey/LICENSE
 ├─ expand-brackets@2.1.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/expand-brackets
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/expand-brackets
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/expand-brackets/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/expand-brackets
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/expand-brackets/LICENSE
 ├─ extend-shallow@2.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/extend-shallow
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/braces/node_modules/extend-shallow
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/braces/node_modules/extend-shallow/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/braces/node_modules/extend-shallow
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/braces/node_modules/extend-shallow/LICENSE
 ├─ extend-shallow@3.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/extend-shallow
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/extend-shallow
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/extend-shallow/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/extend-shallow
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/extend-shallow/LICENSE
 ├─ extglob@2.0.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/micromatch/extglob
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/extglob
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/extglob/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/extglob
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/extglob/LICENSE
 ├─ fill-range@4.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/fill-range
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/fill-range
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/fill-range/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/fill-range
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/fill-range/LICENSE
 ├─ find-replace@3.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/75lb/find-replace
 │  ├─ publisher: Lloyd Brookes
 │  ├─ email: 75pound@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/find-replace
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/find-replace/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/find-replace
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/find-replace/LICENSE
 ├─ follow-redirects@1.7.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/follow-redirects/follow-redirects
 │  ├─ publisher: Ruben Verborgh
 │  ├─ email: ruben@verborgh.org
 │  ├─ url: https://ruben.verborgh.org/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/follow-redirects
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/follow-redirects/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/follow-redirects
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/follow-redirects/LICENSE
 ├─ for-in@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/for-in
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/for-in
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/for-in/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/for-in
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/for-in/LICENSE
 ├─ fragment-cache@0.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/fragment-cache
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/fragment-cache
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/fragment-cache/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/fragment-cache
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/fragment-cache/LICENSE
 ├─ fs.realpath@1.0.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/fs.realpath
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/fs.realpath
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/fs.realpath/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/fs.realpath
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/fs.realpath/LICENSE
 ├─ function-bind@1.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Raynos/function-bind
 │  ├─ publisher: Raynos
 │  ├─ email: raynos2@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/function-bind
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/function-bind/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/function-bind
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/function-bind/LICENSE
 ├─ get-assigned-identifiers@1.2.0
 │  ├─ licenses: Apache-2.0
 │  ├─ repository: https://github.com/goto-bus-stop/get-assigned-identifiers
 │  ├─ publisher: Renée Kooi
 │  ├─ email: renee@kooi.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/get-assigned-identifiers
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/get-assigned-identifiers/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/get-assigned-identifiers
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/get-assigned-identifiers/LICENSE.md
 ├─ get-value@2.0.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/get-value
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/get-value
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/get-value/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/get-value
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/get-value/LICENSE
 ├─ glob-parent@3.1.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/es128/glob-parent
 │  ├─ publisher: Elan Shanker
 │  ├─ url: https://github.com/es128
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/glob-parent
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/glob-parent/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/glob-parent
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/glob-parent/LICENSE
 ├─ glob@7.1.4
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/node-glob
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/glob
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/glob/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/glob
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/glob/LICENSE
 ├─ graceful-fs@4.2.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/node-graceful-fs
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/graceful-fs
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/graceful-fs/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/graceful-fs
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/graceful-fs/LICENSE
+├─ grib2class@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/archmoj/grib2class
+│  ├─ publisher: Mojtaba Samimi
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/grib2class
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/grib2class/license.md
 ├─ has-flag@3.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/has-flag
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/has-flag
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/has-flag/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/has-flag
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/has-flag/license
 ├─ has-value@0.3.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/has-value
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/node_modules/has-value
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/node_modules/has-value/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/node_modules/has-value
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/node_modules/has-value/LICENSE
 ├─ has-value@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/has-value
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/has-value
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/has-value/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/has-value
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/has-value/LICENSE
 ├─ has-values@0.1.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/has-values
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/node_modules/has-values
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/node_modules/has-values/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/node_modules/has-values
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/node_modules/has-values/LICENSE
 ├─ has-values@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/has-values
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/has-values
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/has-values/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/has-values
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/has-values/LICENSE
 ├─ has@1.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/tarruda/has
 │  ├─ publisher: Thiago de Arruda
 │  ├─ email: tpadilha84@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/has
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/has/LICENSE-MIT
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/has
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/has/LICENSE-MIT
 ├─ hash-base@3.0.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/hash-base
 │  ├─ publisher: Kirill Fomichev
 │  ├─ email: fanatid@ya.ru
 │  ├─ url: https://github.com/fanatid
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/hash-base
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/hash-base/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/hash-base
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/hash-base/LICENSE
 ├─ hash.js@1.1.7
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/hash.js
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/hash.js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/hash.js/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/hash.js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/hash.js/README.md
 ├─ he@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/mathiasbynens/he
 │  ├─ publisher: Mathias Bynens
 │  ├─ url: https://mathiasbynens.be/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/he
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/he/LICENSE-MIT.txt
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/he
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/he/LICENSE-MIT.txt
 ├─ hmac-drbg@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/hmac-drbg
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/hmac-drbg
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/hmac-drbg/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/hmac-drbg
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/hmac-drbg/README.md
 ├─ hosted-git-info@2.7.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/hosted-git-info
 │  ├─ publisher: Rebecca Turner
 │  ├─ email: me@re-becca.org
 │  ├─ url: http://re-becca.org
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/hosted-git-info
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/hosted-git-info/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/hosted-git-info
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/hosted-git-info/LICENSE
 ├─ htmlescape@1.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/zertosh/htmlescape
 │  ├─ publisher: Andres Suarez
 │  ├─ email: zertosh@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/htmlescape
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/htmlescape/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/htmlescape
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/htmlescape/LICENSE
 ├─ http-proxy@1.17.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/nodejitsu/node-http-proxy
 │  ├─ publisher: Charlie Robbins
 │  ├─ email: charlie.robbins@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/http-proxy
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/http-proxy/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/http-proxy
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/http-proxy/LICENSE
 ├─ http-server@0.11.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indexzero/http-server
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/http-server
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/http-server/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/http-server
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/http-server/LICENSE
 ├─ https-browserify@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/https-browserify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/https-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/https-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/https-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/https-browserify/LICENSE
 ├─ ieee754@1.1.13
 │  ├─ licenses: BSD-3-Clause
 │  ├─ repository: https://github.com/feross/ieee754
 │  ├─ publisher: Feross Aboukhadijeh
 │  ├─ email: feross@feross.org
 │  ├─ url: http://feross.org
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ieee754
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ieee754/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/ieee754
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/ieee754/LICENSE
 ├─ inflight@1.0.6
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/inflight
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/inflight
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/inflight/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/inflight
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/inflight/LICENSE
 ├─ inherits@2.0.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/inherits
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/assert/node_modules/inherits
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/assert/node_modules/inherits/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/assert/node_modules/inherits
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/assert/node_modules/inherits/LICENSE
 ├─ inherits@2.0.3
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/inherits
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/util/node_modules/inherits
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/util/node_modules/inherits/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/util/node_modules/inherits
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/util/node_modules/inherits/LICENSE
 ├─ inherits@2.0.4
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/inherits
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/inherits
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/inherits/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/inherits
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/inherits/LICENSE
 ├─ inline-source-map@0.6.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/thlorenz/inline-source-map
 │  ├─ publisher: Thorsten Lorenz
 │  ├─ email: thlorenz@gmx.de
 │  ├─ url: http://thlorenz.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/inline-source-map
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/inline-source-map/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/inline-source-map
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/inline-source-map/LICENSE
 ├─ insert-module-globals@7.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/insert-module-globals
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/insert-module-globals
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/insert-module-globals/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/insert-module-globals
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/insert-module-globals/LICENSE
 ├─ is-accessor-descriptor@0.1.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-accessor-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-accessor-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-accessor-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-accessor-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-accessor-descriptor/LICENSE
 ├─ is-accessor-descriptor@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-accessor-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/is-accessor-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/is-accessor-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/is-accessor-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/is-accessor-descriptor/LICENSE
 ├─ is-binary-path@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/is-binary-path
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-binary-path
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-binary-path/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-binary-path
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-binary-path/license
 ├─ is-buffer@1.1.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/feross/is-buffer
 │  ├─ publisher: Feross Aboukhadijeh
 │  ├─ email: feross@feross.org
 │  ├─ url: http://feross.org/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-buffer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-buffer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-buffer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-buffer/LICENSE
 ├─ is-data-descriptor@0.1.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-data-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-data-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-data-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-data-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-data-descriptor/LICENSE
 ├─ is-data-descriptor@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-data-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/is-data-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/is-data-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/is-data-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/is-data-descriptor/LICENSE
 ├─ is-descriptor@0.1.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-descriptor/LICENSE
 ├─ is-descriptor@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-descriptor
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/is-descriptor
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/base/node_modules/is-descriptor/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/is-descriptor
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/base/node_modules/is-descriptor/LICENSE
 ├─ is-extendable@0.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-extendable
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-extendable
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-extendable/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-extendable
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-extendable/LICENSE
 ├─ is-extendable@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-extendable
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/extend-shallow/node_modules/is-extendable
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/extend-shallow/node_modules/is-extendable/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/extend-shallow/node_modules/is-extendable
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/extend-shallow/node_modules/is-extendable/LICENSE
 ├─ is-extglob@2.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-extglob
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-extglob
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-extglob/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-extglob
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-extglob/LICENSE
 ├─ is-glob@3.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-glob
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/glob-parent/node_modules/is-glob
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/glob-parent/node_modules/is-glob/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/glob-parent/node_modules/is-glob
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/glob-parent/node_modules/is-glob/LICENSE
 ├─ is-glob@4.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/micromatch/is-glob
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-glob
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-glob/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-glob
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-glob/LICENSE
 ├─ is-number@3.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-number
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-number
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-number/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-number
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-number/LICENSE
 ├─ is-plain-object@2.0.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-plain-object
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-plain-object
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-plain-object/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-plain-object
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-plain-object/LICENSE
 ├─ is-windows@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/is-windows
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-windows
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-windows/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-windows
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-windows/LICENSE
 ├─ isarray@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/juliangruber/isarray
 │  ├─ publisher: Julian Gruber
 │  ├─ email: mail@juliangruber.com
 │  ├─ url: http://juliangruber.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/isarray
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/isarray/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/isarray
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/isarray/README.md
 ├─ isobject@2.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/isobject
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/node_modules/has-value/node_modules/isobject
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/node_modules/has-value/node_modules/isobject/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/node_modules/has-value/node_modules/isobject
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/node_modules/has-value/node_modules/isobject/LICENSE
 ├─ isobject@3.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/isobject
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/isobject
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/isobject/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/isobject
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/isobject/LICENSE
 ├─ json-parse-better-errors@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/zkat/json-parse-better-errors
 │  ├─ publisher: Kat Marchán
 │  ├─ email: kzm@zkat.tech
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/json-parse-better-errors
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/json-parse-better-errors/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/json-parse-better-errors
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/json-parse-better-errors/LICENSE.md
 ├─ json-stable-stringify@0.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/json-stable-stringify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/json-stable-stringify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/json-stable-stringify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/json-stable-stringify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/json-stable-stringify/LICENSE
 ├─ jsonify@0.0.0
 │  ├─ licenses: Public Domain
 │  ├─ repository: https://github.com/substack/jsonify
 │  ├─ publisher: Douglas Crockford
 │  ├─ url: http://crockford.com/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/jsonify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/jsonify/README.markdown
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/jsonify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/jsonify/README.markdown
 ├─ jsonparse@1.3.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/creationix/jsonparse
 │  ├─ publisher: Tim Caswell
 │  ├─ email: tim@creationix.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/jsonparse
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/jsonparse/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/jsonparse
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/jsonparse/LICENSE
 ├─ kind-of@3.2.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/kind-of
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-number/node_modules/kind-of
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-number/node_modules/kind-of/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-number/node_modules/kind-of
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-number/node_modules/kind-of/LICENSE
 ├─ kind-of@4.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/kind-of
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/has-values/node_modules/kind-of
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/has-values/node_modules/kind-of/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/has-values/node_modules/kind-of
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/has-values/node_modules/kind-of/LICENSE
 ├─ kind-of@5.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/kind-of
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/is-descriptor/node_modules/kind-of
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/is-descriptor/node_modules/kind-of/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/is-descriptor/node_modules/kind-of
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/is-descriptor/node_modules/kind-of/LICENSE
 ├─ kind-of@6.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/kind-of
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/kind-of
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/kind-of/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/kind-of
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/kind-of/LICENSE
 ├─ labeled-stream-splicer@2.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/labeled-stream-splicer
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/labeled-stream-splicer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/labeled-stream-splicer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/labeled-stream-splicer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/labeled-stream-splicer/LICENSE
 ├─ license-checker@25.0.1
 │  ├─ licenses: BSD-3-Clause
 │  ├─ repository: https://github.com/davglass/license-checker
 │  ├─ publisher: Dav Glass
 │  ├─ email: davglass@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/license-checker
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/license-checker/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/license-checker
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/license-checker/LICENSE
 ├─ lodash.camelcase@4.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/lodash/lodash
 │  ├─ publisher: John-David Dalton
 │  ├─ email: john.david.dalton@gmail.com
 │  ├─ url: http://allyoucanleet.com/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/lodash.camelcase
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/lodash.camelcase/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/lodash.camelcase
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/lodash.camelcase/LICENSE
 ├─ lodash.memoize@3.0.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/lodash/lodash
 │  ├─ publisher: John-David Dalton
 │  ├─ email: john.david.dalton@gmail.com
 │  ├─ url: http://allyoucanleet.com/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/lodash.memoize
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/lodash.memoize/LICENSE.txt
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/lodash.memoize
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/lodash.memoize/LICENSE.txt
 ├─ map-cache@0.2.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/map-cache
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/map-cache
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/map-cache/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/map-cache
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/map-cache/LICENSE
 ├─ map-visit@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/map-visit
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/map-visit
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/map-visit/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/map-visit
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/map-visit/LICENSE
 ├─ md5.js@1.3.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/md5.js
 │  ├─ publisher: Kirill Fomichev
 │  ├─ email: fanatid@ya.ru
 │  ├─ url: https://github.com/fanatid
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/md5.js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/md5.js/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/md5.js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/md5.js/LICENSE
 ├─ micromatch@3.1.10
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/micromatch/micromatch
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/micromatch
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/micromatch/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/micromatch
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/micromatch/LICENSE
 ├─ miller-rabin@4.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/miller-rabin
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/miller-rabin
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/miller-rabin/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/miller-rabin
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/miller-rabin/README.md
 ├─ mime@1.6.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/broofa/node-mime
 │  ├─ publisher: Robert Kieffer
 │  ├─ email: robert@broofa.com
 │  ├─ url: http://github.com/broofa
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/mime
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/mime/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/mime
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/mime/LICENSE
 ├─ minimalistic-assert@1.0.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/calvinmetcalf/minimalistic-assert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/minimalistic-assert
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/minimalistic-assert/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/minimalistic-assert
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/minimalistic-assert/LICENSE
 ├─ minimalistic-crypto-utils@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indutny/minimalistic-crypto-utils
 │  ├─ publisher: Fedor Indutny
 │  ├─ email: fedor@indutny.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/minimalistic-crypto-utils
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/minimalistic-crypto-utils/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/minimalistic-crypto-utils
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/minimalistic-crypto-utils/README.md
 ├─ minimatch@3.0.4
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/minimatch
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/minimatch
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/minimatch/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/minimatch
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/minimatch/LICENSE
 ├─ minimist@0.0.10
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/minimist
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/optimist/node_modules/minimist
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/optimist/node_modules/minimist/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/optimist/node_modules/minimist
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/optimist/node_modules/minimist/LICENSE
 ├─ minimist@0.0.8
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/minimist
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/mkdirp/node_modules/minimist
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/mkdirp/node_modules/minimist/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/mkdirp/node_modules/minimist
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/mkdirp/node_modules/minimist/LICENSE
 ├─ minimist@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/minimist
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/minimist
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/minimist/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/minimist
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/minimist/LICENSE
 ├─ mixin-deep@1.3.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/mixin-deep
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/mixin-deep
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/mixin-deep/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/mixin-deep
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/mixin-deep/LICENSE
 ├─ mkdirp@0.5.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-mkdirp
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/mkdirp
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/mkdirp/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/mkdirp
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/mkdirp/LICENSE
 ├─ module-deps@6.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/module-deps
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/module-deps
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/module-deps/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/module-deps
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/module-deps/LICENSE
 ├─ ms@2.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/zeit/ms
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ms
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ms/license.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/ms
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/ms/license.md
 ├─ ms@2.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/zeit/ms
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/follow-redirects/node_modules/ms
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/follow-redirects/node_modules/ms/license.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/follow-redirects/node_modules/ms
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/follow-redirects/node_modules/ms/license.md
 ├─ nanomatch@1.2.13
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/micromatch/nanomatch
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/nanomatch
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/nanomatch/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/nanomatch
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/nanomatch/LICENSE
 ├─ nopt@4.0.1
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/nopt
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/nopt
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/nopt/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/nopt
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/nopt/LICENSE
 ├─ normalize-package-data@2.5.0
 │  ├─ licenses: BSD-2-Clause
 │  ├─ repository: https://github.com/npm/normalize-package-data
 │  ├─ publisher: Meryn Stol
 │  ├─ email: merynstol@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/normalize-package-data
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/normalize-package-data/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/normalize-package-data
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/normalize-package-data/LICENSE
 ├─ normalize-path@2.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/normalize-path
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/normalize-path
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/normalize-path/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/normalize-path
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/normalize-path/LICENSE
 ├─ normalize-path@3.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/normalize-path
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/chokidar/node_modules/normalize-path
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/chokidar/node_modules/normalize-path/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/chokidar/node_modules/normalize-path
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/chokidar/node_modules/normalize-path/LICENSE
 ├─ object-assign@4.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/object-assign
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/object-assign
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/object-assign/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/object-assign
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/object-assign/license
 ├─ object-copy@0.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/object-copy
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/object-copy
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/object-copy/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/object-copy
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/object-copy/LICENSE
 ├─ object-visit@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/object-visit
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/object-visit
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/object-visit/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/object-visit
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/object-visit/LICENSE
 ├─ object.pick@1.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/object.pick
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/object.pick
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/object.pick/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/object.pick
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/object.pick/LICENSE
 ├─ once@1.4.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/once
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/once
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/once/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/once
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/once/LICENSE
 ├─ opener@1.4.3
 │  ├─ licenses: (WTFPL OR MIT)
 │  ├─ repository: https://github.com/domenic/opener
 │  ├─ publisher: Domenic Denicola
 │  ├─ email: d@domenic.me
 │  ├─ url: https://domenic.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/opener
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/opener/LICENSE.txt
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/opener
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/opener/LICENSE.txt
 ├─ opengrib2@0.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/archmoj/opengrib2
 │  ├─ publisher: Mojatab Samimi, Étienne Tétreault-Pinard, Antoine Roy-Gobeil
-│  ├─ path: /home/etienne/Documents/repos/opengrib2
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/license.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/license.md
 ├─ optimist@0.6.1
 │  ├─ licenses: MIT*
 │  ├─ repository: https://github.com/substack/node-optimist
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/optimist
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/optimist/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/optimist
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/optimist/LICENSE
 ├─ os-browserify@0.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/CoderPuppy/os-browserify
 │  ├─ publisher: CoderPuppy
 │  ├─ email: coderpup@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/os-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/os-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/os-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/os-browserify/LICENSE
 ├─ os-homedir@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/os-homedir
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/os-homedir
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/os-homedir/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/os-homedir
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/os-homedir/license
 ├─ os-tmpdir@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/os-tmpdir
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/os-tmpdir
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/os-tmpdir/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/os-tmpdir
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/os-tmpdir/license
 ├─ osenv@0.1.5
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/osenv
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/osenv
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/osenv/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/osenv
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/osenv/LICENSE
 ├─ outpipe@1.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/outpipe
 │  ├─ publisher: substack
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/outpipe
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/outpipe/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/outpipe
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/outpipe/LICENSE
 ├─ pako@1.0.10
 │  ├─ licenses: (MIT AND Zlib)
 │  ├─ repository: https://github.com/nodeca/pako
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/pako
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/pako/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/pako
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/pako/LICENSE
 ├─ parents@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-parents
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/parents
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/parents/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/parents
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/parents/LICENSE
 ├─ parse-asn1@5.1.4
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/crypto-browserify/parse-asn1
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/parse-asn1
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/parse-asn1/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/parse-asn1
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/parse-asn1/LICENSE
 ├─ pascalcase@0.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/pascalcase
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/pascalcase
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/pascalcase/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/pascalcase
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/pascalcase/LICENSE
 ├─ path-browserify@0.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/path-browserify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/path-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/path-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/path-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/path-browserify/LICENSE
 ├─ path-dirname@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/es128/path-dirname
 │  ├─ publisher: Elan Shanker
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/path-dirname
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/path-dirname/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/path-dirname
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/path-dirname/license
 ├─ path-is-absolute@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/path-is-absolute
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/path-is-absolute
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/path-is-absolute/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/path-is-absolute
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/path-is-absolute/license
 ├─ path-parse@1.0.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jbgutierrez/path-parse
 │  ├─ publisher: Javier Blanco
 │  ├─ email: http://jbgutierrez.info
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/path-parse
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/path-parse/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/path-parse
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/path-parse/LICENSE
 ├─ path-platform@0.11.15
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/tjfontaine/node-path-platform
 │  ├─ publisher: Timothy J Fontaine
 │  ├─ email: tjfontaine@gmail.com
 │  ├─ url: http://atxconsulting.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/path-platform
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/path-platform/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/path-platform
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/path-platform/LICENSE
 ├─ pbkdf2@3.0.17
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/pbkdf2
 │  ├─ publisher: Daniel Cousens
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/pbkdf2
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/pbkdf2/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/pbkdf2
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/pbkdf2/LICENSE
 ├─ plotly.js-dist@1.48.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/plotly/plotly.js
 │  ├─ publisher: Plotly, Inc.
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/plotly.js-dist
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/plotly.js-dist/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/plotly.js-dist
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/plotly.js-dist/LICENSE
 ├─ portfinder@1.0.20
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/indexzero/node-portfinder
 │  ├─ publisher: Charlie Robbins
 │  ├─ email: charlie.robbins@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/portfinder
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/portfinder/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/portfinder
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/portfinder/LICENSE
 ├─ posix-character-classes@0.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/posix-character-classes
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/posix-character-classes
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/posix-character-classes/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/posix-character-classes
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/posix-character-classes/LICENSE
 ├─ process-nextick-args@2.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/calvinmetcalf/process-nextick-args
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/process-nextick-args
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/process-nextick-args/license.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/process-nextick-args
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/process-nextick-args/license.md
 ├─ process@0.11.10
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/shtylman/node-process
 │  ├─ publisher: Roman Shtylman
 │  ├─ email: shtylman@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/process
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/process/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/process
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/process/LICENSE
 ├─ public-encrypt@4.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/publicEncrypt
 │  ├─ publisher: Calvin Metcalf
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/public-encrypt
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/public-encrypt/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/public-encrypt
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/public-encrypt/LICENSE
 ├─ punycode@1.3.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/bestiejs/punycode.js
 │  ├─ publisher: Mathias Bynens
 │  ├─ url: https://mathiasbynens.be/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/url/node_modules/punycode
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/url/node_modules/punycode/LICENSE-MIT.txt
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/url/node_modules/punycode
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/url/node_modules/punycode/LICENSE-MIT.txt
 ├─ punycode@1.4.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/bestiejs/punycode.js
 │  ├─ publisher: Mathias Bynens
 │  ├─ url: https://mathiasbynens.be/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/punycode
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/punycode/LICENSE-MIT.txt
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/punycode
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/punycode/LICENSE-MIT.txt
 ├─ qs@2.3.3
 │  ├─ licenses: BSD
 │  ├─ repository: https://github.com/hapijs/qs
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/qs
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/qs/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/qs
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/qs/LICENSE
 ├─ querystring-es3@0.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/mike-spainhower/querystring
 │  ├─ publisher: Irakli Gozalishvili
 │  ├─ email: rfobic@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/querystring-es3
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/querystring-es3/License.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/querystring-es3
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/querystring-es3/License.md
 ├─ querystring@0.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/Gozala/querystring
 │  ├─ publisher: Irakli Gozalishvili
 │  ├─ email: rfobic@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/querystring
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/querystring/License.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/querystring
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/querystring/License.md
 ├─ randombytes@2.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/randombytes
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/randombytes
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/randombytes/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/randombytes
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/randombytes/LICENSE
 ├─ randomfill@1.0.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/randomfill
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/randomfill
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/randomfill/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/randomfill
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/randomfill/LICENSE
 ├─ read-installed@4.0.3
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/read-installed
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/read-installed
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/read-installed/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/read-installed
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/read-installed/LICENSE
 ├─ read-only-stream@2.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/read-only-stream
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/read-only-stream
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/read-only-stream/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/read-only-stream
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/read-only-stream/LICENSE
 ├─ read-package-json@2.0.13
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/read-package-json
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/read-package-json
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/read-package-json/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/read-package-json
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/read-package-json/LICENSE
 ├─ readable-stream@2.3.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/nodejs/readable-stream
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/readable-stream
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/readable-stream/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/readable-stream
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/readable-stream/LICENSE
 ├─ readdir-scoped-modules@1.1.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/readdir-scoped-modules
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/readdir-scoped-modules
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/readdir-scoped-modules/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/readdir-scoped-modules
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/readdir-scoped-modules/LICENSE
 ├─ readdirp@2.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/paulmillr/readdirp
 │  ├─ publisher: Thorsten Lorenz
 │  ├─ email: thlorenz@gmx.de
 │  ├─ url: thlorenz.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/readdirp
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/readdirp/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/readdirp
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/readdirp/LICENSE
 ├─ regex-not@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/regex-not
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/regex-not
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/regex-not/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/regex-not
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/regex-not/LICENSE
 ├─ remove-trailing-separator@1.1.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/darsain/remove-trailing-separator
 │  ├─ publisher: darsain
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/remove-trailing-separator
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/remove-trailing-separator/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/remove-trailing-separator
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/remove-trailing-separator/license
 ├─ repeat-element@1.1.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/repeat-element
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/repeat-element
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/repeat-element/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/repeat-element
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/repeat-element/LICENSE
 ├─ repeat-string@1.6.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/repeat-string
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: http://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/repeat-string
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/repeat-string/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/repeat-string
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/repeat-string/LICENSE
 ├─ requires-port@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/unshiftio/requires-port
 │  ├─ publisher: Arnout Kazemier
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/requires-port
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/requires-port/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/requires-port
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/requires-port/LICENSE
 ├─ resolve-url@0.2.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/lydell/resolve-url
 │  ├─ publisher: Simon Lydell
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/resolve-url
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/resolve-url/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/resolve-url
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/resolve-url/LICENSE
 ├─ resolve@1.1.7
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-resolve
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/browser-resolve/node_modules/resolve
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/browser-resolve/node_modules/resolve/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/browser-resolve/node_modules/resolve
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/browser-resolve/node_modules/resolve/LICENSE
 ├─ resolve@1.11.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/resolve
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/resolve
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/resolve/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/resolve
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/resolve/LICENSE
 ├─ ret@0.1.15
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/fent/ret.js
 │  ├─ publisher: Roly Fentanes
 │  ├─ url: https://github.com/fent
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ret
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ret/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/ret
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/ret/LICENSE
 ├─ ripemd160@2.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/crypto-browserify/ripemd160
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/ripemd160
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/ripemd160/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/ripemd160
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/ripemd160/LICENSE
 ├─ safe-buffer@5.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/feross/safe-buffer
 │  ├─ publisher: Feross Aboukhadijeh
 │  ├─ email: feross@feross.org
 │  ├─ url: http://feross.org
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/readable-stream/node_modules/safe-buffer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/readable-stream/node_modules/safe-buffer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/readable-stream/node_modules/safe-buffer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/readable-stream/node_modules/safe-buffer/LICENSE
 ├─ safe-buffer@5.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/feross/safe-buffer
 │  ├─ publisher: Feross Aboukhadijeh
 │  ├─ email: feross@feross.org
 │  ├─ url: http://feross.org
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/safe-buffer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/safe-buffer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/safe-buffer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/safe-buffer/LICENSE
 ├─ safe-regex@1.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/safe-regex
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/safe-regex
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/safe-regex/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/safe-regex
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/safe-regex/LICENSE
 ├─ semver@5.7.0
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/node-semver
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/semver
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/semver/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/semver
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/semver/LICENSE
 ├─ set-value@2.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/set-value
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/set-value
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/set-value/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/set-value
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/set-value/LICENSE
 ├─ sha.js@2.4.11
 │  ├─ licenses: (MIT AND BSD-3-Clause)
 │  ├─ repository: https://github.com/crypto-browserify/sha.js
 │  ├─ publisher: Dominic Tarr
 │  ├─ email: dominic.tarr@gmail.com
 │  ├─ url: dominictarr.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/sha.js
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/sha.js/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/sha.js
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/sha.js/LICENSE
 ├─ shasum@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/dominictarr/shasum
 │  ├─ publisher: 'Dominic Tarr'
 │  ├─ email: dominic.tarr@gmail.com
 │  ├─ url: http://dominictarr.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/shasum
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/shasum/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/shasum
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/shasum/LICENSE
 ├─ shell-quote@1.6.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-shell-quote
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/shell-quote
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/shell-quote/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/shell-quote
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/shell-quote/LICENSE
 ├─ simple-concat@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/feross/simple-concat
 │  ├─ publisher: Feross Aboukhadijeh
 │  ├─ email: feross@feross.org
 │  ├─ url: http://feross.org/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/simple-concat
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/simple-concat/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/simple-concat
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/simple-concat/LICENSE
 ├─ slash@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/sindresorhus/slash
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: http://sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/slash
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/slash/readme.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/slash
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/slash/readme.md
 ├─ slide@1.1.6
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/isaacs/slide-flow-control
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/slide
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/slide/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/slide
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/slide/LICENSE
 ├─ snapdragon-node@2.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/snapdragon-node
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/snapdragon-node
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/snapdragon-node/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/snapdragon-node
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/snapdragon-node/LICENSE
 ├─ snapdragon-util@3.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/snapdragon-util
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/snapdragon-util
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/snapdragon-util/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/snapdragon-util
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/snapdragon-util/LICENSE
 ├─ snapdragon@0.8.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/snapdragon
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/snapdragon
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/snapdragon/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/snapdragon
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/snapdragon/LICENSE
 ├─ source-map-resolve@0.5.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/lydell/source-map-resolve
 │  ├─ publisher: Simon Lydell
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/source-map-resolve
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/source-map-resolve/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/source-map-resolve
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/source-map-resolve/LICENSE
 ├─ source-map-url@0.4.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/lydell/source-map-url
 │  ├─ publisher: Simon Lydell
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/source-map-url
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/source-map-url/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/source-map-url
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/source-map-url/LICENSE
 ├─ source-map@0.5.7
 │  ├─ licenses: BSD-3-Clause
 │  ├─ repository: https://github.com/mozilla/source-map
 │  ├─ publisher: Nick Fitzgerald
 │  ├─ email: nfitzgerald@mozilla.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/source-map
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/source-map/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/source-map
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/source-map/LICENSE
 ├─ spdx-compare@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/kemitchell/spdx-compare.js
 │  ├─ publisher: Kyle E. Mitchell
 │  ├─ email: kyle@kemitchell.com
 │  ├─ url: https://kemitchell.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-compare
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-compare/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-compare
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-compare/LICENSE.md
 ├─ spdx-correct@3.1.0
 │  ├─ licenses: Apache-2.0
 │  ├─ repository: https://github.com/jslicense/spdx-correct.js
 │  ├─ publisher: Kyle E. Mitchell
 │  ├─ email: kyle@kemitchell.com
 │  ├─ url: https://kemitchell.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-correct
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-correct/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-correct
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-correct/LICENSE
 ├─ spdx-exceptions@2.2.0
 │  ├─ licenses: CC-BY-3.0
 │  ├─ repository: https://github.com/kemitchell/spdx-exceptions.json
 │  ├─ publisher: The Linux Foundation
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-exceptions
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-exceptions/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-exceptions
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-exceptions/README.md
 ├─ spdx-expression-parse@3.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jslicense/spdx-expression-parse.js
 │  ├─ publisher: Kyle E. Mitchell
 │  ├─ email: kyle@kemitchell.com
 │  ├─ url: http://kemitchell.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-expression-parse
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-expression-parse/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-expression-parse
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-expression-parse/LICENSE
 ├─ spdx-license-ids@3.0.4
 │  ├─ licenses: CC0-1.0
 │  ├─ repository: https://github.com/shinnn/spdx-license-ids
 │  ├─ publisher: Shinnosuke Watanabe
 │  ├─ url: https://github.com/shinnn
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-license-ids
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-license-ids/README.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-license-ids
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-license-ids/README.md
 ├─ spdx-ranges@2.1.0
 │  ├─ licenses: CC-BY-3.0
 │  ├─ repository: https://github.com/kemitchell/spdx-ranges.js
 │  ├─ publisher: The Linux Foundation
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-ranges
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-ranges/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-ranges
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-ranges/LICENSE.md
 ├─ spdx-satisfies@4.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/kemitchell/spdx-satisfies.js
 │  ├─ publisher: Kyle E. Mitchell
 │  ├─ email: kyle@kemitchell.com
 │  ├─ url: https://kemitchell.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-satisfies
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/spdx-satisfies/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-satisfies
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/spdx-satisfies/LICENSE
 ├─ split-string@3.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/split-string
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/split-string
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/split-string/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/split-string
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/split-string/LICENSE
 ├─ static-extend@0.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/static-extend
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/static-extend
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/static-extend/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/static-extend
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/static-extend/LICENSE
 ├─ stream-browserify@2.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/stream-browserify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/stream-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/stream-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/stream-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/stream-browserify/LICENSE
 ├─ stream-combiner2@1.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/stream-combiner2
 │  ├─ publisher: 'Dominic Tarr'
 │  ├─ email: dominic.tarr@gmail.com
 │  ├─ url: http://dominictarr.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/stream-combiner2
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/stream-combiner2/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/stream-combiner2
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/stream-combiner2/LICENSE
 ├─ stream-http@2.8.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jhiesey/stream-http
 │  ├─ publisher: John Hiesey
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/stream-http
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/stream-http/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/stream-http
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/stream-http/LICENSE
 ├─ stream-splicer@2.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/stream-splicer
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/stream-splicer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/stream-splicer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/stream-splicer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/stream-splicer/LICENSE
 ├─ string_decoder@1.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/nodejs/string_decoder
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/readable-stream/node_modules/string_decoder
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/readable-stream/node_modules/string_decoder/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/readable-stream/node_modules/string_decoder
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/readable-stream/node_modules/string_decoder/LICENSE
 ├─ string_decoder@1.2.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/nodejs/string_decoder
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/string_decoder
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/string_decoder/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/string_decoder
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/string_decoder/LICENSE
 ├─ subarg@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/subarg
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/subarg
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/subarg/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/subarg
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/subarg/LICENSE
 ├─ supports-color@5.5.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/chalk/supports-color
 │  ├─ publisher: Sindre Sorhus
 │  ├─ email: sindresorhus@gmail.com
 │  ├─ url: sindresorhus.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/supports-color
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/supports-color/license
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/supports-color
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/supports-color/license
 ├─ syntax-error@1.4.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-syntax-error
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/syntax-error
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/syntax-error/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/syntax-error
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/syntax-error/LICENSE
 ├─ through2@2.0.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/rvagg/through2
 │  ├─ publisher: Rod Vagg
 │  ├─ email: r@va.gg
 │  ├─ url: https://github.com/rvagg
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/through2
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/through2/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/through2
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/through2/LICENSE.md
 ├─ through@2.3.8
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/dominictarr/through
 │  ├─ publisher: Dominic Tarr
 │  ├─ email: dominic.tarr@gmail.com
 │  ├─ url: dominictarr.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/through
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/through/LICENSE.APACHE2
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/through
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/through/LICENSE.APACHE2
 ├─ timers-browserify@1.4.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jryans/timers-browserify
 │  ├─ publisher: J. Ryan Stinnett
 │  ├─ email: jryans@gmail.com
 │  ├─ url: http://convolv.es/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/timers-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/timers-browserify/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/timers-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/timers-browserify/LICENSE.md
 ├─ to-arraybuffer@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jhiesey/to-arraybuffer
 │  ├─ publisher: John Hiesey
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/to-arraybuffer
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/to-arraybuffer/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/to-arraybuffer
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/to-arraybuffer/LICENSE
 ├─ to-object-path@0.3.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/to-object-path
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/to-object-path
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/to-object-path/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/to-object-path
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/to-object-path/LICENSE
 ├─ to-regex-range@2.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/micromatch/to-regex-range
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/to-regex-range
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/to-regex-range/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/to-regex-range
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/to-regex-range/LICENSE
 ├─ to-regex@3.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/to-regex
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/to-regex
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/to-regex/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/to-regex
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/to-regex/LICENSE
 ├─ treeify@1.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/notatestuser/treeify
 │  ├─ publisher: Luke Plaster
 │  ├─ email: notatestuser@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/treeify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/treeify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/treeify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/treeify/LICENSE
 ├─ tty-browserify@0.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/browserify/tty-browserify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/tty-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/tty-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/tty-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/tty-browserify/LICENSE
 ├─ typedarray@0.0.6
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/typedarray
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/typedarray
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/typedarray/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/typedarray
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/typedarray/LICENSE
 ├─ typical@4.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/75lb/typical
 │  ├─ publisher: Lloyd Brookes
 │  ├─ email: 75pound@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/typical
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/typical/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/typical
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/typical/LICENSE
 ├─ umd@3.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/ForbesLindesay/umd
 │  ├─ publisher: ForbesLindesay
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/umd
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/umd/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/umd
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/umd/LICENSE
 ├─ undeclared-identifiers@1.1.3
 │  ├─ licenses: Apache-2.0
 │  ├─ repository: https://github.com/goto-bus-stop/undeclared-identifiers
 │  ├─ publisher: Renée Kooi
 │  ├─ email: renee@kooi.me
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/undeclared-identifiers
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/undeclared-identifiers/LICENSE.md
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/undeclared-identifiers
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/undeclared-identifiers/LICENSE.md
 ├─ union-value@1.0.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/union-value
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/union-value
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/union-value/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/union-value
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/union-value/LICENSE
 ├─ union@0.4.6
 │  ├─ licenses: MIT*
 │  ├─ repository: https://github.com/flatiron/union
 │  ├─ publisher: Charlie Robbins
 │  ├─ email: charlie.robbins@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/union
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/union/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/union
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/union/LICENSE
 ├─ unset-value@1.0.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/unset-value
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/unset-value/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/unset-value/LICENSE
 ├─ upath@1.1.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/anodynos/upath
 │  ├─ publisher: Angelos Pikoulas
 │  ├─ email: agelos.pikoulas@gmail.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/upath
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/upath/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/upath
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/upath/LICENSE
 ├─ urix@0.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/lydell/urix
 │  ├─ publisher: Simon Lydell
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/urix
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/urix/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/urix
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/urix/LICENSE
 ├─ url-join@2.0.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jfromaniello/url-join
 │  ├─ publisher: José F. Romaniello
 │  ├─ email: jfromaniello@gmail.com
 │  ├─ url: http://joseoncode.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/url-join
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/url-join/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/url-join
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/url-join/LICENSE
 ├─ url@0.11.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/defunctzombie/node-url
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/url
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/url/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/url
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/url/LICENSE
 ├─ use@3.1.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jonschlinkert/use
 │  ├─ publisher: Jon Schlinkert
 │  ├─ url: https://github.com/jonschlinkert
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/use
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/use/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/use
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/use/LICENSE
 ├─ util-deprecate@1.0.2
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/TooTallNate/util-deprecate
 │  ├─ publisher: Nathan Rajlich
 │  ├─ email: nathan@tootallnate.net
 │  ├─ url: http://n8.io/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/util-deprecate
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/util-deprecate/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/util-deprecate
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/util-deprecate/LICENSE
 ├─ util-extend@1.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/isaacs/util-extend
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/util-extend
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/util-extend/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/util-extend
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/util-extend/LICENSE
 ├─ util@0.10.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/defunctzombie/node-util
 │  ├─ publisher: Joyent
 │  ├─ url: http://www.joyent.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/assert/node_modules/util
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/assert/node_modules/util/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/assert/node_modules/util
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/assert/node_modules/util/LICENSE
 ├─ util@0.10.4
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/defunctzombie/node-util
 │  ├─ publisher: Joyent
 │  ├─ url: http://www.joyent.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/util
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/util/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/util
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/util/LICENSE
 ├─ validate-npm-package-license@3.0.4
 │  ├─ licenses: Apache-2.0
 │  ├─ repository: https://github.com/kemitchell/validate-npm-package-license.js
 │  ├─ publisher: Kyle E. Mitchell
 │  ├─ email: kyle@kemitchell.com
 │  ├─ url: https://kemitchell.com
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/validate-npm-package-license
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/validate-npm-package-license/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/validate-npm-package-license
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/validate-npm-package-license/LICENSE
 ├─ vm-browserify@1.1.0
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/vm-browserify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/vm-browserify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/vm-browserify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/vm-browserify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/vm-browserify/LICENSE
 ├─ watchify@3.11.1
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/watchify
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/watchify
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/watchify/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/watchify
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/watchify/LICENSE
 ├─ wordwrap@0.0.3
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/substack/node-wordwrap
 │  ├─ publisher: James Halliday
 │  ├─ email: mail@substack.net
 │  ├─ url: http://substack.net
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/wordwrap
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/wordwrap/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/wordwrap
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/wordwrap/LICENSE
 ├─ wrappy@1.0.2
 │  ├─ licenses: ISC
 │  ├─ repository: https://github.com/npm/wrappy
 │  ├─ publisher: Isaac Z. Schlueter
 │  ├─ email: i@izs.me
 │  ├─ url: http://blog.izs.me/
-│  ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/wrappy
-│  └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/wrappy/LICENSE
+│  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/wrappy
+│  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/wrappy/LICENSE
 └─ xtend@4.0.2
    ├─ licenses: MIT
    ├─ repository: https://github.com/Raynos/xtend
    ├─ publisher: Raynos
    ├─ email: raynos2@gmail.com
-   ├─ path: /home/etienne/Documents/repos/opengrib2/node_modules/xtend
-   └─ licenseFile: /home/etienne/Documents/repos/opengrib2/node_modules/xtend/LICENSE
+   ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/xtend
+   └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/xtend/LICENSE
 

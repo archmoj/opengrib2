@@ -1,19 +1,25 @@
-'use strict';
+"use strict";
 
 var http = require("http");
-var GRIB2CLASS = require('grib2class');
+var GRIB2CLASS = require("grib2class");
 
 var isInteractive = true; // could be set to false for non-interactive graphs - useful e.g. for working with the ensembles
 var Plotly = (isInteractive) ? require("plotly.js-dist") : null;
 
 var jpeg2000decoder = function (imageBytes) {
-        var jpeg2000 = new JpxImage(); // requires https://github.com/OHIF/image-JPEG2000/blob/master/dist/jpx.min.js'
+        var jpeg2000 = new JpxImage(); // requires https://github.com/OHIF/image-JPEG2000/blob/master/dist/jpx.min.js"
         jpeg2000.parse(imageBytes);
         return jpeg2000.tiles[0].items;
 }
 
 var mocks;
-var loading = document.getElementById('loading');
+var loading = document.getElementById("loading");
+var enableLoading = function () {
+        loading.style.display = "block";
+};
+var disableLoading = function () {
+        loading.style.display = "none";
+};
 
 var deltaTime = 6; // i.e. the delay needed for the input models to be available on the web
 var modelTime = new Date();
@@ -26,36 +32,36 @@ var HOUR = modelTime.getUTCHours();
 //console.log(YEAR, MONTH, DAY, HOUR);
 
 HOUR = 12 * Math.floor(HOUR / 12); // most of CMC models are produced at 00Z and 12Z
-var HH = String('00' + HOUR).slice(-2);
-var MM = String('00' + MONTH).slice(-2);
-var DD = String('00' + DAY).slice(-2);
-var YYYY = String('0000' + YEAR).slice(-4);
+var HH = String("00" + HOUR).slice(-2);
+var MM = String("00" + MONTH).slice(-2);
+var DD = String("00" + DAY).slice(-2);
+var YYYY = String("0000" + YEAR).slice(-4);
 //console.log(YYYY, MM, DD, HH);
 
-var FHR = '024';
+var FHR = "024";
 
-var timeStamp = YYYY + MM + DD + HH + '_P' + FHR;
+var timeStamp = YYYY + MM + DD + HH + "_P" + FHR;
 
 var liveMocks = [
-        'https://dd.weather.gc.ca/model_wave/ocean/global/grib2/' + HH + '/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_' + timeStamp + '.grib2',
-        'https://dd.weather.gc.ca//model_gem_global/25km/grib2/lat_lon/' + HH + '/' + FHR + '/CMC_glb_TMP_TGL_2_latlon.24x.24_' + timeStamp + '.grib2',
-        'https://dd.weather.gc.ca/model_hrdps/west/grib2/' + HH + '/' + FHR + '/CMC_hrdps_west_TMP_TGL_2_ps2.5km_' + timeStamp + '-00.grib2',
-        'https://dd.weather.gc.ca/model_hrdps/east/grib2/' + HH + '/' + FHR + '/CMC_hrdps_east_TMP_TGL_2_ps2.5km_' + timeStamp + '-00.grib2',
-        'https://dd.weather.gc.ca/model_hrdps/continental/grib2/' + HH + '/' + FHR + '/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_' + timeStamp + '-00.grib2',
-        'https://dd.weather.gc.ca/model_gem_regional/10km/grib2/' + HH + '/' + FHR + '/CMC_reg_TMP_TGL_2_ps10km_' + timeStamp + '.grib2',
-        'https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/' + HH + '/' + FHR + '/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_' + timeStamp + '_allmbrs.grib2',
-        'https://dd.weather.gc.ca/ensemble/geps/grib2/raw/' + HH + '/' + FHR + '/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_' + timeStamp + '_allmbrs.grib2'
+        "https://dd.weather.gc.ca/model_wave/ocean/global/grib2/" + HH + "/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_" + timeStamp + ".grib2",
+        "https://dd.weather.gc.ca//model_gem_global/25km/grib2/lat_lon/" + HH + "/" + FHR + "/CMC_glb_TMP_TGL_2_latlon.24x.24_" + timeStamp + ".grib2",
+        "https://dd.weather.gc.ca/model_hrdps/west/grib2/" + HH + "/" + FHR + "/CMC_hrdps_west_TMP_TGL_2_ps2.5km_" + timeStamp + "-00.grib2",
+        "https://dd.weather.gc.ca/model_hrdps/east/grib2/" + HH + "/" + FHR + "/CMC_hrdps_east_TMP_TGL_2_ps2.5km_" + timeStamp + "-00.grib2",
+        "https://dd.weather.gc.ca/model_hrdps/continental/grib2/" + HH + "/" + FHR + "/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_" + timeStamp + "-00.grib2",
+        "https://dd.weather.gc.ca/model_gem_regional/10km/grib2/" + HH + "/" + FHR + "/CMC_reg_TMP_TGL_2_ps10km_" + timeStamp + ".grib2",
+        "https://dd.weather.gc.ca/ensemble/reps/15km/grib2/raw/" + HH + "/" + FHR + "/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_" + timeStamp + "_allmbrs.grib2",
+        "https://dd.weather.gc.ca/ensemble/geps/grib2/raw/" + HH + "/" + FHR + "/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_" + timeStamp + "_allmbrs.grib2"
 ];
 
 var localMocks = [
-        './grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019081112_P024.grib2',
-        './grib2/CMC_glb_TMP_TGL_2_latlon.24x.24_2019081112_P024.grib2',
-        './grib2/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2',
-        './grib2/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2',
-        './grib2/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_2019081112_P024-00.grib2',
-        './grib2/CMC_reg_TMP_TGL_2_ps10km_2019081112_P024.grib2',
-        './grib2/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_2019081112_P024_allmbrs.grib2',
-        './grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019081112_P024_allmbrs.grib2'
+        "./grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019081112_P024.grib2",
+        "./grib2/CMC_glb_TMP_TGL_2_latlon.24x.24_2019081112_P024.grib2",
+        "./grib2/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2",
+        "./grib2/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2",
+        "./grib2/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_2019081112_P024-00.grib2",
+        "./grib2/CMC_reg_TMP_TGL_2_ps10km_2019081112_P024.grib2",
+        "./grib2/CMC-reps-srpe-raw_TMP_TGL_2m_ps15km_2019081112_P024_allmbrs.grib2",
+        "./grib2/CMC_geps-raw_TMP_TGL_2m_latlon0p5x0p5_2019081112_P024_allmbrs.grib2"
 ];
 
 console.log(
@@ -63,16 +69,16 @@ console.log(
         process.env.NODE_ENV + "'"
 );
 switch (process.env.NODE_ENV) {
-        case 'proxy-data':
+        case "proxy-data":
                 mocks = liveMocks;
-                console.log('Using grib2 data fetched from Datamart using proxy server!')
+                console.log("Using grib2 data fetched from Datamart using proxy server!")
                 break;
-        case 'local-data':
+        case "local-data":
                 mocks = localMocks;
-                console.log('Using local (already downloaded) grib2 data')
+                console.log("Using local (already downloaded) grib2 data")
                 break;
         default:
-                console.error('BAD BUNDLE');
+                console.error("BAD BUNDLE");
                 break;
 }
 
@@ -92,7 +98,7 @@ function makeDropDown() {
 }
 
 function getNumMembers(link) {
-        return link.indexOf('ensemble') !== -1 ?
+        return link.indexOf("ensemble") !== -1 ?
                 21 : // i.e. ensembles
                 1; //i.e. deterministic
 };
@@ -101,18 +107,18 @@ var isGlobal;
 
 function go(link) {
         console.log("Loading:'" + link + "'");
-        loading.style.display = 'block';
+        enableLoading();
 
         isGlobal =
-                link.indexOf('geps') != -1 ||
-                link.indexOf('glb') != -1 ||
-                link.indexOf('global') != -1;
+                link.indexOf("geps") != -1 ||
+                link.indexOf("glb") != -1 ||
+                link.indexOf("global") != -1;
 
-        link = link.replace('https://', 'http://');
+        link = link.replace("https://", "http://");
 
-        if (process.env.NODE_ENV === 'proxy-data') {
-                link = link.replace('://dd.meteo.gc.ca/', '://localhost:3000/');
-                link = link.replace('://dd.weather.gc.ca/', '://localhost:3000/');
+        if (process.env.NODE_ENV === "proxy-data") {
+                link = link.replace("://dd.meteo.gc.ca/", "://localhost:3000/");
+                link = link.replace("://dd.weather.gc.ca/", "://localhost:3000/");
         }
 
         var myGrid = new GRIB2CLASS({
@@ -123,7 +129,7 @@ function go(link) {
 
         http.get(link, function (res, err) {
                 if (err) {
-                        loading.style.display = 'none';
+                        loading.style.display = "none";
                 }
                 var allChunks = [];
                 res.on("data", function (chunk) {
@@ -140,8 +146,8 @@ function go(link) {
                                 basicPlot(myGrid);
                         }
                 });
-        }).on('error', function (err) {
-                loading.style.display = 'none';
+        }).on("error", function (err) {
+                disableLoading();
                 window.alert(err);
         });
 }
@@ -178,11 +184,11 @@ function basicPlot(grid) {
         }
 
         // display
-        var canvas = document.getElementById('basicPlot');
+        var canvas = document.getElementById("basicPlot");
         canvas.width = nx;
         canvas.height = ny;
 
-        var ctx = canvas.getContext('2d');
+        var ctx = canvas.getContext("2d");
 
         var img = ctx.createImageData(nx, ny);
 
@@ -205,14 +211,14 @@ function basicPlot(grid) {
 
         ctx.putImageData(img, 0, 0);
 
-        loading.style.display = 'none';
+        loading.style.display = "none";
 }
 
 function interactivePlot(grid) {
         var nx = grid.Nx;
         var ny = grid.Ny;
 
-        // let's start with deterministic data i.e. member 0
+        // let"s start with deterministic data i.e. member 0
         var values = grid.DataValues[0];
 
         var k = 0;
@@ -225,11 +231,12 @@ function interactivePlot(grid) {
         }
 
         var data = [{
-                type: 'heatmap',
+                type: "heatmap",
                 z: z,
                 //x: reader.getDataVariable(LON_NAME),
                 //y: reader.getDataVariable(LAT_NAME),
-                hovertemplate: '%{z:.1f}K<extra>(%{x}, %{y})</extra>',
+                hovertemplate: "%{z:.1f}K<extra>(%{x}, %{y})</extra>",
+                colorscale: "Portland",
                 colorbar: {
                         len: 0.5
                 }
@@ -237,31 +244,31 @@ function interactivePlot(grid) {
 
         if (isGlobal) {
                 data.push({
-                        type: 'scattergeo'
+                        type: "scattergeo"
                 });
         }
 
         var title = [
-                'TypeOfData: ' + grid.meta.TypeOfData,
-                'Variable: ' + grid.meta.CategoryOfParametersByProductDiscipline
-        ].join('<br>');
+                "TypeOfData: " + grid.meta.TypeOfData,
+                "Variable: " + grid.meta.CategoryOfParametersByProductDiscipline
+        ].join("<br>");
 
         var layout = {
                 xaxis: {
                         visible: false,
-                        constrain: 'domain',
-                        scaleanchor: 'y',
+                        constrain: "domain",
+                        scaleanchor: "y",
                         fixedrange: true
                 },
                 yaxis: {
                         visible: false,
-                        constrain: 'domain',
+                        constrain: "domain",
                         scaleratio: 0.5,
                         fixedrange: true
                 },
                 geo: {
                         projection: { rotation: { lon: 180 + grid.Lo1 } },
-                        bgcolor: 'rgba(0,0,0,0)',
+                        bgcolor: "rgba(0,0,0,0)",
                         dragmode: false
                 },
                 annotations: [{
@@ -283,14 +290,14 @@ function interactivePlot(grid) {
         var config = {
                 scrollZoom: false,
                 responsive: true,
-                modeBarButtons: [['toggleHover']]
+                modeBarButtons: [["toggleHover"]]
         };
 
-        Plotly.newPlot('interactivePlot', data, layout, config)
+        Plotly.newPlot("interactivePlot", data, layout, config)
                 .then(function (gd) {
-                        Plotly.d3.select(gd).select('g.geo > .bg > rect').style('pointer-events', null);
+                        Plotly.d3.select(gd).select("g.geo > .bg > rect").style("pointer-events", null);
 
-                        loading.style.display = 'none';
+                        disableLoading();
                 });
 }
 
@@ -298,4 +305,4 @@ window.go = go;
 
 makeDropDown();
 
-go(mocks[0]);
+go(mocks[1]);

@@ -29,7 +29,8 @@
     "CMC",
     "MSC",
     "ECCC",
-    "plotly"
+    "plotly",
+    "plotly.js"
   ],
   "author": "Mojatab Samimi, Étienne Tétreault-Pinard, Antoine Roy-Gobeil",
   "license": "MIT",
