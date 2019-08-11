@@ -1,7 +1,7 @@
 'use strict';
 
 var http = require("http");
-var GRIB2CLASS = require('./grib2class');
+var GRIB2CLASS = require('grib2class');
 
 var isInteractive = true;
 var Plotly = (isInteractive) ? require("plotly.js-dist") : null;
