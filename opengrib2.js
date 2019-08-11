@@ -54,8 +54,8 @@ var liveMocks = [
 ];
 
 var localMocks = [
-        "./grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019081112_P024.grib2",
         "./grib2/CMC_glb_TMP_TGL_2_latlon.24x.24_2019081112_P024.grib2",
+        "./grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019081112_P024.grib2",
         "./grib2/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2",
         "./grib2/CMC_hrdps_east_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2",
         "./grib2/CMC_hrdps_continental_TMP_TGL_80_ps2.5km_2019081112_P024-00.grib2",
@@ -305,4 +305,4 @@ window.go = go;
 
 makeDropDown();
 
-go(mocks[1]);
+go(mocks[0]);
