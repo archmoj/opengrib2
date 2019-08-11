@@ -1,7 +1,7 @@
 <head>
-  <!-- <script src='//rawgit.com/OHIF/image-JPEG2000/master/dist/jpx.min.js'  type="text/javascript"></script> -->
+  <!-- <script src="//rawgit.com/OHIF/image-JPEG2000/master/dist/jpx.min.js"  type="text/javascript"></script> -->
   <script src="vendor/jpx.min.js"></script>
-  <link href='assets/loading.css' rel='stylesheet' type='text/css' />
+  <link href="assets/loading.css" rel="stylesheet" type="text/css" />
   <style>
 .loading {
   display: none;
@@ -25,9 +25,14 @@
 <body>
   <div id="main" class="container">
       <h1>opengrib2</h1>
+      </br>
+      GitHub: <a href="url">https://github.com/archmoj/opengrib2"</a>
+      </br>
+      </br>
       Select file: <select id="file-selector"></select>
+      <div id="interactivePlot">
+      </div>
       <canvas id="basicPlot"></canvas>
-      <div id="interactivePlot"></div>
   </div>
   <div id="loading" class="loading"></div>
   <script src="build/bundle.js"></script>
