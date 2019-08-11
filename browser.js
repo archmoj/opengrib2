@@ -28,21 +28,21 @@ var DATA = {
 var mocks;
 var loading = document.getElementById('loading');
 
-const deltaTime = 6; // i.e. the delay needed for the input models to be available on the web
-const modelTime = new Date();
+var deltaTime = 6; // i.e. the delay needed for the input models to be available on the web
+var modelTime = new Date();
 modelTime.setHours(modelTime.getHours() - deltaTime);
 
-const YEAR = modelTime.getUTCFullYear();
-const MONTH = modelTime.getUTCMonth() + 1;
-const DAY = modelTime.getUTCDate();
-const HOUR = modelTime.getUTCHours();
+var YEAR = modelTime.getUTCFullYear();
+var MONTH = modelTime.getUTCMonth() + 1;
+var DAY = modelTime.getUTCDate();
+var HOUR = modelTime.getUTCHours();
 //console.log(YEAR, MONTH, DAY, HOUR);
 
-var YYYY = String('0000' + YEAR).slice(-4);
-var DD = String('00' + DAY).slice(-2);
-var MM = String('00' + MONTH).slice(-2);
+HOUR = 12 * Math.floor(HOUR / 12); // most of CMC models are produced at 00Z and 12Z
 var HH = String('00' + HOUR).slice(-2);
-HH = 12 * Math.floor(HH / 12);
+var MM = String('00' + MONTH).slice(-2);
+var DD = String('00' + DAY).slice(-2);
+var YYYY = String('0000' + YEAR).slice(-4);
 //console.log(YYYY, MM, DD, HH);
 
 var FHR = '024';
