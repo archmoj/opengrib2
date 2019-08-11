@@ -2,14 +2,14 @@
   "name": "opengrib2",
   "version": "0.0.0",
   "description": "native JavaScript utility for opening grib2 data",
-  "main": "browser.js",
+  "main": "opengrib2.js",
   "scripts": {
-    "dev": "watchify browser.js -t envify -o build/bundle.js -v ",
+    "dev": "watchify opengrib2.js -t envify -o build/bundle.js -v ",
     "start": "http-server -p 2121 -o",
     "proxy": "node server/proxy.js",
     "build:license_list": "license-checker > license_list.txt",
-    "build:bundle-proxy-data": "NODE_ENV='proxy-data' browserify browser.js -t envify > build/bundle.js",
-    "build:bundle-local-data": "NODE_ENV='local-data' browserify browser.js -t envify > build/bundle.js"
+    "build:bundle-proxy-data": "NODE_ENV='proxy-data' browserify opengrib2.js -t envify > build/bundle.js",
+    "build:bundle-local-data": "NODE_ENV='local-data' browserify opengrib2.js -t envify > build/bundle.js"
   },
   "repository": {
     "type": "git",
