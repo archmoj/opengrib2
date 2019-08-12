@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "command-line-args": "^5.1.1",
-    "grib2class": "^1.0.3",
+    "grib2class": "^1.0.4",
     "http-proxy": "^1.17.0",
     "http-server": "^0.11.1",
     "plotly.js-dist": "^1.48.3"

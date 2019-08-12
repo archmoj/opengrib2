@@ -222,25 +222,35 @@ function interactivePlot (grid) {
     var values = grid.DataValues[0];
 
     var k = 0;
+    var x = new Array(nx);
+    var y = new Array(ny);
     var z = new Array(ny);
-    for (var i = 0; i < ny; i++) {
-        z[i] = new Array(nx);
-        for (var j = 0; j < nx; j++) {
-            z[i][j] = values[k++];
+    for (var j = 0; j < ny; j++) {
+        z[j] = new Array(nx);
+        for (var i = 0; i < nx; i++) {
+            if (grid.TypeOfProjection === 0) { // Latitude/longitude
+                var lonLat = grid.getLonLat(i, j);
+                x[i] = lonLat[0];
+                y[j] = lonLat[1];
+            }
+            z[j][i] = values[k++];
         }
     }
 
     var data = [{
         type: "heatmap",
         z: z,
-        //x: reader.getDataVariable(LON_NAME),
-        //y: reader.getDataVariable(LAT_NAME),
         hovertemplate: "%{z:.1f}K<extra>(%{x}, %{y})</extra>",
         colorscale: "Portland",
         colorbar: {
             len: 0.5
         }
     }];
+
+    if (grid.TypeOfProjection === 0) { // Latitude/longitude
+        data[0].x = x;
+        data[0].y = y;
+    }
 
     if (isGlobal) {
         data.push({
