@@ -10,6 +10,11 @@
     "commonjs": true
   },
   "globals": {
+    "window": true,
+    "process": true,
+    "console": true,
+    "document": true,
+    "Buffer": true,
     "Promise": true,
     "Float32Array": true,
     "Float64Array": true,

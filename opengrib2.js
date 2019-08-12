@@ -1,13 +1,14 @@
 "use strict";
 
-var http = require("http");
-var GRIB2CLASS = require("grib2class");
-
 var isInteractive = true; // could be set to false for non-interactive graphs - useful e.g. for working with the ensembles
 var Plotly = (isInteractive) ? require("plotly.js-dist") : null;
 
+var http = require("http");
+var GRIB2CLASS = require("grib2class");
+
+var JpxImage = require("./jpeg2000/jpx.min.js"); // https://github.com/OHIF/image-JPEG2000/blob/master/dist/jpx.min.js"
 var jpeg2000decoder = function (imageBytes) {
-    var jpeg2000 = new JpxImage(); // requires https://github.com/OHIF/image-JPEG2000/blob/master/dist/jpx.min.js"
+    var jpeg2000 = new JpxImage();
     jpeg2000.parse(imageBytes);
     return jpeg2000.tiles[0].items;
 };
@@ -71,11 +72,11 @@ var mocks;
 switch (process.env.NODE_ENV) {
     case "proxy-data":
         mocks = liveMocks;
-        console.log("Using grib2 data fetched from Datamart using proxy server!")
+        console.log("Using grib2 data fetched from Datamart using proxy server!");
         break;
     case "local-data":
         mocks = localMocks;
-        console.log("Using local (already downloaded) grib2 data")
+        console.log("Using local (already downloaded) grib2 data");
         break;
     default:
         console.error("BAD BUNDLE");
