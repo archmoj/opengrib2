@@ -1033,7 +1033,7 @@
 │  ├─ repository: https://github.com/isaacs/node-graceful-fs
 │  ├─ path: /home/mojtaba/meteohack/opengrib2/node_modules/graceful-fs
 │  └─ licenseFile: /home/mojtaba/meteohack/opengrib2/node_modules/graceful-fs/LICENSE
-├─ grib2class@1.0.2
+├─ grib2class@1.0.5
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/archmoj/grib2class
 │  ├─ publisher: Mojtaba Samimi
