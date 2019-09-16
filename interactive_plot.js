@@ -31,7 +31,13 @@ module.exports = function interactivePlot (grid, div, call) {
         type: "heatmap",
         z: z,
         hovertemplate: "%{z:.1f}K<extra>(%{x}, %{y})</extra>",
-        colorscale: "Portland",
+        colorscale: [
+            [0.0, "rgb(0, 0, 127)"],
+            [0.2, "rgb(0, 0, 255)"],
+            [0.5, "rgb(255, 255, 255)"],
+            [0.8, "rgb(255, 0, 0)"],
+            [1.0, "rgb(127, 0, 0)"]
+        ],
         colorbar: {
             len: 0.5
         }

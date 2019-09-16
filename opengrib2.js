@@ -1,6 +1,7 @@
 "use strict";
 
-var isInteractive = true; // could be set to false for non-interactive graphs - useful e.g. for working with the ensembles
+var isInteractive = true; // true: using plotly.js | false: without plotly.js - useful e.g. for working with the ensembles
+var showConsoleLogs = false;
 
 var basicPlot = isInteractive ? null : require("./basic_plot.js");
 var interactivePlot = isInteractive ? require("./interactive_plot.js") : null;
@@ -49,16 +50,20 @@ function getLocalMocks () {
     ];
 }
 
-console.log("process.env.NODE_ENV='" + process.env.NODE_ENV + "'");
+function echo (txt) {
+    if (showConsoleLogs) console.log(txt);
+}
+
+echo("process.env.NODE_ENV='" + process.env.NODE_ENV + "'");
 var mocks;
 switch (process.env.NODE_ENV) {
     case "proxy-data":
         mocks = getLiveMocks();
-        console.log("Using grib2 data fetched from Datamart using proxy server!");
+        echo("Using grib2 data fetched from Datamart using proxy server!");
         break;
     case "local-data":
         mocks = getLocalMocks();
-        console.log("Using local (already downloaded) grib2 data");
+        echo("Using local (already downloaded) grib2 data");
         break;
     default:
         console.error("BAD BUNDLE");
@@ -99,7 +104,7 @@ var beforeAfter = {
 };
 
 function go (link) {
-    console.log("Loading:'" + link + "'");
+    echo("Loading:'" + link + "'");
     enableLoading();
 
     link = link.replace("https://", "http://");
@@ -125,7 +130,7 @@ function go (link) {
         });
         res.on("end", function () {
             myGrid.parse(Buffer.concat(allChunks));
-            console.log(myGrid);
+            echo(myGrid);
 
             if (isInteractive) {
                 interactivePlot(myGrid, document.getElementById("interactivePlot"), beforeAfter);
