@@ -1,4 +1,8 @@
 node_modules
+package-lock.json
+scraper/package-lock.json
+scraper/graphs/package-lock.json
+
 etc.js
 
 build/*
