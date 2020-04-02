@@ -12,7 +12,7 @@ Most of the work here is under `./grib2class.js` which is a grib2 reader written
 in pure JavaScript (i.e. that runs in the browser!)
 
 To decode the MSC grib2 files (which use JPEG2000 for compression) we must include a third-party module called `jpx.js`.
-The JavaScript file is located in `./vendor/jpx.min.js`, downloaded from [@OHIF/image-JPEG2000](https://github.com/OHIF/image-JPEG2000).
+The JavaScript file is located in `./jpeg2000/jpx.min.js`, downloaded from [@OHIF/image-JPEG2000](https://github.com/OHIF/image-JPEG2000).
 
 This repo offers two demos:
 
