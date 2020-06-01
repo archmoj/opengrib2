@@ -39,6 +39,7 @@ function getLiveMocks () {
 
 function getLocalMocks () {
     return [
+        "./grib2/NOAA_ds.ptornado.grib2",
         "./grib2/CMC_glb_TMP_TGL_2_latlon.24x.24_2019081112_P024.grib2",
         "./grib2/CMC_gdwps_global_HTSGW_SFC_0_latlon0.25x0.25_2019081112_P024.grib2",
         "./grib2/CMC_hrdps_west_TMP_TGL_2_ps2.5km_2019081112_P024-00.grib2",
@@ -119,6 +120,8 @@ function go (link) {
         log: false,
         jpeg2000decoder: jpeg2000decoder
     });
+
+    console.log(myGrid)
 
     http.get(link, function (res, err) {
         if (err) {
